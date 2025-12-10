@@ -1,198 +1,1711 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Mohamed Abdelrazek — Portfolio</title>
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Mohamed Abdelrazek - Marketing Portfolio</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
+
+  <style>
+    :root {
+      --bg-latte-1: #fdf5ed;
+      --bg-latte-2: #fceedd;
+      --bg-latte-3: #f9e3c8;
+      --card-bg: #ffffff;
+      --espresso: #5a3e36;
+      --espresso-soft: #7b5a4f;
+      --espresso-faint: #9b7b6e;
+      --accent: #f09b57;
+      --accent-soft: #f6c89b;
+      --accent-deep: #ea7c2e;
+      --navy: #1d2838;
+      --navy-soft: #28354a;
+      --radius-xl: 32px;
+      --radius-lg: 26px;
+      --radius-md: 18px;
+      --shadow-soft: 0 18px 44px rgba(0, 0, 0, 0.16);
+      --shadow-strong: 0 26px 70px rgba(0, 0, 0, 0.22);
+      --border-subtle: rgba(0, 0, 0, 0.04);
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: "Times New Roman", Times, serif;
+      color: var(--espresso);
+      background: radial-gradient(circle at top left, #fffaf4 0%, var(--bg-latte-1) 36%, var(--bg-latte-2) 80%) fixed;
+      -webkit-font-smoothing: antialiased;
+      font-size: 18px;
+      line-height: 1.6;
+    }
+
+    a {
+      color: inherit;
+      text-decoration: none;
+    }
+
+    img {
+      max-width: 100%;
+      display: block;
+    }
+
+    /* Background orbs */
+
+    .bg-orb {
+      position: fixed;
+      border-radius: 999px;
+      filter: blur(40px);
+      opacity: 0.35;
+      pointer-events: none;
+      mix-blend-mode: multiply;
+      z-index: -1;
+    }
+
+    .bg-orb.orb-1 {
+      width: 340px;
+      height: 340px;
+      background: #ffe0bc;
+      top: -80px;
+      left: -60px;
+    }
+
+    .bg-orb.orb-2 {
+      width: 380px;
+      height: 380px;
+      background: #ffd1b2;
+      bottom: -110px;
+      right: -40px;
+    }
+
+    .bg-orb.orb-3 {
+      width: 260px;
+      height: 260px;
+      background: #ffeedd;
+      top: 40%;
+      right: 8%;
+    }
+
+    .page-shell {
+      max-width: 1260px;
+      margin: 0 auto;
+      padding: 96px 20px 80px;
+      position: relative;
+    }
+
+    /* Top nav */
+
+    .top-nav {
+      position: fixed;
+      inset: 16px 16px auto 16px;
+      max-width: 1260px;
+      margin: 0 auto;
+      left: 0;
+      right: 0;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 10px 18px;
+      border-radius: 999px;
+      background: rgba(255, 248, 239, 0.9);
+      backdrop-filter: blur(18px);
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+      z-index: 40;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .site-brand {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 16px;
+      font-weight: 600;
+      letter-spacing: 0.03em;
+      text-transform: uppercase;
+      color: var(--navy-soft);
+    }
+
+    .site-brand-avatar {
+      width: 34px;
+      height: 34px;
+      border-radius: 50%;
+      overflow: hidden;
+      border: 2px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
+      background: #f7e1c7;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 16px;
+    }
+
+    .site-brand-avatar span {
+      transform: translateY(1px);
+    }
+
+    .nav-links {
+      display: flex;
+      gap: 18px;
+      font-size: 14px;
+    }
+
+    .nav-links a {
+      padding: 6px 10px;
+      border-radius: 999px;
+      color: var(--espresso-soft);
+      transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+    }
+
+    .nav-links a:hover {
+      background: rgba(240, 155, 87, 0.12);
+      color: var(--navy);
+      transform: translateY(-1px);
+    }
+
+    .nav-cta {
+      font-size: 14px;
+      padding: 7px 16px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #f6a55d, #f09b57);
+      color: #fff;
+      font-weight: 600;
+      box-shadow: 0 10px 26px rgba(240, 155, 87, 0.45);
+      border: none;
+      cursor: pointer;
+      transition: transform 0.16s ease, box-shadow 0.16s ease;
+    }
+
+    .nav-cta:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 14px 36px rgba(240, 155, 87, 0.58);
+    }
+
+    @media (max-width: 860px) {
+      .top-nav {
+        padding: 8px 14px;
+      }
+      .nav-links {
+        display: none;
+      }
+    }
+
+    /* Hero */
+
+    .hero {
+      display: grid;
+      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+      gap: 32px;
+      align-items: center;
+      margin-bottom: 42px;
+    }
+
+    @media (max-width: 960px) {
+      .hero {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-heading {
+      font-family: "Playfair Display", serif;
+      font-size: 46px;
+      line-height: 1.18;
+      color: var(--navy-soft);
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 600px) {
+      .hero-heading {
+        font-size: 34px;
+      }
+    }
+
+    .hero-subline {
+      font-size: 18px;
+      color: var(--espresso-soft);
+      max-width: 640px;
+      margin-bottom: 18px;
+    }
+
+    .hero-highlight {
+      font-size: 14px;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: var(--espresso-faint);
+      margin-bottom: 8px;
+    }
+
+    .hero-pills {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 18px;
+    }
+
+    .hero-pill {
+      font-size: 13px;
+      padding: 6px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      backdrop-filter: blur(10px);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .hero-pill span {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--espresso-faint);
+    }
+
+    .hero-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .btn-primary {
+      padding: 11px 22px;
+      border-radius: 999px;
+      border: none;
+      background: linear-gradient(135deg, #f6a55d, #ea7c2e);
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      cursor: pointer;
+      box-shadow: 0 14px 36px rgba(240, 155, 87, 0.65);
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
+    }
+
+    .btn-primary:hover {
+      transform: translateY(-1px);
+      box-shadow: 0 18px 46px rgba(240, 155, 87, 0.75);
+      filter: brightness(1.02);
+    }
+
+    .btn-ghost {
+      padding: 11px 20px;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 155, 87, 0.35);
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--espresso-soft);
+      font-size: 15px;
+      font-weight: 500;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: background 0.16s ease, transform 0.16s ease, border-color 0.16s ease;
+    }
+
+    .btn-ghost:hover {
+      background: rgba(240, 155, 87, 0.06);
+      transform: translateY(-1px);
+      border-color: rgba(240, 155, 87, 0.65);
+    }
+
+    .hero-note {
+      margin-top: 18px;
+      font-size: 14px;
+      color: var(--espresso-faint);
+    }
+
+    .hero-note strong {
+      color: var(--espresso-soft);
+    }
+
+    .hero-right {
+      position: relative;
+    }
+
+    .hero-card {
+      position: relative;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top left, #ffffff 0%, #fdf1e0 60%, #f7dac0 100%);
+      padding: 24px 22px 20px;
+      box-shadow: var(--shadow-strong);
+      overflow: hidden;
+      border: 1px solid rgba(255, 255, 255, 0.8);
+    }
+
+    .hero-card-header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 12px;
+    }
+
+    .hero-card-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--navy-soft);
+    }
+
+    .hero-card-tag {
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(29, 40, 56, 0.9);
+      color: #fef7ee;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero-card-body {
+      display: grid;
+      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      gap: 16px;
+      align-items: center;
+    }
+
+    @media (max-width: 600px) {
+      .hero-card-body {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .hero-card-copy {
+      font-size: 14px;
+      color: var(--espresso-soft);
+    }
+
+    .hero-metrics {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin-top: 6px;
+    }
+
+    .metric-pill {
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.96);
+      padding: 9px 10px;
+      font-size: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
+    }
+
+    .metric-label {
+      color: var(--espresso-faint);
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      margin-bottom: 2px;
+    }
+
+    .metric-value {
+      font-size: 15px;
+      font-weight: 700;
+      color: var(--navy-soft);
+    }
+
+    .hero-photo-frame {
+      justify-self: center;
+      width: 170px;
+      height: 170px;
+      border-radius: 40px;
+      overflow: hidden;
+      background: radial-gradient(circle at 30% 0%, #ffffff 0%, #f9ddc0 60%, #f6c59c 100%);
+      border: 3px solid rgba(255, 255, 255, 0.9);
+      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 40px;
+    }
+
+    .hero-ribbon {
+      position: absolute;
+      inset: auto 10px 10px auto;
+      padding: 6px 10px;
+      border-radius: 999px;
+      font-size: 11px;
+      background: rgba(0, 0, 0, 0.8);
+      color: #fffaf3;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+    }
+
+    .hero-card-orbit {
+      position: absolute;
+      width: 260px;
+      height: 260px;
+      border-radius: 999px;
+      border: 1px dashed rgba(255, 255, 255, 0.65);
+      inset: -80px -40px auto auto;
+      opacity: 0.8;
+      pointer-events: none;
+    }
+
+    /* Sections */
+
+    .section {
+      margin-top: 40px;
+      margin-bottom: 18px;
+    }
+
+    .section-header {
+      margin-bottom: 18px;
+      display: flex;
+      justify-content: space-between;
+      align-items: baseline;
+      gap: 18px;
+      flex-wrap: wrap;
+    }
+
+    .section-kicker {
+      font-size: 13px;
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--espresso-faint);
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-family: "Playfair Display", serif;
+      font-size: 28px;
+      color: var(--navy-soft);
+      margin-bottom: 2px;
+    }
+
+    .section-subtitle {
+      font-size: 15px;
+      color: var(--espresso-soft);
+      max-width: 560px;
+    }
+
+    .section-pill {
+      font-size: 12px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      border: 1px solid rgba(240, 155, 87, 0.26);
+      background: rgba(255, 255, 255, 0.92);
+      color: var(--espresso-soft);
+    }
+
+    /* Pinned TechnoMounts card */
+
+    .pinned-featured-card {
+      background: radial-gradient(circle at top left, #ffffff 0%, #fdf1e3 50%, #f5d4aa 100%);
+      border-radius: 30px;
+      padding: 22px 24px 20px;
+      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.15);
+      border: 1px solid rgba(255, 255, 255, 0.85);
+      margin-bottom: 40px;
+      position: relative;
+      overflow: hidden;
+      transform-origin: center;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+
+    .pinned-featured-card:hover {
+      transform: translateY(-4px) scale(1.01);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
+    }
+
+    .pinned-layout {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 22px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .pinned-layout {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .pinned-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-bottom: 12px;
+      align-items: center;
+    }
+
+    .pinned-badge {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.14em;
+      background: #1d2838;
+      color: #fff8ee;
+      padding: 6px 12px;
+      border-radius: 999px;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pinned-context {
+      font-size: 11px;
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(240, 155, 87, 0.18);
+      color: var(--espresso-soft);
+    }
+
+    .pinned-title {
+      font-family: "Playfair Display", serif;
+      font-size: 26px;
+      font-weight: 700;
+      color: #1d2838;
+      margin-bottom: 6px;
+    }
+
+    .pinned-subtitle {
+      font-size: 16px;
+      color: #7b5a4f;
+      max-width: 720px;
+      margin-bottom: 12px;
+      line-height: 1.55;
+    }
+
+    .pinned-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 14px;
+    }
+
+    .pinned-tag {
+      font-size: 12px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .pinned-metrics {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 12px;
+    }
+
+    @media (max-width: 700px) {
+      .pinned-metrics {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .pinned-metric {
+      border-radius: 16px;
+      background: rgba(255, 255, 255, 0.98);
+      padding: 9px 10px;
+      font-size: 12px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .pinned-metric-label {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.08em;
+      color: var(--espresso-faint);
+      margin-bottom: 3px;
+    }
+
+    .pinned-metric-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy-soft);
+    }
+
+    .pinned-metric-note {
+      font-size: 11px;
+      color: var(--espresso-faint);
+      margin-top: 1px;
+    }
+
+    .pinned-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 4px;
+    }
+
+    .pinned-cta {
+      display: inline-block;
+      padding: 12px 22px;
+      border-radius: 999px;
+      background: linear-gradient(135deg, #f6a55d, #ea7c2e);
+      color: #ffffff;
+      font-size: 15px;
+      font-weight: 600;
+      letter-spacing: 0.02em;
+      text-decoration: none;
+      box-shadow: 0 14px 36px rgba(240, 155, 87, 0.45);
+      transition: 0.2s ease;
+    }
+
+    .pinned-cta:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 20px 46px rgba(240, 155, 87, 0.65);
+    }
+
+    .pinned-ghost-link {
+      font-size: 13px;
+      color: var(--accent-deep);
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.9);
+      border: 1px solid rgba(240, 155, 87, 0.25);
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+    }
+
+    .pinned-ghost-link:hover {
+      background: rgba(240, 155, 87, 0.07);
+    }
+
+    .pinned-art {
+      position: relative;
+      border-radius: 26px;
+      overflow: hidden;
+      background: linear-gradient(135deg, #f6a55d, #1d2838);
+      padding: 4px;
+      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.3);
+    }
+
+    .pinned-art-inner {
+      border-radius: 22px;
+      overflow: hidden;
+      background: radial-gradient(circle at top, #ffffff 0%, #fbe3c6 60%, #f3be94 100%);
+      position: relative;
+    }
+
+    .pinned-strip {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 4px;
+      padding: 6px;
+    }
+
+    .pinned-strip img {
+      width: 100%;
+      height: 80px;
+      object-fit: cover;
+      border-radius: 14px;
+      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
+      transform-origin: center;
+      transition: transform 0.25s ease;
+    }
+
+    .pinned-art:hover .pinned-strip img:nth-child(1) {
+      transform: translateY(-4px) rotate(-1deg);
+    }
+
+    .pinned-art:hover .pinned-strip img:nth-child(2) {
+      transform: translateY(-3px) rotate(1deg);
+    }
+
+    .pinned-art:hover .pinned-strip img:nth-child(3) {
+      transform: translateY(-4px) rotate(-1deg);
+    }
+
+    .pinned-art:hover .pinned-strip img:nth-child(4) {
+      transform: translateY(-3px) rotate(1deg);
+    }
+
+    .pinned-label {
+      position: absolute;
+      left: 10px;
+      bottom: 10px;
+      font-size: 11px;
+      padding: 4px 10px;
+      border-radius: 999px;
+      background: rgba(0, 0, 0, 0.7);
+      color: #ffead4;
+    }
+
+    /* Experience */
+
+    .experience-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 900px) {
+      .experience-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .timeline {
+      position: relative;
+      padding-left: 20px;
+    }
+
+    .timeline::before {
+      content: "";
+      position: absolute;
+      left: 8px;
+      top: 4px;
+      bottom: 4px;
+      width: 2px;
+      background: linear-gradient(to bottom, #f09b57, transparent);
+      opacity: 0.4;
+    }
+
+    .timeline-item {
+      position: relative;
+      margin-bottom: 16px;
+      padding-left: 12px;
+    }
+
+    .timeline-dot {
+      position: absolute;
+      left: -2px;
+      top: 7px;
+      width: 10px;
+      height: 10px;
+      border-radius: 999px;
+      background: #f09b57;
+      box-shadow: 0 0 0 5px rgba(240, 155, 87, 0.2);
+    }
+
+    .timeline-title {
+      font-size: 16px;
+      font-weight: 600;
+      color: var(--navy-soft);
+    }
+
+    .timeline-meta {
+      font-size: 13px;
+      color: var(--espresso-faint);
+      margin-bottom: 4px;
+    }
+
+    .timeline-desc {
+      font-size: 14px;
+      color: var(--espresso-soft);
+    }
+
+    .experience-stats {
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 16px;
+      background: radial-gradient(circle at top left, #ffffff 0%, #fdf2e4 52%, #f7d5b3 100%);
+      box-shadow: var(--shadow-soft);
+      border: 1px solid rgba(255, 255, 255, 0.9);
+    }
+
+    .experience-stat-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 12px;
+    }
+
+    @media (max-width: 720px) {
+      .experience-stat-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    .exp-stat {
+      font-size: 13px;
+      background: rgba(255, 255, 255, 0.96);
+      border-radius: 16px;
+      padding: 10px 10px;
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
+    }
+
+    .exp-stat-label {
+      font-size: 11px;
+      color: var(--espresso-faint);
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      margin-bottom: 3px;
+    }
+
+    .exp-stat-value {
+      font-size: 18px;
+      font-weight: 700;
+      color: var(--navy-soft);
+    }
+
+    .exp-stat-note {
+      font-size: 12px;
+      color: var(--espresso-soft);
+      margin-top: 2px;
+    }
+
+    /* Portfolio grid */
+
+    .portfolio-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+    }
+
+    @media (max-width: 1024px) {
+      .portfolio-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+    }
+
+    @media (max-width: 640px) {
+      .portfolio-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .project-card {
+      border-radius: var(--radius-lg);
+      padding: 18px 16px 16px;
+      background: rgba(255, 255, 255, 0.98);
+      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.11);
+      border: 1px solid var(--border-subtle);
+      position: relative;
+      overflow: hidden;
+      cursor: pointer;
+      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+    }
+
+    .project-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 20px 54px rgba(0, 0, 0, 0.18);
+      border-color: rgba(240, 155, 87, 0.5);
+      background: #fffdf9;
+    }
+
+    .project-tag {
+      font-size: 11px;
+      text-transform: uppercase;
+      letter-spacing: 0.11em;
+      color: var(--espresso-faint);
+      margin-bottom: 4px;
+    }
+
+    .project-title {
+      font-size: 17px;
+      font-weight: 600;
+      color: var(--navy-soft);
+      margin-bottom: 4px;
+    }
+
+    .project-desc {
+      font-size: 14px;
+      color: var(--espresso-soft);
+      margin-bottom: 8px;
+    }
+
+    .project-meta-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 6px;
+      font-size: 11px;
+      color: var(--espresso-faint);
+      margin-bottom: 10px;
+    }
+
+    .project-links a {
+      font-size: 12px;
+      color: var(--accent-deep);
+      font-weight: 600;
+      text-decoration: none;
+    }
+
+    .project-links a:hover {
+      text-decoration: underline;
+    }
+
+    /* Skills */
+
+    .skills-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      gap: 24px;
+    }
+
+    @media (max-width: 960px) {
+      .skills-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .skill-block {
+      border-radius: var(--radius-lg);
+      padding: 16px 16px 14px;
+      background: rgba(255, 255, 255, 0.96);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
+      margin-bottom: 10px;
+    }
+
+    .skill-block-title {
+      font-size: 15px;
+      font-weight: 600;
+      color: var(--navy-soft);
+      margin-bottom: 4px;
+    }
+
+    .skill-block-sub {
+      font-size: 13px;
+      color: var(--espresso-soft);
+      margin-bottom: 6px;
+    }
+
+    .skill-bar-track {
+      height: 7px;
+      border-radius: 999px;
+      background: #f1e1cf;
+      overflow: hidden;
+    }
+
+    .skill-bar-fill {
+      height: 100%;
+      border-radius: inherit;
+      background: linear-gradient(90deg, #233859, #f09b57);
+      width: 0;
+      transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1);
+    }
+
+    .skill-pill-cloud {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+    }
+
+    .skill-pill {
+      font-size: 13px;
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(0, 0, 0, 0.04);
+    }
+
+    .languages-card {
+      border-radius: var(--radius-lg);
+      padding: 14px 16px;
+      background: radial-gradient(circle at top left, #ffffff 0%, #fdf2e4 52%, #f5cfaa 100%);
+      box-shadow: var(--shadow-soft);
+      font-size: 14px;
+    }
+
+    .languages-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    .lang-tag {
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.96);
+      border: 1px solid rgba(0, 0, 0, 0.03);
+      font-size: 13px;
+    }
+
+    /* Contact */
+
+    .contact-card {
+      border-radius: var(--radius-xl);
+      padding: 22px 22px 18px;
+      background: radial-gradient(circle at top left, #ffffff 0%, #fdf1e3 52%, #f5cfaa 100%);
+      box-shadow: var(--shadow-soft);
+      display: grid;
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+      gap: 20px;
+      align-items: center;
+    }
+
+    @media (max-width: 900px) {
+      .contact-card {
+        grid-template-columns: 1fr;
+      }
+    }
+
+    .contact-lines {
+      font-size: 14px;
+      color: var(--espresso-soft);
+      margin-top: 6px;
+    }
+
+    .contact-lines p {
+      margin-bottom: 3px;
+    }
+
+    .contact-highlight {
+      font-size: 15px;
+      color: var(--navy-soft);
+      margin-bottom: 4px;
+    }
+
+    .contact-badge-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-top: 10px;
+      font-size: 12px;
+    }
+
+    .contact-badge {
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: rgba(255, 255, 255, 0.92);
+      border: 1px solid rgba(0, 0, 0, 0.03);
+    }
+
+    .footer-note {
+      text-align: center;
+      margin-top: 32px;
+      font-size: 12px;
+      color: var(--espresso-faint);
+    }
+
+    /* Reveal animation */
+
+    .reveal {
+      opacity: 0;
+      transform: translateY(22px);
+      transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+
+    .reveal.is-visible {
+      opacity: 1;
+      transform: translateY(0);
+    }
+
+    .reveal-late {
+      transition-delay: 0.2s;
+    }
+
+    .reveal-slow {
+      transition-duration: 1s;
+    }
+  </style>
 </head>
 <body>
+  <!-- Background glows -->
+  <div class="bg-orb orb-1"></div>
+  <div class="bg-orb orb-2"></div>
+  <div class="bg-orb orb-3"></div>
 
-  <!-- Top Bar -->
-  <div class="top-bar">
-    <div class="site-title gold-text">👋 Mohamed Abdelrazek</div>
-    <div class="nav-links">
-      <ul>
-        <li><a href="#about" class="header-link">About Me</a></li>
-        <li><a href="#skills" class="header-link">Skills</a></li>
-        <li><a href="#projects" class="header-link">Projects</a></li>
-        <li><a href="#contact" class="header-link">Contact</a></li>
-      </ul>
+  <!-- Top nav -->
+  <header class="top-nav">
+    <div class="site-brand">
+      <div class="site-brand-avatar"><span>🐾</span></div>
+      <div>Mohamed Abdelrazek</div>
     </div>
-    <button id="themeToggle" class="cta-btn theme-toggle">🌙 Mode</button>
-  </div>
+    <nav class="nav-links">
+      <a href="#about">About</a>
+      <a href="#featured-techno">Current project</a>
+      <a href="#portfolio">Portfolio</a>
+      <a href="#skills">Skills</a>
+      <a href="#contact">Contact</a>
+    </nav>
+    <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+      Book a call
+    </button>
+  </header>
 
-  <!-- Hero Section -->
-  <section class="hero">
-    <img src="profile.jpg" alt="Portrait of Mohamed Abdelrazek" class="profile-pic" />
-    <h1 class="gold-text hero-name">Mohamed Abdelrazek</h1>
-    <p class="motto">
-      Athlete’s discipline. Engineering mindset. Lifelong learner. Shaped by global, multicultural experiences.
-    </p>
-    <a href="https://moeabdelrazek.github.io/resume.html" target="_blank" class="cta-btn resume">Resume</a>
-    <a href="#projects" class="cta-btn work">Work</a>
-  </section>
+  <main class="page-shell">
+    <!-- Hero -->
+    <section class="hero reveal" id="about">
+      <div>
+        <div class="hero-highlight">Digital marketing · analytics · strategy 🐾</div>
+        <h1 class="hero-heading">
+          Marketing professional with a performance mindset and portfolio built on real campaigns.
+        </h1>
+        <p class="hero-subline">
+          I design full funnel marketing systems that connect acquisition, analytics, and conversion. From Google Ads and SEO
+          to email, Amazon, and B2B outreach, my work is measurable, practical, and built to scale.
+        </p>
 
-  <div class="separator"></div>
+        <div class="hero-pills">
+          <div class="hero-pill">
+            <span>Current</span>
+            TechnoMounts UAE - Digital marketing and growth
+          </div>
+          <div class="hero-pill">
+            <span>Based in</span>
+            Alexandria, Egypt - GCC focus
+          </div>
+          <div class="hero-pill">
+            <span>Languages</span>
+            Arabic native · English near native · German in progress
+          </div>
+        </div>
 
-  <!-- About -->
-  <div class="card scroll-fade" id="about">
-    <h2 class="gold-text section-header">✨ About Me</h2>
-    <p class="about-text">
-      Multidisciplinary professional blending engineering foundations with Python, AI, data analysis, and digital marketing.<br>
-      Resilient and disciplined, with a decade of high-performance experience shaped by professional football.<br>
-      
-      Deeply committed to continuous learning and real-world impact.<br>
-      Currently pursuing certifications to bridge technology with business outcomes.
-      
-    </p>
-    <div class="language-tags">
-      <span class="lang-tag">🇦🇪 Arabic</span> <span class="level-tag">Native</span>
-      <span class="lang-tag">🇬🇧 English</span> <span class="level-tag">Near Native</span>
-      <span class="lang-tag">🇩🇪 German</span> <span class="level-tag">B2</span>
-    </div>
-  </div>
+        <div class="hero-actions">
+          <button class="btn-primary" onclick="document.getElementById('featured-techno').scrollIntoView({behavior:'smooth'})">
+            View current portfolio project
+          </button>
+          <button class="btn-ghost" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})">
+            Explore past campaigns
+          </button>
+        </div>
 
-  <div class="separator"></div>
+        <p class="hero-note">
+          <strong>How I work:</strong> clear structure, strong creative, and tracking that holds every campaign accountable.
+        </p>
+      </div>
 
-   <!-- Projects -->
-  <div class="card scroll-fade" id="projects">
-    <h2 class="gold-text section-header">📂 Projects</h2>
-    <ul>
-      <li>
-        <span class="project-title">Rafiki Vets Hospital Full Campaign: (https://moeabdelrazek.github.io/Rafiki-Campaign/)</span> => 
-        <a class="gold-text github-link" href="https://github.com/MoeAbdelrazek/Haksoss_Full_Campaign" target="_blank">
-           Repository
-        </a>
-      </li>
-      <li>
-        <span class="project-title">Haksoss Café Full Campaign: (https//moeabdelrazek.github.io/Haksoss_Full_Campaign/)  </span> => 
-        <a class="gold-text github-link" href="https://github.com/MoeAbdelrazek/Haksoss_Full_Campaign" target="_blank">
-           Repository
-        </a>
-      </li>
-      <li>
-        <span class="project-title">Mory Gym Full Campaign: (https://moeabdelrazek.github.io/mory-gym-campaign/)</span> => 
-        <a class="gold-text github-link" href="https://github.com/MoeAbdelrazek/mory-gym-campaign" target="_blank">
-           Repository
-        </a>
-      </li>
-      
-      <li>
-        <span class="project-title">luxeloom-kpi-dashboard: (https://moeabdelrazek.github.io/luxeloom-kpi-dashboard/)</span> => 
-        <a class="gold-text github-link" href="https://github.com/MoeAbdelrazek/luxeloom-kpi-dashboard" target="_blank">
-           Repository
-        </a>
-      </li>
-    
-    </ul>
-  </div>
+      <div class="hero-right reveal reveal-late">
+        <div class="hero-card">
+          <div class="hero-card-header">
+            <div class="hero-card-title">Snapshot of my profile</div>
+            <div class="hero-card-tag">Full funnel marketer</div>
+          </div>
+          <div class="hero-card-body">
+            <div>
+              <p class="hero-card-copy">
+                My work connects four layers: strategy, execution, measurement, and reporting. I am comfortable planning the system,
+                building it inside the tools, and presenting the numbers in a way non technical teams can use.
+              </p>
+              <div class="hero-metrics">
+                <div class="metric-pill">
+                  <div class="metric-label">Core focus</div>
+                  <div class="metric-value">Acquisition, CRO, analytics, CRM</div>
+                </div>
+                <div class="metric-pill">
+                  <div class="metric-label">Key platforms</div>
+                  <div class="metric-value">Google Ads, GA4, Shopify, Apollo, Amazon</div>
+                </div>
+              </div>
+            </div>
+            <div class="hero-photo-frame">
+              <span>MA</span>
+              <div class="hero-ribbon">Marketing · Data · Systems</div>
+            </div>
+          </div>
+          <div class="hero-card-orbit"></div>
+        </div>
+      </div>
+    </section>
 
-  <div class="separator"></div>
+    <!-- Pinned TechnoMounts project -->
+    <section class="section reveal" id="featured-techno">
+      <header class="section-header">
+        <div>
+          <div class="section-kicker">Pinned on top</div>
+          <h2 class="section-title">Current project - TechnoMounts portfolio build</h2>
+          <p class="section-subtitle">
+            A live, real world project in the United Arab Emirates. From almost zero visibility to a structured, measurable
+            growth system around ecommerce and B2B influenced buyers.
+          </p>
+        </div>
+        <span class="section-pill">Real client · Multi channel · Analytics first</span>
+      </header>
 
+      <article class="pinned-featured-card">
+        <div class="pinned-layout">
+          <div>
+            <div class="pinned-badge-row">
+              <div class="pinned-badge">
+                Pinned · Current portfolio anchor
+              </div>
+              <div class="pinned-context">
+                TechnoMounts UAE - premium display hardware for retail, hospitality, healthcare, and corporate spaces
+              </div>
+            </div>
 
-<!-- Skills -->
-<div class="card scroll-fade" id="skills">
-  <h2 class="gold-text section-header">🛠️ Skills</h2>
+            <div class="pinned-title">
+              TechnoMounts UAE - full performance marketing ecosystem
+            </div>
 
-  <div class="skills-columns">
-    <!-- Hard Skills Column -->
-    <div class="skills-column">
-      <h3 class="gold-text subheader">Hard Skills</h3>
-      <ul class="skills-list">
-        <li>Python (Debugging, Automation)</li>
-        <li>Data Analysis & Visualization (Excel, Tableau, Looker Studio)</li>
-        <li>AI & Predictive Analytics Fundamentals</li>
-        <li>Digital Marketing Strategy & Media Planning</li>
-        <li>SEO & SEM (Google Ads, Ahrefs, Analytics)</li>
-        <li>Social Media Marketing (Meta, Instagram, TikTok)</li>
-        <li>Email Marketing Automation (Mailchimp, Klaviyo, HubSpot)</li>
-        <li>CRM & Customer Journey Optimization (HubSpot, Salesforce)</li>
-        <li>Landing Page & Funnel Optimization (Unbounce, Elementor)</li>
-        <li>A/B Testing & Conversion Rate Optimization</li>
-        <li>GitHub & Version Control</li>
-        <li>Microsoft Suite (Excel, PowerPoint, Word)</li>
-        <li>Content Creation & Copywriting</li>
-        <li>Analytics Reporting & KPI Tracking</li>
-      </ul>
-    </div>
+            <div class="pinned-subtitle">
+              Month one portfolio build for a specialist hardware brand. Landing pages, Performance Max, SEO foundation, GA4 tracking,
+              Amazon groundwork, and B2B lead generation in one connected stack.
+            </div>
 
-    <!-- Soft Skills Column -->
-    <div class="skills-column">
-      <h3 class="gold-text subheader">Soft Skills</h3>
-      <ul class="skills-list">
-        <li>Resilience, Discipline & Focus from Professional Sports Background</li>
-        <li>Leadership & Team Coordination across Multicultural Teams</li>
-        <li>Strategic & Analytical Thinking in Complex Scenarios</li>
-        <li>Creative Problem-Solving & Adaptive Decision-Making</li>
-        <li>Effective Communication & Presentation Skills</li>
-        <li>Continuous Learning & Professional Development Mindset</li>
-        <li>Strong Work Ethic & Accountability under Pressure</li>
-        <li>Empathy & Cross-Cultural Collaboration</li>
-        <li>Goal-Oriented Time & Priority Management</li>
-        <li>Attention to Detail & Quality-Driven Execution</li>
-        <li>Positive Attitude & Growth-Oriented Mindset</li>
-      </ul>
-    </div>
-  </div>
-</div>
+            <div class="pinned-tags">
+              <span class="pinned-tag">Google Ads - Performance Max</span>
+              <span class="pinned-tag">SEO and Search Console</span>
+              <span class="pinned-tag">11 landing pages</span>
+              <span class="pinned-tag">GA4 events and conversions</span>
+              <span class="pinned-tag">Amazon listing groundwork</span>
+              <span class="pinned-tag">Apollo.io and B2B outreach</span>
+            </div>
 
- 
-  <!-- Contact -->
-  <div class="card scroll-fade" id="contact">
-    <h2 class="gold-text section-header">📇 Contact</h2>
-    <p><span class="contact-label">Email:</span> <span class="contact-value">moe-abdelrazek@outlook.com</span></p>
-    <p><span class="contact-label">Phone:</span> <span class="contact-value">+20 1017286384</span></p>
-    <p><span class="contact-label">Website:</span> <span class="contact-value">Portfolio Website</span></p>
-    <p><span class="contact-label">Location:</span> <span class="contact-value">Alexandria, Egypt</span></p>
-  </div>
+            <div class="pinned-metrics">
+              <div class="pinned-metric">
+                <div class="pinned-metric-label">New users in month one</div>
+                <div class="pinned-metric-value" data-counter="3980">0</div>
+                <div class="pinned-metric-note">Across all acquisition channels</div>
+              </div>
+              <div class="pinned-metric">
+                <div class="pinned-metric-label">Organic search clicks</div>
+                <div class="pinned-metric-value" data-counter="3250">0</div>
+                <div class="pinned-metric-note">Google Search Console baseline</div>
+              </div>
+              <div class="pinned-metric">
+                <div class="pinned-metric-label">Tracked conversions</div>
+                <div class="pinned-metric-value" data-counter="42">0</div>
+                <div class="pinned-metric-note">Forms, calls, and key ecommerce events</div>
+              </div>
+            </div>
 
-  <div class="separator"></div>
+            <div class="pinned-actions">
+              <a href="https://moeabdelrazek.github.io/TechnoMounts/" target="_blank" class="pinned-cta">
+                View full TechnoMounts case study
+              </a>
+              <a href="#portfolio" class="pinned-ghost-link">
+                Browse all past campaigns
+              </a>
+            </div>
+          </div>
 
-  <!-- Final Note -->
-  <div class="card scroll-fade" id="wrapup">
-    <h2 class="gold-text section-header">🌟 Final Note</h2>
-    <p class="wrapup-message">
-      Thank you for exploring my journey. This portfolio is more than a showcase — it's a reflection of discipline, precision, and passion. Let's build something extraordinary together.
-    </p>
-  </div>
+          <div class="pinned-art">
+            <div class="pinned-art-inner">
+              <div class="pinned-strip">
+                <img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/01_luxury.png" alt="TechnoMounts visual 1">
+                <img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/11_display.png" alt="TechnoMounts visual 2">
+                <img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/20_rotation.png" alt="TechnoMounts visual 3">
+                <img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/05_retail.png" alt="TechnoMounts visual 4">
+              </div>
+              <span class="pinned-label">
+                Gallery created for ads, social content, and product storytelling
+              </span>
+            </div>
+          </div>
+        </div>
+      </article>
+    </section>
 
-  <!-- Footer -->
-  <footer class="gold-text">
-    © 2025 Mohamed Abdelrazek — All Rights Reserved
-  </footer>
+    <!-- Experience snapshot -->
+    <section class="section reveal" id="experience">
+      <header class="section-header">
+        <div>
+          <div class="section-kicker">Experience snapshot</div>
+          <h2 class="section-title">How my work evolved across brands and channels</h2>
+          <p class="section-subtitle">
+            From single brand launches to multi channel systems. Each project added a layer in planning, execution, and measurement.
+          </p>
+        </div>
+      </header>
 
-  <!-- Scripts -->
+      <div class="experience-grid">
+        <div class="timeline">
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-title">
+              TechnoMounts UAE - digital marketing and analytics
+            </div>
+            <div class="timeline-meta">
+              Current · Ecommerce hardware and B2B influenced buying journeys
+            </div>
+            <div class="timeline-desc">
+              Building TechnoMounts as a full stack marketing and analytics system. Performance Max campaigns around buying intent,
+              technical SEO and structured data, landing page system, email journeys, Amazon groundwork, and B2B prospecting with Apollo and CRM.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-title">Rafiki Vets Hospital - full campaign</div>
+            <div class="timeline-meta">
+              Healthcare · Lead generation and brand positioning
+            </div>
+            <div class="timeline-desc">
+              Designed a complete campaign around pet owner journeys. Combined local search, social media, landing pages, and CRM logic
+              to drive appointments and repeat visits in a high trust service.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-title">Haksoss Café - brand and performance launch</div>
+            <div class="timeline-meta">
+              Hospitality · Local discovery and repeat visits
+            </div>
+            <div class="timeline-desc">
+              Built a launch campaign template for a café concept. Positioning, creative system, and performance structure that I now reuse across future hospitality launches.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-title">Mory Gym - membership acquisition funnel</div>
+            <div class="timeline-meta">
+              Fitness · Sign ups and retention
+            </div>
+            <div class="timeline-desc">
+              Structured a membership funnel around trial offers, referrals, and retention oriented communication. Focused on tracking sign ups from first impression to paying membership.
+            </div>
+          </div>
+
+          <div class="timeline-item">
+            <div class="timeline-dot"></div>
+            <div class="timeline-title">Luxeloom KPI dashboard</div>
+            <div class="timeline-meta">
+              Analytics · Performance visualization
+            </div>
+            <div class="timeline-desc">
+              Designed and implemented a KPI dashboard that monitors acquisition, engagement, and revenue. This shaped how I instrument
+              every campaign around events and decision ready metrics.
+            </div>
+          </div>
+        </div>
+
+        <aside class="experience-stats reveal reveal-late">
+          <div class="section-kicker" style="margin-bottom:6px;">At a glance</div>
+          <p style="font-size:15px;color:var(--espresso-soft);margin-bottom:10px;">
+            A marketing portfolio is only valuable when it can be backed with numbers. These figures summarise the scale and diversity
+            of the work I design and run.
+          </p>
+          <div class="experience-stat-grid">
+            <div class="exp-stat">
+              <div class="exp-stat-label">Cross channel campaigns</div>
+              <div class="exp-stat-value" data-counter="7">0</div>
+              <div class="exp-stat-note">End to end campaigns across paid, organic, and lifecycle.</div>
+            </div>
+            <div class="exp-stat">
+              <div class="exp-stat-label">Industries</div>
+              <div class="exp-stat-value" data-counter="5">0</div>
+              <div class="exp-stat-note">Healthcare, hospitality, fitness, ecommerce, education.</div>
+            </div>
+            <div class="exp-stat">
+              <div class="exp-stat-label">Acquisition and retention tools</div>
+              <div class="exp-stat-value">Google Ads, GA4, Shopify, Apollo, Amazon, CRM</div>
+            </div>
+            <div class="exp-stat">
+              <div class="exp-stat-label">Core focus</div>
+              <div class="exp-stat-value">Measurement first marketing</div>
+            </div>
+            <div class="exp-stat">
+              <div class="exp-stat-label">Working style</div>
+              <div class="exp-stat-value">Hands on strategist</div>
+              <div class="exp-stat-note">I design the framework and implement it myself.</div>
+            </div>
+            <div class="exp-stat">
+              <div class="exp-stat-label">Location and scope</div>
+              <div class="exp-stat-value">Alexandria · GCC focus</div>
+            </div>
+          </div>
+        </aside>
+      </div>
+    </section>
+
+    <!-- Portfolio grid -->
+    <section class="section reveal" id="portfolio">
+      <header class="section-header">
+        <div>
+          <div class="section-kicker">Selected work</div>
+          <h2 class="section-title">Current and past projects in one view</h2>
+          <p class="section-subtitle">
+            A mix of real client work and structured campaign templates. Each card links to a live case study or repository where possible.
+          </p>
+        </div>
+      </header>
+
+      <div class="portfolio-grid">
+        <!-- TechnoMounts card (matches pinned but in grid) -->
+        <article class="project-card">
+          <div class="project-tag">Ecommerce · B2B influenced</div>
+          <h3 class="project-title">TechnoMounts UAE - performance marketing ecosystem</h3>
+          <p class="project-desc">
+            Current live project. Performance Max, SEO foundation, GA4, landing pages, email, Amazon, and B2B outreach in a single measurable system.
+          </p>
+          <div class="project-meta-row">
+            <span>Google Ads · GA4 · Search Console</span>
+            <span>Shopify · Email · Amazon · Apollo</span>
+          </div>
+          <div class="project-links">
+            <a href="https://moeabdelrazek.github.io/TechnoMounts/" target="_blank" rel="noopener">Open TechnoMounts portfolio page</a>
+          </div>
+        </article>
+
+        <!-- Rafiki -->
+        <article class="project-card">
+          <div class="project-tag">Healthcare · Lead generation</div>
+          <h3 class="project-title">Rafiki Vets Hospital - full funnel campaign</h3>
+          <p class="project-desc">
+            Built a full campaign around pet owner journeys. Local SEO, social, landing pages, and CRM structure to drive booked visits.
+          </p>
+          <div class="project-meta-row">
+            <span>Campaign strategy · Creative system</span>
+            <span>Lead funnel and tracking</span>
+          </div>
+          <div class="project-links">
+            <a href="https://moeabdelrazek.github.io/Rafiki-Campaign/" target="_blank" rel="noopener">View campaign</a>
+          </div>
+        </article>
+
+        <!-- Haksoss -->
+        <article class="project-card">
+          <div class="project-tag">Hospitality · Launch template</div>
+          <h3 class="project-title">Haksoss Café - launch and performance system</h3>
+          <p class="project-desc">
+            A complete café launch that became a reusable template. Positioning, content system, and performance structure for local discovery and repeat traffic.
+          </p>
+          <div class="project-meta-row">
+            <span>Paid social · Local SEO</span>
+            <span>Offer and content system</span>
+          </div>
+          <div class="project-links">
+            <a href="https://moeabdelrazek.github.io/Haksoss_Full_Campaign/" target="_blank" rel="noopener">View campaign</a>
+          </div>
+        </article>
+
+        <!-- Mory Gym -->
+        <article class="project-card">
+          <div class="project-tag">Fitness · Memberships</div>
+          <h3 class="project-title">Mory Gym - acquisition and retention funnel</h3>
+          <p class="project-desc">
+            Designed a membership funnel with trial offers, referrals, and retention communication, tracked from first click to subscription.
+          </p>
+          <div class="project-meta-row">
+            <span>Sign up funnel · Offers</span>
+            <span>Lifecycle communication</span>
+          </div>
+          <div class="project-links">
+            <a href="https://moeabdelrazek.github.io/mory-gym-campaign/" target="_blank" rel="noopener">View campaign</a>
+          </div>
+        </article>
+
+        <!-- Luxeloom -->
+        <article class="project-card">
+          <div class="project-tag">Analytics · KPIs</div>
+          <h3 class="project-title">Luxeloom KPI dashboard</h3>
+          <p class="project-desc">
+            A dashboard that connects acquisition, behavior, and revenue. Built as a decision tool for marketing and leadership.
+          </p>
+          <div class="project-meta-row">
+            <span>Data model and metrics</span>
+            <span>Visualization and reporting</span>
+          </div>
+          <div class="project-links">
+            <a href="https://moeabdelrazek.github.io/luxeloom-kpi-dashboard/" target="_blank" rel="noopener">Open dashboard</a>
+          </div>
+        </article>
+
+        <!-- Archive -->
+        <article class="project-card">
+          <div class="project-tag">Portfolio · Archive</div>
+          <h3 class="project-title">Earlier portfolio and experiments</h3>
+          <p class="project-desc">
+            Previous portfolio pages and experiments that focused on individual skills and small projects. Now used as an archive behind this main page.
+          </p>
+          <div class="project-meta-row">
+            <span>Profile · Skills</span>
+            <span>First wave of work</span>
+          </div>
+          <div class="project-links">
+            <span style="font-size:12px;color:var(--espresso-faint);">Details available on request.</span>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section reveal" id="skills">
+      <header class="section-header">
+        <div>
+          <div class="section-kicker">Skills and tools</div>
+          <h2 class="section-title">Generalist marketer with strong analytical depth</h2>
+          <p class="section-subtitle">
+            I am comfortable leading strategy, building the setup inside the tools, and translating the numbers into actions.
+          </p>
+        </div>
+      </header>
+
+      <div class="skills-grid">
+        <div>
+          <div class="skill-block">
+            <div class="skill-block-title">Acquisition and performance</div>
+            <div class="skill-block-sub">
+              Google Ads, Performance Max, Shopping, search campaigns, and media structure that connects to business numbers.
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-bar="90"></div>
+            </div>
+          </div>
+
+          <div class="skill-block">
+            <div class="skill-block-title">Analytics and measurement</div>
+            <div class="skill-block-sub">
+              GA4 events and conversions, Search Console analysis, and dashboards that make sense to leadership and sales.
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-bar="92"></div>
+            </div>
+          </div>
+
+          <div class="skill-block">
+            <div class="skill-block-title">Conversion and UX</div>
+            <div class="skill-block-sub">
+              Landing page systems, funnels, A/B tests, and CRO thinking that focus on sign ups and revenue.
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-bar="86"></div>
+            </div>
+          </div>
+
+          <div class="skill-block">
+            <div class="skill-block-title">Lifecycle and B2B outreach</div>
+            <div class="skill-block-sub">
+              Email automation, Apollo sequences, CRM segmentation, and account based thinking for B2B prospects.
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-bar="84"></div>
+            </div>
+          </div>
+
+          <div class="skill-block">
+            <div class="skill-block-title">Technical foundations</div>
+            <div class="skill-block-sub">
+              Working with code driven assets, GitHub, structured data, and technical debugging that supports marketing.
+            </div>
+            <div class="skill-bar-track">
+              <div class="skill-bar-fill" data-bar="78"></div>
+            </div>
+          </div>
+        </div>
+
+        <div>
+          <div style="margin-bottom:14px;">
+            <div class="section-kicker" style="margin-bottom:4px;">Tools I use daily</div>
+            <div class="skill-pill-cloud">
+              <span class="skill-pill">Google Ads · Performance Max</span>
+              <span class="skill-pill">Google Analytics 4</span>
+              <span class="skill-pill">Google Search Console</span>
+              <span class="skill-pill">Looker Studio</span>
+              <span class="skill-pill">Shopify</span>
+              <span class="skill-pill">Email automation</span>
+              <span class="skill-pill">Apollo.io</span>
+              <span class="skill-pill">CRM platforms</span>
+              <span class="skill-pill">GitHub</span>
+              <span class="skill-pill">Content and copywriting</span>
+            </div>
+          </div>
+
+          <div class="languages-card">
+            <div class="section-kicker" style="margin-bottom:4px;">Languages</div>
+            <div class="contact-highlight">
+              I work across Arabic, English, and German, which supports research, outreach, and communication.
+            </div>
+            <div class="languages-row">
+              <span class="lang-tag">Arabic - native</span>
+              <span class="lang-tag">English - near native</span>
+              <span class="lang-tag">German - learning and improving</span>
+            </div>
+            <p style="margin-top:10px;font-size:13px;color:var(--espresso-soft);">
+              This helps when adapting campaigns to local nuance and tone in different markets and materials.
+            </p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Contact -->
+    <section class="section reveal" id="contact">
+      <header class="section-header">
+        <div>
+          <div class="section-kicker">Next step</div>
+          <h2 class="section-title">Talk through this portfolio or plan a new project</h2>
+          <p class="section-subtitle">
+            If you want to see live dashboards, account views, or a deeper breakdown of any project, I am happy to walk you through it.
+          </p>
+        </div>
+      </header>
+
+      <div class="contact-card">
+        <div>
+          <p class="contact-highlight">
+            The best way to understand how I work is to spend thirty minutes inside one of the campaigns above, with the tools open and the numbers in front of us.
+          </p>
+          <div class="contact-lines">
+            <p><strong>Email:</strong> moe-abdelrazek@outlook.com</p>
+            <p><strong>Location:</strong> Alexandria, Egypt · working with United Arab Emirates and GCC clients</p>
+          </div>
+          <div class="contact-badge-row">
+            <span class="contact-badge">Available for remote roles and projects</span>
+            <span class="contact-badge">Comfortable with async reporting and dashboards</span>
+            <span class="contact-badge">Happy to start from a single project test</span>
+          </div>
+        </div>
+
+        <div>
+          <button class="btn-primary" style="width:100%;justify-content:center;" onclick="window.location.href='mailto:moe-abdelrazek@outlook.com'">
+            Email me about a role or project
+          </button>
+          <p style="font-size:12px;color:var(--espresso-faint);margin-top:8px;">
+            You can mention which project you want to focus on first. TechnoMounts is usually the best starting point because it shows the full stack.
+          </p>
+        </div>
+      </div>
+
+      <p class="footer-note">
+        This portfolio is built on real work. Every project here can be backed with dashboards, exports, and live account views when needed.
+      </p>
+    </section>
+  </main>
+
   <script>
-    const themeToggle = document.getElementById("themeToggle");
-
-    function applyTheme(theme) {
-      document.documentElement.setAttribute("data-theme", theme);
-      themeToggle.textContent = theme === "light" ? "☀️ Mode" : "🌙 Mode";
-    }
-
-    function toggleTheme() {
-      const current = document.documentElement.getAttribute("data-theme");
-      const newTheme = current === "light" ? "dark" : "light";
-      applyTheme(newTheme);
-      localStorage.setItem("theme", newTheme);
-    }
-
-    themeToggle.addEventListener("click", toggleTheme);
-
-    window.addEventListener("DOMContentLoaded", () => {
-      const saved = localStorage.getItem("theme");
-      applyTheme(saved || "dark"); // force dark as default
-
-      const scrollElements = document.querySelectorAll(".scroll-fade");
-      const observer = new IntersectionObserver((entries) => {
+    // Reveal on scroll
+    const revealEls = document.querySelectorAll(".reveal");
+    const observer = new IntersectionObserver(
+      entries => {
         entries.forEach(entry => {
-          if (entry.isIntersecting) entry.target.classList.add("visible");
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
         });
-      }, { threshold: 0.1 });
-      scrollElements.forEach(el => observer.observe(el));
+      },
+      { threshold: 0.22 }
+    );
+    revealEls.forEach(el => observer.observe(el));
+
+    // Counters
+    function animateCounters() {
+      document.querySelectorAll("[data-counter]").forEach(el => {
+        const target = parseFloat(el.getAttribute("data-counter"));
+        const isDecimal = String(target).includes(".");
+        const duration = 1600;
+        const start = performance.now();
+
+        function frame(now) {
+          const progress = Math.min((now - start) / duration, 1);
+          const value = target * progress;
+          el.textContent = isDecimal ? value.toFixed(1) : Math.round(value);
+          if (progress < 1) requestAnimationFrame(frame);
+        }
+        requestAnimationFrame(frame);
+      });
+    }
+
+    // Skill bars
+    function animateSkillBars() {
+      document.querySelectorAll(".skill-bar-fill").forEach(bar => {
+        const pct = parseFloat(bar.getAttribute("data-bar") || "0");
+        bar.style.width = pct + "%";
+      });
+    }
+
+    let metricsTriggered = false;
+    function triggerMetrics() {
+      if (metricsTriggered) return;
+      const skillsSection = document.getElementById("skills");
+      if (!skillsSection) return;
+      const rect = skillsSection.getBoundingClientRect();
+      if (rect.top < window.innerHeight) {
+        metricsTriggered = true;
+        animateCounters();
+        animateSkillBars();
+      }
+    }
+
+    window.addEventListener("scroll", triggerMetrics);
+    window.addEventListener("load", () => {
+      setTimeout(triggerMetrics, 800);
     });
   </script>
-
 </body>
 </html>

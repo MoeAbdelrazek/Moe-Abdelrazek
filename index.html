@@ -5,29 +5,22 @@
   <title>Mohamed Abdelrazek - Marketing Portfolio</title>
   <meta name="viewport" content="width=device-width, initial-scale=1" />
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet" />
-
   <style>
     :root {
-      --bg-latte-1: #fdf5ed;
-      --bg-latte-2: #fceedd;
-      --bg-latte-3: #f9e3c8;
-      --card-bg: #ffffff;
-      --espresso: #5a3e36;
-      --espresso-soft: #7b5a4f;
-      --espresso-faint: #9b7b6e;
-      --accent: #f09b57;
-      --accent-soft: #f6c89b;
-      --accent-deep: #ea7c2e;
-      --navy: #1d2838;
-      --navy-soft: #28354a;
+      --bg-main: #f5f5f7;
+      --bg-elevated: #ffffff;
+      --border-subtle: #e0e0e5;
+      --ink-main: #111111;
+      --ink-soft: #4c4c55;
+      --ink-muted: #888895;
+      --accent: #0070c9;
+      --accent-soft: #e5f1ff;
+      --accent-dark: #004b92;
+      --radius-lg: 24px;
       --radius-xl: 32px;
-      --radius-lg: 26px;
-      --radius-md: 18px;
-      --shadow-soft: 0 18px 44px rgba(0, 0, 0, 0.16);
-      --shadow-strong: 0 26px 70px rgba(0, 0, 0, 0.22);
-      --border-subtle: rgba(0, 0, 0, 0.04);
+      --shadow-soft: 0 18px 45px rgba(0, 0, 0, 0.12);
+      --shadow-card: 0 12px 30px rgba(0, 0, 0, 0.08);
+      --transition-fast: 0.18s ease;
     }
 
     * {
@@ -37,17 +30,12 @@
     }
 
     body {
-      font-family: "Times New Roman", Times, serif;
-      color: var(--espresso);
-      background: radial-gradient(circle at top left, #fffaf4 0%, var(--bg-latte-1) 36%, var(--bg-latte-2) 80%) fixed;
+      font-family: Georgia, "Times New Roman", serif;
+      background: radial-gradient(circle at top, #ffffff 0%, #f5f5f7 55%, #ececf0 100%);
+      color: var(--ink-main);
       -webkit-font-smoothing: antialiased;
-      font-size: 18px;
+      font-size: 17px;
       line-height: 1.6;
-    }
-
-    a {
-      color: inherit;
-      text-decoration: none;
     }
 
     img {
@@ -55,973 +43,742 @@
       display: block;
     }
 
-    /* Background orbs */
-
-    .bg-orb {
-      position: fixed;
-      border-radius: 999px;
-      filter: blur(40px);
-      opacity: 0.35;
-      pointer-events: none;
-      mix-blend-mode: multiply;
-      z-index: -1;
+    a {
+      color: inherit;
+      text-decoration: none;
     }
 
-    .bg-orb.orb-1 {
-      width: 340px;
-      height: 340px;
-      background: #ffe0bc;
-      top: -80px;
-      left: -60px;
-    }
-
-    .bg-orb.orb-2 {
-      width: 380px;
-      height: 380px;
-      background: #ffd1b2;
-      bottom: -110px;
-      right: -40px;
-    }
-
-    .bg-orb.orb-3 {
-      width: 260px;
-      height: 260px;
-      background: #ffeedd;
-      top: 40%;
-      right: 8%;
-    }
+    /* Layout shell */
 
     .page-shell {
-      max-width: 1260px;
+      max-width: 1120px;
       margin: 0 auto;
-      padding: 96px 20px 80px;
-      position: relative;
+      padding: 90px 20px 70px;
     }
 
-    /* Top nav */
+    /* Top navigation */
+
+    .top-nav-wrap {
+      position: fixed;
+      inset: 14px 0 auto 0;
+      pointer-events: none;
+      z-index: 50;
+    }
 
     .top-nav {
-      position: fixed;
-      inset: 16px 16px auto 16px;
-      max-width: 1260px;
+      max-width: 1120px;
       margin: 0 auto;
-      left: 0;
-      right: 0;
+      background: rgba(248, 248, 250, 0.96);
+      border-radius: 999px;
+      border: 1px solid rgba(224, 224, 229, 0.9);
+      padding: 8px 18px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      padding: 10px 18px;
-      border-radius: 999px;
-      background: rgba(255, 248, 239, 0.9);
-      backdrop-filter: blur(18px);
-      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
-      z-index: 40;
-      border: 1px solid rgba(255, 255, 255, 0.8);
+      pointer-events: auto;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.06);
     }
 
-    .site-brand {
+    .brand {
       display: flex;
       align-items: center;
       gap: 10px;
-      font-size: 16px;
-      font-weight: 600;
-      letter-spacing: 0.03em;
-      text-transform: uppercase;
-      color: var(--navy-soft);
     }
 
-    .site-brand-avatar {
-      width: 34px;
-      height: 34px;
+    .brand-chip {
+      width: 30px;
+      height: 30px;
       border-radius: 50%;
-      overflow: hidden;
-      border: 2px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.25);
-      background: #f7e1c7;
+      background: linear-gradient(135deg, #d9e3f6, #b1c2df);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 16px;
+      font-size: 15px;
+      font-weight: 600;
+      color: #1b1b1f;
+      box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
     }
 
-    .site-brand-avatar span {
-      transform: translateY(1px);
+    .brand-name {
+      font-size: 14px;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--ink-soft);
     }
 
     .nav-links {
       display: flex;
+      align-items: center;
       gap: 18px;
       font-size: 14px;
+      color: var(--ink-muted);
     }
 
     .nav-links a {
       padding: 6px 10px;
       border-radius: 999px;
-      color: var(--espresso-soft);
-      transition: background 0.18s ease, color 0.18s ease, transform 0.18s ease;
+      transition: background var(--transition-fast), color var(--transition-fast), transform var(--transition-fast);
     }
 
     .nav-links a:hover {
-      background: rgba(240, 155, 87, 0.12);
-      color: var(--navy);
+      background: #e5e5ea;
+      color: var(--ink-main);
       transform: translateY(-1px);
     }
 
     .nav-cta {
       font-size: 14px;
-      padding: 7px 16px;
+      padding: 6px 14px;
       border-radius: 999px;
-      background: linear-gradient(135deg, #f6a55d, #f09b57);
-      color: #fff;
-      font-weight: 600;
-      box-shadow: 0 10px 26px rgba(240, 155, 87, 0.45);
       border: none;
+      background: var(--ink-main);
+      color: #ffffff;
       cursor: pointer;
-      transition: transform 0.16s ease, box-shadow 0.16s ease;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.18);
     }
 
     .nav-cta:hover {
+      background: #000000;
       transform: translateY(-1px);
-      box-shadow: 0 14px 36px rgba(240, 155, 87, 0.58);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.22);
     }
 
     @media (max-width: 860px) {
-      .top-nav {
-        padding: 8px 14px;
-      }
       .nav-links {
         display: none;
       }
+      .top-nav {
+        padding-inline: 16px;
+      }
+    }
+
+    /* Sections */
+
+    section {
+      margin-bottom: 56px;
+    }
+
+    .section-kicker {
+      font-size: 12px;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 4px;
+    }
+
+    .section-title {
+      font-size: 30px;
+      line-height: 1.3;
+      margin-bottom: 8px;
+    }
+
+    .section-subtitle {
+      font-size: 15px;
+      color: var(--ink-soft);
+      max-width: 640px;
     }
 
     /* Hero */
 
     .hero {
       display: grid;
-      grid-template-columns: minmax(0, 1.5fr) minmax(0, 1.1fr);
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1fr);
       gap: 32px;
       align-items: center;
-      margin-bottom: 42px;
     }
 
-    @media (max-width: 960px) {
+    @media (max-width: 900px) {
       .hero {
         grid-template-columns: 1fr;
       }
     }
 
     .hero-heading {
-      font-family: "Playfair Display", serif;
-      font-size: 46px;
-      line-height: 1.18;
-      color: var(--navy-soft);
+      font-size: 42px;
+      line-height: 1.2;
       margin-bottom: 12px;
     }
 
     @media (max-width: 600px) {
       .hero-heading {
-        font-size: 34px;
+        font-size: 32px;
       }
     }
 
     .hero-subline {
-      font-size: 18px;
-      color: var(--espresso-soft);
-      max-width: 640px;
-      margin-bottom: 18px;
+      font-size: 17px;
+      color: var(--ink-soft);
+      margin-bottom: 16px;
+      max-width: 620px;
     }
 
-    .hero-highlight {
-      font-size: 14px;
-      letter-spacing: 0.15em;
-      text-transform: uppercase;
-      color: var(--espresso-faint);
-      margin-bottom: 8px;
-    }
-
-    .hero-pills {
+    .hero-badges {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 18px;
-    }
-
-    .hero-pill {
+      margin-bottom: 16px;
       font-size: 13px;
-      padding: 6px 12px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(0, 0, 0, 0.03);
-      backdrop-filter: blur(10px);
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
     }
 
-    .hero-pill span {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      color: var(--espresso-faint);
+    .hero-badge {
+      padding: 6px 11px;
+      border-radius: 999px;
+      background: #ffffff;
+      border: 1px solid #e1e1e6;
+      color: var(--ink-soft);
     }
 
     .hero-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 12px;
-      margin-top: 6px;
     }
 
     .btn-primary {
       padding: 11px 22px;
       border-radius: 999px;
       border: none;
-      background: linear-gradient(135deg, #f6a55d, #ea7c2e);
+      background: var(--ink-main);
       color: #ffffff;
       font-size: 15px;
-      font-weight: 600;
-      letter-spacing: 0.02em;
       cursor: pointer;
-      box-shadow: 0 14px 36px rgba(240, 155, 87, 0.65);
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: transform 0.16s ease, box-shadow 0.16s ease, filter 0.16s ease;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), background var(--transition-fast);
+      box-shadow: 0 14px 30px rgba(0, 0, 0, 0.2);
     }
 
     .btn-primary:hover {
+      background: #000000;
       transform: translateY(-1px);
-      box-shadow: 0 18px 46px rgba(240, 155, 87, 0.75);
-      filter: brightness(1.02);
+      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.25);
     }
 
     .btn-ghost {
-      padding: 11px 20px;
+      padding: 11px 18px;
       border-radius: 999px;
-      border: 1px solid rgba(240, 155, 87, 0.35);
-      background: rgba(255, 255, 255, 0.92);
-      color: var(--espresso-soft);
+      border: 1px solid #d4d4dd;
+      background: #ffffff;
+      color: var(--ink-soft);
       font-size: 15px;
-      font-weight: 500;
       cursor: pointer;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      transition: background 0.16s ease, transform 0.16s ease, border-color 0.16s ease;
+      transition: background var(--transition-fast), transform var(--transition-fast), border-color var(--transition-fast);
     }
 
     .btn-ghost:hover {
-      background: rgba(240, 155, 87, 0.06);
+      background: #f2f2f5;
+      border-color: var(--ink-main);
       transform: translateY(-1px);
-      border-color: rgba(240, 155, 87, 0.65);
     }
 
     .hero-note {
-      margin-top: 18px;
       font-size: 14px;
-      color: var(--espresso-faint);
+      color: var(--ink-muted);
+      margin-top: 14px;
     }
 
-    .hero-note strong {
-      color: var(--espresso-soft);
-    }
+    /* Hero contact card (right) */
 
-    .hero-right {
-      position: relative;
-    }
-
-    .hero-card {
-      position: relative;
+    .hero-contact-card {
+      background: var(--bg-elevated);
       border-radius: var(--radius-xl);
-      background: radial-gradient(circle at top left, #ffffff 0%, #fdf1e0 60%, #f7dac0 100%);
-      padding: 24px 22px 20px;
-      box-shadow: var(--shadow-strong);
-      overflow: hidden;
-      border: 1px solid rgba(255, 255, 255, 0.8);
-    }
-
-    .hero-card-header {
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      padding: 22px 22px 18px;
+      max-width: 360px;
+      margin-left: auto;
       display: flex;
-      justify-content: space-between;
-      align-items: center;
-      margin-bottom: 12px;
-    }
-
-    .hero-card-title {
-      font-size: 16px;
-      font-weight: 600;
-      color: var(--navy-soft);
-    }
-
-    .hero-card-tag {
-      font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(29, 40, 56, 0.9);
-      color: #fef7ee;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-    }
-
-    .hero-card-body {
-      display: grid;
-      grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr);
+      flex-direction: column;
       gap: 16px;
+    }
+
+    .hero-contact-header {
+      display: flex;
       align-items: center;
+      gap: 14px;
     }
 
-    @media (max-width: 600px) {
-      .hero-card-body {
-        grid-template-columns: 1fr;
-      }
-    }
-
-    .hero-card-copy {
-      font-size: 14px;
-      color: var(--espresso-soft);
-    }
-
-    .hero-metrics {
-      display: grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin-top: 6px;
-    }
-
-    .metric-pill {
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.96);
-      padding: 9px 10px;
-      font-size: 12px;
-      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.08);
-    }
-
-    .metric-label {
-      color: var(--espresso-faint);
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.08em;
-      margin-bottom: 2px;
-    }
-
-    .metric-value {
-      font-size: 15px;
-      font-weight: 700;
-      color: var(--navy-soft);
-    }
-
-    .hero-photo-frame {
-      justify-self: center;
-      width: 170px;
-      height: 170px;
-      border-radius: 40px;
+    .hero-avatar {
+      width: 72px;
+      height: 72px;
+      border-radius: 24px;
       overflow: hidden;
-      background: radial-gradient(circle at 30% 0%, #ffffff 0%, #f9ddc0 60%, #f6c59c 100%);
-      border: 3px solid rgba(255, 255, 255, 0.9);
-      box-shadow: 0 18px 45px rgba(0, 0, 0, 0.25);
-      position: relative;
+      background: linear-gradient(135deg, #d7e0f7, #c5d1ee);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 40px;
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.18);
     }
 
-    .hero-ribbon {
-      position: absolute;
-      inset: auto 10px 10px auto;
-      padding: 6px 10px;
-      border-radius: 999px;
-      font-size: 11px;
-      background: rgba(0, 0, 0, 0.8);
-      color: #fffaf3;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
+    .hero-avatar img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
     }
 
-    .hero-card-orbit {
-      position: absolute;
-      width: 260px;
-      height: 260px;
-      border-radius: 999px;
-      border: 1px dashed rgba(255, 255, 255, 0.65);
-      inset: -80px -40px auto auto;
-      opacity: 0.8;
-      pointer-events: none;
+    .hero-avatar-placeholder {
+      font-size: 24px;
+      font-weight: 600;
+      color: #1c1c1f;
     }
 
-    /* Sections */
-
-    .section {
-      margin-top: 40px;
-      margin-bottom: 18px;
-    }
-
-    .section-header {
-      margin-bottom: 18px;
-      display: flex;
-      justify-content: space-between;
-      align-items: baseline;
-      gap: 18px;
-      flex-wrap: wrap;
-    }
-
-    .section-kicker {
-      font-size: 13px;
-      letter-spacing: 0.16em;
-      text-transform: uppercase;
-      color: var(--espresso-faint);
-      margin-bottom: 4px;
-    }
-
-    .section-title {
-      font-family: "Playfair Display", serif;
-      font-size: 28px;
-      color: var(--navy-soft);
+    .hero-contact-name {
+      font-size: 17px;
+      font-weight: 600;
       margin-bottom: 2px;
     }
 
-    .section-subtitle {
-      font-size: 15px;
-      color: var(--espresso-soft);
-      max-width: 560px;
+    .hero-contact-role {
+      font-size: 14px;
+      color: var(--ink-muted);
     }
 
-    .section-pill {
+    .hero-contact-section-label {
       font-size: 12px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      border: 1px solid rgba(240, 155, 87, 0.26);
-      background: rgba(255, 255, 255, 0.92);
-      color: var(--espresso-soft);
+      letter-spacing: 0.16em;
+      text-transform: uppercase;
+      color: var(--ink-muted);
+      margin-bottom: 4px;
     }
 
-    /* Pinned TechnoMounts card */
-
-    .pinned-featured-card {
-      background: radial-gradient(circle at top left, #ffffff 0%, #fdf1e3 50%, #f5d4aa 100%);
-      border-radius: 30px;
-      padding: 22px 24px 20px;
-      box-shadow: 0 18px 46px rgba(0, 0, 0, 0.15);
-      border: 1px solid rgba(255, 255, 255, 0.85);
-      margin-bottom: 40px;
-      position: relative;
-      overflow: hidden;
-      transform-origin: center;
-      transition: transform 0.3s ease, box-shadow 0.3s ease;
-    }
-
-    .pinned-featured-card:hover {
-      transform: translateY(-4px) scale(1.01);
-      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.22);
-    }
-
-    .pinned-layout {
+    .hero-contact-list {
+      font-size: 14px;
+      color: var(--ink-soft);
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 22px;
+      gap: 4px;
+    }
+
+    .hero-contact-list a {
+      color: var(--accent-dark);
+    }
+
+    .hero-contact-actions {
+      display: flex;
+      gap: 8px;
+      flex-wrap: wrap;
+    }
+
+    .hero-contact-chip {
+      font-size: 12px;
+      padding: 5px 9px;
+      border-radius: 999px;
+      background: #f3f3f7;
+      color: var(--ink-muted);
+    }
+
+    /* Current project section */
+
+    .current-project {
+      margin-top: 56px;
+    }
+
+    .current-inner {
+      background: var(--bg-elevated);
+      border-radius: var(--radius-xl);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-soft);
+      padding: 26px 26px 24px;
+      display: grid;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 0.9fr);
+      gap: 28px;
       align-items: center;
     }
 
     @media (max-width: 900px) {
-      .pinned-layout {
+      .current-inner {
         grid-template-columns: 1fr;
       }
     }
 
-    .pinned-badge-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 10px;
-      margin-bottom: 12px;
-      align-items: center;
-    }
-
-    .pinned-badge {
-      font-size: 11px;
-      text-transform: uppercase;
-      letter-spacing: 0.14em;
-      background: #1d2838;
-      color: #fff8ee;
-      padding: 6px 12px;
-      border-radius: 999px;
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-    }
-
-    .pinned-context {
-      font-size: 11px;
-      padding: 5px 10px;
-      border-radius: 999px;
-      background: rgba(240, 155, 87, 0.18);
-      color: var(--espresso-soft);
-    }
-
-    .pinned-title {
-      font-family: "Playfair Display", serif;
-      font-size: 26px;
-      font-weight: 700;
-      color: #1d2838;
-      margin-bottom: 6px;
-    }
-
-    .pinned-subtitle {
-      font-size: 16px;
-      color: #7b5a4f;
-      max-width: 720px;
-      margin-bottom: 12px;
-      line-height: 1.55;
-    }
-
-    .pinned-tags {
+    .current-label-row {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 14px;
-    }
-
-    .pinned-tag {
+      margin-bottom: 10px;
       font-size: 12px;
-      padding: 5px 12px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(0, 0, 0, 0.04);
     }
 
-    .pinned-metrics {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 10px;
+    .current-label {
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #eef0f6;
+      color: var(--ink-soft);
+    }
+
+    .current-title {
+      font-size: 24px;
+      margin-bottom: 6px;
+    }
+
+    .current-body {
+      font-size: 15px;
+      color: var(--ink-soft);
       margin-bottom: 12px;
     }
 
-    @media (max-width: 700px) {
-      .pinned-metrics {
+    .current-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
+      margin-bottom: 16px;
+      font-size: 12px;
+    }
+
+    .current-tag {
+      padding: 5px 10px;
+      border-radius: 999px;
+      background: #f4f4f7;
+      border: 1px solid #e1e1e6;
+      color: var(--ink-soft);
+    }
+
+    .metric-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 10px;
+      margin-bottom: 16px;
+    }
+
+    @media (max-width: 720px) {
+      .metric-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
       }
     }
 
-    .pinned-metric {
-      border-radius: 16px;
-      background: rgba(255, 255, 255, 0.98);
-      padding: 9px 10px;
+    .metric-card {
+      background: #f8f8fa;
+      border-radius: 18px;
+      padding: 10px 11px;
       font-size: 12px;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
     }
 
-    .pinned-metric-label {
-      font-size: 11px;
+    .metric-label {
       text-transform: uppercase;
       letter-spacing: 0.08em;
-      color: var(--espresso-faint);
+      color: var(--ink-muted);
       margin-bottom: 3px;
     }
 
-    .pinned-metric-value {
+    .metric-value {
       font-size: 18px;
-      font-weight: 700;
-      color: var(--navy-soft);
+      font-weight: 600;
+      color: var(--ink-main);
     }
 
-    .pinned-metric-note {
+    .metric-note {
       font-size: 11px;
-      color: var(--espresso-faint);
-      margin-top: 1px;
+      color: var(--ink-muted);
+      margin-top: 2px;
     }
 
-    .pinned-actions {
+    .current-actions {
       display: flex;
       flex-wrap: wrap;
       gap: 10px;
       margin-top: 4px;
     }
 
-    .pinned-cta {
+    .link-primary {
       display: inline-block;
-      padding: 12px 22px;
+      padding: 10px 18px;
       border-radius: 999px;
-      background: linear-gradient(135deg, #f6a55d, #ea7c2e);
+      background: var(--accent);
       color: #ffffff;
-      font-size: 15px;
-      font-weight: 600;
-      letter-spacing: 0.02em;
-      text-decoration: none;
-      box-shadow: 0 14px 36px rgba(240, 155, 87, 0.45);
-      transition: 0.2s ease;
+      font-size: 14px;
+      font-weight: 500;
+      transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast);
+      box-shadow: 0 12px 26px rgba(0, 112, 201, 0.35);
     }
 
-    .pinned-cta:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 20px 46px rgba(240, 155, 87, 0.65);
+    .link-primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 16px 32px rgba(0, 112, 201, 0.45);
     }
 
-    .pinned-ghost-link {
+    .link-plain {
       font-size: 13px;
-      color: var(--accent-deep);
-      text-decoration: none;
-      padding: 8px 12px;
+      color: var(--accent-dark);
+      padding: 9px 12px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.9);
-      border: 1px solid rgba(240, 155, 87, 0.25);
-      display: inline-flex;
-      align-items: center;
+      background: #f5f7fb;
+    }
+
+    /* Gallery cube */
+
+    .gallery-cube {
+      width: 320px;
+      height: 320px;
+      max-width: 100%;
+      border-radius: 32px;
+      background: #111111;
+      padding: 8px;
+      margin-left: auto;
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
+      box-shadow: 0 22px 50px rgba(0, 0, 0, 0.5);
+    }
+
+    .gallery-main {
+      flex: 1;
+      border-radius: 24px;
+      overflow: hidden;
+    }
+
+    .gallery-main img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .gallery-strip {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
       gap: 6px;
     }
 
-    .pinned-ghost-link:hover {
-      background: rgba(240, 155, 87, 0.07);
-    }
-
-    .pinned-art {
-      position: relative;
-      border-radius: 26px;
-      overflow: hidden;
-      background: linear-gradient(135deg, #f6a55d, #1d2838);
-      padding: 4px;
-      box-shadow: 0 18px 50px rgba(0, 0, 0, 0.3);
-    }
-
-    .pinned-art-inner {
-      border-radius: 22px;
-      overflow: hidden;
-      background: radial-gradient(circle at top, #ffffff 0%, #fbe3c6 60%, #f3be94 100%);
-      position: relative;
-    }
-
-    .pinned-strip {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 4px;
-      padding: 6px;
-    }
-
-    .pinned-strip img {
+    .gallery-strip img {
       width: 100%;
-      height: 80px;
+      height: 72px;
       object-fit: cover;
       border-radius: 14px;
-      box-shadow: 0 8px 22px rgba(0, 0, 0, 0.15);
-      transform-origin: center;
-      transition: transform 0.25s ease;
+      transition: transform var(--transition-fast);
     }
 
-    .pinned-art:hover .pinned-strip img:nth-child(1) {
-      transform: translateY(-4px) rotate(-1deg);
+    .gallery-strip img:hover {
+      transform: translateY(-2px);
     }
 
-    .pinned-art:hover .pinned-strip img:nth-child(2) {
-      transform: translateY(-3px) rotate(1deg);
-    }
-
-    .pinned-art:hover .pinned-strip img:nth-child(3) {
-      transform: translateY(-4px) rotate(-1deg);
-    }
-
-    .pinned-art:hover .pinned-strip img:nth-child(4) {
-      transform: translateY(-3px) rotate(1deg);
-    }
-
-    .pinned-label {
-      position: absolute;
-      left: 10px;
-      bottom: 10px;
+    .gallery-caption {
       font-size: 11px;
-      padding: 4px 10px;
-      border-radius: 999px;
-      background: rgba(0, 0, 0, 0.7);
-      color: #ffead4;
+      color: #d1d1da;
+      margin-top: 2px;
+      text-align: center;
     }
 
-    /* Experience */
+    /* Evolution section */
 
-    .experience-grid {
+    .evolution-layout {
       display: grid;
-      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1.1fr);
-      gap: 24px;
+      grid-template-columns: minmax(0, 1.6fr) minmax(0, 1.1fr);
+      gap: 26px;
+      align-items: flex-start;
+      margin-top: 18px;
     }
 
-    @media (max-width: 900px) {
-      .experience-grid {
+    @media (max-width: 960px) {
+      .evolution-layout {
         grid-template-columns: 1fr;
       }
     }
 
     .timeline {
-      position: relative;
-      padding-left: 20px;
-    }
-
-    .timeline::before {
-      content: "";
-      position: absolute;
-      left: 8px;
-      top: 4px;
-      bottom: 4px;
-      width: 2px;
-      background: linear-gradient(to bottom, #f09b57, transparent);
-      opacity: 0.4;
+      border-left: 1px solid #d9d9e1;
+      padding-left: 18px;
+      display: grid;
+      gap: 16px;
     }
 
     .timeline-item {
       position: relative;
-      margin-bottom: 16px;
-      padding-left: 12px;
+      padding-left: 4px;
     }
 
     .timeline-dot {
       position: absolute;
-      left: -2px;
-      top: 7px;
+      left: -24px;
+      top: 8px;
       width: 10px;
       height: 10px;
-      border-radius: 999px;
-      background: #f09b57;
-      box-shadow: 0 0 0 5px rgba(240, 155, 87, 0.2);
+      border-radius: 50%;
+      background: var(--accent);
     }
 
     .timeline-title {
       font-size: 16px;
       font-weight: 600;
-      color: var(--navy-soft);
+      margin-bottom: 2px;
     }
 
     .timeline-meta {
       font-size: 13px;
-      color: var(--espresso-faint);
+      color: var(--ink-muted);
+      margin-bottom: 6px;
+    }
+
+    .timeline-metrics {
+      font-size: 13px;
+      color: var(--ink-soft);
       margin-bottom: 4px;
     }
 
     .timeline-desc {
-      font-size: 14px;
-      color: var(--espresso-soft);
+      font-size: 13px;
+      color: var(--ink-soft);
     }
 
-    .experience-stats {
+    .evolution-summary {
+      background: var(--bg-elevated);
       border-radius: var(--radius-lg);
       padding: 18px 18px 16px;
-      background: radial-gradient(circle at top left, #ffffff 0%, #fdf2e4 52%, #f7d5b3 100%);
-      box-shadow: var(--shadow-soft);
-      border: 1px solid rgba(255, 255, 255, 0.9);
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      font-size: 14px;
+      color: var(--ink-soft);
     }
 
-    .experience-stat-grid {
+    .evolution-summary strong {
+      color: var(--ink-main);
+    }
+
+    /* Portfolio cards */
+
+    .projects-grid {
       display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
-      gap: 12px;
-    }
-
-    @media (max-width: 720px) {
-      .experience-stat-grid {
-        grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    .exp-stat {
-      font-size: 13px;
-      background: rgba(255, 255, 255, 0.96);
-      border-radius: 16px;
-      padding: 10px 10px;
-      box-shadow: 0 10px 24px rgba(0, 0, 0, 0.08);
-    }
-
-    .exp-stat-label {
-      font-size: 11px;
-      color: var(--espresso-faint);
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      margin-bottom: 3px;
-    }
-
-    .exp-stat-value {
-      font-size: 18px;
-      font-weight: 700;
-      color: var(--navy-soft);
-    }
-
-    .exp-stat-note {
-      font-size: 12px;
-      color: var(--espresso-soft);
-      margin-top: 2px;
-    }
-
-    /* Portfolio grid */
-
-    .portfolio-grid {
-      display: grid;
-      grid-template-columns: repeat(3, minmax(0, 1fr));
+      grid-template-columns: minmax(0, 1fr);
       gap: 18px;
+      margin-top: 20px;
     }
 
-    @media (max-width: 1024px) {
-      .portfolio-grid {
+    @media (min-width: 880px) {
+      .projects-grid {
         grid-template-columns: repeat(2, minmax(0, 1fr));
-      }
-    }
-
-    @media (max-width: 640px) {
-      .portfolio-grid {
-        grid-template-columns: 1fr;
       }
     }
 
     .project-card {
+      background: var(--bg-elevated);
       border-radius: var(--radius-lg);
-      padding: 18px 16px 16px;
-      background: rgba(255, 255, 255, 0.98);
-      box-shadow: 0 14px 36px rgba(0, 0, 0, 0.11);
+      padding: 20px 18px 18px;
       border: 1px solid var(--border-subtle);
-      position: relative;
-      overflow: hidden;
-      cursor: pointer;
-      transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+      box-shadow: var(--shadow-card);
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      transition: transform var(--transition-fast), box-shadow var(--transition-fast), border-color var(--transition-fast);
     }
 
     .project-card:hover {
-      transform: translateY(-6px);
-      box-shadow: 0 20px 54px rgba(0, 0, 0, 0.18);
-      border-color: rgba(240, 155, 87, 0.5);
-      background: #fffdf9;
+      transform: translateY(-4px);
+      box-shadow: 0 20px 45px rgba(0, 0, 0, 0.16);
+      border-color: #cfd0da;
     }
 
     .project-tag {
-      font-size: 11px;
+      font-size: 12px;
+      letter-spacing: 0.12em;
       text-transform: uppercase;
-      letter-spacing: 0.11em;
-      color: var(--espresso-faint);
-      margin-bottom: 4px;
+      color: var(--ink-muted);
     }
 
     .project-title {
-      font-size: 17px;
-      font-weight: 600;
-      color: var(--navy-soft);
+      font-size: 18px;
       margin-bottom: 4px;
     }
 
     .project-desc {
       font-size: 14px;
-      color: var(--espresso-soft);
-      margin-bottom: 8px;
+      color: var(--ink-soft);
     }
 
-    .project-meta-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 6px;
-      font-size: 11px;
-      color: var(--espresso-faint);
-      margin-bottom: 10px;
+    .project-metrics {
+      font-size: 13px;
+      color: var(--ink-soft);
     }
 
-    .project-links a {
+    .project-metrics strong {
+      color: var(--ink-main);
+    }
+
+    .project-skills {
       font-size: 12px;
-      color: var(--accent-deep);
-      font-weight: 600;
-      text-decoration: none;
+      color: var(--ink-muted);
     }
 
-    .project-links a:hover {
-      text-decoration: underline;
+    .project-link {
+      margin-top: 6px;
+      font-size: 13px;
+      color: var(--accent-dark);
     }
 
-    /* Skills */
+    /* Process section */
 
-    .skills-grid {
+    .process-grid {
+      margin-top: 20px;
       display: grid;
-      grid-template-columns: minmax(0, 1.3fr) minmax(0, 1.1fr);
+      grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
       gap: 24px;
+      align-items: flex-start;
     }
 
     @media (max-width: 960px) {
-      .skills-grid {
+      .process-grid {
         grid-template-columns: 1fr;
       }
     }
 
-    .skill-block {
-      border-radius: var(--radius-lg);
-      padding: 16px 16px 14px;
-      background: rgba(255, 255, 255, 0.96);
-      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.08);
-      margin-bottom: 10px;
+    .process-steps {
+      display: grid;
+      gap: 10px;
     }
 
-    .skill-block-title {
-      font-size: 15px;
-      font-weight: 600;
-      color: var(--navy-soft);
-      margin-bottom: 4px;
-    }
-
-    .skill-block-sub {
-      font-size: 13px;
-      color: var(--espresso-soft);
-      margin-bottom: 6px;
-    }
-
-    .skill-bar-track {
-      height: 7px;
-      border-radius: 999px;
-      background: #f1e1cf;
-      overflow: hidden;
-    }
-
-    .skill-bar-fill {
-      height: 100%;
-      border-radius: inherit;
-      background: linear-gradient(90deg, #233859, #f09b57);
-      width: 0;
-      transition: width 1.5s cubic-bezier(0.19, 1, 0.22, 1);
-    }
-
-    .skill-pill-cloud {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 8px;
-    }
-
-    .skill-pill {
-      font-size: 13px;
-      padding: 6px 11px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.96);
-      border: 1px solid rgba(0, 0, 0, 0.04);
-    }
-
-    .languages-card {
-      border-radius: var(--radius-lg);
-      padding: 14px 16px;
-      background: radial-gradient(circle at top left, #ffffff 0%, #fdf2e4 52%, #f5cfaa 100%);
-      box-shadow: var(--shadow-soft);
+    .process-step {
+      background: var(--bg-elevated);
+      border-radius: 18px;
+      padding: 12px 14px 10px;
+      border: 1px solid var(--border-subtle);
+      display: grid;
+      grid-template-columns: 42px minmax(0, 1fr);
+      gap: 10px;
       font-size: 14px;
+      align-items: center;
     }
 
-    .languages-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 12px;
-      margin-top: 6px;
-    }
-
-    .lang-tag {
-      padding: 5px 10px;
+    .process-step-index {
+      width: 32px;
+      height: 32px;
       border-radius: 999px;
-      background: rgba(255, 255, 255, 0.96);
-      border: 1px solid rgba(0, 0, 0, 0.03);
+      background: #111111;
+      color: #ffffff;
       font-size: 13px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
-    /* Contact */
+    .process-step-title {
+      font-weight: 600;
+      margin-bottom: 2px;
+    }
+
+    .process-step-text {
+      font-size: 13px;
+      color: var(--ink-soft);
+    }
+
+    .process-summary {
+      background: var(--bg-elevated);
+      border-radius: var(--radius-lg);
+      padding: 18px 18px 16px;
+      border: 1px solid var(--border-subtle);
+      box-shadow: var(--shadow-card);
+      font-size: 14px;
+      color: var(--ink-soft);
+    }
+
+    /* Contact section */
 
     .contact-card {
+      background: var(--bg-elevated);
       border-radius: var(--radius-xl);
-      padding: 22px 22px 18px;
-      background: radial-gradient(circle at top left, #ffffff 0%, #fdf1e3 52%, #f5cfaa 100%);
+      border: 1px solid var(--border-subtle);
       box-shadow: var(--shadow-soft);
+      padding: 22px 22px 18px;
       display: grid;
       grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
-      gap: 20px;
+      gap: 22px;
       align-items: center;
+      margin-top: 18px;
     }
 
     @media (max-width: 900px) {
@@ -1030,620 +787,619 @@
       }
     }
 
-    .contact-lines {
-      font-size: 14px;
-      color: var(--espresso-soft);
-      margin-top: 6px;
-    }
-
-    .contact-lines p {
-      margin-bottom: 3px;
-    }
-
-    .contact-highlight {
+    .contact-main-text {
       font-size: 15px;
-      color: var(--navy-soft);
-      margin-bottom: 4px;
+      color: var(--ink-soft);
+      margin-bottom: 8px;
     }
 
-    .contact-badge-row {
+    .contact-options {
+      display: grid;
+      gap: 8px;
+      font-size: 14px;
+    }
+
+    .contact-label {
+      font-weight: 600;
+      color: var(--ink-main);
+    }
+
+    .contact-link {
+      color: var(--accent-dark);
+    }
+
+    .contact-buttons {
+      display: grid;
+      gap: 8px;
+    }
+
+    .contact-btn {
+      width: 100%;
+      border-radius: 999px;
+      border: none;
+      padding: 11px 14px;
+      font-size: 15px;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      transition: background var(--transition-fast), transform var(--transition-fast), box-shadow var(--transition-fast), color var(--transition-fast);
+    }
+
+    .contact-btn.primary {
+      background: var(--accent);
+      color: #ffffff;
+      box-shadow: 0 14px 30px rgba(0, 112, 201, 0.35);
+    }
+
+    .contact-btn.primary:hover {
+      background: var(--accent-dark);
+      transform: translateY(-1px);
+      box-shadow: 0 18px 40px rgba(0, 112, 201, 0.45);
+    }
+
+    .contact-btn.secondary {
+      background: #111111;
+      color: #ffffff;
+      box-shadow: 0 12px 28px rgba(0, 0, 0, 0.28);
+    }
+
+    .contact-btn.secondary:hover {
+      background: #000000;
+      transform: translateY(-1px);
+      box-shadow: 0 18px 36px rgba(0, 0, 0, 0.32);
+    }
+
+    .contact-btn.ghost {
+      background: #f3f3f7;
+      color: var(--ink-soft);
+      border: 1px solid #d4d4dd;
+      box-shadow: none;
+    }
+
+    .contact-btn.ghost:hover {
+      background: #e8e8f0;
+      color: var(--ink-main);
+      transform: translateY(-1px);
+      box-shadow: 0 10px 22px rgba(0, 0, 0, 0.12);
+    }
+
+    /* Footer */
+
+    .footer {
+      margin-top: 40px;
+      padding-top: 16px;
+      border-top: 1px solid #d9d9e2;
       display: flex;
       flex-wrap: wrap;
-      gap: 8px;
-      margin-top: 10px;
+      justify-content: space-between;
+      gap: 10px;
       font-size: 12px;
+      color: var(--ink-muted);
     }
 
-    .contact-badge {
-      padding: 5px 9px;
-      border-radius: 999px;
-      background: rgba(255, 255, 255, 0.92);
-      border: 1px solid rgba(0, 0, 0, 0.03);
-    }
-
-    .footer-note {
-      text-align: center;
-      margin-top: 32px;
-      font-size: 12px;
-      color: var(--espresso-faint);
+    .footer span strong {
+      color: var(--ink-main);
     }
 
     /* Reveal animation */
 
     .reveal {
       opacity: 0;
-      transform: translateY(22px);
+      transform: translateY(24px);
       transition: opacity 0.8s ease, transform 0.8s ease;
     }
 
-    .reveal.is-visible {
+    .reveal.visible {
       opacity: 1;
       transform: translateY(0);
     }
 
-    .reveal-late {
-      transition-delay: 0.2s;
-    }
-
-    .reveal-slow {
-      transition-duration: 1s;
+    .reveal-delay {
+      transition-delay: 0.15s;
     }
   </style>
 </head>
 <body>
-  <!-- Background glows -->
-  <div class="bg-orb orb-1"></div>
-  <div class="bg-orb orb-2"></div>
-  <div class="bg-orb orb-3"></div>
-
-  <!-- Top nav -->
-  <header class="top-nav">
-    <div class="site-brand">
-      <div class="site-brand-avatar"><span>🐾</span></div>
-      <div>Mohamed Abdelrazek</div>
+  <!-- Sticky nav -->
+  <div class="top-nav-wrap">
+    <div class="top-nav">
+      <div class="brand">
+        <div class="brand-chip">MA</div>
+        <div class="brand-name">Mohamed Abdelrazek</div>
+      </div>
+      <nav class="nav-links">
+        <a href="#about">About</a>
+        <a href="#current">Current project</a>
+        <a href="#projects">Portfolio</a>
+        <a href="#process">How I work</a>
+        <a href="#contact">Contact</a>
+      </nav>
+      <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+        Book a call
+      </button>
     </div>
-    <nav class="nav-links">
-      <a href="#about">About</a>
-      <a href="#featured-techno">Current project</a>
-      <a href="#portfolio">Portfolio</a>
-      <a href="#skills">Skills</a>
-      <a href="#contact">Contact</a>
-    </nav>
-    <button class="nav-cta" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
-      Book a call
-    </button>
-  </header>
+  </div>
 
   <main class="page-shell">
     <!-- Hero -->
-    <section class="hero reveal" id="about">
+    <section id="about" class="hero reveal">
       <div>
-        <div class="hero-highlight">Digital marketing · analytics · strategy 🐾</div>
+        <div class="section-kicker">Marketing · analytics · strategy</div>
         <h1 class="hero-heading">
           Marketing professional with a performance mindset and portfolio built on real campaigns.
         </h1>
         <p class="hero-subline">
-          I design full funnel marketing systems that connect acquisition, analytics, and conversion. From Google Ads and SEO
-          to email, Amazon, and B2B outreach, my work is measurable, practical, and built to scale.
+          I design and run complete marketing systems that connect acquisition, analytics, and conversion. From research and strategy to building campaigns and reporting, everything is tied back to numbers and business outcomes.
         </p>
 
-        <div class="hero-pills">
-          <div class="hero-pill">
-            <span>Current</span>
-            TechnoMounts UAE - Digital marketing and growth
-          </div>
-          <div class="hero-pill">
-            <span>Based in</span>
-            Alexandria, Egypt - GCC focus
-          </div>
-          <div class="hero-pill">
-            <span>Languages</span>
-            Arabic native · English near native · German in progress
-          </div>
+        <div class="hero-badges">
+          <span class="hero-badge">Current focus: TechnoMounts performance and growth</span>
+          <span class="hero-badge">Experience: ecommerce, healthcare, hospitality, fitness</span>
+          <span class="hero-badge">I work end to end, solo or inside a team</span>
         </div>
 
         <div class="hero-actions">
-          <button class="btn-primary" onclick="document.getElementById('featured-techno').scrollIntoView({behavior:'smooth'})">
+          <button class="btn-primary" onclick="document.getElementById('current').scrollIntoView({behavior:'smooth'})">
             View current portfolio project
           </button>
-          <button class="btn-ghost" onclick="document.getElementById('portfolio').scrollIntoView({behavior:'smooth'})">
-            Explore past campaigns
+          <button class="btn-ghost" onclick="document.getElementById('projects').scrollIntoView({behavior:'smooth'})">
+            Explore current and past work
           </button>
         </div>
 
         <p class="hero-note">
-          <strong>How I work:</strong> clear structure, strong creative, and tracking that holds every campaign accountable.
+          I am comfortable owning the full lifecycle: research, planning, build, launch, measurement, and iteration.
         </p>
       </div>
 
-      <div class="hero-right reveal reveal-late">
-        <div class="hero-card">
-          <div class="hero-card-header">
-            <div class="hero-card-title">Snapshot of my profile</div>
-            <div class="hero-card-tag">Full funnel marketer</div>
+      <!-- Contact card on the right: only profile + contact -->
+      <aside class="hero-contact-card reveal reveal-delay">
+        <div class="hero-contact-header">
+          <div class="hero-avatar">
+            <!-- Replace profile.jpg with your real profile image -->
+            <!-- <img src="profile.jpg" alt="Profile photo of Mohamed Abdelrazek"> -->
+            <div class="hero-avatar-placeholder">MA</div>
           </div>
-          <div class="hero-card-body">
-            <div>
-              <p class="hero-card-copy">
-                My work connects four layers: strategy, execution, measurement, and reporting. I am comfortable planning the system,
-                building it inside the tools, and presenting the numbers in a way non technical teams can use.
-              </p>
-              <div class="hero-metrics">
-                <div class="metric-pill">
-                  <div class="metric-label">Core focus</div>
-                  <div class="metric-value">Acquisition, CRO, analytics, CRM</div>
-                </div>
-                <div class="metric-pill">
-                  <div class="metric-label">Key platforms</div>
-                  <div class="metric-value">Google Ads, GA4, Shopify, Apollo, Amazon</div>
-                </div>
-              </div>
-            </div>
-            <div class="hero-photo-frame">
-              <span>MA</span>
-              <div class="hero-ribbon">Marketing · Data · Systems</div>
-            </div>
-          </div>
-          <div class="hero-card-orbit"></div>
-        </div>
-      </div>
-    </section>
-
-    <!-- Pinned TechnoMounts project -->
-    <section class="section reveal" id="featured-techno">
-      <header class="section-header">
-        <div>
-          <div class="section-kicker">Pinned on top</div>
-          <h2 class="section-title">Current project - TechnoMounts portfolio build</h2>
-          <p class="section-subtitle">
-            A live, real world project in the United Arab Emirates. From almost zero visibility to a structured, measurable
-            growth system around ecommerce and B2B influenced buyers.
-          </p>
-        </div>
-        <span class="section-pill">Real client · Multi channel · Analytics first</span>
-      </header>
-
-      <article class="pinned-featured-card">
-        <div class="pinned-layout">
           <div>
-            <div class="pinned-badge-row">
-              <div class="pinned-badge">
-                Pinned · Current portfolio anchor
-              </div>
-              <div class="pinned-context">
-                TechnoMounts UAE - premium display hardware for retail, hospitality, healthcare, and corporate spaces
-              </div>
-            </div>
-
-            <div class="pinned-title">
-              TechnoMounts UAE - full performance marketing ecosystem
-            </div>
-
-            <div class="pinned-subtitle">
-              Month one portfolio build for a specialist hardware brand. Landing pages, Performance Max, SEO foundation, GA4 tracking,
-              Amazon groundwork, and B2B lead generation in one connected stack.
-            </div>
-
-            <div class="pinned-tags">
-              <span class="pinned-tag">Google Ads - Performance Max</span>
-              <span class="pinned-tag">SEO and Search Console</span>
-              <span class="pinned-tag">11 landing pages</span>
-              <span class="pinned-tag">GA4 events and conversions</span>
-              <span class="pinned-tag">Amazon listing groundwork</span>
-              <span class="pinned-tag">Apollo.io and B2B outreach</span>
-            </div>
-
-            <div class="pinned-metrics">
-              <div class="pinned-metric">
-                <div class="pinned-metric-label">New users in month one</div>
-                <div class="pinned-metric-value" data-counter="3980">0</div>
-                <div class="pinned-metric-note">Across all acquisition channels</div>
-              </div>
-              <div class="pinned-metric">
-                <div class="pinned-metric-label">Organic search clicks</div>
-                <div class="pinned-metric-value" data-counter="3250">0</div>
-                <div class="pinned-metric-note">Google Search Console baseline</div>
-              </div>
-              <div class="pinned-metric">
-                <div class="pinned-metric-label">Tracked conversions</div>
-                <div class="pinned-metric-value" data-counter="42">0</div>
-                <div class="pinned-metric-note">Forms, calls, and key ecommerce events</div>
-              </div>
-            </div>
-
-            <div class="pinned-actions">
-              <a href="https://moeabdelrazek.github.io/TechnoMounts/" target="_blank" class="pinned-cta">
-                View full TechnoMounts case study
-              </a>
-              <a href="#portfolio" class="pinned-ghost-link">
-                Browse all past campaigns
-              </a>
-            </div>
-          </div>
-
-          <div class="pinned-art">
-            <div class="pinned-art-inner">
-              <div class="pinned-strip">
-                <img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/01_luxury.png" alt="TechnoMounts visual 1">
-                <img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/11_display.png" alt="TechnoMounts visual 2">
-                <img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/20_rotation.png" alt="TechnoMounts visual 3">
-                <img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/05_retail.png" alt="TechnoMounts visual 4">
-              </div>
-              <span class="pinned-label">
-                Gallery created for ads, social content, and product storytelling
-              </span>
-            </div>
+            <div class="hero-contact-name">Mohamed Abdelrazek</div>
+            <div class="hero-contact-role">Digital marketing specialist and performance generalist</div>
           </div>
         </div>
-      </article>
+
+        <div>
+          <div class="hero-contact-section-label">Contact</div>
+          <div class="hero-contact-list">
+            <span><strong>Email:</strong> <a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a></span>
+            <span><strong>WhatsApp:</strong> <a href="https://wa.me/201017286384" target="_blank">+20 101 728 6384</a></span>
+            <span><strong>LinkedIn:</strong> <a href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank">linkedin.com/in/moe-abdelrazek</a></span>
+          </div>
+        </div>
+
+        <div>
+          <div class="hero-contact-section-label">Working style</div>
+          <div class="hero-contact-actions">
+            <span class="hero-contact-chip">Hands on: strategy and execution</span>
+            <span class="hero-contact-chip">Comfortable with remote and async work</span>
+          </div>
+        </div>
+      </aside>
     </section>
 
-    <!-- Experience snapshot -->
-    <section class="section reveal" id="experience">
-      <header class="section-header">
-        <div>
-          <div class="section-kicker">Experience snapshot</div>
-          <h2 class="section-title">How my work evolved across brands and channels</h2>
-          <p class="section-subtitle">
-            From single brand launches to multi channel systems. Each project added a layer in planning, execution, and measurement.
-          </p>
-        </div>
+    <!-- Current project: TechnoMounts -->
+    <section id="current" class="current-project reveal">
+      <header style="margin-bottom:16px;">
+        <div class="section-kicker">Current project</div>
+        <h2 class="section-title">TechnoMounts UAE - performance marketing ecosystem</h2>
+        <p class="section-subtitle">
+          A real world project for a specialist hardware brand. The goal is to move from basic ecommerce into a measurable system that connects landing pages, Google Ads, SEO, GA4, email, Amazon groundwork, and B2B outreach.
+        </p>
       </header>
 
-      <div class="experience-grid">
-        <div class="timeline">
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-title">
-              TechnoMounts UAE - digital marketing and analytics
+      <div class="current-inner">
+        <div>
+          <div class="current-label-row">
+            <span class="current-label">Ecommerce and B2B influenced buyers</span>
+            <span class="current-label">Conversion and analytics focused setup</span>
+          </div>
+          <h3 class="current-title">
+            Month one portfolio - from zero visibility to structured performance
+          </h3>
+          <p class="current-body">
+            Month one focused on building a conversion ready foundation. Eleven landing pages were mapped to buyer segments, Performance Max campaigns were built around intent clusters, and GA4 and Search Console were wired as the backbone of measurement.
+          </p>
+
+          <div class="current-tags">
+            <span class="current-tag">Google Ads Performance Max</span>
+            <span class="current-tag">11 landing pages</span>
+            <span class="current-tag">GA4 and Search Console baseline</span>
+            <span class="current-tag">SEO clean up and technical work</span>
+            <span class="current-tag">Amazon groundwork and email funnels</span>
+          </div>
+
+          <div class="metric-grid">
+            <div class="metric-card">
+              <div class="metric-label">Impressions month one</div>
+              <div class="metric-value" data-counter="17500">0</div>
+              <div class="metric-note">Across all Performance Max campaigns</div>
             </div>
-            <div class="timeline-meta">
-              Current · Ecommerce hardware and B2B influenced buying journeys
+            <div class="metric-card">
+              <div class="metric-label">Clicks and ctr</div>
+              <div class="metric-value" data-counter="1510">0</div>
+              <div class="metric-note">8.6 percent click through rate across asset groups</div>
             </div>
-            <div class="timeline-desc">
-              Building TechnoMounts as a full stack marketing and analytics system. Performance Max campaigns around buying intent,
-              technical SEO and structured data, landing page system, email journeys, Amazon groundwork, and B2B prospecting with Apollo and CRM.
+            <div class="metric-card">
+              <div class="metric-label">Conversions tracked</div>
+              <div class="metric-value" data-counter="42">0</div>
+              <div class="metric-note">Events, enquiries, and high intent actions in GA4</div>
             </div>
           </div>
 
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-title">Rafiki Vets Hospital - full campaign</div>
-            <div class="timeline-meta">
-              Healthcare · Lead generation and brand positioning
+          <div class="metric-grid" style="margin-bottom:10px;">
+            <div class="metric-card">
+              <div class="metric-label">Organic impressions</div>
+              <div class="metric-value" data-counter="38500">0</div>
+              <div class="metric-note">Up from 8700 in baseline 30 day period</div>
             </div>
-            <div class="timeline-desc">
-              Designed a complete campaign around pet owner journeys. Combined local search, social media, landing pages, and CRM logic
-              to drive appointments and repeat visits in a high trust service.
+            <div class="metric-card">
+              <div class="metric-label">Organic clicks</div>
+              <div class="metric-value" data-counter="3250">0</div>
+              <div class="metric-note">Up from 320, driven by intent aligned content</div>
             </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-title">Haksoss Café - brand and performance launch</div>
-            <div class="timeline-meta">
-              Hospitality · Local discovery and repeat visits
-            </div>
-            <div class="timeline-desc">
-              Built a launch campaign template for a café concept. Positioning, creative system, and performance structure that I now reuse across future hospitality launches.
+            <div class="metric-card">
+              <div class="metric-label">Landing pages ready</div>
+              <div class="metric-value" data-counter="11">0</div>
+              <div class="metric-note">Mapped to events, retail, healthcare, hospitality, and workspace</div>
             </div>
           </div>
 
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-title">Mory Gym - membership acquisition funnel</div>
-            <div class="timeline-meta">
-              Fitness · Sign ups and retention
-            </div>
-            <div class="timeline-desc">
-              Structured a membership funnel around trial offers, referrals, and retention oriented communication. Focused on tracking sign ups from first impression to paying membership.
-            </div>
-          </div>
-
-          <div class="timeline-item">
-            <div class="timeline-dot"></div>
-            <div class="timeline-title">Luxeloom KPI dashboard</div>
-            <div class="timeline-meta">
-              Analytics · Performance visualization
-            </div>
-            <div class="timeline-desc">
-              Designed and implemented a KPI dashboard that monitors acquisition, engagement, and revenue. This shaped how I instrument
-              every campaign around events and decision ready metrics.
-            </div>
+          <div class="current-actions">
+            <a class="link-primary" href="https://moeabdelrazek.github.io/TechnoMounts/" target="_blank" rel="noopener">
+              Open full TechnoMounts case study
+            </a>
+            <a class="link-plain" href="#projects">
+              View other campaigns in this portfolio
+            </a>
           </div>
         </div>
 
-        <aside class="experience-stats reveal reveal-late">
-          <div class="section-kicker" style="margin-bottom:6px;">At a glance</div>
-          <p style="font-size:15px;color:var(--espresso-soft);margin-bottom:10px;">
-            A marketing portfolio is only valuable when it can be backed with numbers. These figures summarise the scale and diversity
-            of the work I design and run.
-          </p>
-          <div class="experience-stat-grid">
-            <div class="exp-stat">
-              <div class="exp-stat-label">Cross channel campaigns</div>
-              <div class="exp-stat-value" data-counter="7">0</div>
-              <div class="exp-stat-note">End to end campaigns across paid, organic, and lifecycle.</div>
-            </div>
-            <div class="exp-stat">
-              <div class="exp-stat-label">Industries</div>
-              <div class="exp-stat-value" data-counter="5">0</div>
-              <div class="exp-stat-note">Healthcare, hospitality, fitness, ecommerce, education.</div>
-            </div>
-            <div class="exp-stat">
-              <div class="exp-stat-label">Acquisition and retention tools</div>
-              <div class="exp-stat-value">Google Ads, GA4, Shopify, Apollo, Amazon, CRM</div>
-            </div>
-            <div class="exp-stat">
-              <div class="exp-stat-label">Core focus</div>
-              <div class="exp-stat-value">Measurement first marketing</div>
-            </div>
-            <div class="exp-stat">
-              <div class="exp-stat-label">Working style</div>
-              <div class="exp-stat-value">Hands on strategist</div>
-              <div class="exp-stat-note">I design the framework and implement it myself.</div>
-            </div>
-            <div class="exp-stat">
-              <div class="exp-stat-label">Location and scope</div>
-              <div class="exp-stat-value">Alexandria · GCC focus</div>
-            </div>
+        <!-- Gallery cube 300 x 300+ -->
+        <aside class="gallery-cube">
+          <div class="gallery-main">
+            <img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/01_luxury.png" alt="TechnoMounts campaign visual" />
+          </div>
+          <div class="gallery-strip">
+            <img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/11_display.png" alt="Interactive display visual" />
+            <img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/20_rotation.png" alt="Monitor arm rotation visual" />
+            <img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/05_retail.png" alt="Retail tablet stand visual" />
+          </div>
+          <div class="gallery-caption">
+            Visual language created for ads, landing pages, product content, and sales material.
           </div>
         </aside>
       </div>
     </section>
 
-    <!-- Portfolio grid -->
-    <section class="section reveal" id="portfolio">
-      <header class="section-header">
-        <div>
-          <div class="section-kicker">Selected work</div>
-          <h2 class="section-title">Current and past projects in one view</h2>
-          <p class="section-subtitle">
-            A mix of real client work and structured campaign templates. Each card links to a live case study or repository where possible.
-          </p>
-        </div>
+    <!-- Evolution across campaigns -->
+    <section id="evolution" class="reveal">
+      <header>
+        <div class="section-kicker">How my work evolved</div>
+        <h2 class="section-title">From local campaigns to a full performance stack</h2>
+        <p class="section-subtitle">
+          Each campaign added a layer. Starting with offers and creative, moving into funnels and automation, and then into analytics, attribution, and full account architecture.
+        </p>
       </header>
 
-      <div class="portfolio-grid">
-        <!-- TechnoMounts card (matches pinned but in grid) -->
+      <div class="evolution-layout">
+        <div class="timeline">
+          <article class="timeline-item">
+            <div class="timeline-dot"></div>
+            <h3 class="timeline-title">Mory Gym - membership acquisition funnel</h3>
+            <p class="timeline-meta">Fitness · Alexandria</p>
+            <p class="timeline-metrics">
+              <strong>1800 new memberships</strong>, campaign reach of <strong>180,000</strong>, engagement rate of <strong>18.2 percent</strong>, and a calculated ROI of <strong>4,780 percent</strong> across the full campaign period.
+            </p>
+            <p class="timeline-desc">
+              Learned how to combine creative, offer structure, and automated email flows into a single funnel. Built discipline around persona work, journey mapping, and retention tactics rather than only acquisition.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-dot"></div>
+            <h3 class="timeline-title">Rafiki Vets Hospital - lead generation and retention</h3>
+            <p class="timeline-meta">Healthcare · Animal hospital</p>
+            <p class="timeline-metrics">
+              Organic metrics included <strong>CTR 5 percent</strong>, <strong>40 percent bounce rate</strong>, and <strong>3.5 percent organic conversion</strong>, with <strong>45 keywords</strong> in top 10 positions. Paid channels delivered around <strong>2,140 leads</strong> across Meta and Google Search during the campaign cycle.
+            </p>
+            <p class="timeline-desc">
+              This project deepened my work in automation, CRM integration, and channel attribution. I spent more time wiring tracking, call tracking, and dashboards so that every appointment and enquiry had a clear source.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-dot"></div>
+            <h3 class="timeline-title">Haksoss Café - launch and loyalty engine</h3>
+            <p class="timeline-meta">Hospitality · Premium café concept</p>
+            <p class="timeline-metrics">
+              Reached <strong>80,800 unique users</strong> with an engagement rate of <strong>11.3 percent</strong>. Loyalty funnel produced <strong>1,070 sign ups</strong> with <strong>6.2 percent conversion rate</strong> and a <strong>4.11 to 1 ROAS</strong>.
+            </p>
+            <p class="timeline-desc">
+              Built a launch playbook for hospitality: offer design, loyalty programs, and content systems that turn social reach into repeat visits. This refined my approach to positioning, creative direction, and on ground conversion logic.
+            </p>
+          </article>
+
+          <article class="timeline-item">
+            <div class="timeline-dot"></div>
+            <h3 class="timeline-title">TechnoMounts - ecommerce and B2B influenced funnel</h3>
+            <p class="timeline-meta">Ecommerce hardware · United Arab Emirates based brand</p>
+            <p class="timeline-metrics">
+              Month one delivered <strong>17,500 impressions</strong>, <strong>1,510 clicks</strong> at <strong>8.6 percent CTR</strong>, and <strong>42 conversions</strong> across high intent verticals. Organic work lifted impressions from <strong>8,700 to 38,500</strong> and clicks from <strong>320 to 3,250</strong> in a 30 day window.
+            </p>
+            <p class="timeline-desc">
+              Here I connected everything: Shopify, GA4, Google Ads, Merchant Center, Search Console, Amazon groundwork, Apollo, and email. My focus shifted from single campaigns to a long term, measurement driven stack.
+            </p>
+          </article>
+        </div>
+
+        <aside class="evolution-summary">
+          Across these campaigns I progressed from strong execution on individual tactics to running the entire system. Early work focused on offers, creative, and short term results. Rafiki and Haksoss added layers of automation, CRM, and loyalty economics.
+          <br /><br />
+          With TechnoMounts I now treat marketing as a connected machine. I am comfortable designing the strategy, building it inside the tools, setting up tracking and dashboards, and then running structured experiments. The result is a portfolio that shows both creative thinking and operational discipline.
+        </aside>
+      </div>
+    </section>
+
+    <!-- Portfolio cards -->
+    <section id="projects" class="reveal">
+      <header>
+        <div class="section-kicker">Current and past work</div>
+        <h2 class="section-title">Projects that show how I think and execute</h2>
+        <p class="section-subtitle">
+          Each card is a compressed view of the full case study: what the brand needed, what I built, and which numbers moved. Most projects have live case study pages linked here.
+        </p>
+      </header>
+
+      <div class="projects-grid">
+        <!-- TechnoMounts -->
         <article class="project-card">
-          <div class="project-tag">Ecommerce · B2B influenced</div>
-          <h3 class="project-title">TechnoMounts UAE - performance marketing ecosystem</h3>
+          <div class="project-tag">Ecommerce and B2B influenced</div>
+          <h3 class="project-title">TechnoMounts UAE - performance marketing stack</h3>
           <p class="project-desc">
-            Current live project. Performance Max, SEO foundation, GA4, landing pages, email, Amazon, and B2B outreach in a single measurable system.
+            Current live project for a hardware brand focused on tablet stands and monitor arms. Built a connected system instead of isolated campaigns.
           </p>
-          <div class="project-meta-row">
-            <span>Google Ads · GA4 · Search Console</span>
-            <span>Shopify · Email · Amazon · Apollo</span>
-          </div>
-          <div class="project-links">
-            <a href="https://moeabdelrazek.github.io/TechnoMounts/" target="_blank" rel="noopener">Open TechnoMounts portfolio page</a>
-          </div>
+          <p class="project-metrics">
+            <strong>Highlights:</strong> 11 landing pages, 17,500 impressions, 1,510 clicks, 8.6 percent CTR, 42 conversions, and a clear SEO baseline with 38,500 impressions and 3,250 clicks after technical clean up.
+          </p>
+          <p class="project-skills">
+            Platforms: Shopify, Google Ads, GA4, Merchant Center, Search Console, email flows, Amazon groundwork, Apollo, CRM logic.
+          </p>
+          <a href="https://moeabdelrazek.github.io/TechnoMounts/" class="project-link" target="_blank" rel="noopener">
+            Open TechnoMounts month one portfolio
+          </a>
         </article>
 
         <!-- Rafiki -->
         <article class="project-card">
           <div class="project-tag">Healthcare · Lead generation</div>
-          <h3 class="project-title">Rafiki Vets Hospital - full funnel campaign</h3>
+          <h3 class="project-title">Rafiki Vets Hospital - appointments and loyalty</h3>
           <p class="project-desc">
-            Built a full campaign around pet owner journeys. Local SEO, social, landing pages, and CRM structure to drive booked visits.
+            Comprehensive funnel for a veterinary hospital. Combined local search, responsive landing pages, marketing automation, and CRM driven follow ups.
           </p>
-          <div class="project-meta-row">
-            <span>Campaign strategy · Creative system</span>
-            <span>Lead funnel and tracking</span>
-          </div>
-          <div class="project-links">
-            <a href="https://moeabdelrazek.github.io/Rafiki-Campaign/" target="_blank" rel="noopener">View campaign</a>
-          </div>
+          <p class="project-metrics">
+            <strong>Highlights:</strong> Around 2,140 leads across Meta and Google Search, organic CTR near 5 percent, 3.5 percent organic conversion, and 45 target keywords inside the top 10 positions.
+          </p>
+          <p class="project-skills">
+            Built audiences, offers, landing pages, GA4 and tag setup, CRM workflows, behavioral triggers, and reporting structure for monthly reviews.
+          </p>
+          <a href="https://moeabdelrazek.github.io/Rafiki-Campaign/" class="project-link" target="_blank" rel="noopener">
+            View Rafiki campaign report
+          </a>
         </article>
 
         <!-- Haksoss -->
         <article class="project-card">
-          <div class="project-tag">Hospitality · Launch template</div>
-          <h3 class="project-title">Haksoss Café - launch and performance system</h3>
+          <div class="project-tag">Hospitality · Launch and loyalty</div>
+          <h3 class="project-title">Haksoss Café - premium launch and VIP loyalty</h3>
           <p class="project-desc">
-            A complete café launch that became a reusable template. Positioning, content system, and performance structure for local discovery and repeat traffic.
+            Built a launch system for a luxury café in Alexandria. Work covered positioning, creative direction, offer design, and loyalty driven retention.
           </p>
-          <div class="project-meta-row">
-            <span>Paid social · Local SEO</span>
-            <span>Offer and content system</span>
-          </div>
-          <div class="project-links">
-            <a href="https://moeabdelrazek.github.io/Haksoss_Full_Campaign/" target="_blank" rel="noopener">View campaign</a>
-          </div>
+          <p class="project-metrics">
+            <strong>Highlights:</strong> 80,800 unique users reached, 11.3 percent engagement, 1,070 loyalty sign ups, 6.2 percent conversion, and 4.11 to 1 ROAS across paid activity.
+          </p>
+          <p class="project-skills">
+            Owned everything from brand story and visual system to paid campaigns, landing pages, loyalty funnel, email flows, and performance reporting.
+          </p>
+          <a href="https://moeabdelrazek.github.io/Haksoss_Full_Campaign/" class="project-link" target="_blank" rel="noopener">
+            Browse full Haksoss café case study
+          </a>
         </article>
 
         <!-- Mory Gym -->
         <article class="project-card">
           <div class="project-tag">Fitness · Memberships</div>
-          <h3 class="project-title">Mory Gym - acquisition and retention funnel</h3>
+          <h3 class="project-title">Mory Gym - acquisition and retention engine</h3>
           <p class="project-desc">
-            Designed a membership funnel with trial offers, referrals, and retention communication, tracked from first click to subscription.
+            Membership acquisition and retention system for a gym. Used content, offers, and automation to fill classes and keep members engaged.
           </p>
-          <div class="project-meta-row">
-            <span>Sign up funnel · Offers</span>
-            <span>Lifecycle communication</span>
-          </div>
-          <div class="project-links">
-            <a href="https://moeabdelrazek.github.io/mory-gym-campaign/" target="_blank" rel="noopener">View campaign</a>
-          </div>
+          <p class="project-metrics">
+            <strong>Highlights:</strong> 1,800 new memberships, 180,000 reach, 18.2 percent engagement rate, and a calculated 4,780 percent return on investment across the full campaign.
+          </p>
+          <p class="project-skills">
+            Designed persona, journey, offer stack, ad system, email automation, and reporting, then iterated using tests on creative and messaging.
+          </p>
+          <a href="https://moeabdelrazek.github.io/mory-gym-campaign/" class="project-link" target="_blank" rel="noopener">
+            Open Mory Gym case study
+          </a>
         </article>
 
-        <!-- Luxeloom -->
+        <!-- Analytics dashboard -->
         <article class="project-card">
-          <div class="project-tag">Analytics · KPIs</div>
+          <div class="project-tag">Analytics · Reporting</div>
           <h3 class="project-title">Luxeloom KPI dashboard</h3>
           <p class="project-desc">
-            A dashboard that connects acquisition, behavior, and revenue. Built as a decision tool for marketing and leadership.
+            A performance dashboard that connects acquisition, behavior, and revenue in a way that leadership can understand in one view.
           </p>
-          <div class="project-meta-row">
-            <span>Data model and metrics</span>
-            <span>Visualization and reporting</span>
-          </div>
-          <div class="project-links">
-            <a href="https://moeabdelrazek.github.io/luxeloom-kpi-dashboard/" target="_blank" rel="noopener">Open dashboard</a>
-          </div>
+          <p class="project-metrics">
+            <strong>Highlights:</strong> Created a model that tracks channel efficiency, retention signals, and unit economics. This work feeds directly into how I structure reports for TechnoMounts and other clients.
+          </p>
+          <p class="project-skills">
+            Data modeling, metric selection, dashboard layout, and communication of insights for non technical stakeholders.
+          </p>
+          <a href="https://moeabdelrazek.github.io/luxeloom-kpi-dashboard/" class="project-link" target="_blank" rel="noopener">
+            View Luxeloom KPI dashboard
+          </a>
         </article>
 
         <!-- Archive -->
         <article class="project-card">
-          <div class="project-tag">Portfolio · Archive</div>
+          <div class="project-tag">Portfolio archive</div>
           <h3 class="project-title">Earlier portfolio and experiments</h3>
           <p class="project-desc">
-            Previous portfolio pages and experiments that focused on individual skills and small projects. Now used as an archive behind this main page.
+            Older work focused on individual skills, smaller experiments, and early case studies. These pages are still valuable as a record of how I learned.
           </p>
-          <div class="project-meta-row">
-            <span>Profile · Skills</span>
-            <span>First wave of work</span>
-          </div>
-          <div class="project-links">
-            <span style="font-size:12px;color:var(--espresso-faint);">Details available on request.</span>
-          </div>
+          <p class="project-metrics">
+            <strong>Highlights:</strong> Structured campaigns for different verticals, early GA4 setups, copywriting experiments, and page designs that fed into the more mature work above.
+          </p>
+          <p class="project-skills">
+            Foundations in copy, visual design, funnel structure, and platform navigation that now support the full stack work shown here.
+          </p>
+          <p class="project-link" style="color:var(--ink-muted);">
+            Older portfolio URLs are available on request.
+          </p>
         </article>
       </div>
     </section>
 
-    <!-- Skills -->
-    <section class="section reveal" id="skills">
-      <header class="section-header">
-        <div>
-          <div class="section-kicker">Skills and tools</div>
-          <h2 class="section-title">Generalist marketer with strong analytical depth</h2>
-          <p class="section-subtitle">
-            I am comfortable leading strategy, building the setup inside the tools, and translating the numbers into actions.
-          </p>
-        </div>
+    <!-- Process: how you handle everything from A to Z -->
+    <section id="process" class="reveal">
+      <header>
+        <div class="section-kicker">How I work</div>
+        <h2 class="section-title">End to end marketing process, owned by one person</h2>
+        <p class="section-subtitle">
+          I do not only design slides. I can take a project from research and strategy all the way through build, tracking, launch, optimisation, and reporting, working directly inside the tools.
+        </p>
       </header>
 
-      <div class="skills-grid">
-        <div>
-          <div class="skill-block">
-            <div class="skill-block-title">Acquisition and performance</div>
-            <div class="skill-block-sub">
-              Google Ads, Performance Max, Shopping, search campaigns, and media structure that connects to business numbers.
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-bar="90"></div>
-            </div>
-          </div>
-
-          <div class="skill-block">
-            <div class="skill-block-title">Analytics and measurement</div>
-            <div class="skill-block-sub">
-              GA4 events and conversions, Search Console analysis, and dashboards that make sense to leadership and sales.
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-bar="92"></div>
+      <div class="process-grid">
+        <div class="process-steps">
+          <div class="process-step">
+            <div class="process-step-index">01</div>
+            <div>
+              <div class="process-step-title">Research and positioning</div>
+              <div class="process-step-text">
+                Market mapping, competitor scans, keyword and audience research, and buyer personas. I define where the brand sits and which buyers we need to reach first.
+              </div>
             </div>
           </div>
 
-          <div class="skill-block">
-            <div class="skill-block-title">Conversion and UX</div>
-            <div class="skill-block-sub">
-              Landing page systems, funnels, A/B tests, and CRO thinking that focus on sign ups and revenue.
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-bar="86"></div>
-            </div>
-          </div>
-
-          <div class="skill-block">
-            <div class="skill-block-title">Lifecycle and B2B outreach</div>
-            <div class="skill-block-sub">
-              Email automation, Apollo sequences, CRM segmentation, and account based thinking for B2B prospects.
-            </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-bar="84"></div>
+          <div class="process-step">
+            <div class="process-step-index">02</div>
+            <div>
+              <div class="process-step-title">Strategy and funnel design</div>
+              <div class="process-step-text">
+                Campaign objectives, channel mix, landing page logic, offers, and lifecycle paths. This is where I turn research into a practical funnel blueprint.
+              </div>
             </div>
           </div>
 
-          <div class="skill-block">
-            <div class="skill-block-title">Technical foundations</div>
-            <div class="skill-block-sub">
-              Working with code driven assets, GitHub, structured data, and technical debugging that supports marketing.
+          <div class="process-step">
+            <div class="process-step-index">03</div>
+            <div>
+              <div class="process-step-title">Build and integration</div>
+              <div class="process-step-text">
+                Implement campaigns in Google Ads, set up landing pages, connect GA4, Merchant Center, and Search Console, and wire pixel and tag tracking correctly.
+              </div>
             </div>
-            <div class="skill-bar-track">
-              <div class="skill-bar-fill" data-bar="78"></div>
+          </div>
+
+          <div class="process-step">
+            <div class="process-step-index">04</div>
+            <div>
+              <div class="process-step-title">Content, creative, and offers</div>
+              <div class="process-step-text">
+                Write ad copy, page copy, and emails. Design or brief visuals. Build offer structures, loyalty mechanics, and retention programs that make sense for the brand.
+              </div>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="process-step-index">05</div>
+            <div>
+              <div class="process-step-title">Launch, measurement, and reporting</div>
+              <div class="process-step-text">
+                Launch campaigns, monitor learning phases, keep dashboards clean, and report on performance with clear recommendations instead of raw numbers.
+              </div>
+            </div>
+          </div>
+
+          <div class="process-step">
+            <div class="process-step-index">06</div>
+            <div>
+              <div class="process-step-title">Iteration and scaling</div>
+              <div class="process-step-text">
+                Run structured tests on audiences, creatives, bids, and pages. Scale what works, fix what does not, and keep the system healthy instead of chasing vanity metrics.
+              </div>
             </div>
           </div>
         </div>
 
-        <div>
-          <div style="margin-bottom:14px;">
-            <div class="section-kicker" style="margin-bottom:4px;">Tools I use daily</div>
-            <div class="skill-pill-cloud">
-              <span class="skill-pill">Google Ads · Performance Max</span>
-              <span class="skill-pill">Google Analytics 4</span>
-              <span class="skill-pill">Google Search Console</span>
-              <span class="skill-pill">Looker Studio</span>
-              <span class="skill-pill">Shopify</span>
-              <span class="skill-pill">Email automation</span>
-              <span class="skill-pill">Apollo.io</span>
-              <span class="skill-pill">CRM platforms</span>
-              <span class="skill-pill">GitHub</span>
-              <span class="skill-pill">Content and copywriting</span>
-            </div>
-          </div>
-
-          <div class="languages-card">
-            <div class="section-kicker" style="margin-bottom:4px;">Languages</div>
-            <div class="contact-highlight">
-              I work across Arabic, English, and German, which supports research, outreach, and communication.
-            </div>
-            <div class="languages-row">
-              <span class="lang-tag">Arabic - native</span>
-              <span class="lang-tag">English - near native</span>
-              <span class="lang-tag">German - learning and improving</span>
-            </div>
-            <p style="margin-top:10px;font-size:13px;color:var(--espresso-soft);">
-              This helps when adapting campaigns to local nuance and tone in different markets and materials.
-            </p>
-          </div>
-        </div>
+        <aside class="process-summary">
+          These steps are not abstract. They come from real campaigns like Mory Gym, Rafiki, Haksoss, and TechnoMounts, which forced me to master one discipline at a time: first creative and offers, then funnels and automation, and finally analytics and architecture.
+          <br /><br />
+          Today I am comfortable joining at any stage. Some brands need a strategy and full build from zero. Others already have accounts and only need structure, clean data, and better decision making. Either way, I can move between high level thinking and detailed execution without getting lost.
+        </aside>
       </div>
     </section>
 
     <!-- Contact -->
-    <section class="section reveal" id="contact">
-      <header class="section-header">
-        <div>
-          <div class="section-kicker">Next step</div>
-          <h2 class="section-title">Talk through this portfolio or plan a new project</h2>
-          <p class="section-subtitle">
-            If you want to see live dashboards, account views, or a deeper breakdown of any project, I am happy to walk you through it.
-          </p>
-        </div>
+    <section id="contact" class="reveal">
+      <header>
+        <div class="section-kicker">Next step</div>
+        <h2 class="section-title">Talk through this portfolio or plan a new project</h2>
+        <p class="section-subtitle">
+          If you want to see real dashboards, account views, or deeper data from any of these projects, I can walk you through them in a focused session.
+        </p>
       </header>
 
       <div class="contact-card">
         <div>
-          <p class="contact-highlight">
-            The best way to understand how I work is to spend thirty minutes inside one of the campaigns above, with the tools open and the numbers in front of us.
+          <p class="contact-main-text">
+            The easiest way to understand how I work is to open a live account or case study and go through the numbers together. We can look at TechnoMounts or any of the other campaigns and talk about how I would apply the same thinking to your brand.
           </p>
-          <div class="contact-lines">
-            <p><strong>Email:</strong> moe-abdelrazek@outlook.com</p>
-            <p><strong>Location:</strong> Alexandria, Egypt · working with United Arab Emirates and GCC clients</p>
-          </div>
-          <div class="contact-badge-row">
-            <span class="contact-badge">Available for remote roles and projects</span>
-            <span class="contact-badge">Comfortable with async reporting and dashboards</span>
-            <span class="contact-badge">Happy to start from a single project test</span>
+          <div class="contact-options">
+            <div>
+              <span class="contact-label">Email</span><br />
+              <a class="contact-link" href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a>
+            </div>
+            <div>
+              <span class="contact-label">WhatsApp</span><br />
+              <a class="contact-link" href="https://wa.me/201017286384" target="_blank">+20 101 728 6384</a>
+            </div>
+            <div>
+              <span class="contact-label">LinkedIn</span><br />
+              <a class="contact-link" href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank">linkedin.com/in/moe-abdelrazek</a>
+            </div>
           </div>
         </div>
 
-        <div>
-          <button class="btn-primary" style="width:100%;justify-content:center;" onclick="window.location.href='mailto:moe-abdelrazek@outlook.com'">
+        <div class="contact-buttons">
+          <button class="contact-btn primary" onclick="window.location.href='https://wa.me/201017286384'">
+            Message me on WhatsApp
+          </button>
+          <button class="contact-btn secondary" onclick="window.location.href='mailto:moe-abdelrazek@outlook.com'">
             Email me about a role or project
           </button>
-          <p style="font-size:12px;color:var(--espresso-faint);margin-top:8px;">
-            You can mention which project you want to focus on first. TechnoMounts is usually the best starting point because it shows the full stack.
-          </p>
+          <button class="contact-btn ghost" onclick="window.open('https://www.linkedin.com/in/moe-abdelrazek/','_blank')">
+            View my profile on LinkedIn
+          </button>
         </div>
       </div>
 
-      <p class="footer-note">
-        This portfolio is built on real work. Every project here can be backed with dashboards, exports, and live account views when needed.
-      </p>
+      <footer class="footer">
+        <span>Built and maintained by <strong>Mohamed Abdelrazek</strong>. Portfolio based on real multi channel work.</span>
+        <span>Available for remote roles and projects across markets.</span>
+      </footer>
     </section>
   </main>
 
@@ -1654,58 +1410,45 @@
       entries => {
         entries.forEach(entry => {
           if (entry.isIntersecting) {
-            entry.target.classList.add("is-visible");
+            entry.target.classList.add("visible");
             observer.unobserve(entry.target);
           }
         });
       },
-      { threshold: 0.22 }
+      { threshold: 0.18 }
     );
     revealEls.forEach(el => observer.observe(el));
 
-    // Counters
+    // Animated counters
     function animateCounters() {
       document.querySelectorAll("[data-counter]").forEach(el => {
         const target = parseFloat(el.getAttribute("data-counter"));
-        const isDecimal = String(target).includes(".");
-        const duration = 1600;
+        const duration = 1500;
         const start = performance.now();
 
         function frame(now) {
           const progress = Math.min((now - start) / duration, 1);
           const value = target * progress;
-          el.textContent = isDecimal ? value.toFixed(1) : Math.round(value);
+          el.textContent = Math.round(value).toLocaleString("en-US");
           if (progress < 1) requestAnimationFrame(frame);
         }
         requestAnimationFrame(frame);
       });
     }
 
-    // Skill bars
-    function animateSkillBars() {
-      document.querySelectorAll(".skill-bar-fill").forEach(bar => {
-        const pct = parseFloat(bar.getAttribute("data-bar") || "0");
-        bar.style.width = pct + "%";
-      });
-    }
-
-    let metricsTriggered = false;
-    function triggerMetrics() {
-      if (metricsTriggered) return;
-      const skillsSection = document.getElementById("skills");
-      if (!skillsSection) return;
-      const rect = skillsSection.getBoundingClientRect();
+    let countersStarted = false;
+    function checkCounters() {
+      if (countersStarted) return;
+      const currentSection = document.getElementById("current");
+      const rect = currentSection.getBoundingClientRect();
       if (rect.top < window.innerHeight) {
-        metricsTriggered = true;
+        countersStarted = true;
         animateCounters();
-        animateSkillBars();
       }
     }
 
-    window.addEventListener("scroll", triggerMetrics);
-    window.addEventListener("load", () => {
-      setTimeout(triggerMetrics, 800);
-    });
+    window.addEventListener("scroll", checkCounters);
+    window.addEventListener("load", () => setTimeout(checkCounters, 600));
   </script>
 </body>
 </html>

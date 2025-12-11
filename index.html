@@ -21,8 +21,8 @@
       --glass-bg: rgba(20, 16, 11, 0.9);
 
       --text-main: #ffffff;
-      --text-soft: rgba(255, 255, 255, 0.9);
-      --text-muted: rgba(255, 255, 255, 0.75);
+      --text-soft: rgba(255, 255, 255, 0.92);
+      --text-muted: rgba(255, 255, 255, 0.78);
 
       --accent: #f7da88;
       --accent-strong: #ffeb9b;
@@ -47,8 +47,8 @@
       background: radial-gradient(circle at top, #151515 0, var(--page-bg) 40%, var(--page-bg-alt) 100%);
       color: var(--text-main);
       font-family: "Georgia", "Times New Roman", serif;
-      font-size: 17px;
-      line-height: 1.8;
+      font-size: 19px;
+      line-height: 1.9;
       scroll-behavior: smooth;
     }
 
@@ -88,8 +88,8 @@
       display: flex;
       justify-content: space-between;
       align-items: center;
-      margin-bottom: 20px;
-      padding: 14px 22px;
+      margin-bottom: 24px;
+      padding: 16px 24px;
       border-radius: 999px;
       border: 1px solid rgba(244, 227, 192, 0.35);
       background: linear-gradient(
@@ -113,13 +113,13 @@
       display: flex;
       gap: 14px;
       flex-wrap: wrap;
-      font-size: 13px;
+      font-size: 14px;
     }
 
     .nav-link {
       text-decoration: none;
       color: var(--text-main);
-      padding: 4px 12px;
+      padding: 5px 13px;
       border-radius: 999px;
       border: 1px solid transparent;
       transition: border-color 0.18s ease, background 0.18s ease, color 0.18s ease, transform 0.18s ease;
@@ -145,20 +145,20 @@
     /* Hero */
 
     .hero {
-      margin-bottom: 48px;
+      margin-bottom: 52px;
     }
 
     .hero-shell {
       display: grid;
       grid-template-columns: minmax(0, 1.7fr) minmax(0, 1.05fr);
-      gap: 30px;
-      padding: 30px 28px 26px;
+      gap: 32px;
+      padding: 40px 34px;
       border-radius: var(--radius-card);
       border: 1px solid var(--latte-border);
       background:
         radial-gradient(circle at top left, rgba(248, 230, 198, 0.24), transparent 55%),
         radial-gradient(circle at bottom right, rgba(253, 221, 148, 0.18), transparent 55%),
-        linear-gradient(135deg, rgba(16, 13, 10, 0.98), rgba(8, 7, 5, 0.98));
+        linear-gradient(135deg, rgba(22, 18, 13, 0.98), rgba(8, 7, 5, 0.98));
       box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
@@ -195,43 +195,43 @@
       font-size: 34px;
       letter-spacing: 0.14em;
       text-transform: uppercase;
-      margin: 0 0 6px;
+      margin: 0 0 8px;
       color: var(--accent-strong);
     }
 
     .hero-name span {
       text-transform: none;
-      letter-spacing: 0.04em;
+      letter-spacing: 0.06em;
     }
 
     .hero-role {
-      font-size: 18px;
-      color: var(--text-soft);
-      margin-bottom: 16px;
+      font-size: 20px;
+      color: var(--text-main);
+      margin-bottom: 18px;
     }
 
     .hero-motto {
-      font-size: 17px;
+      font-size: 18px;
       color: var(--text-main);
-      max-width: 680px;
-      margin-bottom: 18px;
+      max-width: 720px;
+      margin-bottom: 20px;
     }
 
     .hero-tags {
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
-      margin-bottom: 18px;
+      margin-bottom: 20px;
     }
 
     .hero-tag {
-      font-size: 12px;
+      font-size: 13px;
       font-weight: 600;
-      padding: 6px 14px;
+      padding: 7px 16px;
       border-radius: var(--radius-pill);
-      border: 1px solid rgba(246, 223, 186, 0.55);
+      border: 1px solid rgba(246, 223, 186, 0.7);
       background: linear-gradient(120deg, rgba(252, 237, 210, 0.2), rgba(40, 32, 23, 0.95));
-      color: var(--text-soft);
+      color: #ffffff;
       backdrop-filter: blur(10px);
       white-space: nowrap;
     }
@@ -246,8 +246,8 @@
     .btn-primary,
     .btn-secondary {
       border-radius: var(--radius-pill);
-      padding: 10px 26px;
-      font-size: 15px;
+      padding: 12px 32px;
+      font-size: 17px;
       font-weight: 700;
       cursor: pointer;
       border: 1px solid transparent;
@@ -284,8 +284,8 @@
 
     .btn-secondary {
       color: var(--text-main);
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.04), rgba(255, 238, 188, 0.08));
-      border-color: rgba(248, 221, 179, 0.7);
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.08), rgba(255, 238, 188, 0.12));
+      border-color: rgba(248, 221, 179, 0.8);
     }
 
     .btn-primary:hover,
@@ -298,15 +298,15 @@
       display: flex;
       flex-wrap: wrap;
       gap: 6px;
-      margin-top: 8px;
-      font-size: 12px;
-      color: var(--text-main);
+      margin-top: 10px;
+      font-size: 13px;
+      color: #ffffff;
     }
 
     .hero-lang {
-      padding: 4px 11px;
+      padding: 4px 12px;
       border-radius: var(--radius-pill);
-      border: 1px solid rgba(244, 225, 190, 0.58);
+      border: 1px solid rgba(244, 225, 190, 0.78);
       background: rgba(33, 26, 18, 0.95);
     }
 
@@ -314,16 +314,17 @@
       display: flex;
       flex-direction: column;
       align-items: center;
-      gap: 16px;
+      gap: 18px;
     }
 
     .hero-photo-frame {
-      width: 180px;
-      height: 180px;
+      width: 220px;
+      height: 220px;
       border-radius: 50%;
-      padding: 4px;
+      padding: 6px;
       background: radial-gradient(circle at top, #fff7e2, #f0cc74);
       box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
+      overflow: hidden;
     }
 
     .hero-photo {
@@ -332,22 +333,26 @@
       border-radius: 50%;
       object-fit: cover;
       object-position: center;
+      image-rendering: -webkit-optimize-contrast;
+      image-rendering: crisp-edges;
+      image-rendering: high-quality;
+      filter: contrast(1.06) brightness(1.04);
       border: 2px solid #fff9e3;
     }
 
     .hero-badges {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 8px;
+      gap: 10px;
       width: 100%;
     }
 
     .hero-badge {
       border-radius: 18px;
-      padding: 8px 10px;
-      border: 1px solid rgba(248, 225, 189, 0.52);
-      background: radial-gradient(circle at top left, rgba(253, 236, 204, 0.2), rgba(22, 18, 12, 0.98));
-      font-size: 12px;
+      padding: 10px 12px;
+      border: 1px solid rgba(248, 225, 189, 0.72);
+      background: radial-gradient(circle at top left, rgba(253, 236, 204, 0.22), rgba(22, 18, 12, 0.98));
+      font-size: 13px;
       color: var(--text-soft);
     }
 
@@ -362,7 +367,7 @@
     .hero-badge-main {
       font-size: 14px;
       font-weight: 600;
-      color: var(--text-main);
+      color: #ffffff;
     }
 
     .hero-contact-mini {
@@ -375,7 +380,7 @@
     .hero-contact-mini a {
       color: var(--accent-strong);
       text-decoration: none;
-      border-bottom: 1px solid rgba(247, 218, 136, 0.5);
+      border-bottom: 1px solid rgba(247, 218, 136, 0.6);
     }
 
     .hero-contact-mini a:hover {
@@ -384,7 +389,7 @@
 
     .divider-soft {
       height: 1px;
-      margin: 30px auto 30px;
+      margin: 32px auto 32px;
       max-width: 880px;
       background: linear-gradient(
         to right,
@@ -399,16 +404,16 @@
 
     .intro-text {
       max-width: 880px;
-      margin: 0 auto 40px;
+      margin: 0 auto 44px;
       text-align: center;
-      font-size: 17px;
-      color: var(--text-soft);
+      font-size: 18px;
+      color: #ffffff;
     }
 
     /* Sections */
 
     .section {
-      margin-bottom: 32px;
+      margin-bottom: 34px;
     }
 
     .section-inner {
@@ -417,8 +422,8 @@
       background:
         radial-gradient(circle at top left, rgba(250, 230, 198, 0.2), transparent 60%),
         radial-gradient(circle at bottom right, rgba(255, 210, 132, 0.18), transparent 60%),
-        linear-gradient(135deg, rgba(16, 13, 10, 0.98), rgba(7, 6, 4, 0.98));
-      padding: 26px 26px 24px;
+        linear-gradient(135deg, rgba(22, 18, 13, 0.98), rgba(7, 6, 4, 0.98));
+      padding: 36px 34px;
       box-shadow: var(--shadow-card);
       position: relative;
       overflow: hidden;
@@ -445,49 +450,49 @@
       letter-spacing: 0.18em;
       text-transform: uppercase;
       color: var(--text-muted);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     .section-title {
       font-family: "Playfair Display", serif;
-      font-size: 24px;
-      margin: 0 0 10px;
+      font-size: 26px;
+      margin: 0 0 12px;
       color: var(--accent-strong);
     }
 
     .section-sub {
-      font-size: 15px;
-      color: var(--text-soft);
-      margin-bottom: 14px;
-      padding-bottom: 12px;
-      border-bottom: 1px solid rgba(247, 218, 136, 0.26);
+      font-size: 17px;
+      color: #ffffff;
+      margin-bottom: 16px;
+      padding-bottom: 14px;
+      border-bottom: 1px solid rgba(247, 218, 136, 0.3);
     }
 
     .section-body {
-      font-size: 15px;
-      color: var(--text-main);
+      font-size: 18px;
+      color: #ffffff;
     }
 
     .two-col {
       display: grid;
       grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-      gap: 22px;
+      gap: 24px;
     }
 
     .pill-row {
-      margin-top: 12px;
+      margin-top: 14px;
       display: flex;
       flex-wrap: wrap;
       gap: 8px;
     }
 
     .pill {
-      font-size: 12px;
-      padding: 4px 11px;
+      font-size: 13px;
+      padding: 5px 12px;
       border-radius: var(--radius-pill);
-      border: 1px solid rgba(246, 223, 186, 0.55);
+      border: 1px solid rgba(246, 223, 186, 0.7);
       background: linear-gradient(120deg, rgba(252, 237, 210, 0.24), rgba(44, 36, 26, 0.98));
-      color: var(--text-soft);
+      color: #ffffff;
       white-space: nowrap;
     }
 
@@ -499,10 +504,10 @@
 
     .bullet-list li {
       position: relative;
-      padding-left: 18px;
-      margin: 5px 0;
-      font-size: 15px;
-      color: var(--text-soft);
+      padding-left: 20px;
+      margin: 6px 0;
+      font-size: 17px;
+      color: #ffffff;
     }
 
     .bullet-list li::before {
@@ -521,20 +526,20 @@
 
     .stat-grid {
       display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(190px, 1fr));
-      gap: 10px;
-      margin-top: 14px;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
     }
 
     .stat-box {
       border-radius: 18px;
-      border: 1px solid rgba(247, 218, 136, 0.5);
+      border: 1px solid rgba(247, 218, 136, 0.6);
       background: linear-gradient(135deg, rgba(255, 242, 214, 0.12), rgba(19, 15, 10, 0.98));
-      padding: 10px 12px;
+      padding: 12px 14px;
     }
 
     .stat-label {
-      font-size: 11px;
+      font-size: 12px;
       text-transform: uppercase;
       letter-spacing: 0.1em;
       color: var(--text-muted);
@@ -542,14 +547,14 @@
     }
 
     .stat-number {
-      font-size: 20px;
+      font-size: 22px;
       font-weight: 700;
       color: var(--accent-strong);
     }
 
     .stat-note {
-      font-size: 13px;
-      color: var(--text-soft);
+      font-size: 15px;
+      color: #ffffff;
     }
 
     .link-inline {
@@ -566,22 +571,22 @@
     /* KPI Chart */
 
     .kpi-chart {
-      margin-top: 20px;
-      padding-top: 10px;
-      border-top: 1px dashed rgba(247, 218, 136, 0.35);
+      margin-top: 22px;
+      padding-top: 12px;
+      border-top: 1px dashed rgba(247, 218, 136, 0.4);
     }
 
     .kpi-row {
       display: flex;
       align-items: center;
       gap: 12px;
-      margin-bottom: 8px;
+      margin-bottom: 10px;
+      font-size: 15px;
     }
 
     .kpi-label {
-      flex: 0 0 210px;
-      font-size: 13px;
-      color: var(--text-soft);
+      flex: 0 0 240px;
+      color: #ffffff;
     }
 
     .kpi-bar-outer {
@@ -605,28 +610,28 @@
     .timeline-grid {
       display: grid;
       grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-      gap: 20px;
-      margin-top: 10px;
+      gap: 22px;
+      margin-top: 12px;
     }
 
     .timeline-item {
       border-radius: 18px;
-      border: 1px solid rgba(247, 218, 136, 0.45);
-      background: linear-gradient(140deg, rgba(247, 226, 192, 0.16), rgba(21, 17, 12, 0.98));
-      padding: 10px 14px;
+      border: 1px solid rgba(247, 218, 136, 0.6);
+      background: linear-gradient(140deg, rgba(247, 226, 192, 0.2), rgba(21, 17, 12, 0.98));
+      padding: 12px 16px;
     }
 
     .timeline-title {
       font-family: "Playfair Display", serif;
-      font-size: 16px;
+      font-size: 18px;
       color: var(--accent-strong);
-      margin-bottom: 2px;
+      margin-bottom: 4px;
     }
 
     .timeline-meta {
-      font-size: 13px;
+      font-size: 14px;
       color: var(--text-muted);
-      margin-bottom: 6px;
+      margin-bottom: 8px;
     }
 
     /* Projects gallery */
@@ -634,17 +639,17 @@
     .projects-grid {
       display: grid;
       grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 16px;
-      margin-top: 14px;
+      gap: 18px;
+      margin-top: 16px;
     }
 
     .project-card {
       border-radius: 22px;
-      border: 1px solid rgba(248, 225, 189, 0.55);
+      border: 1px solid rgba(248, 225, 189, 0.7);
       background:
         radial-gradient(circle at top left, rgba(255, 243, 215, 0.24), transparent 70%),
         linear-gradient(135deg, rgba(26, 21, 14, 0.98), rgba(18, 15, 10, 0.98));
-      padding: 14px 16px 14px;
+      padding: 16px 18px 14px;
       box-shadow: 0 18px 50px rgba(0, 0, 0, 0.95);
       display: flex;
       flex-direction: column;
@@ -654,7 +659,7 @@
     }
 
     .project-kicker {
-      font-size: 12px;
+      font-size: 13px;
       letter-spacing: 0.08em;
       text-transform: uppercase;
       color: var(--text-muted);
@@ -663,23 +668,23 @@
 
     .project-title {
       font-family: "Playfair Display", serif;
-      font-size: 18px;
+      font-size: 19px;
       color: var(--accent-strong);
-      margin-bottom: 6px;
-    }
-
-    .project-body {
-      font-size: 14px;
-      color: var(--text-soft);
       margin-bottom: 8px;
     }
 
+    .project-body {
+      font-size: 16px;
+      color: #ffffff;
+      margin-bottom: 10px;
+    }
+
     .project-link {
-      font-size: 14px;
+      font-size: 15px;
       color: var(--accent-strong);
       font-weight: 600;
       text-decoration: none;
-      border-bottom: 1px solid rgba(247, 218, 136, 0.8);
+      border-bottom: 1px solid rgba(247, 218, 136, 0.9);
       align-self: flex-start;
     }
 
@@ -696,14 +701,14 @@
     /* Process steps */
 
     .process-step {
-      margin-bottom: 10px;
+      margin-bottom: 12px;
     }
 
     .process-label {
       font-family: "Playfair Display", serif;
-      font-size: 16px;
+      font-size: 18px;
       color: var(--accent-strong);
-      margin-bottom: 3px;
+      margin-bottom: 4px;
     }
 
     /* Contact and motivation */
@@ -714,19 +719,19 @@
     }
 
     .contact-lines {
-      font-size: 14px;
-      color: var(--text-soft);
-      margin-top: 8px;
+      font-size: 16px;
+      color: #ffffff;
+      margin-top: 10px;
     }
 
     .contact-item {
-      margin: 4px 0;
+      margin: 5px 0;
     }
 
     .contact-item a {
       color: var(--accent-strong);
       text-decoration: none;
-      border-bottom: 1px solid rgba(247, 218, 136, 0.8);
+      border-bottom: 1px solid rgba(247, 218, 136, 0.9);
     }
 
     .contact-item a:hover {
@@ -734,8 +739,8 @@
     }
 
     .footnote {
-      margin-top: 30px;
-      font-size: 13px;
+      margin-top: 32px;
+      font-size: 14px;
       color: var(--text-muted);
       text-align: center;
     }
@@ -771,16 +776,16 @@
       }
 
       .hero-shell {
-        padding: 24px 18px 20px;
+        padding: 26px 18px 24px;
       }
 
       .section-inner {
-        padding: 20px 16px 18px;
+        padding: 24px 18px 20px;
         min-height: 560px;
       }
 
       .kpi-label {
-        flex-basis: 160px;
+        flex-basis: 180px;
       }
     }
   </style>
@@ -1034,7 +1039,7 @@
             </div>
           </div>
 
-          <p style="margin-top: 16px;">
+          <p style="margin-top: 18px;">
             <a href="https://moeabdelrazek.github.io/TechnoMounts/" target="_blank" class="link-inline">
               Open full TechnoMounts case study
             </a>
@@ -1096,7 +1101,7 @@
                 </p>
               </div>
 
-              <p class="section-body" style="margin-top: 8px;">
+              <p class="section-body" style="margin-top: 10px;">
                 Each project forced a step up. Mory sharpened direct response work. Rafiki built comfort with automation and CRM.
                 Haksoss focused on loyalty economics and lifetime value. TechnoMounts integrated everything into one performance stack.
               </p>
@@ -1124,7 +1129,7 @@
             <li>Use Search Console queries as a source of truth for new content, campaign ideas, and optimisation opportunities.</li>
           </ul>
 
-          <h3 style="color: var(--accent-strong); margin-top: 16px;">Impact in practice</h3>
+          <h3 style="color: var(--accent-strong); margin-top: 18px;">Impact in practice</h3>
           <ul class="bullet-list">
             <li>TechnoMounts - organic and paid traffic push into the same set of landing pages, improving blended results.</li>
             <li>Haksoss Cafe - local and brand queries are served with experiences that support loyalty and repeat visits.</li>
@@ -1411,7 +1416,7 @@
         );
       });
 
-      // Optional animated stat numbers
+      // Animated stat numbers
       gsap.utils.toArray(".stat-number").forEach(function (num) {
         const target = parseInt(num.textContent.replace(/,/g, ""), 10);
         if (!isNaN(target)) {

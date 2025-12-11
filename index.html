@@ -6,34 +6,28 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <!-- FONTS -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;1,600;1,700&family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,500;1,600&family=Source+Serif+Pro:wght@400;600;700&display=swap" rel="stylesheet">
 
   <style>
     :root {
-      /* Latte theme */
-      --page-grad-1: #fdf5ed;
-      --page-grad-2: #f7e3cf;
-      --page-grad-3: #f2d2b6;
+      /* COLOR SYSTEM */
+      --bg-image: url("https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/3_Assets/Images/Cafe-background.jpg");
 
-      --section-bg-main: #f1d8bf; /* option 2 darker latte */
-      --section-bg-alt-1: #f3dcc5;
-      --section-bg-alt-2: #f0d1b4;
-      --section-bg-alt-3: #f5dec8;
+      --card-bg: rgba(255, 244, 231, 0.96);
+      --card-bg-strong: rgba(255, 240, 225, 0.98);
+      --card-border: rgba(157, 120, 88, 0.55);
 
-      --card-bg: rgba(255, 252, 245, 0.96);
-      --card-border: rgba(168, 132, 96, 0.55);
+      --espresso: #2d201a;
+      --espresso-soft: #4b3328;
 
-      --espresso: #3e2a23;
-      --espresso-soft: #5a3c31;
-      --muted: #7a5b4a;
+      --accent: #155a8a;       /* main blue */
+      --accent-soft: #2a6ba0;
+      --accent-light: #d3e6f6;
 
-      --gold: #c9953a;
-      --gold-soft: #e3b664;
+      --shadow-soft: 0 24px 80px rgba(0, 0, 0, 0.45);
+      --shadow-card: 0 18px 55px rgba(46, 29, 17, 0.35);
 
-      --shadow-soft: 0 26px 80px rgba(85, 61, 40, 0.35);
-      --shadow-card: 0 18px 55px rgba(137, 103, 74, 0.28);
-
-      --radius-xl: 32px;
+      --radius-xl: 34px;
       --radius-lg: 24px;
       --radius-pill: 999px;
 
@@ -49,67 +43,81 @@
       margin: 0;
       padding: 0;
       font-family: "Source Serif Pro", Georgia, "Times New Roman", serif;
-      font-size: 19px;
+      font-size: 18px;
       line-height: 1.9;
-      color: var(--espresso);
-      background:
-        linear-gradient(145deg, var(--page-grad-1), var(--page-grad-2), var(--page-grad-3));
-      background-attachment: fixed;
+      color: var(--espresso-soft);
       min-height: 100vh;
       overflow-x: hidden;
     }
 
     body {
       position: relative;
+      background-color: #160f0a;
     }
 
-    /* Soft moving glow */
-    .latte-glow {
+    body::before {
+      content: "";
       position: fixed;
       inset: 0;
-      pointer-events: none;
+      background-image: var(--bg-image);
+      background-size: cover;
+      background-position: center;
+      filter: blur(3px) brightness(0.6);
+      transform: scale(1.03);
+      z-index: -2;
+    }
+
+    body::after {
+      content: "";
+      position: fixed;
+      inset: 0;
       background:
-        radial-gradient(circle at var(--spot-x, 20%) var(--spot-y, 0%), rgba(255, 255, 255, 0.35), transparent 55%);
-      mix-blend-mode: soft-light;
-      opacity: 0.9;
-      z-index: 1;
+        radial-gradient(circle at top left, rgba(255, 240, 224, 0.7), transparent 55%),
+        radial-gradient(circle at bottom right, rgba(37, 27, 19, 0.8), rgba(10, 7, 4, 0.9));
+      mix-blend-mode: multiply;
+      z-index: -1;
+      pointer-events: none;
     }
 
     .page-shell {
       position: relative;
-      z-index: 2;
       max-width: var(--max-width);
-      margin: 40px auto 80px;
+      margin: 36px auto 80px;
       padding: 0 22px 40px;
     }
 
-    /* NAVIGATION */
+    /* NAVIGATION ------------------------------------------------------ */
 
     .nav-shell {
       position: sticky;
       top: 18px;
-      z-index: 10;
-      margin-bottom: 32px;
+      z-index: 30;
+      margin-bottom: 34px;
     }
 
     .nav-inner {
       display: flex;
       justify-content: space-between;
       align-items: center;
-      padding: 12px 22px;
+      padding: 10px 22px;
       border-radius: var(--radius-pill);
-      background: radial-gradient(circle at top left, rgba(255, 255, 255, 0.96), rgba(255, 245, 232, 0.92));
-      border: 1px solid rgba(208, 164, 116, 0.55);
-      box-shadow: 0 16px 48px rgba(150, 116, 84, 0.35);
+      background: linear-gradient(
+        135deg,
+        rgba(19, 12, 8, 0.96),
+        rgba(38, 25, 17, 0.98)
+      );
+      border: 1px solid rgba(211, 182, 153, 0.65);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75);
       backdrop-filter: blur(14px);
     }
 
     .nav-logo-text {
-      font-family: "Playfair Display", serif;
-      letter-spacing: 0.16em;
+      font-family: "Cormorant Garamond", serif;
+      letter-spacing: 0.18em;
       font-size: 13px;
       text-transform: uppercase;
-      color: var(--muted);
+      color: var(--accent-light);
+      font-style: italic;
     }
 
     .nav-links {
@@ -123,36 +131,107 @@
       text-decoration: none;
       padding: 6px 14px;
       border-radius: var(--radius-pill);
-      color: var(--espresso);
+      color: var(--accent-light);
       border: 1px solid transparent;
-      transition: background 0.18s ease, border-color 0.18s ease, transform 0.18s ease, color 0.18s ease;
+      background: transparent;
+      transition:
+        background 0.18s ease,
+        border-color 0.18s ease,
+        transform 0.18s ease,
+        color 0.18s ease,
+        box-shadow 0.18s ease;
     }
 
     .nav-link:hover {
-      background: rgba(249, 225, 190, 0.9);
-      border-color: rgba(209, 163, 115, 0.9);
+      background: radial-gradient(circle at top left, rgba(26, 116, 177, 0.35), rgba(17, 63, 98, 0.88));
+      border-color: rgba(205, 224, 240, 0.9);
+      color: #f7fbff;
       transform: translateY(-1px);
-      color: var(--espresso-soft);
+      box-shadow: 0 10px 28px rgba(0, 0, 0, 0.5);
     }
 
-    /* HERO */
+    /* BUTTONS --------------------------------------------------------- */
+
+    .btn,
+    .btn-outline {
+      border-radius: var(--radius-pill);
+      padding: 11px 26px;
+      font-size: 16px;
+      font-weight: 700;
+      cursor: pointer;
+      border: 1px solid transparent;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      gap: 8px;
+      position: relative;
+      overflow: hidden;
+      white-space: nowrap;
+    }
+
+    .btn {
+      background: radial-gradient(circle at top left, #3a8cd1, #155a8a);
+      color: #fdfdfd;
+      box-shadow: 0 18px 40px rgba(1, 24, 48, 0.7);
+      border-color: rgba(168, 204, 235, 0.7);
+    }
+
+    .btn::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background: linear-gradient(135deg, rgba(255, 255, 255, 0.4), transparent 50%);
+      mix-blend-mode: screen;
+      opacity: 0;
+      transition: opacity 0.22s ease;
+    }
+
+    .btn:hover::before {
+      opacity: 1;
+    }
+
+    .btn:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 24px 50px rgba(0, 0, 0, 0.85);
+    }
+
+    .btn-outline {
+      background: linear-gradient(135deg, rgba(19, 15, 12, 0.96), rgba(30, 22, 16, 0.96));
+      border-color: rgba(153, 183, 210, 0.8);
+      color: var(--accent-light);
+      box-shadow: 0 14px 32px rgba(0, 0, 0, 0.7);
+    }
+
+    .btn-outline:hover {
+      background: radial-gradient(circle at top left, rgba(35, 111, 170, 0.3), rgba(18, 15, 12, 0.96));
+      transform: translateY(-2px);
+      box-shadow: 0 22px 46px rgba(0, 0, 0, 0.9);
+    }
+
+    .btn-small {
+      padding: 7px 16px;
+      font-size: 14px;
+      font-weight: 600;
+    }
+
+    /* HERO ------------------------------------------------------------ */
 
     .hero {
-      margin-bottom: 54px;
+      margin-bottom: 40px;
     }
 
     .hero-inner {
       display: grid;
-      grid-template-columns: minmax(0, 1.8fr) minmax(0, 1.1fr);
-      gap: 32px;
-      padding: 38px 36px;
+      grid-template-columns: minmax(0, 1.75fr) minmax(0, 1.1fr);
+      gap: 34px;
+      padding: 34px 34px 32px;
       border-radius: var(--radius-xl);
-      background: radial-gradient(circle at top left, #fff9f2, #fff3e7 40%, #f2d1b0 100%);
+      background: radial-gradient(circle at top left, rgba(255, 251, 244, 0.96), rgba(255, 238, 217, 0.97));
       border: 1px solid var(--card-border);
       box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
-      min-height: 420px;
     }
 
     .hero-inner::before {
@@ -160,10 +239,9 @@
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 10% -20%, rgba(255, 255, 255, 0.85), transparent 55%),
-        radial-gradient(circle at 100% 120%, rgba(247, 200, 136, 0.55), transparent 65%);
+        radial-gradient(circle at 8% 0, rgba(255, 255, 255, 0.9), transparent 60%),
+        radial-gradient(circle at 100% 120%, rgba(37, 92, 142, 0.3), transparent 65%);
       mix-blend-mode: soft-light;
-      opacity: 0.8;
       pointer-events: none;
     }
 
@@ -175,18 +253,21 @@
 
     .hero-kicker {
       font-size: 13px;
-      letter-spacing: 0.22em;
+      letter-spacing: 0.25em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 6px;
+      color: var(--accent-soft);
+      margin-bottom: 7px;
+      font-family: "Cormorant Garamond", serif;
     }
 
     .hero-name {
       font-family: "Playfair Display", serif;
-      font-size: 36px;
-      letter-spacing: 0.06em;
+      font-size: 40px;
+      letter-spacing: 0.14em;
+      text-transform: uppercase;
       margin: 0 0 10px;
-      color: var(--gold);
+      color: var(--accent);
+      font-style: italic;
     }
 
     .hero-role {
@@ -197,7 +278,7 @@
 
     .hero-motto {
       font-size: 18px;
-      color: var(--espresso);
+      color: var(--espresso-soft);
       max-width: 720px;
       margin-bottom: 22px;
     }
@@ -213,10 +294,10 @@
       font-size: 13px;
       padding: 6px 13px;
       border-radius: var(--radius-pill);
-      border: 1px solid rgba(193, 151, 103, 0.7);
-      background: rgba(255, 248, 238, 0.96);
+      border: 1px solid rgba(157, 120, 88, 0.5);
+      background: rgba(255, 247, 235, 0.96);
       color: var(--espresso-soft);
-      box-shadow: 0 6px 18px rgba(166, 124, 88, 0.24);
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.14);
       white-space: nowrap;
     }
 
@@ -225,55 +306,6 @@
       flex-wrap: wrap;
       gap: 14px;
       margin-bottom: 10px;
-    }
-
-    .btn-primary,
-    .btn-secondary {
-      border-radius: var(--radius-pill);
-      padding: 11px 26px;
-      font-size: 16px;
-      font-weight: 700;
-      cursor: pointer;
-      border: 1px solid transparent;
-      text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      position: relative;
-      overflow: hidden;
-      color: var(--espresso);
-      box-shadow: 0 14px 34px rgba(135, 97, 68, 0.32);
-      background: transparent;
-    }
-
-    .btn-primary {
-      background: radial-gradient(circle at top left, #fff6da, #f4cf7b);
-      border-color: rgba(153, 110, 64, 0.9);
-    }
-
-    .btn-primary::before {
-      content: "";
-      position: absolute;
-      inset: 0;
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.55), transparent);
-      mix-blend-mode: soft-light;
-      opacity: 0;
-      transition: opacity 0.22s ease;
-    }
-
-    .btn-primary:hover::before {
-      opacity: 1;
-    }
-
-    .btn-secondary {
-      border-color: rgba(164, 124, 84, 0.9);
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.92), rgba(248, 229, 203, 0.96));
-    }
-
-    .btn-primary:hover,
-    .btn-secondary:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 22px 52px rgba(135, 97, 68, 0.4);
     }
 
     .hero-langs {
@@ -286,14 +318,12 @@
     .hero-lang {
       padding: 5px 13px;
       border-radius: var(--radius-pill);
-      background: linear-gradient(135deg, rgba(255, 255, 255, 0.98), rgba(251, 230, 200, 0.95));
-      border: 1px solid rgba(184, 142, 101, 0.75);
+      background: rgba(17, 27, 40, 0.96);
+      border: 1px solid rgba(174, 204, 231, 0.8);
       font-size: 13px;
       font-weight: 600;
-      color: var(--espresso-soft);
+      color: var(--accent-light);
     }
-
-    /* Hero right */
 
     .hero-right {
       display: flex;
@@ -303,13 +333,14 @@
     }
 
     .hero-photo-frame {
-      width: 220px;
-      height: 220px;
-      padding: 5px;
+      width: 230px;
+      height: 230px;
+      padding: 6px;
       border-radius: 50%;
-      background: linear-gradient(145deg, #fff7e5, #f0c98a);
-      box-shadow: 0 20px 40px rgba(125, 94, 68, 0.48),
-                  0 0 0 8px rgba(255, 255, 255, 0.85);
+      background: conic-gradient(from 210deg, #c6e3ff, #1b4f7b, #f5e3c2, #c6e3ff);
+      box-shadow:
+        0 24px 55px rgba(0, 0, 0, 0.8),
+        0 0 0 6px rgba(255, 255, 255, 0.9);
       overflow: hidden;
       position: relative;
     }
@@ -318,7 +349,7 @@
       content: "";
       position: absolute;
       inset: 0;
-      background: radial-gradient(circle at 15% 0, rgba(255, 255, 255, 0.55), transparent 55%);
+      background: radial-gradient(circle at 20% 0, rgba(255, 255, 255, 0.5), transparent 55%);
       mix-blend-mode: soft-light;
       pointer-events: none;
     }
@@ -331,6 +362,7 @@
       transform: translateZ(0);
       backface-visibility: hidden;
       image-rendering: -webkit-optimize-contrast;
+      border-radius: 50%;
     }
 
     .hero-badges {
@@ -343,147 +375,136 @@
     .hero-badge {
       border-radius: 18px;
       padding: 10px 12px;
-      background: rgba(255, 250, 241, 0.96);
-      border: 1px solid rgba(193, 151, 103, 0.55);
-      box-shadow: 0 10px 30px rgba(143, 110, 79, 0.25);
+      background: rgba(10, 19, 32, 0.96);
+      border: 1px solid rgba(173, 203, 228, 0.85);
+      box-shadow: 0 13px 30px rgba(0, 0, 0, 0.75);
       font-size: 13px;
+      color: var(--accent-light);
     }
 
     .hero-badge-label {
       text-transform: uppercase;
       letter-spacing: 0.1em;
       font-size: 11px;
-      color: var(--muted);
-      margin-bottom: 2px;
+      opacity: 0.8;
+      margin-bottom: 1px;
     }
 
     .hero-badge-main {
       font-weight: 600;
-      color: var(--espresso-soft);
     }
 
     .hero-contact-mini {
       font-size: 14px;
-      color: var(--muted);
+      color: var(--espresso-soft);
       text-align: center;
       margin-top: 6px;
     }
 
-    .hero-contact-icons {
-      display: flex;
-      justify-content: center;
-      gap: 10px;
-      margin-top: 6px;
+    .hero-contact-mini a {
+      color: var(--accent-soft);
+      text-decoration: none;
+      border-bottom: 1px solid transparent;
     }
 
-    .contact-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 50%;
-      border: 1px solid rgba(153, 110, 64, 0.85);
+    .hero-contact-mini a:hover {
+      border-bottom-color: var(--accent-soft);
+    }
+
+    /* INTRO BRIDGE CARD ---------------------------------------------- */
+
+    .hero-bridge-wrapper {
+      margin-top: 32px;
+      display: flex;
+      justify-content: center;
+    }
+
+    .hero-bridge-card {
+      max-width: 880px;
+      padding: 18px 26px 18px;
+      border-radius: var(--radius-xl);
+      background: radial-gradient(circle at top left, rgba(255, 251, 244, 0.96), rgba(255, 235, 214, 0.97));
+      border: 1px solid rgba(186, 151, 122, 0.7);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.75);
+      text-align: center;
+      font-size: 17px;
+      color: var(--espresso-soft);
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero-bridge-card::before {
+      content: "";
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(circle at 0 0, rgba(255, 255, 255, 0.8), transparent 55%),
+        radial-gradient(circle at 100% 120%, rgba(37, 117, 178, 0.28), transparent 60%);
+      mix-blend-mode: soft-light;
+      pointer-events: none;
+    }
+
+    .hero-bridge-pill {
       display: inline-flex;
       align-items: center;
       justify-content: center;
-      text-decoration: none;
-      background: radial-gradient(circle at top left, #fffdf6, #f3cf90);
-      color: var(--espresso);
-      box-shadow: 0 8px 18px rgba(140, 103, 72, 0.35);
-      font-size: 16px;
-      transition: transform 0.18s ease, box-shadow 0.18s ease;
+      padding: 4px 14px;
+      border-radius: var(--radius-pill);
+      font-size: 12px;
+      letter-spacing: 0.17em;
+      text-transform: uppercase;
+      color: var(--accent-soft);
+      border: 1px solid rgba(134, 177, 214, 0.8);
+      background: rgba(6, 13, 23, 0.02);
+      margin-bottom: 6px;
+      font-family: "Cormorant Garamond", serif;
     }
 
-    .contact-icon:hover {
-      transform: translateY(-1px);
-      box-shadow: 0 14px 30px rgba(140, 103, 72, 0.45);
-    }
-
-    .divider-soft {
-      height: 1px;
-      margin: 34px auto 34px;
-      max-width: 760px;
-      background: linear-gradient(
-        to right,
-        transparent,
-        rgba(185, 139, 93, 0.4),
-        rgba(185, 139, 93, 0.8),
-        rgba(185, 139, 93, 0.4),
-        transparent
-      );
-    }
-
-    .intro-text {
-      max-width: 840px;
-      margin: 0 auto 44px;
-      text-align: center;
-      font-size: 18px;
-      color: var(--espresso-soft);
-      background: rgba(248, 229, 207, 0.92);
-      border-radius: 22px;
-      padding: 18px 24px;
-      border: 1px solid rgba(187, 140, 95, 0.55);
-      box-shadow: 0 16px 45px rgba(140, 103, 72, 0.32);
-    }
-
-    /* SECTIONS */
+    /* SECTIONS -------------------------------------------------------- */
 
     .section {
-      margin-bottom: 38px;
+      margin-top: 40px;
+      margin-bottom: 40px;
     }
 
     .section-inner {
       position: relative;
-      padding: 40px 34px 36px;
+      padding: 40px 34px 32px;
       border-radius: var(--radius-xl);
-      background: var(--section-bg-main);
-      border: 1px solid rgba(149, 111, 79, 0.7);
+      background: var(--card-bg-strong);
+      border: 1px solid var(--card-border);
       box-shadow: var(--shadow-card);
-      min-height: 640px;
       overflow: hidden;
       transform-origin: center top;
-      transform: translateY(40px) scale(0.98);
-      opacity: 0;
     }
-
-    .section:nth-of-type(2) .section-inner { background: var(--section-bg-alt-1); }
-    .section:nth-of-type(3) .section-inner { background: var(--section-bg-alt-2); }
-    .section:nth-of-type(4) .section-inner { background: var(--section-bg-alt-3); }
-    .section:nth-of-type(5) .section-inner { background: var(--section-bg-main); }
-    .section:nth-of-type(6) .section-inner { background: var(--section-bg-alt-1); }
-    .section:nth-of-type(7) .section-inner { background: var(--section-bg-alt-2); }
-    .section:nth-of-type(8) .section-inner { background: var(--section-bg-alt-3); }
-    .section:nth-of-type(9) .section-inner { background: var(--section-bg-main); }
 
     .section-inner::before {
       content: "";
       position: absolute;
       inset: 0;
       background:
-        radial-gradient(circle at 5% 0, rgba(255, 255, 255, 0.35), transparent 58%),
-        radial-gradient(circle at 100% 130%, rgba(245, 200, 140, 0.45), transparent 65%);
+        radial-gradient(circle at 5% 0, rgba(255, 255, 255, 0.9), transparent 60%),
+        radial-gradient(circle at 100% 130%, rgba(37, 96, 150, 0.26), transparent 65%);
       mix-blend-mode: soft-light;
-      opacity: 0.9;
+      opacity: 0.8;
       pointer-events: none;
-    }
-
-    .section-content {
-      position: relative;
-      z-index: 1;
     }
 
     .section-label {
       font-size: 12px;
       letter-spacing: 0.19em;
       text-transform: uppercase;
-      color: var(--muted);
-      margin-bottom: 6px;
-      text-align: center;
+      color: var(--accent-soft);
+      margin-bottom: 8px;
+      font-family: "Cormorant Garamond", serif;
     }
 
     .section-title {
       font-family: "Playfair Display", serif;
       font-size: 30px;
-      color: var(--gold);
+      color: var(--accent);
       margin: 0 0 14px;
+      font-style: italic;
       text-align: center;
     }
 
@@ -492,22 +513,21 @@
       color: var(--espresso-soft);
       margin-bottom: 18px;
       padding-bottom: 14px;
-      border-bottom: 1px solid rgba(187, 140, 95, 0.45);
-      max-width: 880px;
-      margin-left: auto;
-      margin-right: auto;
+      border-bottom: 1px solid rgba(140, 108, 82, 0.38);
       text-align: center;
     }
 
     .section-body {
       font-size: 18px;
-      color: var(--espresso);
+      color: var(--espresso-soft);
+      position: relative;
+      z-index: 1;
     }
 
     .two-col {
       display: grid;
       grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
-      gap: 26px;
+      gap: 28px;
     }
 
     .pill-row {
@@ -521,8 +541,8 @@
       font-size: 13px;
       padding: 5px 12px;
       border-radius: var(--radius-pill);
-      border: 1px solid rgba(187, 140, 95, 0.7);
-      background: rgba(255, 247, 234, 0.98);
+      border: 1px solid rgba(157, 120, 88, 0.55);
+      background: rgba(255, 248, 238, 0.98);
       color: var(--espresso-soft);
       white-space: nowrap;
     }
@@ -536,9 +556,8 @@
     .bullet-list li {
       position: relative;
       padding-left: 22px;
-      margin: 6px 0;
+      margin: 7px 0;
       font-size: 17px;
-      color: var(--espresso);
     }
 
     .bullet-list li::before {
@@ -549,52 +568,16 @@
       width: 7px;
       height: 7px;
       border-radius: 50%;
-      background: var(--gold);
-      box-shadow: 0 0 10px rgba(198, 148, 76, 0.9);
+      background: var(--accent-soft);
+      box-shadow: 0 0 10px rgba(56, 131, 189, 0.9);
     }
 
-    /* STATS */
-
-    .stat-grid {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-      gap: 12px;
-      margin-top: 16px;
-    }
-
-    .stat-box {
-      border-radius: 18px;
-      padding: 12px 14px;
-      background: rgba(255, 250, 241, 0.98);
-      border: 1px solid rgba(193, 151, 103, 0.6);
-      box-shadow: 0 12px 34px rgba(161, 124, 86, 0.26);
-    }
-
-    .stat-label {
-      font-size: 12px;
-      text-transform: uppercase;
-      letter-spacing: 0.09em;
-      color: var(--muted);
-      margin-bottom: 4px;
-    }
-
-    .stat-number {
-      font-size: 22px;
-      font-weight: 700;
-      color: var(--gold-soft);
-    }
-
-    .stat-note {
-      font-size: 15px;
-      color: var(--espresso);
-    }
-
-    /* KPI bars */
+    /* KPI BARS -------------------------------------------------------- */
 
     .kpi-chart {
-      margin-top: 22px;
-      padding-top: 14px;
-      border-top: 1px dashed rgba(193, 151, 103, 0.5);
+      margin-top: 16px;
+      padding-top: 16px;
+      border-top: 1px dashed rgba(120, 92, 70, 0.5);
     }
 
     .kpi-row {
@@ -606,15 +589,15 @@
     }
 
     .kpi-label {
-      flex: 0 0 240px;
+      flex: 0 0 260px;
       color: var(--espresso-soft);
     }
 
     .kpi-bar-outer {
       flex: 1;
-      height: 8px;
+      height: 9px;
       border-radius: 999px;
-      background: rgba(219, 188, 152, 0.3);
+      background: rgba(161, 136, 113, 0.28);
       overflow: hidden;
     }
 
@@ -622,11 +605,47 @@
       width: 0%;
       height: 100%;
       border-radius: 999px;
-      background: linear-gradient(90deg, #f7da9a, #e9b95c, #d08a2b);
-      box-shadow: 0 0 12px rgba(215, 165, 82, 0.85);
+      background: linear-gradient(90deg, #5aa6e4, #1b5f91, #0b273f);
+      box-shadow: 0 0 14px rgba(31, 105, 167, 0.9);
     }
 
-    /* TIMELINE */
+    /* STATS ----------------------------------------------------------- */
+
+    .stat-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 12px;
+      margin-top: 16px;
+    }
+
+    .stat-box {
+      border-radius: 18px;
+      padding: 12px 14px;
+      background: rgba(255, 248, 238, 0.98);
+      border: 1px solid rgba(157, 120, 88, 0.55);
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.25);
+    }
+
+    .stat-label {
+      font-size: 12px;
+      text-transform: uppercase;
+      letter-spacing: 0.09em;
+      color: var(--accent-soft);
+      margin-bottom: 4px;
+    }
+
+    .stat-number {
+      font-size: 22px;
+      font-weight: 700;
+      color: var(--accent);
+    }
+
+    .stat-note {
+      font-size: 15px;
+      color: var(--espresso-soft);
+    }
+
+    /* TIMELINE -------------------------------------------------------- */
 
     .timeline-grid {
       display: grid;
@@ -636,27 +655,28 @@
     }
 
     .timeline-item {
-      border-radius: 20px;
-      padding: 12px 16px;
-      background: rgba(255, 249, 241, 0.98);
-      border: 1px solid rgba(193, 151, 103, 0.65);
-      box-shadow: 0 12px 34px rgba(158, 121, 86, 0.25);
+      border-radius: 22px;
+      padding: 12px 16px 14px;
+      background: rgba(255, 248, 237, 0.98);
+      border: 1px solid rgba(172, 134, 102, 0.65);
+      box-shadow: 0 12px 34px rgba(0, 0, 0, 0.3);
     }
 
     .timeline-title {
       font-family: "Playfair Display", serif;
-      font-size: 18px;
-      color: var(--gold);
+      font-size: 19px;
+      color: var(--accent);
       margin-bottom: 4px;
+      font-style: italic;
     }
 
     .timeline-meta {
       font-size: 14px;
-      color: var(--muted);
+      color: var(--accent-soft);
       margin-bottom: 8px;
     }
 
-    /* PROJECT GRID */
+    /* PROJECT GRID ---------------------------------------------------- */
 
     .projects-grid {
       display: grid;
@@ -667,54 +687,47 @@
 
     .project-card {
       border-radius: 22px;
-      padding: 16px 18px 14px;
+      padding: 18px 18px 18px;
       background:
-        radial-gradient(circle at top left, #fff9ef, #fff2e2 40%, #f7dfc3 100%);
-      border: 1px solid rgba(205, 162, 112, 0.7);
-      box-shadow: 0 18px 52px rgba(163, 122, 88, 0.32);
+        radial-gradient(circle at top left, #fff9f1, #ffeada 40%, #f8ddc7 100%);
+      border: 1px solid rgba(172, 134, 102, 0.75);
+      box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
       display: flex;
       flex-direction: column;
       justify-content: space-between;
+      min-height: 210px;
       transition: transform 0.18s ease, box-shadow 0.18s ease, border-color 0.18s ease;
     }
 
     .project-kicker {
       font-size: 13px;
       letter-spacing: 0.08em;
-      color: var(--muted);
+      color: var(--accent-soft);
       text-transform: uppercase;
       margin-bottom: 4px;
     }
 
     .project-title {
       font-family: "Playfair Display", serif;
-      font-size: 19px;
-      color: var(--gold);
+      font-size: 20px;
+      color: var(--accent);
       margin-bottom: 8px;
+      font-style: italic;
     }
 
     .project-body {
       font-size: 16px;
       color: var(--espresso-soft);
-      margin-bottom: 10px;
-    }
-
-    .project-link {
-      font-size: 15px;
-      color: var(--espresso-soft);
-      font-weight: 600;
-      text-decoration: none;
-      border-bottom: 1px solid rgba(148, 107, 65, 0.85);
-      align-self: flex-start;
+      margin-bottom: 12px;
     }
 
     .project-card:hover {
       transform: translateY(-6px);
-      box-shadow: 0 26px 70px rgba(150, 114, 81, 0.38);
-      border-color: rgba(221, 176, 119, 1);
+      box-shadow: 0 28px 80px rgba(0, 0, 0, 0.7);
+      border-color: rgba(203, 170, 141, 1);
     }
 
-    /* PROCESS */
+    /* PROCESS --------------------------------------------------------- */
 
     .process-step {
       margin-bottom: 14px;
@@ -723,57 +736,42 @@
     .process-label {
       font-family: "Playfair Display", serif;
       font-size: 18px;
-      color: var(--gold);
+      color: var(--accent);
       margin-bottom: 4px;
+      font-style: italic;
     }
 
-    /* CONTACT + MOTIVATION */
+    /* CONTACT --------------------------------------------------------- */
 
     .motivation-highlight {
       font-weight: 700;
-      color: var(--gold-soft);
-    }
-
-    .card-split {
-      grid-template-columns: minmax(0, 1fr) minmax(0, 1fr);
-    }
-
-    .mini-card {
-      background: rgba(255, 249, 241, 0.98);
-      border-radius: 22px;
-      padding: 18px 20px;
-      border: 1px solid rgba(193, 151, 103, 0.65);
-      box-shadow: 0 14px 40px rgba(150, 114, 81, 0.35);
+      color: var(--accent);
     }
 
     .contact-lines {
       font-size: 16px;
-      margin-top: 10px;
+      margin-top: 12px;
       color: var(--espresso-soft);
+      display: flex;
+      flex-direction: column;
+      gap: 8px;
     }
 
-    .contact-item {
-      margin: 5px 0;
-    }
-
-    .contact-item a {
-      color: var(--espresso-soft);
-      text-decoration: none;
-      border-bottom: 1px solid rgba(148, 107, 65, 0.9);
-    }
-
-    .contact-item a:hover {
-      border-bottom-color: rgba(148, 107, 65, 1);
+    .contact-buttons {
+      margin-top: 14px;
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
     }
 
     .footnote {
-      margin-top: 30px;
+      margin-top: 32px;
       font-size: 14px;
-      color: var(--muted);
+      color: #f3e0c7;
       text-align: center;
     }
 
-    /* RESPONSIVE */
+    /* RESPONSIVE ------------------------------------------------------ */
 
     @media (max-width: 1100px) {
       .hero-inner {
@@ -784,14 +782,20 @@
         order: -1;
       }
 
-      .two-col,
-      .card-split,
+      .two-col {
+        grid-template-columns: minmax(0, 1fr);
+      }
+
       .timeline-grid {
         grid-template-columns: minmax(0, 1fr);
       }
 
       .projects-grid {
         grid-template-columns: minmax(0, 1fr);
+      }
+
+      .kpi-label {
+        flex-basis: 190px;
       }
     }
 
@@ -808,30 +812,23 @@
       }
 
       .hero-inner {
-        padding: 28px 20px 24px;
+        padding: 26px 22px 24px;
       }
 
       .section-inner {
-        padding: 26px 20px 22px;
-        min-height: 560px;
-      }
-
-      .kpi-label {
-        flex-basis: 170px;
+        padding: 26px 22px 24px;
       }
     }
   </style>
 </head>
 
 <body>
-  <div class="latte-glow"></div>
-
   <div class="page-shell">
 
     <!-- NAV -->
     <div class="nav-shell">
       <div class="nav-inner">
-        <div class="nav-logo-text">MOHAMED ABDELRAZEK - PORTFOLIO</div>
+        <div class="nav-logo-text">WELCOME</div>
         <nav class="nav-links">
           <a href="#methodology" class="nav-link">Methodology</a>
           <a href="#flagship" class="nav-link">TechnoMounts</a>
@@ -843,7 +840,7 @@
       </div>
     </div>
 
-    <!-- HERO -->
+    <!-- HERO --------------------------------------------------------- -->
     <header class="hero">
       <div class="hero-inner">
         <div class="hero-left">
@@ -851,25 +848,26 @@
           <h1 class="hero-name">Mohamed Abdelrazek</h1>
           <div class="hero-role">Building complete marketing systems from zero to performance ready</div>
           <p class="hero-motto">
-            Work is not just ads or pages. It is a connected system that links acquisition, analytics, and conversion into one engine.
-            Every project in this portfolio shows how structure, hands on implementation, and measurement fit together instead of living as isolated tasks.
+            Work is treated as one connected engine, not scattered tasks. Acquisition, analytics, and conversion are wired together so that
+            every test, landing page, and campaign feeds the same performance story. Each project in this portfolio shows how that structure
+            looks in real accounts, not in theory.
           </p>
 
           <div class="hero-tags">
             <div class="hero-tag">Performance marketing and analytics</div>
             <div class="hero-tag">Ecommerce and B2B influenced journeys</div>
-            <div class="hero-tag">Stack - Shopify, GA4, Google Ads, CRM</div>
+            <div class="hero-tag">Stack — Shopify, GA4, Google Ads, CRM</div>
           </div>
 
           <div class="hero-actions">
-            <a href="resume.html" class="btn-primary">View resume</a>
-            <a href="#contact-section" class="btn-secondary">Discuss a project</a>
+            <a href="resume.html" class="btn">View resume</a>
+            <a href="#contact-section" class="btn-outline">Discuss a project</a>
           </div>
 
           <div class="hero-langs">
-            <span class="hero-lang">Arabic - Native</span>
-            <span class="hero-lang">English - C2</span>
-            <span class="hero-lang">German - B2</span>
+            <span class="hero-lang">Arabic — Native</span>
+            <span class="hero-lang">English — C2</span>
+            <span class="hero-lang">German — B2</span>
           </div>
         </div>
 
@@ -881,7 +879,7 @@
           <div class="hero-badges">
             <div class="hero-badge">
               <div class="hero-badge-label">Flagship stack</div>
-              <div class="hero-badge-main">TechnoMounts - UAE hardware brand</div>
+              <div class="hero-badge-main">TechnoMounts — UAE hardware brand</div>
             </div>
             <div class="hero-badge">
               <div class="hero-badge-label">Experience</div>
@@ -899,293 +897,237 @@
 
           <div class="hero-contact-mini">
             <div>Available for remote and hybrid roles in MENA and beyond.</div>
-            <div class="hero-contact-icons">
-              <a class="contact-icon" href="mailto:moe-abdelrazek@outlook.com" title="Email">
-                ✉
-              </a>
-              <a class="contact-icon" href="https://wa.me/201017286384" target="_blank" title="WhatsApp">
-                ☏
-              </a>
+            <div>
+              <a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a>
+              &nbsp;•&nbsp;
+              <a href="https://wa.me/201017286384" target="_blank">WhatsApp</a>
             </div>
           </div>
         </div>
       </div>
+
+      <!-- Special animated bridge card -->
+      <div class="hero-bridge-wrapper">
+        <div class="hero-bridge-card" id="intro-bridge">
+          <div class="hero-bridge-pill">From campaigns to systems</div>
+          <p>
+            Acquisition, analytics, and conversion sit in one view. Accounts, tracking, and landing pages are designed together so campaigns
+            can be tested, scaled, and handed over without losing context. The sections below move from methodology and TechnoMounts as a flagship
+            project to evolution across industries, SEO that owns a niche, and how AI and automation keep the whole system light to operate.
+          </p>
+        </div>
+      </div>
     </header>
 
-    <div class="divider-soft"></div>
-
-    <p class="intro-text">
-      Acquisition, analytics, and conversion are treated as one system. Accounts, tracking, and landing pages are designed together so that campaigns can be tested, scaled, and reported with clarity.
-      The sections below move from methodology and TechnoMounts as a flagship project to evolution across campaigns, SEO and automation work, and full stack process ownership.
-    </p>
-
-    <!-- SECTION 1: METHODOLOGY -->
+    <!-- 01 METHODOLOGY ------------------------------------------------ -->
     <section class="section" id="methodology">
-      <article class="section-inner sr-watch">
-        <div class="section-content">
-          <div class="section-label">01 - Methodology</div>
-          <h2 class="section-title">From single tasks to complete systems</h2>
-          <div class="section-sub">
-            The work started as individual tasks - posts, ads, and pages - and matured into owning the full chain from research to reporting. The approach below shows how each engagement is structured today.
-          </div>
-          <div class="section-body">
-            <p>
-              Every engagement begins with one clear engine. Channels, tracking, and landing pages are mapped together instead of being handled as separate to do lists.
-              The goal is a setup where tests, scaling, and handovers are predictable rather than improvised.
-            </p>
+      <article class="section-inner">
+        <div class="section-label">01 — Methodology</div>
+        <h2 class="section-title">From single tasks to complete systems</h2>
+        <div class="section-sub">
+          Every engagement begins with one engine. My first job is to design the structure that channels, tracking, and landing pages plug into,
+          so that tests are predictable and performance can be read in minutes, not in hours of guesswork.
+        </div>
+        <div class="section-body">
+          <p>
+            Work usually starts with a blank sheet. I map audiences, intent levels, and key actions, then translate that map into campaigns,
+            naming conventions, and landing page logic. This makes sure budgets, search terms, and creative are always tied back to the same
+            performance questions: which journeys create revenue, margin, and pipeline, and which do not.
+          </p>
+          <p>
+            Once the spine is clear, every asset is judged by how it supports that structure. This is how I keep experiments fast while
+            protecting long term consistency. It also makes it easier for new people to join without rebuilding everything from scratch.
+          </p>
 
-            <div class="timeline-grid">
-              <div class="timeline-item">
-                <div class="timeline-title">Phase 1 - Content and campaign tasks</div>
-                <div class="timeline-meta">Social posts, simple ads, single objectives</div>
-                <p>
-                  Writing ads and posts, building individual pages, and tracking basic metrics such as clicks and form fills. This phase sharpened copy, creative, and understanding of how people respond in real feeds.
-                </p>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-title">Phase 2 - Channel level systems</div>
-                <div class="timeline-meta">Search, social, email, and analytics</div>
-                <p>
-                  Google Ads, Meta, email, and GA4 are connected so budgets, audiences, and events line up. Journeys move from cold traffic into remarketing and lifecycle flows instead of one off pushes.
-                </p>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-title">Phase 3 - Full stack performance engine</div>
-                <div class="timeline-meta">Shopify, CRM, reports, and funnels</div>
-                <p>
-                  Campaigns, landing pages, product structures, CRM stages, and dashboards are treated as one architecture. Decisions are made on blended metrics - revenue, margin, and pipeline - instead of isolated platform numbers.
-                </p>
-              </div>
-              <div class="timeline-item">
-                <div class="timeline-title">Phase 4 - Continuous improvement</div>
-                <div class="timeline-meta">Testing, documentation, and handover</div>
-                <p>
-                  Experiments are logged, creative and landing page variants are documented, and reporting is simplified so leadership can see cause and effect without needing to dig through accounts.
-                </p>
-              </div>
-            </div>
+          <ul class="bullet-list">
+            <li>Connect acquisition, analytics, and conversion into one performance stack.</li>
+            <li>Use GA4, Google Ads, Search Console, CRM, and landing pages as a single source of truth.</li>
+            <li>Document campaign structures so that tests, scaling, and handovers are predictable.</li>
+            <li>Report using the smallest set of metrics needed for decisions that change revenue and margin.</li>
+          </ul>
 
-            <ul class="bullet-list" style="margin-top: 16px;">
-              <li>Connect acquisition, analytics, and conversion into one performance stack rather than separate vendors.</li>
-              <li>Use GA4, Google Ads, Search Console, CRM, and landing pages as a unified data source.</li>
-              <li>Structure campaigns so that tests, scaling, and handovers are predictable and documented.</li>
-              <li>Report using the fewest metrics needed for decisions that affect revenue, margin, and pipeline.</li>
-            </ul>
-
-            <div class="pill-row">
-              <span class="pill">United Arab Emirates</span>
-              <span class="pill">GCC markets</span>
-              <span class="pill">Egypt</span>
-            </div>
+          <div class="pill-row">
+            <span class="pill">Markets — United Arab Emirates</span>
+            <span class="pill">Markets — GCC</span>
+            <span class="pill">Markets — Egypt</span>
           </div>
         </div>
       </article>
     </section>
 
-    <!-- SECTION 2: CAPABILITIES -->
+    <!-- 02 CAPABILITIES ----------------------------------------------- -->
     <section class="section">
-      <article class="section-inner sr-watch">
-        <div class="section-content">
-          <div class="section-label">02 - Capabilities</div>
-          <h2 class="section-title">Core skills and daily tools</h2>
-          <div class="section-sub">
-            Skills and tools are organised around one objective - design, build, and optimise marketing systems that move from awareness to revenue with clear numbers at every step.
+      <article class="section-inner">
+        <div class="section-label">02 — Capabilities</div>
+        <h2 class="section-title">Core skills and daily tools</h2>
+        <div class="section-sub">
+          Skills and tools are organised around one objective: build and run full funnel systems that leadership can understand, trust, and scale.
+        </div>
+
+        <div class="section-body two-col">
+          <div>
+            <h3 class="process-label">Core skills</h3>
+            <ul class="bullet-list">
+              <li>Translate business targets into structured funnels from awareness to loyalty and referrals.</li>
+              <li>Design Google Ads Search and Performance Max setups anchored to real commercial outcomes.</li>
+              <li>Plan GA4 events and dashboards so non-technical teams can read performance quickly.</li>
+              <li>Shape SEO structure, on page optimisation, and technical hygiene to support paid traffic.</li>
+              <li>Optimise Shopify collections, product pages, and landing pages for high intent visitors.</li>
+              <li>Write ad copy, landing page copy, and lifecycle emails grounded in buyer intent and objections.</li>
+              <li>Build lifecycle journeys covering onboarding, nurture, winback, and retention stages.</li>
+              <li>Design experiments that connect creative, bids, and audiences directly back to revenue.</li>
+            </ul>
           </div>
-          <div class="section-body two-col">
-            <div>
-              <h3 style="color: var(--gold);">Core skills</h3>
-              <ul class="bullet-list">
-                <li>Full funnel strategy from awareness to loyalty, referrals, and B2B influenced decisions.</li>
-                <li>Search and Performance Max planning, including keyword sets, asset groups, and audience layering.</li>
-                <li>GA4 setup, event design, and reporting frameworks that leadership can read in minutes.</li>
-                <li>Technical and on page SEO, schema, and site hygiene aligned with paid traffic and landing pages.</li>
-                <li>Shopify optimisation - collections, product templates, metafields, feeds, and high intent landing pages.</li>
-                <li>Marketplace readiness - Google Merchant Center, product feeds, and Amazon style product structures.</li>
-                <li>Copywriting for Google Ads, meta ads, landing pages, long form content, and lifecycle emails.</li>
-                <li>Lifecycle journeys for onboarding, nurture, winback, and retention connected to CRM stages.</li>
-                <li>Testing frameworks that tie audiences, bids, creative, and landing pages back to revenue and margin.</li>
-              </ul>
-            </div>
-            <div>
-              <h3 style="color: var(--gold);">Tools in daily use</h3>
-              <ul class="bullet-list">
-                <li>Google Ads - Search, Performance Max, Shopping, and remarketing layers.</li>
-                <li>Google Analytics 4, Looker Studio, and Google Tag Manager for tracking and reporting.</li>
-                <li>Google Search Console, schema validators, and crawl tools for SEO diagnostics.</li>
-                <li>Shopify, themes, and app stacks for ecommerce and B2B influenced journeys.</li>
-                <li>Meta Ads Manager and LinkedIn Campaign Manager for awareness and targeted demand.</li>
-                <li>HubSpot and Zoho style CRMs for pipelines, scoring, and automation workflows.</li>
-                <li>Email platforms such as Mailchimp and Klaviyo style flows for lifecycle journeys.</li>
-                <li>GitHub and Notion style documentation for code snippets, templates, and campaign playbooks.</li>
-              </ul>
-            </div>
+          <div>
+            <h3 class="process-label">Tools in daily use</h3>
+            <ul class="bullet-list">
+              <li>Google Ads for Search, Performance Max, Shopping, and remarketing layers.</li>
+              <li>Google Analytics 4 and Looker Studio dashboards for ongoing decision making.</li>
+              <li>Google Tag Manager and Google Search Console for tracking and technical SEO.</li>
+              <li>Shopify for feeds, product structures, and theme level experience adjustments.</li>
+              <li>Meta Ads Manager for awareness and retargeting funnels where relevant.</li>
+              <li>HubSpot and Zoho style CRMs for pipeline visibility and lifecycle automation.</li>
+              <li>Mailchimp, Klaviyo style tools, and native email systems for campaign flows.</li>
+              <li>GitHub for storing landing page code, templates, and campaign components.</li>
+            </ul>
           </div>
         </div>
       </article>
     </section>
 
-    <!-- SECTION 3: TECHNOMOUNTS FLAGSHIP -->
+    <!-- 03 FLAGSHIP TECHNOMOUNTS -------------------------------------- -->
     <section class="section" id="flagship">
-      <article class="section-inner sr-watch">
-        <div class="section-content">
-          <div class="section-label">03 - Flagship project</div>
-          <h2 class="section-title">TechnoMounts UAE - from zero to niche leader</h2>
-          <div class="section-sub">
-            Specialist hardware brand that moved from minimal visibility to ranking at the top of its niche by treating Shopify, GA4, Google Ads, Search Console, and landing pages as one system instead of separate pieces.
+      <article class="section-inner">
+        <div class="section-label">03 — Flagship project</div>
+        <h2 class="section-title">TechnoMounts UAE — performance ready system</h2>
+        <div class="section-sub">
+          Building a system that took TechnoMounts from almost no search presence to consistently appearing among the top results
+          for high intent hardware queries, while feeding the same structure with Performance Max and Shopping campaigns.
+        </div>
+
+        <div class="section-body">
+          <p>
+            When I joined TechnoMounts, the brand had strong products but almost no organised digital footprint. The first months were
+            dedicated to architecture: mapping eleven landing pages to personas and intent levels, restructuring collections, and
+            creating a clean Google Merchant Center and feed foundation.
+          </p>
+          <p>
+            In parallel, I used Search Console and GA4 to establish a baseline. Most relevant hardware searches did not show TechnoMounts
+            at all, or buried the brand beyond page three. The goal was simple: own the search real estate for our best products and
+            make sure the same structure could support paid campaigns without duplication or conflict.
+          </p>
+
+          <div class="stat-grid">
+            <div class="stat-box">
+              <div class="stat-label">Landing pages</div>
+              <div class="stat-number">11</div>
+              <div class="stat-note">Built around buyer segments rather than product categories only.</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Baseline organic impressions</div>
+              <div class="stat-number">8,700</div>
+              <div class="stat-note">Across the core hardware set before SEO work began.</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">New organic impressions</div>
+              <div class="stat-number">38,500</div>
+              <div class="stat-note">After technical cleanup, content alignment, and internal linking.</div>
+            </div>
+            <div class="stat-box">
+              <div class="stat-label">Organic clicks</div>
+              <div class="stat-number">320 → 3,250</div>
+              <div class="stat-note">Growth from low occasional visits to consistent commercial traffic.</div>
+            </div>
           </div>
-          <div class="section-body">
-            <p>
-              The starting point was a store with low organic visibility, fragmented campaigns, and limited tracking. The first phase focused on architecture - mapping eleven landing pages to buyer segments and intent levels, cleaning product structures, and aligning feeds with Google Merchant Center.
-            </p>
-            <p>
-              Performance Max campaigns were grouped around these segments and Search campaigns were built on real queries pulled from Search Console. GA4 was set as the source of truth so paid and organic traffic could be read together rather than in isolation.
-            </p>
 
-            <div class="pill-row">
-              <span class="pill">Shopify and Google Merchant Center</span>
-              <span class="pill">Performance Max and Shopping campaigns</span>
-              <span class="pill">11 high intent landing pages</span>
-              <span class="pill">GA4 and Looker Studio baseline</span>
-              <span class="pill">SEO and technical cleanup</span>
-            </div>
-
-            <div class="stat-grid">
-              <div class="stat-box">
-                <div class="stat-label">Impressions - first period</div>
-                <div class="stat-number">17500</div>
-                <div class="stat-note">Across Performance Max campaigns.</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-label">Clicks and click through rate</div>
-                <div class="stat-number">1510</div>
-                <div class="stat-note">8.6 percent click through rate.</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-label">Conversions tracked</div>
-                <div class="stat-number">42</div>
-                <div class="stat-note">Events, enquiries, and actions.</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-label">Organic impressions</div>
-                <div class="stat-number">38500</div>
-                <div class="stat-note">Up from an 8700 baseline.</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-label">Organic clicks</div>
-                <div class="stat-number">3250</div>
-                <div class="stat-note">Up from a 320 baseline.</div>
-              </div>
-              <div class="stat-box">
-                <div class="stat-label">Landing pages</div>
-                <div class="stat-number">11</div>
-                <div class="stat-note">Mapped to key buyer segments.</div>
+          <div class="kpi-chart">
+            <div class="kpi-row">
+              <div class="kpi-label">Share of impressions on first page</div>
+              <div class="kpi-bar-outer">
+                <div class="kpi-bar" data-width="82"></div>
               </div>
             </div>
-
-            <div class="kpi-chart">
-              <div class="kpi-row">
-                <div class="kpi-label">Impression growth from baseline</div>
-                <div class="kpi-bar-outer">
-                  <div class="kpi-bar" data-width="82"></div>
-                </div>
-              </div>
-              <div class="kpi-row">
-                <div class="kpi-label">Click growth from baseline</div>
-                <div class="kpi-bar-outer">
-                  <div class="kpi-bar" data-width="88"></div>
-                </div>
-              </div>
-              <div class="kpi-row">
-                <div class="kpi-label">Share of tracked events</div>
-                <div class="kpi-bar-outer">
-                  <div class="kpi-bar" data-width="64"></div>
-                </div>
+            <div class="kpi-row">
+              <div class="kpi-label">Share of clicks captured vs baseline</div>
+              <div class="kpi-bar-outer">
+                <div class="kpi-bar" data-width="88"></div>
               </div>
             </div>
+            <div class="kpi-row">
+              <div class="kpi-label">Landing pages tied directly to revenue</div>
+              <div class="kpi-bar-outer">
+                <div class="kpi-bar" data-width="70"></div>
+              </div>
+            </div>
+          </div>
 
-            <p style="margin-top: 18px;">
-              <a href="https://moeabdelrazek.github.io/TechnoMounts/" target="_blank" class="project-link">
-                Open full TechnoMounts case study
-              </a>
-            </p>
+          <p style="margin-top: 18px;">
+            For key searches such as anti theft tablet stands, monitor arms, and adjustable floor mounts in the UAE, TechnoMounts moved
+            from almost no visibility to consistently appearing in the top cluster of results. The same landing pages power Google Ads,
+            Shopping, and Performance Max campaigns, so budget is always sending traffic into URLs that already win organically.
+          </p>
+
+          <div style="margin-top: 18px;">
+            <a href="https://moeabdelrazek.github.io/TechnoMounts/" target="_blank" class="btn btn-small">
+              Open full TechnoMounts case study
+            </a>
           </div>
         </div>
       </article>
     </section>
 
-    <!-- SECTION 4: EVOLUTION -->
+    <!-- 04 EVOLUTION -------------------------------------------------- -->
     <section class="section" id="evolution">
-      <article class="section-inner sr-watch">
-        <div class="section-content">
-          <div class="section-label">04 - Evolution</div>
-          <h2 class="section-title">How each project added a new layer</h2>
-          <div class="section-sub">
-            Each project was a learning curve, not a random campaign. Every brief added a specific layer to the stack - direct response, automation, loyalty economics, and finally full stack architecture.
-          </div>
-          <div class="section-body">
-            <p>
-              The path moved from social first campaigns into systems where CRM, automation, and cross channel data are standard. With each brand, responsibility expanded - higher budgets, more complex stacks, and stronger ownership of the full chain from research to reporting.
-            </p>
+      <article class="section-inner">
+        <div class="section-label">04 — Evolution</div>
+        <h2 class="section-title">How each project added a new layer</h2>
+        <div class="section-sub">
+          Each project is unique. Budgets, industries, and constraints are different, and so are the learning curves. The work below follows
+          how responsibility grew from single channel campaigns into full stack systems that combine CRM, automation, and paid plus organic traffic.
+        </div>
 
-            <div class="timeline-grid">
-              <div>
-                <div class="timeline-item">
-                  <div class="timeline-title">Mory Gym - membership acquisition and retention</div>
-                  <div class="timeline-meta">Fitness - Alexandria</div>
-                  <p>
-                    180000 reach, 1800 new members, 18.2 percent engagement, 12 percent conversion, and 4780 percent return on investment across a 12 week campaign.
-                    Here the focus was direct response offers, creative that moves people to action, and translating results into numbers gym owners trust.
-                  </p>
-                  <ul class="bullet-list">
-                    <li>Developed high converting offer structures and membership funnels.</li>
-                    <li>Deepened experience with pixel tracking and social optimisation.</li>
-                  </ul>
-                </div>
-
-                <div class="timeline-item">
-                  <div class="timeline-title">Rafiki Pet Hospital - full funnel for appointments</div>
-                  <div class="timeline-meta">Healthcare - veterinary hospital</div>
-                  <p>
-                    System where around 540 new leads per month at awareness become approximately 184 paying clients per month, with repeat visits, referrals, and automation based retention.
-                    This project made CRM, lead scoring, and appointment tracking part of the daily picture.
-                  </p>
-                  <ul class="bullet-list">
-                    <li>Strengthened CRM setup, automated follow up, and pipeline reporting.</li>
-                    <li>Connected Meta, GA4, and CRM data to understand which channels create real appointments.</li>
-                  </ul>
-                </div>
+        <div class="section-body">
+          <div class="timeline-grid">
+            <div>
+              <div class="timeline-item">
+                <div class="timeline-title">Mory Gym — membership acquisition and retention</div>
+                <div class="timeline-meta">Fitness — Alexandria</div>
+                <p>
+                  180,000 reach, 1,800 new members, 18.2 percent engagement, 12 percent conversion, and a 4,780 percent return on investment
+                  over twelve weeks. This is where I sharpened direct response work: understanding which offers move people quickly,
+                  translating creative into numbers gym owners trust, and building journeys that turn first visits into ongoing memberships.
+                </p>
               </div>
 
-              <div>
-                <div class="timeline-item">
-                  <div class="timeline-title">Haksoss Cafe - launch and loyalty economics</div>
-                  <div class="timeline-meta">Hospitality - premium cafe</div>
-                  <p>
-                    80800 unique users, 11.3 percent engagement, 6.2 percent conversion, 1070 loyalty sign ups, and 4.11 to 1 return on ad spend with a projected EGP 9.4M lifetime revenue.
-                    Work here shifted thinking toward loyalty and lifetime value as the centre of the funnel.
-                  </p>
-                  <ul class="bullet-list">
-                    <li>Designed loyalty funnels, retention offers, and repeat visit mechanics.</li>
-                    <li>Connected campaign results to long term value, not just first purchase.</li>
-                  </ul>
-                </div>
+              <div class="timeline-item">
+                <div class="timeline-title">Rafiki Pet Hospital — full funnel for appointments</div>
+                <div class="timeline-meta">Healthcare — veterinary hospital</div>
+                <p>
+                  Around 540 new leads per month at awareness translated into roughly 184 paying clients per month, with repeat visits and referrals.
+                  Here the focus shifted to CRM, lead scoring, and automation. Meta, GA4, and Zoho data were connected so optimisation decisions
+                  were based on booked appointments and revenue, not only on clicks.
+                </p>
+              </div>
+            </div>
 
-                <div class="timeline-item">
-                  <div class="timeline-title">TechnoMounts - full stack system</div>
-                  <div class="timeline-meta">Ecommerce hardware - United Arab Emirates</div>
-                  <p>
-                    17500 impressions, 1510 clicks, 42 conversions, and SEO growth from 8700 to 38500 impressions and 320 to 3250 clicks.
-                    TechnoMounts brought GA4, Google Ads, Merchant Center, Search Console, Shopify, dashboards, and B2B outreach into one architecture.
-                  </p>
-                  <ul class="bullet-list">
-                    <li>Integrated SEO, paid media, email, and outreach into a single performance system.</li>
-                    <li>Owned the full chain from product feed to dashboard and client reporting.</li>
-                  </ul>
-                </div>
+            <div>
+              <div class="timeline-item">
+                <div class="timeline-title">Haksoss Cafe — launch and loyalty economics</div>
+                <div class="timeline-meta">Hospitality — premium cafe</div>
+                <p>
+                  80,800 unique users, 11.3 percent engagement, 6.2 percent conversion, 1,070 loyalty sign ups, and a 4.11 to 1 return on ad spend,
+                  with a projected EGP 9.4 million lifetime revenue. This project made loyalty economics central: instead of stopping at first purchase,
+                  we measured sign ups, repeat visits, and referral potential.
+                </p>
+              </div>
 
-                <p class="section-body" style="margin-top: 10px;">
-                  Mory sharpened direct response and creative. Rafiki added automation and CRM.
-                  Haksoss layered in loyalty economics and lifetime value. TechnoMounts combined everything into a single engine that can be scaled and handed over with confidence.
+              <div class="timeline-item">
+                <div class="timeline-title">TechnoMounts — full stack system</div>
+                <div class="timeline-meta">Ecommerce hardware — United Arab Emirates</div>
+                <p>
+                  TechnoMounts combined everything into one engine: Shopify, GA4, Google Ads, Merchant Center, Search Console, dashboards,
+                  and B2B outreach. The system is structured so that landing pages, ads, and SEO reinforce each other and can be handed over
+                  with clear documentation.
                 </p>
               </div>
             </div>
@@ -1194,244 +1136,251 @@
       </article>
     </section>
 
-    <!-- SECTION 5: SEO -->
+    <!-- 05 SEO -------------------------------------------------------- -->
     <section class="section">
-      <article class="section-inner sr-watch">
-        <div class="section-content">
-          <div class="section-label">05 - SEO</div>
-          <h2 class="section-title">SEO as part of the system, not a checklist</h2>
-          <div class="section-sub">
-            SEO is handled as a way to take over a niche, not as a side checklist. The same structure used for paid media guides how pages, content, and technical work are prioritised.
-          </div>
-          <div class="section-body">
-            <h3 style="color: var(--gold);">Methodology</h3>
-            <ul class="bullet-list">
-              <li>Map each search intent to a dedicated landing page instead of pushing demand to one generic page.</li>
-              <li>Build internal linking across blogs, collections, and products so visitors naturally move deeper.</li>
-              <li>Maintain clean on page structure - titles, meta descriptions, semantic headings, and structured FAQ blocks.</li>
-              <li>Implement and maintain schema for products, FAQs, breadcrumbs, local business, and articles where relevant.</li>
-              <li>Monitor Core Web Vitals, crawl issues, index coverage, and sitemap health so technical debt does not block growth.</li>
-              <li>Use Search Console queries as a source of truth for new landing pages, blogs, and campaign themes.</li>
-            </ul>
+      <article class="section-inner">
+        <div class="section-label">05 — SEO</div>
+        <h2 class="section-title">TechnoMounts SEO — from invisible to a visible player</h2>
+        <div class="section-sub">
+          SEO is not treated as a checklist. It is the backbone that lets paid traffic land on pages that already win, and it is how TechnoMounts
+          moved from almost no presence to appearing among the top links for high intent hardware searches.
+        </div>
 
-            <h3 style="color: var(--gold); margin-top: 18px;">Impact in practice</h3>
+        <div class="section-body">
+          <h3 class="process-label">How the journey was structured</h3>
+          <ul class="bullet-list">
+            <li>Audit Search Console and GA4 to understand where the brand did not exist and which queries were worth owning.</li>
+            <li>Design a landing page map where each key search term group is matched with a specific page, not a generic homepage.</li>
+            <li>Rewrite titles, meta descriptions, and headings to reflect commercial intent and match ad messaging.</li>
+            <li>Clean internal linking across collections, blogs, and product pages so visitors move logically deeper into the site.</li>
+            <li>Implement and maintain product, FAQ, breadcrumb, and local business schema where it adds clarity for search engines.</li>
+            <li>Use Search Console queries to plan new content and detect opportunities where paid and organic results can appear together.</li>
+          </ul>
+
+          <h3 class="process-label" style="margin-top:18px;">Impact for TechnoMounts</h3>
+          <ul class="bullet-list">
+            <li>Key money terms that previously had no TechnoMounts presence now show the brand in the leading set of results.</li>
+            <li>Organic visitors land on the same eleven high intent pages used for Google Ads and Shopping, improving blended performance.</li>
+            <li>SEO reporting is tied directly to revenue pages, not just to traffic totals, which keeps prioritisation clear.</li>
+            <li>Search data feeds creative and campaign ideas for Performance Max, making every new asset grounded in real queries.</li>
+          </ul>
+        </div>
+      </article>
+    </section>
+
+    <!-- 06 AUTOMATION & AI -------------------------------------------- -->
+    <section class="section">
+      <article class="section-inner">
+        <div class="section-label">06 — Automation and AI</div>
+        <h2 class="section-title">How I keep the system lighter to operate</h2>
+        <div class="section-sub">
+          AI and automation are not side projects. They are built into how I research, build, launch, and report so more time is spent on
+          decisions and less on repeating manual tasks.
+        </div>
+
+        <div class="section-body two-col">
+          <div>
+            <h3 class="process-label">How I use AI in daily work</h3>
             <ul class="bullet-list">
-              <li>TechnoMounts - organic and paid traffic push into the same set of high intent landing pages, lifting both rankings and conversion rates for the niche.</li>
-              <li>Haksoss Cafe - local and brand queries lead to experiences that support loyalty programs and repeat visits instead of just one visit.</li>
-              <li>Rafiki and Mory Gym - SEO captures people researching clinics and gyms, supporting the paid funnel instead of competing with it.</li>
+              <li>Create custom GPT style assistants per account to keep tone, offers, and documentation consistent.</li>
+              <li>Feed GA4, Search Console, and ad platform exports into AI to surface patterns, anomalies, and starting hypotheses.</li>
+              <li>Generate first drafts of ad copy, angles, and email variants, then refine manually so final quality remains under control.</li>
+              <li>Maintain prompt libraries for landing page sections, FAQs, and product descriptions that respect brand rules.</li>
+              <li>Use AI to summarise stakeholder calls, client notes, and backlog items into structured action lists.</li>
+            </ul>
+          </div>
+          <div>
+            <h3 class="process-label">Automation in the stack</h3>
+            <ul class="bullet-list">
+              <li>Build email flows for onboarding, abandoned carts, reactivation, and loyalty tied back to CRM events.</li>
+              <li>Use automated tagging and lifecycle stages so leads and customers never sit in “unknown” buckets.</li>
+              <li>Create reusable landing page components and code blocks that can be dropped into new campaigns quickly.</li>
+              <li>Automate report refreshes through GA4 and Looker Studio so leadership always sees current numbers.</li>
+              <li>Group experiments and learnings in central documents that are updated automatically from campaign notes.</li>
             </ul>
           </div>
         </div>
       </article>
     </section>
 
-    <!-- SECTION 6: AUTOMATION AND AI -->
-    <section class="section">
-      <article class="section-inner sr-watch">
-        <div class="section-content">
-          <div class="section-label">06 - Automation and AI</div>
-          <h2 class="section-title">Making the system lighter to operate</h2>
-          <div class="section-sub">
-            AI and automation are used to remove friction so more time is spent on thinking, analysis, and creative decisions instead of manual tasks and copy paste work.
-          </div>
-          <div class="section-body two-col">
-            <div>
-              <h3 style="color: var(--gold);">AI in the workflow</h3>
-              <ul class="bullet-list">
-                <li>Custom GPT style assistants for each account to keep tone, offers, and documentation consistent.</li>
-                <li>Using AI to summarise exports from GA4, Search Console, and ad platforms, surfacing patterns and anomalies.</li>
-                <li>Generating first drafts of ad copy, angles, and email variants while keeping final quality under human control.</li>
-                <li>Building prompt libraries for landing page sections, FAQs, and product descriptions that match brand rules.</li>
-              </ul>
-            </div>
-            <div>
-              <h3 style="color: var(--gold);">Automation in the stack</h3>
-              <ul class="bullet-list">
-                <li>Email flows for onboarding, abandoned carts, reactivation, and loyalty stages tied back to CRM events.</li>
-                <li>Automated tagging, lifecycle stages, and routing inside CRM tools so leads and clients do not get lost.</li>
-                <li>Reusable landing page components and templates that allow new experiments to launch quickly.</li>
-                <li>Dashboards and reports that refresh automatically so leadership always has a current view of performance.</li>
-              </ul>
-            </div>
-          </div>
-        </div>
-      </article>
-    </section>
-
-    <!-- SECTION 7: PROJECTS -->
+    <!-- 07 PROJECT GALLERY -------------------------------------------- -->
     <section class="section" id="projects">
-      <article class="section-inner sr-watch">
-        <div class="section-content">
-          <div class="section-label">07 - Project gallery</div>
-          <h2 class="section-title">Four core projects in context</h2>
-          <div class="section-sub">
-            Each project is unique, with its own constraints, learning curves, and breakthroughs. Together they show how the same mindset adapts from fitness to healthcare, hospitality, and hardware.
-          </div>
-          <div class="section-body">
-            <p>
-              The projects below cover different industries, budgets, and levels of complexity. The common thread is ownership of the full chain from research and positioning to dashboards, reports, and lessons for the next iteration.
-            </p>
+      <article class="section-inner">
+        <div class="section-label">07 — Project gallery</div>
+        <h2 class="section-title">Four core projects in context</h2>
+        <div class="section-sub">
+          The projects below cover different industries, budgets, and levels of complexity. What stays constant is ownership of the full chain —
+          from research and positioning to dashboards, reports, and lessons that shape the next iteration.
+        </div>
 
-            <div class="projects-grid">
-              <div class="project-card">
-                <div>
-                  <div class="project-kicker">Ecommerce and B2B influenced</div>
-                  <div class="project-title">TechnoMounts UAE</div>
-                  <div class="project-body">
-                    Performance stack for a specialist hardware brand. Landing pages, GA4, Google Ads, Merchant Center, Search Console, and marketplace groundwork aligned to intent and buyer segments.
-                  </div>
+        <div class="section-body">
+          <div class="projects-grid">
+            <div class="project-card">
+              <div>
+                <div class="project-kicker">Ecommerce and B2B influenced</div>
+                <div class="project-title">TechnoMounts UAE</div>
+                <div class="project-body">
+                  Performance stack for a specialist hardware brand. Landing pages, GA4, Google Ads, Merchant Center, Search Console, and marketplace groundwork
+                  aligned to intent and buyer segments, serving both ecommerce and B2B leads.
                 </div>
-                <a href="https://moeabdelrazek.github.io/TechnoMounts/" target="_blank" class="project-link">
-                  Open TechnoMounts case study
-                </a>
               </div>
+              <a href="https://moeabdelrazek.github.io/TechnoMounts/" target="_blank" class="btn btn-small">
+                Open TechnoMounts case study
+              </a>
+            </div>
 
-              <div class="project-card">
-                <div>
-                  <div class="project-kicker">Healthcare and appointments</div>
-                  <div class="project-title">Rafiki Pet Hospital</div>
-                  <div class="project-body">
-                    System moving people from awareness into booked appointments and repeat visits, with automation and CRM data guiding optimisation and communication pace.
-                  </div>
+            <div class="project-card">
+              <div>
+                <div class="project-kicker">Healthcare and appointments</div>
+                <div class="project-title">Rafiki Pet Hospital</div>
+                <div class="project-body">
+                  System moving people from awareness into booked appointments and repeat visits. Automation and CRM data control pacing,
+                  while ads and landing pages are optimised around real appointment numbers.
                 </div>
-                <a href="https://moeabdelrazek.github.io/Rafiki-Campaign/" target="_blank" class="project-link">
-                  View Rafiki campaign
-                </a>
               </div>
+              <a href="https://moeabdelrazek.github.io/Rafiki-Campaign/" target="_blank" class="btn btn-small">
+                View Rafiki campaign
+              </a>
+            </div>
 
-              <div class="project-card">
-                <div>
-                  <div class="project-kicker">Hospitality and loyalty</div>
-                  <div class="project-title">Haksoss Cafe</div>
-                  <div class="project-body">
-                    Launch and loyalty engine where repeat visits, sign ups, and lifetime value matter more than short term spikes or vanity metrics.
-                  </div>
+            <div class="project-card">
+              <div>
+                <div class="project-kicker">Hospitality and loyalty</div>
+                <div class="project-title">Haksoss Cafe</div>
+                <div class="project-body">
+                  Launch and loyalty engine where repeat visits, sign ups, and lifetime value matter more than short term spikes or vanity metrics.
+                  Loyalty economics sit at the centre of the funnel.
                 </div>
-                <a href="https://moeabdelrazek.github.io/Haksoss_Full_Campaign/" target="_blank" class="project-link">
-                  Browse Haksoss case study
-                </a>
               </div>
+              <a href="https://moeabdelrazek.github.io/Haksoss_Full_Campaign/" target="_blank" class="btn btn-small">
+                Browse Haksoss case study
+              </a>
+            </div>
 
-              <div class="project-card">
-                <div>
-                  <div class="project-kicker">Fitness and membership</div>
-                  <div class="project-title">Mory Gym</div>
-                  <div class="project-body">
-                    Membership focused campaign combining local reach, direct response creative, and a structured path from interest to closed memberships and referrals.
-                  </div>
+            <div class="project-card">
+              <div>
+                <div class="project-kicker">Fitness and membership</div>
+                <div class="project-title">Mory Gym</div>
+                <div class="project-body">
+                  Membership focused campaign combining local reach, direct response creative, and a structured path from interest to closed memberships
+                  and referrals. Strong emphasis on translating creative into financial impact.
                 </div>
-                <a href="https://moeabdelrazek.github.io/mory-gym-campaign/" target="_blank" class="project-link">
-                  Open Mory Gym case study
-                </a>
               </div>
+              <a href="https://moeabdelrazek.github.io/mory-gym-campaign/" target="_blank" class="btn btn-small">
+                Open Mory Gym case study
+              </a>
             </div>
           </div>
         </div>
       </article>
     </section>
 
-    <!-- SECTION 8: FULL STACK -->
+    <!-- 08 FULL STACK ------------------------------------------------- -->
     <section class="section" id="process">
-      <article class="section-inner sr-watch">
-        <div class="section-content">
-          <div class="section-label">08 - Full stack</div>
-          <h2 class="section-title">End to end marketing owned by one person</h2>
-          <div class="section-sub">
-            This is not a bragging section. It is a practical view of what it means to take responsibility for the full stack - research, build, optimisation, and reporting - even when work has to be done alone.
-          </div>
-          <div class="section-body two-col">
-            <div>
-              <div class="process-step">
-                <div class="process-label">Step 1 - Research and positioning</div>
-                <p class="section-body">
-                  Market mapping, competitor analysis, audience research, and personas.
-                  Clarify where the brand fits, what buyers care about most, and which segments to prioritise in the first phase of growth.
-                </p>
-              </div>
-              <div class="process-step">
-                <div class="process-label">Step 2 - Strategy and funnel design</div>
-                <p class="section-body">
-                  Turn objectives into a funnel with channel mix, landing page logic, offers, and lifecycle touchpoints.
-                  Creative ideas are translated into journeys that can be tracked, compared, and optimised.
-                </p>
-              </div>
-              <div class="process-step">
-                <div class="process-label">Step 3 - Build and technical setup</div>
-                <p class="section-body">
-                  Implement campaigns in Google Ads, build landing pages, connect GA4, Merchant Center, Search Console, pixels, and conversion tracking so every key action is measurable.
-                </p>
-              </div>
+      <article class="section-inner">
+        <div class="section-label">08 — Full stack</div>
+        <h2 class="section-title">End to end marketing owned by one person</h2>
+        <div class="section-sub">
+          This is not a bragging section. It is a practical view of what it means when one person takes responsibility for the full stack:
+          research, build, optimisation, and reporting — even when the work has to be done alone.
+        </div>
+
+        <div class="section-body two-col">
+          <div>
+            <div class="process-step">
+              <div class="process-label">Step 1 — Research and positioning</div>
+              <p>
+                I start by mapping the market: competitors, audience segments, and demand levels. That research is turned into clear positioning,
+                personas, and an order of priority. Everyone knows which segments matter first and which can wait for later phases.
+              </p>
             </div>
-            <div>
-              <div class="process-step">
-                <div class="process-label">Step 4 - Content, creative, and offers</div>
-                <p class="section-body">
-                  Write ads, page copy, and emails. Brief or design visuals and loyalty mechanics that reflect how people decide in both B2C and B2B influenced journeys.
-                </p>
-              </div>
-              <div class="process-step">
-                <div class="process-label">Step 5 - Launch, measurement, and reporting</div>
-                <p class="section-body">
-                  Launch campaigns, manage the learning phase, keep dashboards clean, and report with the fewest metrics needed for confident decisions and next moves.
-                </p>
-              </div>
-              <div class="process-step">
-                <div class="process-label">Step 6 - Iteration, testing, and scaling</div>
-                <p class="section-body">
-                  Design tests on audiences, creatives, bids, and pages.
-                  Scale what works, cut what does not, and protect the underlying structure instead of chasing short term spikes.
-                  The responsibility is to protect quality and long term performance even when it means more work in the short term.
-                </p>
-              </div>
+            <div class="process-step">
+              <div class="process-label">Step 2 — Strategy and funnel design</div>
+              <p>
+                Objectives are translated into a funnel with channel mix, landing page logic, offers, and lifecycle touchpoints. I document this
+                structure so campaigns, budgets, and creative ideas all point in the same direction and can be compared fairly.
+              </p>
+            </div>
+            <div class="process-step">
+              <div class="process-label">Step 3 — Build and technical setup</div>
+              <p>
+                I implement campaigns in Google Ads, build landing pages, connect GA4, Merchant Center, Search Console, and pixels, and make sure
+                every key action is measurable. The aim is a clean environment where data is reliable from day one.
+              </p>
+            </div>
+          </div>
+          <div>
+            <div class="process-step">
+              <div class="process-label">Step 4 — Content, creative, and offers</div>
+              <p>
+                I write ad copy, page copy, and emails, or brief designers with specific angles and objections to answer. Loyalty mechanics and
+                value anchors are planned for both B2C and B2B influenced journeys so that campaigns do more than chase clicks.
+              </p>
+            </div>
+            <div class="process-step">
+              <div class="process-label">Step 5 — Launch, measurement, and reporting</div>
+              <p>
+                I manage the learning phase, protect budgets while data stabilises, and keep dashboards clean. Reports are structured so leadership
+                can see what to stop, what to scale, and what to test next without reading twenty charts.
+              </p>
+            </div>
+            <div class="process-step">
+              <div class="process-label">Step 6 — Iteration, testing, and scaling</div>
+              <p>
+                Tests are designed on audiences, creatives, bids, and pages, always tied back to the original funnel map. What works is scaled,
+                what does not is cut, and the underlying structure is protected so new layers can be added without breaking the system.
+              </p>
             </div>
           </div>
         </div>
       </article>
     </section>
 
-    <!-- SECTION 9: MOTIVATION AND CONTACT -->
+    <!-- 09 MOTIVATION & CONTACT -------------------------------------- -->
     <section class="section" id="contact-section">
-      <article class="section-inner sr-watch">
-        <div class="section-content">
-          <div class="section-label">09 - Motivation and contact</div>
-          <h2 class="section-title">Why this level of discipline matters</h2>
-          <div class="section-sub">
-            Behind the dashboards and structure there is a personal reason that keeps the work disciplined and standards high.
-          </div>
-          <div class="section-body two-col card-split">
-            <div class="mini-card">
-              <h3 style="color: var(--gold);">Personal driver</h3>
-              <p class="section-body">
-                Behind the campaigns and case studies there is a simple driver.
+      <article class="section-inner">
+        <div class="section-label">09 — Motivation and contact</div>
+        <h2 class="section-title">Why this level of discipline matters</h2>
+        <div class="section-sub">
+          Behind the dashboards and structure there is a personal reason that keeps the work disciplined and standards high.
+        </div>
+
+        <div class="section-body two-col">
+          <div>
+            <div class="timeline-item" style="box-shadow:0 16px 50px rgba(0,0,0,0.55);">
+              <div class="project-title">Personal driver</div>
+              <p>
+                Behind the campaigns and case studies there is a simple driver:
                 <span class="motivation-highlight">
-                  Building a life where my daughter has the best possible lifestyle, education, and opportunities.
+                  building a life where my daughter has the best possible lifestyle, education, and opportunities.
                 </span>
               </p>
-              <p class="section-body">
-                That motive keeps standards high. It is the reason to keep learning, to take responsibility for the full stack, and to treat every task with seriousness even when the work is complex or not visible on the surface.
-                Brands in this portfolio benefit from that same long term mindset and attention to detail.
+              <p>
+                That motive keeps standards high. It is the reason to keep learning, to take responsibility for the full stack, and to treat
+                every task with seriousness even when the work is complex or invisible on the surface. Brands in this portfolio benefit from
+                that same long term mindset and attention to detail.
               </p>
             </div>
-            <div class="mini-card">
-              <h3 style="color: var(--gold);">Contact</h3>
-              <p class="section-body">
-                If you want to explore how this way of working can support your brand or team, a short outline of your current setup and objectives is enough to start a focused conversation.
+          </div>
+
+          <div>
+            <div class="timeline-item" style="box-shadow:0 16px 50px rgba(0,0,0,0.55);">
+              <div class="project-title">Contact</div>
+              <p>
+                If you want to explore how this way of working can support your brand or team, a short outline of your current setup and
+                objectives is enough to start a focused conversation.
               </p>
+
               <div class="contact-lines">
-                <div class="contact-item">
-                  Email:
-                  <a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a>
-                </div>
-                <div class="contact-item">
-                  WhatsApp:
-                  <a href="https://wa.me/201017286384" target="_blank">+20 101 728 6384</a>
-                </div>
-                <div class="contact-item">
-                  LinkedIn:
-                  <a href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank">
-                    linkedin.com/in/moe-abdelrazek
-                  </a>
-                </div>
+                <div>Email: moe-abdelrazek@outlook.com</div>
+                <div>WhatsApp: +20 101 728 6384</div>
+                <div>LinkedIn: linkedin.com/in/moe-abdelrazek</div>
+              </div>
+
+              <div class="contact-buttons">
+                <a href="mailto:moe-abdelrazek@outlook.com" class="btn btn-small">Email</a>
+                <a href="https://wa.me/201017286384" target="_blank" class="btn btn-small">WhatsApp</a>
+                <a href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank" class="btn-outline btn-small">LinkedIn</a>
               </div>
             </div>
           </div>
@@ -1440,34 +1389,20 @@
     </section>
 
     <div class="footnote">
-      Thank you for taking the time to review this portfolio. If any section sparked ideas, I would be glad to discuss how the same approach can be tailored to your brand.
+      Thank you for taking the time to review this portfolio. I look forward to discussing how we can build high performance systems together.
     </div>
   </div>
 
-  <!-- ANIMATIONS -->
+  <!-- ANIMATIONS ------------------------------------------------------ -->
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/TextPlugin.min.js"></script>
 
   <script>
-    document.addEventListener("pointermove", function (e) {
-      const x = (e.clientX / window.innerWidth) * 100;
-      const y = (e.clientY / window.innerHeight) * 100;
-      document.documentElement.style.setProperty("--spot-x", x + "%");
-      document.documentElement.style.setProperty("--spot-y", y + "%");
-    });
-
     window.addEventListener("load", function () {
-      gsap.registerPlugin(ScrollTrigger, TextPlugin);
+      gsap.registerPlugin(ScrollTrigger);
 
-      ScrollTrigger.defaults({
-        ease: "power3.out",
-        duration: 1.1
-      });
-
-      const tl = gsap.timeline({
-        defaults: { ease: "power3.out", duration: 0.9 }
-      });
+      // Hero entrance
+      const tl = gsap.timeline({ defaults: { ease: "power3.out", duration: 0.9 } });
 
       tl.from(".hero-inner", { y: 60, opacity: 0 })
         .from(".hero-name", { y: 28, opacity: 0 }, "-=0.55")
@@ -1479,25 +1414,33 @@
         .from(".hero-photo-frame", { opacity: 0, y: 24 }, "-=0.48")
         .from(".hero-badge", { opacity: 0, y: 16, stagger: 0.04 }, "-=0.4");
 
-      gsap.utils.toArray(".section-inner").forEach(function (card) {
-        gsap.fromTo(
-          card,
-          { y: 70, scale: 0.97, opacity: 0 },
-          {
-            y: 0,
-            scale: 1,
-            opacity: 1,
-            duration: 1.15,
-            ease: "power3.out",
-            scrollTrigger: {
-              trigger: card,
-              start: "top 85%",
-              toggleActions: "play none none none"
-            }
-          }
-        );
+      // Special bridge card animation
+      gsap.from("#intro-bridge", {
+        y: 40,
+        opacity: 0,
+        scale: 0.96,
+        duration: 1.1,
+        ease: "power3.out",
+        delay: 0.2
       });
 
+      // Section reveal
+      gsap.utils.toArray(".section-inner").forEach(function (card, index) {
+        gsap.from(card, {
+          y: 70,
+          scale: 0.97,
+          opacity: 0,
+          duration: 1.1,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 82%",
+            toggleActions: "play none none none"
+          }
+        });
+      });
+
+      // Animated KPI bars
       gsap.utils.toArray(".kpi-bar").forEach(function (bar) {
         const target = bar.getAttribute("data-width") || 80;
         gsap.fromTo(
@@ -1516,17 +1459,19 @@
         );
       });
 
+      // Stat counters
       gsap.utils.toArray(".stat-number").forEach(function (num) {
-        const target = parseInt(num.textContent.replace(/,/g, ""), 10);
+        const raw = num.textContent.replace(/,/g, "").split("→")[1] || num.textContent.replace(/,/g, "");
+        const target = parseInt(raw, 10);
         if (!isNaN(target)) {
           gsap.fromTo(
             num,
-            { textContent: 0 },
+            { innerText: 0 },
             {
-              textContent: target,
+              innerText: target,
               duration: 1.4,
               ease: "power1.out",
-              snap: { textContent: 1 },
+              snap: { innerText: 1 },
               scrollTrigger: {
                 trigger: num.closest(".stat-box"),
                 start: "top 80%",

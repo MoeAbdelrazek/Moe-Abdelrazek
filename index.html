@@ -13,12 +13,7 @@
       --page-bg: #050505;
       --page-bg-alt: #090909;
 
-      --latte-soft: #f4e3c9;
-      --latte-deep: #d1b58c;
-      --latte-strong: #c49a5c;
-
-      --latte-border: rgba(250, 232, 204, 0.4);
-      --glass-bg: rgba(20, 16, 11, 0.9);
+      --latte-border: rgba(250, 232, 204, 0.45);
 
       --text-main: #ffffff;
       --text-soft: rgba(255, 255, 255, 0.92);
@@ -155,10 +150,7 @@
       padding: 40px 34px;
       border-radius: var(--radius-card);
       border: 1px solid var(--latte-border);
-      background:
-        radial-gradient(circle at top left, rgba(248, 230, 198, 0.24), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(253, 221, 148, 0.18), transparent 55%),
-        linear-gradient(135deg, rgba(22, 18, 13, 0.98), rgba(8, 7, 5, 0.98));
+      background: linear-gradient(135deg, #3b3126, #211b15);
       box-shadow: var(--shadow-soft);
       position: relative;
       overflow: hidden;
@@ -259,10 +251,10 @@
       position: relative;
       overflow: hidden;
       z-index: 1;
+      color: #19130a;
     }
 
     .btn-primary {
-      color: #19130a;
       background: radial-gradient(circle at top left, #ffefb8, #f4d26f);
       border-color: rgba(27, 20, 10, 0.5);
     }
@@ -297,17 +289,20 @@
     .hero-langs {
       display: flex;
       flex-wrap: wrap;
-      gap: 6px;
-      margin-top: 10px;
-      font-size: 13px;
-      color: #ffffff;
+      gap: 8px;
+      margin-top: 16px;
     }
 
     .hero-lang {
-      padding: 4px 12px;
-      border-radius: var(--radius-pill);
-      border: 1px solid rgba(244, 225, 190, 0.78);
-      background: rgba(33, 26, 18, 0.95);
+      padding: 6px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255, 230, 180, 0.7);
+      background: linear-gradient(135deg, rgba(255, 240, 210, 0.35), rgba(40, 30, 20, 0.75));
+      color: #ffffff;
+      font-size: 14px;
+      font-weight: 600;
+      backdrop-filter: blur(6px);
+      box-shadow: 0 4px 10px rgba(0,0,0,0.35);
     }
 
     .hero-right {
@@ -318,12 +313,13 @@
     }
 
     .hero-photo-frame {
-      width: 220px;
-      height: 220px;
+      width: 190px;
+      height: 190px;
+      padding: 5px;
       border-radius: 50%;
-      padding: 6px;
-      background: radial-gradient(circle at top, #fff7e2, #f0cc74);
-      box-shadow: 0 18px 40px rgba(0, 0, 0, 0.9);
+      background: linear-gradient(160deg, #ffe9b8 0%, #d4b378 70%);
+      box-shadow: 0 12px 30px rgba(0,0,0,0.65),
+                  0 0 6px rgba(255,255,255,0.35) inset;
       overflow: hidden;
     }
 
@@ -333,10 +329,10 @@
       border-radius: 50%;
       object-fit: cover;
       object-position: center;
-      image-rendering: -webkit-optimize-contrast;
-      image-rendering: crisp-edges;
-      image-rendering: high-quality;
-      filter: contrast(1.06) brightness(1.04);
+      image-rendering: auto;
+      transform: translateZ(0);
+      backface-visibility: hidden;
+      filter: brightness(1.12) contrast(1.06) saturate(1.07);
       border: 2px solid #fff9e3;
     }
 
@@ -419,10 +415,6 @@
     .section-inner {
       border-radius: var(--radius-card);
       border: 1px solid rgba(245, 225, 195, 0.5);
-      background:
-        radial-gradient(circle at top left, rgba(250, 230, 198, 0.2), transparent 60%),
-        radial-gradient(circle at bottom right, rgba(255, 210, 132, 0.18), transparent 60%),
-        linear-gradient(135deg, rgba(22, 18, 13, 0.98), rgba(7, 6, 4, 0.98));
       padding: 36px 34px;
       box-shadow: var(--shadow-card);
       position: relative;
@@ -430,7 +422,7 @@
       transform-origin: center top;
       transform: translateY(40px) scale(0.98);
       opacity: 0;
-      min-height: 640px; /* A4-like depth */
+      min-height: 640px; /* A4-style depth */
     }
 
     .section-inner::before {
@@ -444,6 +436,17 @@
       opacity: 0.7;
       pointer-events: none;
     }
+
+    /* Tone variations per section for slide-like separation */
+    .section:nth-of-type(1) .section-inner { background: linear-gradient(135deg, #43382c, #201a15); }
+    .section:nth-of-type(2) .section-inner { background: linear-gradient(135deg, #4a3f31, #241e17); }
+    .section:nth-of-type(3) .section-inner { background: linear-gradient(135deg, #514536, #292219); }
+    .section:nth-of-type(4) .section-inner { background: linear-gradient(135deg, #584d3b, #2e261c); }
+    .section:nth-of-type(5) .section-inner { background: linear-gradient(135deg, #605441, #332b20); }
+    .section:nth-of-type(6) .section-inner { background: linear-gradient(135deg, #685c46, #372f23); }
+    .section:nth-of-type(7) .section-inner { background: linear-gradient(135deg, #70644c, #3c3427); }
+    .section:nth-of-type(8) .section-inner { background: linear-gradient(135deg, #786d51, #413a2b); }
+    .section:nth-of-type(9) .section-inner { background: linear-gradient(135deg, #817557, #463f30); }
 
     .section-label {
       font-size: 12px;
@@ -845,7 +848,7 @@
         <div class="hero-right">
           <div class="hero-photo-frame">
             <img
-              src="https://github.com/MoeAbdelrazek/Moe-Abdelrazek/blob/main/profile.jpg?raw=true"
+              src="https://raw.githubusercontent.com/MoeAbdelrazek/Moe-Abdelrazek/main/profile.jpg"
               alt="Portrait of Mohamed Abdelrazek"
               class="hero-photo"
             />
@@ -961,13 +964,13 @@
     <section class="section" id="flagship">
       <article class="section-inner sr-watch">
         <div class="section-label">03 - Flagship project</div>
-        <h2 class="section-title">TechnoMounts UAE - performance ready stack in 30 days</h2>
+        <h2 class="section-title">TechnoMounts UAE - performance ready marketing system</h2>
         <div class="section-sub">
           Specialist hardware brand where Shopify, GA4, Google Ads, Search Console, and landing pages were wired into one system instead of separate pieces.
         </div>
         <div class="section-body">
           <p>
-            The first month focused on architecture. Eleven landing pages were mapped to buyer segments and intent levels.
+            The first phase focused on architecture. Eleven landing pages were mapped to buyer segments and intent levels.
             Performance Max campaigns were grouped around these segments, and GA4 plus Search Console were set as the source of truth.
             The objective was not only to launch ads, but to build an engine that can run and be optimised with confidence.
           </p>
@@ -986,7 +989,7 @@
 
           <div class="stat-grid">
             <div class="stat-box">
-              <div class="stat-label">Impressions - month one</div>
+              <div class="stat-label">Impressions - first period</div>
               <div class="stat-number">17500</div>
               <div class="stat-note">Across Performance Max campaigns.</div>
             </div>
@@ -1096,7 +1099,7 @@
                 <div class="timeline-title">TechnoMounts - full stack system</div>
                 <div class="timeline-meta">Ecommerce hardware - United Arab Emirates</div>
                 <p class="section-body">
-                  17500 impressions, 1510 clicks, 42 conversions, and SEO growth from 8700 to 38500 impressions and 320 to 3250 clicks in 30 days.
+                  17500 impressions, 1510 clicks, 42 conversions, and SEO growth from 8700 to 38500 impressions and 320 to 3250 clicks.
                   TechnoMounts brought GA4, Google Ads, Merchant Center, Search Console, Shopify, dashboards, and B2B outreach into one architecture.
                 </p>
               </div>
@@ -1362,6 +1365,11 @@
     window.addEventListener("load", function () {
       gsap.registerPlugin(ScrollTrigger, TextPlugin);
 
+      ScrollTrigger.defaults({
+        ease: "power3.out",
+        duration: 1.2
+      });
+
       // Hero entrance
       const tl = gsap.timeline({
         defaults: { ease: "power3.out", duration: 0.9 }
@@ -1378,19 +1386,19 @@
         .from(".hero-badge", { opacity: 0, y: 16, stagger: 0.04 }, "-=0.4");
 
       // Scroll reveal for sections
-      gsap.utils.toArray(".sr-watch").forEach(function (card) {
+      gsap.utils.toArray(".section-inner").forEach(function (card, i) {
         gsap.fromTo(
           card,
-          { y: 38, scale: 0.98, opacity: 0 },
+          { y: 60, scale: 0.97, opacity: 0 },
           {
             y: 0,
             scale: 1,
             opacity: 1,
-            duration: 0.8,
+            duration: 1.1,
             ease: "power3.out",
             scrollTrigger: {
               trigger: card,
-              start: "top 80%",
+              start: "top 85%",
               toggleActions: "play none none none"
             }
           }

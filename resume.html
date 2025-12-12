@@ -9,8 +9,7 @@
 
 <style>
 :root {
-  --bg-main: #f6efe6;
-  --bg-card: rgba(255,255,255,0.92);
+  --bg-card: rgba(255, 248, 238, 0.96);
   --petrol: #0b4f5c;
   --text: #3b2f2a;
   --muted: #6b5c55;
@@ -18,19 +17,22 @@
   --radius: 22px;
 }
 
-/* GLOBAL RESET */
+/* RESET */
 * {
   box-sizing: border-box;
 }
 
+/* BODY — SAME LOGIC AS PORTFOLIO, SAFE */
 body {
   margin: 0;
   font-family: "Lora", serif;
   color: var(--text);
-  position: relative;
   min-height: 100vh;
+  position: relative;
   background-color: #160f0a;
 }
+
+/* BACKGROUND IMAGE LAYER */
 body::before {
   content: "";
   position: fixed;
@@ -43,6 +45,7 @@ body::before {
   z-index: -2;
 }
 
+/* SOFT LIGHTING ONLY (NO DARK BANDS) */
 body::after {
   content: "";
   position: fixed;
@@ -53,8 +56,6 @@ body::after {
   z-index: -1;
   pointer-events: none;
 }
---bg-card: rgba(255, 248, 238, 0.96);
-
 
 /* PAGE */
 .page {
@@ -71,26 +72,14 @@ body::after {
   margin-bottom: 36px;
 }
 
-/* IMAGE — FINAL FIX */
+/* PROFILE IMAGE */
 .profile-img {
   width: 120px;
   height: 120px;
-
   object-fit: cover;
-  object-position: center;
-
   border-radius: 50%;
   border: 3px solid var(--petrol);
   background-color: #ffffff;
-
-  /* ABSOLUTE SHARPNESS FIX */
-  image-rendering: auto;
-  transform: none;
-  filter: none;
-  backdrop-filter: none;
-  backface-visibility: visible;
-  will-change: auto;
-
   box-shadow: 0 10px 28px rgba(0,0,0,0.25);
 }
 
@@ -196,13 +185,7 @@ li {
 
   <!-- HEADER -->
   <div class="header">
-    <img
-      src="profile.jpg"
-      alt="Mohamed Abdelrazek portrait"
-      class="profile-img"
-      width="120"
-      height="120"
-    />
+    <img src="profile.jpg" alt="Mohamed Abdelrazek portrait" class="profile-img" />
 
     <div class="header-text">
       <h1>Mohamed Abdelrazek</h1>
@@ -220,7 +203,7 @@ li {
   <!-- GRID -->
   <div class="grid">
 
-    <!-- LEFT COLUMN -->
+    <!-- LEFT -->
     <div>
 
       <div class="card contact">
@@ -265,7 +248,7 @@ li {
 
     </div>
 
-    <!-- RIGHT COLUMN -->
+    <!-- RIGHT -->
     <div>
 
       <div class="card">

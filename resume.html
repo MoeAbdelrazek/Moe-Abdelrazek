@@ -50,6 +50,10 @@ body{
   object-fit:cover;
   border:3px solid var(--petrol);
   box-shadow:var(--shadow);
+  image-rendering:auto;
+  transform:translateZ(0);
+  backface-visibility:hidden;
+  filter:none;
 }
 
 .header h1{
@@ -67,10 +71,6 @@ body{
   max-width:820px;
 }
 
-.languages{
-  margin-top:12px;
-}
-
 .languages span{
   display:inline-block;
   margin:10px 10px 0 0;
@@ -80,7 +80,6 @@ body{
   font-weight:600;
   font-size:14px;
   background:rgba(255,250,244,0.7);
-  backdrop-filter: blur(6px);
 }
 
 /* Grid */
@@ -88,86 +87,42 @@ body{
   display:grid;
   grid-template-columns:35% 65%;
   gap:30px;
-  align-items:start;
 }
 
 /* Cards */
 .card{
-  background:rgba(255,250,244,0.92);
+  background:rgba(255,250,244,0.95);
   border-radius:18px;
   padding:24px 26px;
   margin-bottom:24px;
   box-shadow:var(--shadow);
   border:1px solid rgba(15,76,92,0.10);
-  backdrop-filter: blur(8px);
-  transform: translateY(0);
-  transition: transform .35s ease, box-shadow .35s ease;
-}
-
-.card:hover{
-  transform: translateY(-4px);
-  box-shadow:0 26px 60px rgba(0,0,0,0.10);
 }
 
 h2{
   font-family:"Playfair Display",serif;
   color:var(--petrol);
   font-size:22px;
-  margin:0 0 14px;
+  margin-bottom:14px;
 }
 
-h3{
-  font-weight:700;
-  color:var(--petrol);
-  margin:16px 0 6px;
-}
+ul{padding-left:18px;margin:0;}
+li{margin-bottom:7px;line-height:1.55;}
 
-.subtitle{
-  font-size:15px;
-  color:var(--muted);
-  margin:0 0 10px;
-}
+.role{font-weight:700;}
+.date{float:right;color:var(--muted);font-weight:600;}
 
-/* Lists */
-ul{
-  padding-left:18px;
-  margin:0;
-}
-
-li{
-  margin-bottom:7px;
-  line-height:1.55;
-}
-
-/* Experience */
-.role{
-  font-weight:700;
-}
-
-.date{
-  float:right;
-  font-weight:600;
-  color:var(--muted);
-}
-
-/* Small buttons (kept available for future use) */
-.btn{
-  display:inline-block;
-  margin-top:12px;
-  padding:10px 18px;
-  border-radius:999px;
-  background:var(--petrol);
-  color:#fff;
-  font-weight:600;
+.contact a{
+  color:var(--text);
   text-decoration:none;
-  transition: transform .25s ease, opacity .25s ease;
+  font-weight:500;
 }
-.btn:hover{ transform: translateY(-1px); opacity:0.95; }
+.contact a:hover{color:var(--petrol);}
 
 @media(max-width:900px){
   .grid{grid-template-columns:1fr;}
   .header{flex-direction:column;align-items:center;text-align:center;}
-  .date{float:none;display:block;margin-top:2px;}
+  .date{float:none;display:block;}
 }
 </style>
 </head>
@@ -192,41 +147,36 @@ li{
     </div>
   </div>
 
-  <!-- GRID -->
   <div class="grid">
 
     <!-- LEFT COLUMN -->
     <div>
 
-      <div class="card">
+      <div class="card contact">
         <h2>Contact</h2>
-        <p>Email: moe-abdelrazek@outlook.com</p>
-        <p>Phone: +20 101 728 6384</p>
-        <p>LinkedIn: linkedin.com/in/moe-abdelrazek</p>
-        <p>Website: https://moeabdelrazek.github.io/Moe-Abdelrazek/</p>
+        <p>Email: <a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a></p>
+        <p>Phone: <a href="tel:+201017286384">+20 101 728 6384</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/moe-abdelrazek" target="_blank">linkedin.com/in/moe-abdelrazek</a></p>
+        <p>Website: <a href="https://moeabdelrazek.github.io/Moe-Abdelrazek/" target="_blank">Portfolio</a></p>
         <p>Location: Alexandria, Egypt</p>
       </div>
 
-      <!-- RESTORED CORE SKILLS -->
       <div class="card">
         <h2>Core Skills</h2>
         <ul>
           <li>Performance marketing systems for ecommerce and B2B influenced buying journeys</li>
-          <li>Google Ads (Search), Performance Max, feed optimisation, and Merchant Center operations</li>
-          <li>Measurement architecture: GA4, Tag Manager, conversion tracking, reporting logic</li>
-          <li>SEO strategy and technical optimisation: landing page architecture, intent mapping, internal linking</li>
-          <li>Lifecycle marketing: email flows, CRM stages, segmentation, and retention loops</li>
-          <li>Dashboarding and insights: Looker Studio reporting built for decision-making, not vanity metrics</li>
-          <li>AI-assisted production workflows for faster iteration while keeping quality control</li>
+          <li>Google Ads, Performance Max, Merchant Center, feed optimisation</li>
+          <li>Measurement architecture: GA4, Tag Manager, conversion tracking</li>
+          <li>SEO strategy and technical optimisation</li>
+          <li>Lifecycle marketing, CRM logic, retention systems</li>
+          <li>Dashboarding and insight-driven reporting</li>
         </ul>
       </div>
 
       <div class="card">
         <h2>Education</h2>
-        <h3>Alexandria University — Engineering Studies (Incomplete)</h3>
-        <div class="subtitle">
-          Systems thinking, mathematics, and structured problem-solving foundation
-        </div>
+        <strong>Alexandria University — Engineering Studies (Incomplete)</strong>
+        <p class="muted">Systems thinking, mathematics, and structured problem-solving foundation</p>
       </div>
 
       <div class="card">
@@ -249,8 +199,7 @@ li{
         <h2>Professional Summary</h2>
         <p>
           Performance-focused digital marketer with an engineering mindset, specialising in building complete
-          marketing systems from zero presence to scalable acquisition engines. Known for owning the full stack
-          end-to-end and translating complexity into clear structures that teams can operate and scale.
+          marketing systems from zero presence to scalable acquisition engines.
         </p>
       </div>
 
@@ -262,11 +211,11 @@ li{
           <span class="date">Oct 2025 – Present (Contract)</span>
         </p>
         <ul>
-          <li>Owned the full acquisition and measurement stack for TechnoMounts, spanning paid media, SEO, analytics, and reporting.</li>
-          <li>Implemented Google Ads and Performance Max structure, product feed readiness, and Merchant Center compliance operations.</li>
-          <li>Built GA4 event strategy and conversion tracking foundations to make optimisation decisions measurable and repeatable.</li>
-          <li>Scaled organic visibility from no presence into consistent first-page results, achieving multiple top-5 keyword placements.</li>
-          <li>Integrated CRM and outreach workflows to support B2B pipeline development alongside ecommerce performance.</li>
+          <li>Owned the full acquisition and measurement stack for TechnoMounts.</li>
+          <li>Implemented Google Ads, Performance Max, and Merchant Center systems.</li>
+          <li>Built GA4 event strategy and conversion tracking foundations.</li>
+          <li>Scaled SEO from zero presence to consistent top-5 keyword placements.</li>
+          <li>Integrated CRM and B2B outreach workflows.</li>
         </ul>
 
         <p class="role">
@@ -274,9 +223,7 @@ li{
           <span class="date">2023 – Present</span>
         </p>
         <ul>
-          <li>Designed and executed end-to-end marketing systems across ecommerce, healthcare, hospitality, and fitness models.</li>
-          <li>Built landing pages, funnel structures, measurement frameworks, and reporting to connect spend to outcomes.</li>
-          <li>Delivered scalable process documentation so performance work could be handed over and maintained.</li>
+          <li>Designed end-to-end marketing systems across ecommerce, healthcare, hospitality, and fitness.</li>
         </ul>
 
         <p class="role">
@@ -285,7 +232,6 @@ li{
         </p>
         <ul>
           <li>Delivered structured, outcome-driven sessions to international learners.</li>
-          <li>Strengthened clarity, communication, and remote delivery skills.</li>
         </ul>
 
         <p class="role">
@@ -293,28 +239,24 @@ li{
           <span class="date">2011 – 2022</span>
         </p>
         <ul>
-          <li>Developed discipline, performance accountability, and long-term consistency.</li>
-          <li>Transferred competitive mindset into analytical and operational work.</li>
+          <li>Developed discipline, consistency, and performance accountability.</li>
         </ul>
       </div>
 
-      <!-- MOVED UNDER EXPERIENCE -->
       <div class="card">
         <h2>Tools</h2>
         <ul>
           <li>Google Ads, GA4, Tag Manager, Merchant Center, Search Console</li>
-          <li>Shopify operations: product pages, collections, SEO, feed readiness, conversion tracking</li>
-          <li>Amazon marketplace standards: product content structure, image standards, listing discipline</li>
-          <li>HubSpot CRM, Apollo.io, Zoho CRM and Zoho Mail</li>
-          <li>Email automation: onboarding, abandoned cart, reactivation, retention workflows</li>
-          <li>Looker Studio dashboards and reporting systems</li>
-          <li>Canva production, structured creative workflows, AI-assisted drafting</li>
+          <li>Shopify operations and ecommerce architecture</li>
+          <li>Amazon marketplace standards</li>
+          <li>HubSpot, Apollo.io, Zoho CRM & Mail</li>
+          <li>Email automation and lifecycle systems</li>
+          <li>Looker Studio dashboards</li>
           <li>Microsoft Suite, Google Workspace</li>
         </ul>
       </div>
 
     </div>
-
   </div>
 </div>
 

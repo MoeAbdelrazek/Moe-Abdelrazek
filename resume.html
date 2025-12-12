@@ -9,53 +9,27 @@
 
 <style>
 :root {
-  --bg-card: rgba(255, 248, 238, 0.96);
+  --bg-main: #f6efe6;
+  --bg-card: rgba(255,255,255,0.92);
   --petrol: #0b4f5c;
   --text: #3b2f2a;
   --muted: #6b5c55;
   --shadow: 0 18px 45px rgba(0,0,0,0.18);
   --radius: 22px;
-
-  /* Use the same cafe image URL logic as your portfolio */
-  --bg-image: url("https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/3_Assets/Images/Cafe-background.jpg");
 }
 
-/* RESET */
-* { box-sizing: border-box; }
+/* GLOBAL RESET */
+* {
+  box-sizing: border-box;
+}
 
-/* BODY */
 body {
   margin: 0;
   font-family: "Lora", serif;
   color: var(--text);
-  min-height: 100vh;
-  position: relative;
-  background-color: #f6efe6;
-}
-
-/* BACKGROUND IMAGE LAYER */
-body::before {
-  content: "";
-  position: fixed;
-  inset: 0;
-  background-image: var(--bg-image);
-  background-size: cover;
-  background-position: center;
-  filter: blur(3px) brightness(0.95) saturate(1.05);
-  transform: scale(1.03);
-  z-index: -2;
-}
-
-/* SOFT LIGHTING ONLY, NO DARKENING */
-body::after {
-  content: "";
-  position: fixed;
-  inset: 0;
   background:
-    radial-gradient(circle at top left, rgba(255, 244, 231, 0.75), transparent 55%),
-    radial-gradient(circle at bottom right, rgba(255, 236, 214, 0.55), transparent 65%);
-  z-index: -1;
-  pointer-events: none;
+    linear-gradient(rgba(246,239,230,0.92), rgba(246,239,230,0.92)),
+    url("Cafe-background.jpg") center / cover fixed no-repeat;
 }
 
 /* PAGE */
@@ -73,21 +47,26 @@ body::after {
   margin-bottom: 36px;
 }
 
-/* IMAGE */
+/* IMAGE — FINAL FIX */
 .profile-img {
   width: 120px;
   height: 120px;
+
   object-fit: cover;
   object-position: center;
+
   border-radius: 50%;
   border: 3px solid var(--petrol);
   background-color: #ffffff;
+
+  /* ABSOLUTE SHARPNESS FIX */
   image-rendering: auto;
   transform: none;
   filter: none;
   backdrop-filter: none;
   backface-visibility: visible;
   will-change: auto;
+
   box-shadow: 0 10px 28px rgba(0,0,0,0.25);
 }
 
@@ -105,7 +84,9 @@ body::after {
   max-width: 640px;
 }
 
-.langs { margin-top: 10px; }
+.langs {
+  margin-top: 10px;
+}
 
 .lang {
   display: inline-block;
@@ -146,7 +127,9 @@ ul {
   margin: 0;
 }
 
-li { margin-bottom: 8px; }
+li {
+  margin-bottom: 8px;
+}
 
 /* CONTACT */
 .contact a {
@@ -155,7 +138,9 @@ li { margin-bottom: 8px; }
   font-weight: 500;
 }
 
-.contact a:hover { text-decoration: underline; }
+.contact a:hover {
+  text-decoration: underline;
+}
 
 /* EXPERIENCE */
 .role {
@@ -171,7 +156,9 @@ li { margin-bottom: 8px; }
 
 /* RESPONSIVE */
 @media (max-width: 900px) {
-  .grid { grid-template-columns: 1fr; }
+  .grid {
+    grid-template-columns: 1fr;
+  }
   .header {
     flex-direction: column;
     align-items: flex-start;
@@ -183,6 +170,7 @@ li { margin-bottom: 8px; }
 <body>
 <div class="page">
 
+  <!-- HEADER -->
   <div class="header">
     <img
       src="profile.jpg"
@@ -205,9 +193,12 @@ li { margin-bottom: 8px; }
     </div>
   </div>
 
+  <!-- GRID -->
   <div class="grid">
 
+    <!-- LEFT COLUMN -->
     <div>
+
       <div class="card contact">
         <h2>Contact</h2>
         <p>Email: <a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a></p>
@@ -247,9 +238,12 @@ li { margin-bottom: 8px; }
           <li>Microsoft Python Development</li>
         </ul>
       </div>
+
     </div>
 
+    <!-- RIGHT COLUMN -->
     <div>
+
       <div class="card">
         <h2>Professional Summary</h2>
         <p>
@@ -316,9 +310,10 @@ li { margin-bottom: 8px; }
           <li>Microsoft Office Suite, Google Workspace</li>
         </ul>
       </div>
-    </div>
 
+    </div>
   </div>
+
 </div>
 </body>
 </html>

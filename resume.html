@@ -1,266 +1,269 @@
 <!DOCTYPE html>
-<html lang="en" data-theme="dark">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <title>Mohamed Abdelrazek — Resume</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+
+  <!-- Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+
   <style>
     :root {
-      --bg1: #2a2a2a;
-      --bg2: #3a3a3a;
-      --text: #ffffff;
-      --gold: #FFD700;
-      --card: #444;
+      --bg-main: linear-gradient(145deg, #fdf5ed, #f2d2b6);
+      --card-bg: rgba(255, 248, 238, 0.95);
+      --espresso: #3e2a23;
+      --espresso-soft: #5a3e36;
+      --accent: #2452a4;
+      --muted: #7b6457;
+      --border: rgba(120, 88, 61, 0.45);
+      --shadow: 0 22px 55px rgba(40, 25, 15, 0.45);
+      --radius: 22px;
+      --max-width: 1200px;
     }
 
-    [data-theme="light"] {
-      --gold: #005f5f;
-      --text: #000000;
-      --bg1: #fdfdfd;
-      --bg2: #f0f0f0;
-      --card: #ffffff;
-    }
+    * { box-sizing: border-box; }
 
     body {
-      margin: 20px;
-      font-family: "Lora", serif;
+      margin: 0;
+      padding: 40px 20px;
+      font-family: "Source Serif Pro", Georgia, serif;
       font-size: 18px;
-      background: linear-gradient(135deg, var(--bg1), var(--bg2));
-      color: var(--text);
-      line-height: 1.6;
+      line-height: 1.7;
+      color: var(--espresso);
+      background: var(--bg-main);
+    }
+
+    .resume-shell {
+      max-width: var(--max-width);
+      margin: 0 auto;
     }
 
     h1 {
       font-family: "Playfair Display", serif;
+      font-size: 36px;
       text-align: center;
-      color: var(--gold);
-      font-weight: 700;
-      margin-top: 60px;
-      margin-bottom: 5px;
-      font-size: 34px;
+      margin-bottom: 6px;
+      color: var(--accent);
     }
 
-    .motto {
+    .headline {
       text-align: center;
-      font-weight: 500;
       font-size: 18px;
-      color: var(--text);
-      opacity: 0.9;
-      margin-bottom: 10px;
+      color: var(--espresso-soft);
+      margin-bottom: 18px;
     }
 
     .languages {
       text-align: center;
-      margin-bottom: 25px;
+      margin-bottom: 30px;
     }
 
-    .lang-tag {
-      background-color: var(--gold);
-      color: #000;
+    .lang {
       display: inline-block;
-      padding: 4px 9px;
-      border-radius: 12px;
-      font-size: 15px;
-      font-weight: 700;
-      margin: 2px 6px;
+      margin: 4px 6px;
+      padding: 5px 12px;
+      border-radius: 999px;
+      background: rgba(255,255,255,0.9);
+      border: 1px solid var(--border);
+      font-size: 14px;
+      font-weight: 600;
     }
 
     .profile-pic {
       display: block;
-      margin: 25px auto 40px;
-      width: 120px;
-      height: 120px;
+      margin: 0 auto 35px;
+      width: 130px;
+      height: 130px;
       border-radius: 50%;
       object-fit: cover;
-      border: 2px solid var(--gold);
-      box-shadow: none;
+      border: 2px solid var(--border);
+      box-shadow: var(--shadow);
     }
 
     .grid {
-      display: flex;
-      flex-direction: row;
-      flex-wrap: nowrap;
-      max-width: 1200px;
-      margin: 0 auto;
-      gap: 20px;
-    }
-
-    .left-column {
-      width: 35%;
-      padding-right: 20px;
-    }
-
-    .right-column {
-      width: 65%;
-      padding-left: 20px;
-      border-left: 1px solid rgba(255,215,0,0.2);
+      display: grid;
+      grid-template-columns: 35% 65%;
+      gap: 26px;
     }
 
     .card {
-      background: var(--card);
-      padding: 1.2rem;
+      background: var(--card-bg);
+      border-radius: var(--radius);
+      padding: 22px;
       margin-bottom: 22px;
-      border-radius: 10px;
-      box-shadow: 0 3px 10px rgba(0,0,0,0.25);
-      font-size: 18px;
+      border: 1px solid var(--border);
+      box-shadow: var(--shadow);
     }
 
     h2 {
       font-family: "Playfair Display", serif;
       font-size: 22px;
-      color: var(--gold);
+      color: var(--accent);
       margin-bottom: 10px;
-      font-weight: 700;
-      border-bottom: 1px solid rgba(255,215,0,0.3);
-      padding-bottom: 5px;
     }
 
-    ul { list-style-type: none; padding-left: 15px; margin: 0; }
-    li::before { content: "• "; color: var(--gold); font-weight: bold; }
-    li { margin: 4px 0; }
+    ul {
+      margin: 0;
+      padding-left: 18px;
+    }
+
+    li {
+      margin-bottom: 6px;
+    }
 
     .role {
-      font-family: "Playfair Display", serif;
       font-weight: 700;
-      color: var(--gold);
-      font-size: 18px;
+      color: var(--espresso-soft);
+    }
+
+    .company {
+      font-style: italic;
+      color: var(--muted);
     }
 
     .date {
-      font-size: 17px;
-      font-weight: 700;
-      color: var(--gold);
       float: right;
+      font-weight: 600;
+      color: var(--muted);
     }
 
-    .contact-label { font-weight: 700; color: var(--gold); display: block; margin-top: 8px; }
-    .contact-value a { color: var(--text); text-decoration: none; }
-    .contact-value a:hover { text-decoration: underline; }
+    .contact-line {
+      margin-bottom: 6px;
+      font-size: 16px;
+    }
 
-    .theme-toggle { position: fixed; top: 20px; right: 20px; padding: 0.5rem 1rem; font-weight: 700; cursor: pointer; background: var(--gold); border: none; border-radius: 6px; color: #000; }
+    .contact-line a {
+      color: var(--accent);
+      text-decoration: none;
+    }
 
-    /* Responsive */
-    @media screen and (max-width: 768px) {
-      .grid { flex-direction: column; }
-      .left-column, .right-column { width: 100%; border-left: none; padding: 0; }
+    .contact-line a:hover {
+      text-decoration: underline;
+    }
+
+    @media (max-width: 900px) {
+      .grid {
+        grid-template-columns: 1fr;
+      }
     }
   </style>
 </head>
 
 <body>
-  <button id="themeToggle" class="theme-toggle">🌙 Mode</button>
+  <div class="resume-shell">
 
-  <h1>Mohamed Abdelrazek</h1>
-  <div class="motto">Athlete’s discipline. Engineering mindset. Lifelong learner. Shaped by global, multicultural experiences.</div>
-
-  <div class="languages">
-    <span class="lang-tag">Arabic — Native</span>
-    <span class="lang-tag">English — Near Native</span>
-    <span class="lang-tag">German — B2 Intermediate</span>
-  </div>
-
-  <img src="profile.jpg" alt="Portrait of Mohamed Abdelrazek" class="profile-pic" />
-
-  <div class="grid">
-    <!-- LEFT COLUMN -->
-    <div class="left-column">
-
-      <div class="card">
-        <h2>Skills</h2>
-        <ul>
-          <li>Digital Marketing & E-Commerce</li>
-          <li>SEO & SEM (Google Ads, Analytics)</li>
-          <li>Python (Automation, Pandas, NumPy)</li>
-          <li>Data Analysis & Visualization</li>
-          <li>Statistics & Hypothesis Testing</li>
-          <li>AI in Marketing & Analytics</li>
-          <li>GitHub & Version Control</li>
-          <li>Project Management (Asana, Trello)</li>
-          <li>Email & CRM (HubSpot, Mailchimp)</li>
-          <li>Creative Tools (Canva, Adobe)</li>
-          <li>Shopify</li>
-        </ul>
-      </div>
-
-      <div class="card">
-        <h2>Contact</h2>
-        <p><span class="contact-label">Email:</span> <span class="contact-value"><a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a></span></p>
-        <p><span class="contact-label">Phone:</span> <span class="contact-value"><a href="tel:+201017286384">+20 1017286384</a></span></p>
-        <p><span class="contact-label">LinkedIn:</span> <span class="contact-value"><a href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank">Linkedin</a></span></p>
-        <p><span class="contact-label">Website:</span> <span class="contact-value"><a href="https://moeabdelrazek.github.io" target="_blank">Portfolio Website</a></span></p>
-        <p><span class="contact-label">Location:</span> <span class="contact-value">Alexandria, Egypt</span></p>
-      </div>
+    <h1>Mohamed Abdelrazek</h1>
+    <div class="headline">
+      Performance Marketing • Analytics • Full-Stack Digital Systems
     </div>
 
-    <!-- RIGHT COLUMN -->
-    <div class="right-column">
-      
-      <div class="card">
-        <h2>Professional Summary</h2>
-        <p>Multidisciplinary professional blending engineering foundations with Python, AI, data analysis, and digital marketing. Resilient and disciplined, with a decade of high-performance experience shaped by professional football. Passionate about continuous learning and bridging technology with business impact.</p>
+    <div class="languages">
+      <span class="lang">Arabic — Native</span>
+      <span class="lang">English — Near Native</span>
+      <span class="lang">German — B2</span>
+    </div>
+
+    <img src="profile.jpg" alt="Mohamed Abdelrazek" class="profile-pic">
+
+    <div class="grid">
+      <!-- LEFT COLUMN -->
+      <div>
+        <div class="card">
+          <h2>Core Skills</h2>
+          <ul>
+            <li>Performance Marketing Systems (B2C and B2B influenced)</li>
+            <li>Google Ads, Performance Max, Merchant Center</li>
+            <li>GA4, Google Tag Manager, Looker Studio</li>
+            <li>SEO Architecture and Technical Optimisation</li>
+            <li>Shopify Landing Pages and Conversion Design</li>
+            <li>CRM, Email Automation, Lifecycle Journeys</li>
+            <li>Python for Automation and Analytics</li>
+            <li>AI-assisted Research, Copy, and Reporting</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Contact</h2>
+          <div class="contact-line">Email: <a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a></div>
+          <div class="contact-line">Phone: <a href="tel:+201017286384">+20 101 728 6384</a></div>
+          <div class="contact-line">LinkedIn: <a href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank">linkedin.com/in/moe-abdelrazek</a></div>
+          <div class="contact-line">Portfolio: <a href="https://moeabdelrazek.github.io" target="_blank">moeabdelrazek.github.io</a></div>
+          <div class="contact-line">Location: Alexandria, Egypt</div>
+        </div>
       </div>
 
-      <div class="card">
-        <h2>Professional Experience</h2>
+      <!-- RIGHT COLUMN -->
+      <div>
+        <div class="card">
+          <h2>Professional Summary</h2>
+          <p>
+            Performance-focused digital marketer with an engineering mindset, specialising in building complete marketing systems from research and positioning to dashboards and reporting. Experienced across ecommerce, healthcare, hospitality, and membership-based businesses. Known for owning the full stack end-to-end and translating complexity into clear, scalable structures.
+          </p>
+        </div>
 
-        <p><span class="role">Digital Marketing Specialist — (Self-Employed)</span> <span class="date">(2023–Present)</span></p>
-        <ul>
-          <li>Executed multi-channel campaigns (SEO, Meta Ads, Email, Analytics) using AI-driven tools.</li>
-          <li>Developed brand strategies and creative content for cross-industry clients.</li>
-          <li>Built KPI dashboards to measure engagement, conversions, and ROI.</li>
-        </ul>
+        <div class="card">
+          <h2>Professional Experience</h2>
 
-        <p><span class="role">Engoo — Online Tutor (Part-Time)</span> <span class="date">(2021–Present)</span></p>
-        <ul>
-          <li>Delivered tailored English lessons to global learners across multiple proficiency levels.</li>
-          <li>Enhanced communication, adaptability, and digital teaching effectiveness.</li>
-        </ul>
+          <p>
+            <span class="role">Digital Media Specialist</span> —
+            <span class="company">Technosignage</span>
+            <span class="date">Oct 2025 – Present (Contract)</span>
+          </p>
+          <ul>
+            <li>Own digital media execution across paid acquisition, landing pages, analytics, and reporting.</li>
+            <li>Manage Google Ads, Performance Max, and SEO-aligned landing page structures.</li>
+            <li>Coordinate analytics, Merchant Center, and conversion tracking for ecommerce and B2B pipelines.</li>
+          </ul>
 
-        <p><span class="role">Professional Athlete — (Football)</span> <span class="date">(2011–2022)</span></p>
-        <ul>
-          <li>Competed professionally for over a decade, cultivating leadership and resilience.</li>
-          <li>Translated performance discipline into analytical and strategic problem-solving.</li>
-        </ul>
-      </div>
+          <p>
+            <span class="role">Digital Marketing Specialist</span> —
+            <span class="company">Self-Employed</span>
+            <span class="date">2023 – Present</span>
+          </p>
+          <ul>
+            <li>Designed and executed full-funnel systems for brands including TechnoMounts, Haksoss Cafe, Rafiki Pet Hospital, and Mory Gym.</li>
+            <li>Built GA4-first analytics frameworks and Looker Studio dashboards.</li>
+            <li>Launched and optimised Google Ads, SEO, and email automation tied to real revenue outcomes.</li>
+          </ul>
 
-      <div class="card">
-        <h2>Education</h2>
-        <p><span class="role">Alexandria University — Bachelor’s in Engineering Studies (Incomplete)</span></p>
-        <ul>
-          <li>Completed four academic years across 48 analytical and systems courses.</li>
-          <li>Developed a structured problem-solving approach applied to tech and data workflows.</li>
-        </ul>
+          <p>
+            <span class="role">Online English Tutor (Part-Time)</span> —
+            <span class="company">Engoo</span>
+            <span class="date">2021 – Present</span>
+          </p>
+          <ul>
+            <li>Delivered structured, results-oriented lessons to international learners.</li>
+            <li>Strengthened communication, clarity, and adaptability in remote environments.</li>
+          </ul>
 
-        <h2>Certifications</h2>
-        <ul>
-          <li>Google Digital Marketing & E-Commerce</li>
-          <li>Google Advanced Data Analytics</li>
-          <li>IBM Digital Marketing and Growth Hacking</li>
-          <li>Google IT Automation with Python</li>
-          <li>Microsoft Python Development</li>
-        </ul>
+          <p>
+            <span class="role">Professional Football Athlete</span>
+            <span class="date">2011 – 2022</span>
+          </p>
+          <ul>
+            <li>Competed professionally for over a decade.</li>
+            <li>Developed discipline, resilience, and performance accountability now applied to marketing systems.</li>
+          </ul>
+        </div>
+
+        <div class="card">
+          <h2>Education and Certifications</h2>
+          <p><strong>Alexandria University</strong> — Engineering Studies (Four Years Completed)</p>
+          <ul>
+            <li>Strong foundation in systems thinking, mathematics, and structured problem solving.</li>
+          </ul>
+
+          <ul style="margin-top:10px;">
+            <li>Google Digital Marketing and E-Commerce</li>
+            <li>Google Advanced Data Analytics</li>
+            <li>IBM Digital Marketing and Growth Hacking</li>
+            <li>Google IT Automation with Python</li>
+            <li>Microsoft Python Development</li>
+          </ul>
+        </div>
       </div>
     </div>
   </div>
-
-  <script>
-    const themeToggle = document.getElementById("themeToggle");
-    function applyTheme(theme) {
-      document.documentElement.setAttribute("data-theme", theme);
-      themeToggle.textContent = theme === "light" ? "☀️ Mode" : "🌙 Mode";
-    }
-    function toggleTheme() {
-      const current = document.documentElement.getAttribute("data-theme");
-      const newTheme = current === "light" ? "dark" : "light";
-      applyTheme(newTheme);
-      localStorage.setItem("theme", newTheme);
-    }
-    themeToggle.addEventListener("click", toggleTheme);
-    window.addEventListener("DOMContentLoaded", () => {
-      const saved = localStorage.getItem("theme");
-      applyTheme(saved || "dark");
-    });
-  </script>
 </body>
 </html>

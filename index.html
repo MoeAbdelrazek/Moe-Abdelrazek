@@ -62,22 +62,11 @@
       background-image: var(--bg-image);
       background-size: cover;
       background-position: center;
-      filter: blur(3px) brightness(0.6);
+      filter: blur(3px);
       transform: scale(1.03);
       z-index: -2;
     }
 
-    body::after {
-      content: "";
-      position: fixed;
-      inset: 0;
-      background:
-        radial-gradient(circle at top left, rgba(255, 240, 224, 0.7), transparent 55%),
-        radial-gradient(circle at bottom right, rgba(37, 27, 19, 0.8), rgba(10, 7, 4, 0.9));
-      mix-blend-mode: multiply;
-      z-index: -1;
-      pointer-events: none;
-    }
 
     .page-shell {
       position: relative;

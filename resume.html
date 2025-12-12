@@ -1,269 +1,256 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Mohamed Abdelrazek — Resume</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8" />
+<title>Mohamed Abdelrazek — Resume</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Source+Serif+Pro:wght@400;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,600;0,700;1,600&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
 
-  <style>
-    :root {
-      --bg-main: linear-gradient(145deg, #fdf5ed, #f2d2b6);
-      --card-bg: rgba(255, 248, 238, 0.95);
-      --espresso: #3e2a23;
-      --espresso-soft: #5a3e36;
-      --accent: #2452a4;
-      --muted: #7b6457;
-      --border: rgba(120, 88, 61, 0.45);
-      --shadow: 0 22px 55px rgba(40, 25, 15, 0.45);
-      --radius: 22px;
-      --max-width: 1200px;
-    }
+<style>
+:root{
+  --bg-main:#fdf5ed;
+  --bg-card:#fff8f1;
+  --ink:#3b2a20;
+  --blue:#1f4fd8;
+  --muted:#7a6a5e;
+  --border:#e6d6c5;
+  --shadow:0 20px 50px rgba(0,0,0,.12);
+}
 
-    * { box-sizing: border-box; }
+body{
+  margin:0;
+  font-family:Lora,serif;
+  background:
+    linear-gradient(180deg,rgba(253,245,237,.92),rgba(253,245,237,.92)),
+    url("https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/3_Assets/Images/Cafe-background.jpg")
+    center/cover fixed;
+  color:var(--ink);
+}
 
-    body {
-      margin: 0;
-      padding: 40px 20px;
-      font-family: "Source Serif Pro", Georgia, serif;
-      font-size: 18px;
-      line-height: 1.7;
-      color: var(--espresso);
-      background: var(--bg-main);
-    }
+.wrapper{
+  max-width:1200px;
+  margin:80px auto;
+  padding:40px;
+}
 
-    .resume-shell {
-      max-width: var(--max-width);
-      margin: 0 auto;
-    }
+.header{
+  display:flex;
+  align-items:center;
+  gap:30px;
+  margin-bottom:40px;
+}
 
-    h1 {
-      font-family: "Playfair Display", serif;
-      font-size: 36px;
-      text-align: center;
-      margin-bottom: 6px;
-      color: var(--accent);
-    }
+.avatar{
+  width:120px;
+  height:120px;
+  border-radius:50%;
+  object-fit:cover;
+  border:4px solid #fff;
+  box-shadow:var(--shadow);
+}
 
-    .headline {
-      text-align: center;
-      font-size: 18px;
-      color: var(--espresso-soft);
-      margin-bottom: 18px;
-    }
+h1{
+  font-family:Playfair Display,serif;
+  font-size:40px;
+  color:var(--blue);
+  margin:0;
+}
 
-    .languages {
-      text-align: center;
-      margin-bottom: 30px;
-    }
+.motto{
+  font-style:italic;
+  margin-top:6px;
+  color:var(--muted);
+}
 
-    .lang {
-      display: inline-block;
-      margin: 4px 6px;
-      padding: 5px 12px;
-      border-radius: 999px;
-      background: rgba(255,255,255,0.9);
-      border: 1px solid var(--border);
-      font-size: 14px;
-      font-weight: 600;
-    }
+.langs span{
+  display:inline-block;
+  padding:6px 14px;
+  margin:10px 8px 0 0;
+  border-radius:20px;
+  background:#fff;
+  border:1px solid var(--border);
+  font-size:14px;
+}
 
-    .profile-pic {
-      display: block;
-      margin: 0 auto 35px;
-      width: 130px;
-      height: 130px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 2px solid var(--border);
-      box-shadow: var(--shadow);
-    }
+.grid{
+  display:grid;
+  grid-template-columns:34% 66%;
+  gap:30px;
+}
 
-    .grid {
-      display: grid;
-      grid-template-columns: 35% 65%;
-      gap: 26px;
-    }
+.card{
+  background:var(--bg-card);
+  border-radius:22px;
+  padding:26px;
+  box-shadow:var(--shadow);
+  margin-bottom:26px;
+}
 
-    .card {
-      background: var(--card-bg);
-      border-radius: var(--radius);
-      padding: 22px;
-      margin-bottom: 22px;
-      border: 1px solid var(--border);
-      box-shadow: var(--shadow);
-    }
+h2{
+  font-family:Playfair Display,serif;
+  font-size:22px;
+  color:var(--blue);
+  margin:0 0 14px;
+}
 
-    h2 {
-      font-family: "Playfair Display", serif;
-      font-size: 22px;
-      color: var(--accent);
-      margin-bottom: 10px;
-    }
+h3{
+  font-size:18px;
+  margin:18px 0 6px;
+}
 
-    ul {
-      margin: 0;
-      padding-left: 18px;
-    }
+.sub{
+  font-size:15px;
+  color:var(--muted);
+  margin-bottom:10px;
+}
 
-    li {
-      margin-bottom: 6px;
-    }
+ul{
+  margin:0;
+  padding-left:18px;
+}
+li{
+  margin:8px 0;
+}
 
-    .role {
-      font-weight: 700;
-      color: var(--espresso-soft);
-    }
+.btn{
+  display:inline-block;
+  margin-top:12px;
+  padding:10px 18px;
+  border-radius:18px;
+  background:var(--blue);
+  color:#fff;
+  text-decoration:none;
+  font-size:15px;
+}
 
-    .company {
-      font-style: italic;
-      color: var(--muted);
-    }
+.contact p{
+  margin:10px 0;
+}
 
-    .date {
-      float: right;
-      font-weight: 600;
-      color: var(--muted);
-    }
-
-    .contact-line {
-      margin-bottom: 6px;
-      font-size: 16px;
-    }
-
-    .contact-line a {
-      color: var(--accent);
-      text-decoration: none;
-    }
-
-    .contact-line a:hover {
-      text-decoration: underline;
-    }
-
-    @media (max-width: 900px) {
-      .grid {
-        grid-template-columns: 1fr;
-      }
-    }
-  </style>
+@media(max-width:900px){
+  .grid{grid-template-columns:1fr;}
+  .header{flex-direction:column;align-items:flex-start;}
+}
+</style>
 </head>
 
 <body>
-  <div class="resume-shell">
+<div class="wrapper">
 
-    <h1>Mohamed Abdelrazek</h1>
-    <div class="headline">
-      Performance Marketing • Analytics • Full-Stack Digital Systems
-    </div>
-
-    <div class="languages">
-      <span class="lang">Arabic — Native</span>
-      <span class="lang">English — Near Native</span>
-      <span class="lang">German — B2</span>
-    </div>
-
-    <img src="profile.jpg" alt="Mohamed Abdelrazek" class="profile-pic">
-
-    <div class="grid">
-      <!-- LEFT COLUMN -->
-      <div>
-        <div class="card">
-          <h2>Core Skills</h2>
-          <ul>
-            <li>Performance Marketing Systems (B2C and B2B influenced)</li>
-            <li>Google Ads, Performance Max, Merchant Center</li>
-            <li>GA4, Google Tag Manager, Looker Studio</li>
-            <li>SEO Architecture and Technical Optimisation</li>
-            <li>Shopify Landing Pages and Conversion Design</li>
-            <li>CRM, Email Automation, Lifecycle Journeys</li>
-            <li>Python for Automation and Analytics</li>
-            <li>AI-assisted Research, Copy, and Reporting</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h2>Contact</h2>
-          <div class="contact-line">Email: <a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a></div>
-          <div class="contact-line">Phone: <a href="tel:+201017286384">+20 101 728 6384</a></div>
-          <div class="contact-line">LinkedIn: <a href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank">linkedin.com/in/moe-abdelrazek</a></div>
-          <div class="contact-line">Portfolio: <a href="https://moeabdelrazek.github.io" target="_blank">moeabdelrazek.github.io</a></div>
-          <div class="contact-line">Location: Alexandria, Egypt</div>
-        </div>
+  <!-- HEADER -->
+  <div class="header">
+    <img src="profile.jpg" class="avatar" alt="Mohamed Abdelrazek">
+    <div>
+      <h1>Mohamed Abdelrazek</h1>
+      <div class="motto">
+        Building complete marketing systems with discipline, structure, and long-term thinking.
       </div>
-
-      <!-- RIGHT COLUMN -->
-      <div>
-        <div class="card">
-          <h2>Professional Summary</h2>
-          <p>
-            Performance-focused digital marketer with an engineering mindset, specialising in building complete marketing systems from research and positioning to dashboards and reporting. Experienced across ecommerce, healthcare, hospitality, and membership-based businesses. Known for owning the full stack end-to-end and translating complexity into clear, scalable structures.
-          </p>
-        </div>
-
-        <div class="card">
-          <h2>Professional Experience</h2>
-
-          <p>
-            <span class="role">Digital Media Specialist</span> —
-            <span class="company">Technosignage</span>
-            <span class="date">Oct 2025 – Present (Contract)</span>
-          </p>
-          <ul>
-            <li>Own digital media execution across paid acquisition, landing pages, analytics, and reporting.</li>
-            <li>Manage Google Ads, Performance Max, and SEO-aligned landing page structures.</li>
-            <li>Coordinate analytics, Merchant Center, and conversion tracking for ecommerce and B2B pipelines.</li>
-          </ul>
-
-          <p>
-            <span class="role">Digital Marketing Specialist</span> —
-            <span class="company">Self-Employed</span>
-            <span class="date">2023 – Present</span>
-          </p>
-          <ul>
-            <li>Designed and executed full-funnel systems for brands including TechnoMounts, Haksoss Cafe, Rafiki Pet Hospital, and Mory Gym.</li>
-            <li>Built GA4-first analytics frameworks and Looker Studio dashboards.</li>
-            <li>Launched and optimised Google Ads, SEO, and email automation tied to real revenue outcomes.</li>
-          </ul>
-
-          <p>
-            <span class="role">Online English Tutor (Part-Time)</span> —
-            <span class="company">Engoo</span>
-            <span class="date">2021 – Present</span>
-          </p>
-          <ul>
-            <li>Delivered structured, results-oriented lessons to international learners.</li>
-            <li>Strengthened communication, clarity, and adaptability in remote environments.</li>
-          </ul>
-
-          <p>
-            <span class="role">Professional Football Athlete</span>
-            <span class="date">2011 – 2022</span>
-          </p>
-          <ul>
-            <li>Competed professionally for over a decade.</li>
-            <li>Developed discipline, resilience, and performance accountability now applied to marketing systems.</li>
-          </ul>
-        </div>
-
-        <div class="card">
-          <h2>Education and Certifications</h2>
-          <p><strong>Alexandria University</strong> — Engineering Studies (Four Years Completed)</p>
-          <ul>
-            <li>Strong foundation in systems thinking, mathematics, and structured problem solving.</li>
-          </ul>
-
-          <ul style="margin-top:10px;">
-            <li>Google Digital Marketing and E-Commerce</li>
-            <li>Google Advanced Data Analytics</li>
-            <li>IBM Digital Marketing and Growth Hacking</li>
-            <li>Google IT Automation with Python</li>
-            <li>Microsoft Python Development</li>
-          </ul>
-        </div>
+      <div class="langs">
+        <span>Arabic — Native</span>
+        <span>English — Near Native</span>
+        <span>German — B2</span>
       </div>
     </div>
   </div>
+
+  <div class="grid">
+
+    <!-- LEFT COLUMN -->
+    <div>
+
+      <div class="card">
+        <h2>Core Skills</h2>
+        <ul>
+          <li>Designing full performance marketing systems from research to reporting</li>
+          <li>Google Ads, Performance Max, Merchant Center architecture</li>
+          <li>GA4, Tag Manager, Search Console, Looker Studio dashboards</li>
+          <li>SEO strategy, technical optimisation, and content-to-conversion mapping</li>
+          <li>B2C and B2B-influenced funnel design and lifecycle logic</li>
+          <li>CRM setup, lead scoring, automation, and retention flows</li>
+          <li>Data-driven experimentation, testing frameworks, and iteration</li>
+        </ul>
+      </div>
+
+      <div class="card contact">
+        <h2>Contact</h2>
+        <p>Email: moe-abdelrazek@outlook.com</p>
+        <p>WhatsApp: +20 101 728 6384</p>
+        <p>LinkedIn: linkedin.com/in/moe-abdelrazek</p>
+        <p>Portfolio: moeabdelrazek.github.io/Moe-Abdelrazek/</p>
+        <p>Location: Alexandria, Egypt</p>
+      </div>
+
+      <div class="card">
+        <h2>Education</h2>
+        <h3>Alexandria University — Engineering Studies (Incomplete)</h3>
+        <div class="sub">
+          Systems thinking, mathematics, and structured problem-solving foundation
+        </div>
+      </div>
+
+      <div class="card">
+        <h2>Certifications</h2>
+        <ul>
+          <li>Google Digital Marketing and E-Commerce</li>
+          <li>Google Advanced Data Analytics</li>
+          <li>IBM Digital Marketing and Growth Hacking</li>
+          <li>Google IT Automation with Python</li>
+          <li>Microsoft Python Development</li>
+        </ul>
+      </div>
+
+    </div>
+
+    <!-- RIGHT COLUMN -->
+    <div>
+
+      <div class="card">
+        <h2>Professional Summary</h2>
+        <p>
+          Performance-focused digital marketer with an engineering mindset.
+          I design and operate complete marketing systems rather than isolated campaigns,
+          connecting acquisition, analytics, conversion, and retention into one structure
+          that can be tested, scaled, and handed over with confidence.
+        </p>
+      </div>
+
+      <div class="card">
+        <h2>Professional Experience</h2>
+
+        <h3>Digital Media Specialist — Technosignage</h3>
+        <div class="sub">Oct 2025 – Present (Contract)</div>
+        <ul>
+          <li>Operating paid media, SEO, analytics, and reporting as a unified system</li>
+          <li>Managing Google Ads, Merchant Center, GA4, and Search Console for hardware ecommerce</li>
+          <li>Building dashboards and decision frameworks for ongoing optimisation</li>
+        </ul>
+
+        <h3>Digital Marketing Specialist — Independent</h3>
+        <div class="sub">2023 – Present</div>
+        <ul>
+          <li>Designed end-to-end marketing systems across ecommerce, healthcare, hospitality, and fitness</li>
+          <li>Owned research, strategy, implementation, tracking, and reporting alone</li>
+          <li>Used structured experimentation instead of ad-hoc optimisation</li>
+        </ul>
+
+        <h3>Online English Tutor — Engoo</h3>
+        <div class="sub">2021 – Present</div>
+        <ul>
+          <li>Delivered structured, outcome-driven sessions to international learners</li>
+          <li>Strengthened clarity, communication, and remote delivery skills</li>
+        </ul>
+
+        <h3>Professional Football Athlete</h3>
+        <div class="sub">2011 – 2022</div>
+        <ul>
+          <li>Developed discipline, performance accountability, and long-term consistency</li>
+          <li>Transferred competitive mindset into analytical and operational work</li>
+        </ul>
+      </div>
+
+    </div>
+  </div>
+</div>
 </body>
 </html>

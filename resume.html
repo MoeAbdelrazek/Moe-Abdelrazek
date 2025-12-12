@@ -1,152 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
+<meta charset="UTF-8" />
 <title>Mohamed Abdelrazek — Resume</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
-:root{
-  --petrol:#0f4c5c;
-  --bg:#f6efe8;
-  --card:#fffaf4;
-  --text:#2b2b2b;
-  --muted:#6b6b6b;
-  --border:rgba(15,76,92,0.15);
-  --shadow:0 20px 45px rgba(0,0,0,0.08);
+:root {
+  --bg-main: #f6efe6;
+  --bg-card: rgba(255,255,255,0.88);
+  --petrol: #0b4f5c;
+  --text: #3b2f2a;
+  --muted: #6b5c55;
+  --shadow: 0 18px 45px rgba(0,0,0,0.18);
+  --radius: 22px;
 }
 
-body{
-  margin:0;
-  font-family:"Lora",serif;
+/* GLOBAL */
+* {
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Lora", serif;
+  color: var(--text);
   background:
-    linear-gradient(rgba(246,239,232,0.92),rgba(246,239,232,0.92)),
-    url("https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/3_Assets/Images/Cafe-background.jpg");
-  background-size:cover;
-  background-position:center;
-  color:var(--text);
+    linear-gradient(rgba(246,239,230,0.92), rgba(246,239,230,0.92)),
+    url("Cafe-background.jpg") center / cover fixed no-repeat;
 }
 
-.container{
-  max-width:1200px;
-  margin:50px auto;
-  padding:0 20px;
+/* LAYOUT */
+.page {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 40px 28px 80px;
 }
 
-/* Header */
-.header{
-  display:flex;
-  align-items:flex-start;
-  gap:26px;
-  margin-bottom:32px;
+/* HEADER */
+.header {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+  margin-bottom: 36px;
 }
 
-.header img{
-  width:120px;
-  height:120px;
-  border-radius:50%;
-  object-fit:cover;
-  border:3px solid var(--petrol);
-  box-shadow:var(--shadow);
-  image-rendering:auto;
-  transform:translateZ(0);
-  backface-visibility:hidden;
-  filter:none;
+.profile-wrapper {
+  isolation: isolate;
 }
 
-.header h1{
-  font-family:"Playfair Display",serif;
-  font-size:42px;
-  color:var(--petrol);
-  margin:0;
+.profile-img {
+  width: 120px;
+  height: 120px;
+  object-fit: cover;
+  border-radius: 50%;
+  border: 3px solid var(--petrol);
+
+  filter: none !important;
+  backdrop-filter: none !important;
+  image-rendering: -webkit-optimize-contrast;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+
+  box-shadow: 0 10px 28px rgba(0,0,0,0.25);
 }
 
-.motto{
-  margin-top:8px;
-  font-size:18px;
-  font-weight:500;
-  color:var(--muted);
-  max-width:820px;
+.header-text h1 {
+  font-family: "Playfair Display", serif;
+  font-size: 36px;
+  color: var(--petrol);
+  margin: 0 0 6px;
 }
 
-.languages span{
-  display:inline-block;
-  margin:10px 10px 0 0;
-  padding:6px 14px;
-  border-radius:999px;
-  border:1px solid var(--border);
-  font-weight:600;
-  font-size:14px;
-  background:rgba(255,250,244,0.7);
+.motto {
+  font-size: 17px;
+  color: var(--muted);
+  max-width: 640px;
 }
 
-/* Grid */
-.grid{
-  display:grid;
-  grid-template-columns:35% 65%;
-  gap:30px;
+.langs {
+  margin-top: 10px;
 }
 
-/* Cards */
-.card{
-  background:rgba(255,250,244,0.95);
-  border-radius:18px;
-  padding:24px 26px;
-  margin-bottom:24px;
-  box-shadow:var(--shadow);
-  border:1px solid rgba(15,76,92,0.10);
+.lang {
+  display: inline-block;
+  padding: 6px 14px;
+  border-radius: 999px;
+  background: #ffffff;
+  border: 1px solid rgba(0,0,0,0.08);
+  font-size: 14px;
+  margin-right: 8px;
 }
 
-h2{
-  font-family:"Playfair Display",serif;
-  color:var(--petrol);
-  font-size:22px;
-  margin-bottom:14px;
+/* GRID */
+.grid {
+  display: grid;
+  grid-template-columns: 35% 65%;
+  gap: 28px;
 }
 
-ul{padding-left:18px;margin:0;}
-li{margin-bottom:7px;line-height:1.55;}
-
-.role{font-weight:700;}
-.date{float:right;color:var(--muted);font-weight:600;}
-
-.contact a{
-  color:var(--text);
-  text-decoration:none;
-  font-weight:500;
+/* CARD */
+.card {
+  background: var(--bg-card);
+  border-radius: var(--radius);
+  padding: 26px;
+  margin-bottom: 26px;
+  box-shadow: var(--shadow);
+  animation: fadeUp 0.6s ease both;
 }
-.contact a:hover{color:var(--petrol);}
 
-@media(max-width:900px){
-  .grid{grid-template-columns:1fr;}
-  .header{flex-direction:column;align-items:center;text-align:center;}
-  .date{float:none;display:block;}
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(18px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.card h2 {
+  font-family: "Playfair Display", serif;
+  color: var(--petrol);
+  font-size: 22px;
+  margin: 0 0 14px;
+}
+
+/* LISTS */
+ul {
+  padding-left: 18px;
+  margin: 0;
+}
+
+li {
+  margin-bottom: 8px;
+}
+
+/* CONTACT LINKS */
+.contact a {
+  color: var(--petrol);
+  text-decoration: none;
+  font-weight: 500;
+}
+
+.contact a:hover {
+  text-decoration: underline;
+}
+
+/* EXPERIENCE */
+.role {
+  font-weight: 700;
+  color: var(--petrol);
+}
+
+.date {
+  float: right;
+  font-weight: 600;
+  color: var(--muted);
+}
+
+/* RESPONSIVE */
+@media (max-width: 900px) {
+  .grid {
+    grid-template-columns: 1fr;
+  }
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }
 </style>
 </head>
 
 <body>
-
-<div class="container">
+<div class="page">
 
   <!-- HEADER -->
   <div class="header">
-    <img src="profile.jpg" alt="Mohamed Abdelrazek">
-    <div>
+    <div class="profile-wrapper">
+      <img src="profile.jpg" alt="Mohamed Abdelrazek portrait" class="profile-img">
+    </div>
+    <div class="header-text">
       <h1>Mohamed Abdelrazek</h1>
       <div class="motto">
         Athlete’s discipline. Engineering mindset. Lifelong learner. Shaped by global, multicultural experiences.
       </div>
-      <div class="languages">
-        <span>Arabic — Native</span>
-        <span>English — Near Native</span>
-        <span>German — B2</span>
+      <div class="langs">
+        <span class="lang">Arabic — Native</span>
+        <span class="lang">English — Near Native</span>
+        <span class="lang">German — B2</span>
       </div>
     </div>
   </div>
 
+  <!-- GRID -->
   <div class="grid">
 
     <!-- LEFT COLUMN -->
@@ -156,7 +200,7 @@ li{margin-bottom:7px;line-height:1.55;}
         <h2>Contact</h2>
         <p>Email: <a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a></p>
         <p>Phone: <a href="tel:+201017286384">+20 101 728 6384</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/moe-abdelrazek" target="_blank">linkedin.com/in/moe-abdelrazek</a></p>
+        <p>LinkedIn: <a href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank">linkedin.com/in/moe-abdelrazek</a></p>
         <p>Website: <a href="https://moeabdelrazek.github.io/Moe-Abdelrazek/" target="_blank">Portfolio</a></p>
         <p>Location: Alexandria, Egypt</p>
       </div>
@@ -164,19 +208,21 @@ li{margin-bottom:7px;line-height:1.55;}
       <div class="card">
         <h2>Core Skills</h2>
         <ul>
-          <li>Performance marketing systems for ecommerce and B2B influenced buying journeys</li>
+          <li>End-to-end performance marketing systems (B2C and B2B influenced)</li>
           <li>Google Ads, Performance Max, Merchant Center, feed optimisation</li>
           <li>Measurement architecture: GA4, Tag Manager, conversion tracking</li>
-          <li>SEO strategy and technical optimisation</li>
-          <li>Lifecycle marketing, CRM logic, retention systems</li>
-          <li>Dashboarding and insight-driven reporting</li>
+          <li>SEO systems: site architecture, landing pages, Search Console</li>
+          <li>CRM, lifecycle funnels, and pipeline-driven growth</li>
+          <li>Dashboards, reporting clarity, and decision-ready analytics</li>
         </ul>
       </div>
 
       <div class="card">
         <h2>Education</h2>
-        <strong>Alexandria University — Engineering Studies (Incomplete)</strong>
-        <p class="muted">Systems thinking, mathematics, and structured problem-solving foundation</p>
+        <p><strong>Alexandria University — Engineering Studies (Incomplete)</strong></p>
+        <p style="color:var(--muted); font-size:15px;">
+          Systems thinking, mathematics, and structured problem-solving foundation
+        </p>
       </div>
 
       <div class="card">
@@ -199,15 +245,15 @@ li{margin-bottom:7px;line-height:1.55;}
         <h2>Professional Summary</h2>
         <p>
           Performance-focused digital marketer with an engineering mindset, specialising in building complete
-          marketing systems from zero presence to scalable acquisition engines.
+          marketing systems from zero presence to scalable acquisition engines. Known for owning the full stack
+          end-to-end and translating complexity into clear, resilient structures.
         </p>
       </div>
 
       <div class="card">
         <h2>Professional Experience</h2>
 
-        <p class="role">
-          Digital Media Specialist — Technosignage
+        <p class="role">Digital Media Specialist — Technosignage
           <span class="date">Oct 2025 – Present (Contract)</span>
         </p>
         <ul>
@@ -218,28 +264,35 @@ li{margin-bottom:7px;line-height:1.55;}
           <li>Integrated CRM and B2B outreach workflows.</li>
         </ul>
 
-        <p class="role">
-          Digital Marketing Specialist — Self-Employed
+        <br>
+
+        <p class="role">Digital Marketing Specialist — Self-Employed
           <span class="date">2023 – Present</span>
         </p>
         <ul>
           <li>Designed end-to-end marketing systems across ecommerce, healthcare, hospitality, and fitness.</li>
+          <li>Owned research, strategy, execution, optimisation, and reporting independently.</li>
+          <li>Built repeatable structures instead of one-off campaigns.</li>
         </ul>
 
-        <p class="role">
-          Online Tutor — Engoo
+        <br>
+
+        <p class="role">Online English Tutor — Engoo
           <span class="date">2021 – Present</span>
         </p>
         <ul>
           <li>Delivered structured, outcome-driven sessions to international learners.</li>
+          <li>Strengthened clarity, communication, and remote delivery skills.</li>
         </ul>
 
-        <p class="role">
-          Professional Football Athlete
+        <br>
+
+        <p class="role">Professional Football Athlete
           <span class="date">2011 – 2022</span>
         </p>
         <ul>
-          <li>Developed discipline, consistency, and performance accountability.</li>
+          <li>Developed discipline, performance accountability, and long-term consistency.</li>
+          <li>Transferred competitive mindset into analytical and operational work.</li>
         </ul>
       </div>
 
@@ -247,18 +300,18 @@ li{margin-bottom:7px;line-height:1.55;}
         <h2>Tools</h2>
         <ul>
           <li>Google Ads, GA4, Tag Manager, Merchant Center, Search Console</li>
-          <li>Shopify operations and ecommerce architecture</li>
-          <li>Amazon marketplace standards</li>
-          <li>HubSpot, Apollo.io, Zoho CRM & Mail</li>
-          <li>Email automation and lifecycle systems</li>
-          <li>Looker Studio dashboards</li>
-          <li>Microsoft Suite, Google Workspace</li>
+          <li>Shopify, Amazon marketplace standards and feeds</li>
+          <li>HubSpot CRM, Apollo.io, Zoho CRM and Mail</li>
+          <li>Email automation, lifecycle flows, loyalty systems</li>
+          <li>Looker Studio, dashboards, reporting automation</li>
+          <li>Canva, AI-assisted workflows, prompt systems</li>
+          <li>Microsoft Office Suite, Google Workspace</li>
         </ul>
       </div>
 
     </div>
   </div>
-</div>
 
+</div>
 </body>
 </html>

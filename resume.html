@@ -5,29 +5,27 @@
 <title>Mohamed Abdelrazek — Resume</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<!-- FONTS -->
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Inter:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
 
 <style>
 :root {
   --bg-main: #f6efe6;
-  --bg-card: rgba(255,255,255,0.9);
+  --bg-card: rgba(255,255,255,0.92);
   --petrol: #0b4f5c;
-  --text: #2f2a27;
+  --text: #3b2f2a;
   --muted: #6b5c55;
   --shadow: 0 18px 45px rgba(0,0,0,0.18);
   --radius: 22px;
 }
 
-/* RESET */
+/* GLOBAL RESET */
 * {
   box-sizing: border-box;
 }
 
-/* BODY */
 body {
   margin: 0;
-  font-family: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  font-family: "Lora", serif;
   color: var(--text);
   background:
     linear-gradient(rgba(246,239,230,0.92), rgba(246,239,230,0.92)),
@@ -49,26 +47,30 @@ body {
   margin-bottom: 36px;
 }
 
-.profile-wrapper {
-  flex-shrink: 0;
-}
-
-/* IMAGE — HARD FIX */
+/* IMAGE — FINAL FIX */
 .profile-img {
   width: 120px;
   height: 120px;
-  aspect-ratio: 1 / 1;
+
   object-fit: cover;
   object-position: center;
+
   border-radius: 50%;
   border: 3px solid var(--petrol);
-  background-color: #fff;
+  background-color: #ffffff;
+
+  /* ABSOLUTE SHARPNESS FIX */
   image-rendering: auto;
-  transform: translateZ(0);
-  backface-visibility: hidden;
+  transform: none;
+  filter: none;
+  backdrop-filter: none;
+  backface-visibility: visible;
+  will-change: auto;
+
   box-shadow: 0 10px 28px rgba(0,0,0,0.25);
 }
 
+/* HEADER TEXT */
 .header-text h1 {
   font-family: "Playfair Display", serif;
   font-size: 36px;
@@ -77,10 +79,9 @@ body {
 }
 
 .motto {
-  font-size: 16.5px;
+  font-size: 17px;
   color: var(--muted);
   max-width: 640px;
-  line-height: 1.55;
 }
 
 .langs {
@@ -93,7 +94,7 @@ body {
   border-radius: 999px;
   background: #ffffff;
   border: 1px solid rgba(0,0,0,0.08);
-  font-size: 13.5px;
+  font-size: 14px;
   margin-right: 8px;
 }
 
@@ -111,12 +112,6 @@ body {
   padding: 26px;
   margin-bottom: 26px;
   box-shadow: var(--shadow);
-  animation: fadeUp 0.6s ease both;
-}
-
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(18px); }
-  to { opacity: 1; transform: translateY(0); }
 }
 
 .card h2 {
@@ -134,7 +129,6 @@ ul {
 
 li {
   margin-bottom: 8px;
-  line-height: 1.55;
 }
 
 /* CONTACT */
@@ -150,13 +144,13 @@ li {
 
 /* EXPERIENCE */
 .role {
-  font-weight: 600;
+  font-weight: 700;
   color: var(--petrol);
 }
 
 .date {
   float: right;
-  font-weight: 500;
+  font-weight: 600;
   color: var(--muted);
 }
 
@@ -178,9 +172,14 @@ li {
 
   <!-- HEADER -->
   <div class="header">
-    <div class="profile-wrapper">
-      <img src="profile.jpg" alt="Mohamed Abdelrazek portrait" class="profile-img">
-    </div>
+    <img
+      src="profile.jpg"
+      alt="Mohamed Abdelrazek portrait"
+      class="profile-img"
+      width="120"
+      height="120"
+    />
+
     <div class="header-text">
       <h1>Mohamed Abdelrazek</h1>
       <div class="motto">
@@ -224,7 +223,7 @@ li {
       <div class="card">
         <h2>Education</h2>
         <p><strong>Alexandria University — Engineering Studies (Incomplete)</strong></p>
-        <p style="color:var(--muted); font-size:14.5px;">
+        <p style="color:var(--muted); font-size:15px;">
           Systems thinking, mathematics, and structured problem-solving foundation
         </p>
       </div>
@@ -276,7 +275,6 @@ li {
         <ul>
           <li>Designed end-to-end marketing systems across ecommerce, healthcare, hospitality, and fitness.</li>
           <li>Owned research, strategy, execution, optimisation, and reporting independently.</li>
-          <li>Built repeatable structures instead of one-off campaigns.</li>
         </ul>
 
         <br>

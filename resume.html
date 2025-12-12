@@ -27,10 +27,34 @@ body {
   margin: 0;
   font-family: "Lora", serif;
   color: var(--text);
-  background:
-    linear-gradient(rgba(246,239,230,0.92), rgba(246,239,230,0.92)),
-    url("Cafe-background.jpg") center / cover fixed no-repeat;
+  position: relative;
+  min-height: 100vh;
+  background-color: #160f0a;
 }
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background-image: url("Cafe-background.jpg");
+  background-size: cover;
+  background-position: center;
+  filter: blur(3px);
+  transform: scale(1.03);
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  background:
+    radial-gradient(circle at top left, rgba(255, 240, 224, 0.75), transparent 55%),
+    radial-gradient(circle at bottom right, rgba(37, 27, 19, 0.35), transparent 65%);
+  z-index: -1;
+  pointer-events: none;
+}
+--bg-card: rgba(255, 248, 238, 0.96);
+
 
 /* PAGE */
 .page {

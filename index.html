@@ -10,99 +10,156 @@
 
   <style>
     :root{
-      --bg-image:url("https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/3_Assets/Images/Cafe-background.jpg");
+      --bg-image: url("https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/3_Assets/Images/Cafe-background.jpg");
 
-      --ink:#2d201a;
-      --ink-soft:#4b3328;
+      --ink: #1f1611;
+      --ink-soft: rgba(31,22,17,.82);
 
-      --accent:#155a8a;
-      --accent-soft:#2a6ba0;
-      --accent-light:#d3e6f6;
+      --accent: #155a8a;
+      --accent2: #3a8cd1;
+      --accent3: #0b273f;
 
-      --card:rgba(255,244,231,.96);
-      --card-strong:rgba(255,240,225,.98);
-      --border:rgba(157,120,88,.55);
+      --latte1: #fff6ea;
+      --latte2: #ffe9d2;
+      --latte3: #f9dcc4;
 
-      --shadow:0 18px 55px rgba(46,29,17,.35);
-      --shadow-strong:0 24px 80px rgba(0,0,0,.45);
+      --glass: rgba(255, 248, 238, 0.72);
+      --glass-strong: rgba(255, 244, 231, 0.92);
+      --stroke: rgba(160, 126, 92, 0.45);
 
-      --radius-xl:30px;
-      --radius-lg:22px;
-      --radius-pill:999px;
+      --dark: rgba(14, 10, 7, 0.86);
+      --dark2: rgba(26, 18, 13, 0.86);
 
-      --max:1180px;
+      --shadow: 0 18px 60px rgba(0,0,0,.35);
+      --shadow2: 0 28px 100px rgba(0,0,0,.45);
+
+      --r-xl: 34px;
+      --r-lg: 24px;
+      --r-md: 18px;
+      --pill: 999px;
+
+      --max: 1240px;
+
+      --section-pad: 34px;
+      --gap: 18px;
     }
 
-    *{box-sizing:border-box}
+    *{ box-sizing:border-box; }
+
     html,body{
       margin:0; padding:0;
       font-family:"Source Serif Pro", Georgia, "Times New Roman", serif;
-      font-size:18px; line-height:1.9;
-      color:var(--ink-soft);
-      background:#160f0a;
+      font-size:18px; line-height:1.85;
+      color: var(--ink-soft);
+      background:#120c08;
       overflow-x:hidden;
+      scroll-behavior:smooth;
     }
 
+    /* Background cinematic layer */
     body::before{
       content:"";
       position:fixed; inset:0;
-      background-image:var(--bg-image);
+      background-image: var(--bg-image);
       background-size:cover;
       background-position:center;
-      filter:blur(3px);
-      transform:scale(1.03);
-      z-index:-2;
+      filter: blur(3px) saturate(1.08) contrast(1.02);
+      transform: scale(1.03);
+      z-index:-4;
     }
 
+    /* Dark film overlay */
+    body::after{
+      content:"";
+      position:fixed; inset:0;
+      background:
+        radial-gradient(circle at 20% 0%, rgba(255,255,255,.10), transparent 55%),
+        radial-gradient(circle at 90% 110%, rgba(58,140,209,.16), transparent 55%),
+        linear-gradient(180deg, rgba(0,0,0,.58), rgba(0,0,0,.45));
+      z-index:-3;
+      pointer-events:none;
+    }
+
+    /* Animated grain */
+    .grain{
+      position:fixed; inset:-30%;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+      opacity:.12;
+      mix-blend-mode: overlay;
+      animation: grainMove 9s steps(6) infinite;
+      z-index:-2;
+      pointer-events:none;
+    }
+    @keyframes grainMove{
+      0%{ transform:translate3d(0,0,0) rotate(0deg); }
+      25%{ transform:translate3d(-2%, -3%, 0) rotate(1deg); }
+      50%{ transform:translate3d(-4%, 2%, 0) rotate(-1deg); }
+      75%{ transform:translate3d(3%, 4%, 0) rotate(2deg); }
+      100%{ transform:translate3d(0,0,0) rotate(0deg); }
+    }
+
+    /* Spotlight cursor */
+    .spotlight{
+      position:fixed; inset:0;
+      pointer-events:none;
+      z-index:2;
+      background: radial-gradient(700px circle at var(--sx, 50%) var(--sy, 30%), rgba(255,255,255,.10), transparent 60%);
+      mix-blend-mode: soft-light;
+      opacity:.7;
+      transition: opacity .3s ease;
+    }
+
+    /* Shell */
     .shell{
-      max-width:var(--max);
-      margin:28px auto 70px;
-      padding:0 18px;
+      max-width: var(--max);
+      margin: 22px auto 90px;
+      padding: 0 18px;
+      position:relative;
+      z-index:3;
     }
 
     /* NAV */
     .nav{
       position:sticky;
       top:16px;
-      z-index:30;
-      margin-bottom:22px;
+      z-index:50;
+      margin-bottom: 18px;
     }
-
     .nav-inner{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:14px;
-      padding:10px 18px;
-      border-radius:var(--radius-pill);
-      background:linear-gradient(135deg, rgba(19,12,8,.96), rgba(38,25,17,.98));
-      border:1px solid rgba(211,182,153,.65);
-      box-shadow:0 20px 60px rgba(0,0,0,.75);
-      backdrop-filter:blur(14px);
+      padding: 10px 18px;
+      border-radius: var(--pill);
+      background: linear-gradient(135deg, var(--dark), var(--dark2));
+      border: 1px solid rgba(211, 182, 153, .55);
+      box-shadow: 0 20px 70px rgba(0,0,0,.7);
+      backdrop-filter: blur(14px);
+      transform: translateZ(0);
     }
 
     .brand{
       display:flex;
       flex-direction:column;
       gap:2px;
-      min-width:220px;
+      min-width: 250px;
     }
-
     .brand small{
       font-family:"Cormorant Garamond", serif;
-      letter-spacing:.22em;
+      letter-spacing:.24em;
       text-transform:uppercase;
       font-size:12px;
-      color:var(--accent-light);
-      opacity:.9;
+      color: rgba(211, 230, 246, .92);
+      opacity:.92;
     }
-
     .brand strong{
       font-family:"Playfair Display", serif;
-      letter-spacing:.08em;
-      font-size:14px;
-      color:#f7fbff;
       font-style:italic;
+      letter-spacing:.10em;
+      color:#f7fbff;
+      font-size:14px;
+      text-transform:uppercase;
     }
 
     .nav-links{
@@ -116,76 +173,115 @@
       text-decoration:none;
       font-size:14px;
       padding:6px 14px;
-      border-radius:var(--radius-pill);
-      color:var(--accent-light);
+      border-radius: var(--pill);
+      color: rgba(211, 230, 246, .95);
       border:1px solid transparent;
-      transition:transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
+      transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
       white-space:nowrap;
+      position:relative;
+      overflow:hidden;
     }
+
+    .nav-links a::after{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(circle at top left, rgba(58,140,209,.25), rgba(17,63,98,.85));
+      opacity:0;
+      transition:opacity .22s ease;
+    }
+    .nav-links a span{ position:relative; z-index:1; }
 
     .nav-links a:hover{
-      background:radial-gradient(circle at top left, rgba(26,116,177,.35), rgba(17,63,98,.88));
-      border-color:rgba(205,224,240,.9);
-      transform:translateY(-1px);
-      box-shadow:0 10px 28px rgba(0,0,0,.5);
+      border-color: rgba(205,224,240,.75);
+      transform: translateY(-1px);
+      box-shadow: 0 12px 28px rgba(0,0,0,.45);
     }
+    .nav-links a:hover::after{ opacity:1; }
 
-    /* BUTTONS */
+    /* Buttons */
     .btn, .btn-outline{
       display:inline-flex;
       align-items:center;
       justify-content:center;
-      gap:8px;
-      padding:11px 22px;
-      border-radius:var(--radius-pill);
-      font-weight:700;
-      font-size:15px;
+      gap:10px;
+      padding: 12px 22px;
+      border-radius: var(--pill);
+      font-weight: 800;
+      font-size: 15px;
       text-decoration:none;
       border:1px solid transparent;
       cursor:pointer;
       white-space:nowrap;
+      position:relative;
+      overflow:hidden;
+      transform: translateZ(0);
+      user-select:none;
+      will-change: transform;
     }
 
     .btn{
-      background:radial-gradient(circle at top left, #3a8cd1, #155a8a);
+      background: radial-gradient(circle at top left, var(--accent2), var(--accent));
       color:#fff;
-      border-color:rgba(168,204,235,.7);
-      box-shadow:0 18px 40px rgba(1,24,48,.55);
-      transition:transform .18s ease, box-shadow .18s ease;
+      border-color: rgba(168,204,235,.65);
+      box-shadow: 0 18px 50px rgba(1,24,48,.55);
     }
 
-    .btn:hover{ transform:translateY(-2px); box-shadow:0 24px 50px rgba(0,0,0,.75); }
+    .btn::before{
+      content:"";
+      position:absolute; inset:-40%;
+      background: radial-gradient(circle, rgba(255,255,255,.55), transparent 55%);
+      transform: translate3d(-18%, -18%, 0);
+      opacity:.0;
+      transition: opacity .25s ease;
+      mix-blend-mode: screen;
+    }
+    .btn:hover::before{ opacity:.55; }
 
     .btn-outline{
-      background:linear-gradient(135deg, rgba(19,15,12,.96), rgba(30,22,16,.96));
-      color:var(--accent-light);
-      border-color:rgba(153,183,210,.8);
-      box-shadow:0 14px 32px rgba(0,0,0,.55);
-      transition:transform .18s ease, box-shadow .18s ease;
+      background: linear-gradient(135deg, rgba(19,15,12,.92), rgba(30,22,16,.92));
+      color: rgba(211, 230, 246, .95);
+      border-color: rgba(153,183,210,.75);
+      box-shadow: 0 14px 40px rgba(0,0,0,.55);
     }
 
-    .btn-outline:hover{ transform:translateY(-2px); box-shadow:0 22px 46px rgba(0,0,0,.8); }
+    /* Section cards */
+    .section{
+      margin-top: 18px;
+    }
 
-    /* SECTIONS */
     .card{
-      border-radius:var(--radius-xl);
-      background:var(--card-strong);
-      border:1px solid var(--border);
-      box-shadow:var(--shadow);
-      padding:34px 30px;
+      border-radius: var(--r-xl);
+      background: linear-gradient(180deg, rgba(255, 248, 238, .74), rgba(255, 240, 225, .70));
+      border: 1px solid rgba(160,126,92,.38);
+      box-shadow: var(--shadow);
+      padding: var(--section-pad);
+      backdrop-filter: blur(16px);
       position:relative;
       overflow:hidden;
+      transform: translateZ(0);
     }
 
     .card::before{
       content:"";
       position:absolute; inset:0;
       background:
-        radial-gradient(circle at 5% 0, rgba(255,255,255,.9), transparent 60%),
-        radial-gradient(circle at 100% 130%, rgba(37,96,150,.22), transparent 65%);
-      mix-blend-mode:soft-light;
+        radial-gradient(circle at 6% 0%, rgba(255,255,255,.85), transparent 60%),
+        radial-gradient(circle at 100% 120%, rgba(58,140,209,.18), transparent 62%),
+        linear-gradient(135deg, rgba(255,255,255,.22), transparent 45%);
+      pointer-events:none;
+      mix-blend-mode: soft-light;
+      opacity:.9;
+    }
+
+    .card::after{
+      content:"";
+      position:absolute; inset:0;
+      border-radius: var(--r-xl);
+      background:
+        radial-gradient(1000px circle at var(--mx, 50%) var(--my, 50%), rgba(21,90,138,.12), transparent 55%);
       pointer-events:none;
       opacity:.85;
+      transition: opacity .25s ease;
     }
 
     .card > *{ position:relative; z-index:1; }
@@ -193,192 +289,575 @@
     .kicker{
       font-family:"Cormorant Garamond", serif;
       font-size:12px;
-      letter-spacing:.22em;
+      letter-spacing:.26em;
       text-transform:uppercase;
-      color:var(--accent-soft);
+      color: rgba(21,90,138,.85);
       margin:0 0 8px;
       text-align:center;
     }
 
-    h1,h2,h3{
+    h1,h2{
       margin:0;
-      color:var(--accent);
+      color: var(--accent);
       font-family:"Playfair Display", serif;
-      font-style:italic;
+      font-style: italic;
       text-align:center;
     }
 
-    h1{ font-size:38px; letter-spacing:.10em; text-transform:uppercase; }
-    h2{ font-size:28px; margin-top:4px; }
-    h3{ font-size:18px; text-align:left; font-style:italic; margin-bottom:8px; }
+    h1{
+      font-size: 42px;
+      letter-spacing: .10em;
+      text-transform: uppercase;
+      color: rgba(21,90,138,.96);
+    }
+
+    h2{
+      font-size: 30px;
+      margin-top: 6px;
+    }
 
     .sub{
       text-align:center;
-      font-size:17px;
-      margin:10px auto 0;
-      max-width:820px;
-      color:var(--ink-soft);
+      max-width: 920px;
+      margin: 10px auto 0;
+      font-size: 17px;
+      color: rgba(31,22,17,.78);
     }
 
-    .grid-2{
-      display:grid;
-      grid-template-columns:minmax(0, 1.35fr) minmax(0, 1fr);
-      gap:26px;
-      align-items:start;
-    }
-
+    /* HERO */
     .hero{
-      margin-bottom:22px;
-      box-shadow:var(--shadow-strong);
-      background:radial-gradient(circle at top left, rgba(255,251,244,.96), rgba(255,238,217,.97));
+      padding: 40px 36px;
+      box-shadow: var(--shadow2);
+      background:
+        radial-gradient(circle at top left, rgba(255,251,244,.92), rgba(255,238,217,.82));
     }
 
-    .hero .left p{ margin:0; }
-    .hero .actions{ display:flex; flex-wrap:wrap; gap:12px; margin-top:16px; }
-    .hero .proof{ margin-top:18px; display:grid; gap:10px; }
-    .proof-item{
-      border-radius:18px;
-      padding:12px 14px;
-      background:rgba(255,248,238,.98);
-      border:1px solid rgba(157,120,88,.55);
-      box-shadow:0 12px 34px rgba(0,0,0,.18);
+    .hero-grid{
+      margin-top: 24px;
+      display:grid;
+      grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
+      gap: 22px;
+      align-items: start;
     }
-    .proof-item strong{ color:var(--accent); }
-    .proof-item small{ display:block; opacity:.85; }
 
-    .photo-wrap{
+    .hero-left{
+      display:flex;
+      flex-direction:column;
+      gap: 14px;
+    }
+
+    .hero-line{
+      font-size: 20px;
+      color: rgba(31,22,17,.86);
+      margin: 0;
+    }
+
+    .hero-proof{
+      display:grid;
+      gap: 12px;
+    }
+
+    .proof{
+      border-radius: var(--r-lg);
+      padding: 14px 16px;
+      background: rgba(255, 248, 238, .86);
+      border: 1px solid rgba(157,120,88,.45);
+      box-shadow: 0 14px 40px rgba(0,0,0,.16);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .proof::before{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(circle at 10% 0%, rgba(255,255,255,.6), transparent 55%);
+      opacity:.9;
+      pointer-events:none;
+      mix-blend-mode: soft-light;
+    }
+
+    .proof strong{
+      display:block;
+      color: rgba(21,90,138,.95);
+      font-weight: 800;
+      margin-bottom: 2px;
+    }
+
+    .proof span{
+      display:block;
+      font-size: 15px;
+      color: rgba(31,22,17,.78);
+    }
+
+    .actions{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 12px;
+      margin-top: 6px;
+    }
+
+    /* Magnetic elements */
+    .magnetic{
+      position:relative;
+    }
+
+    .hero-right{
       display:flex;
       flex-direction:column;
       align-items:center;
-      gap:14px;
+      gap: 14px;
     }
 
     .photo-frame{
-      width:210px; height:210px;
-      padding:6px;
-      border-radius:50%;
-      background:conic-gradient(from 210deg, #c6e3ff, #1b4f7b, #f5e3c2, #c6e3ff);
-      box-shadow:0 22px 50px rgba(0,0,0,.7), 0 0 0 6px rgba(255,255,255,.9);
+      width: 240px;
+      height: 240px;
+      padding: 7px;
+      border-radius: 50%;
+      background: conic-gradient(from 210deg, #c6e3ff, #1b4f7b, #f5e3c2, #c6e3ff);
+      box-shadow:
+        0 26px 70px rgba(0,0,0,.55),
+        0 0 0 6px rgba(255,255,255,.85);
       overflow:hidden;
+      position:relative;
+      transform: translateZ(0);
     }
+
+    .photo-frame::after{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(circle at 20% 0%, rgba(255,255,255,.55), transparent 55%);
+      mix-blend-mode: soft-light;
+      pointer-events:none;
+    }
+
     .photo-frame img{
       width:100%; height:100%;
-      border-radius:50%;
       object-fit:cover;
       object-position:center top;
+      border-radius:50%;
+      transform: translateZ(0);
     }
 
     .mini{
       text-align:center;
-      font-size:14px;
-      color:var(--ink-soft);
+      font-size: 14px;
+      color: rgba(31,22,17,.80);
     }
+
     .mini a{
-      color:var(--accent-soft);
+      color: rgba(21,90,138,.95);
       text-decoration:none;
       border-bottom:1px solid transparent;
     }
-    .mini a:hover{ border-bottom-color:var(--accent-soft); }
+    .mini a:hover{ border-bottom-color: rgba(21,90,138,.55); }
 
-    /* CASE STUDIES */
-    .section{ margin-top:22px; }
-
-    .cases{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:14px;
-      margin-top:18px;
+    /* Marquee tools */
+    .marquee{
+      margin-top: 14px;
+      border-radius: var(--r-lg);
+      border: 1px solid rgba(157,120,88,.38);
+      overflow:hidden;
+      background: rgba(14,10,7,.55);
+      box-shadow: 0 14px 40px rgba(0,0,0,.22);
     }
 
-    .case{
-      border-radius:22px;
-      padding:18px;
-      background:radial-gradient(circle at top left, #fff9f1, #ffeada 40%, #f8ddc7 100%);
-      border:1px solid rgba(172,134,102,.75);
-      box-shadow:0 18px 50px rgba(0,0,0,.40);
+    .marquee-track{
+      display:flex;
+      gap: 14px;
+      padding: 10px 12px;
+      white-space:nowrap;
+      will-change: transform;
+    }
+
+    .chip{
+      display:inline-flex;
+      align-items:center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: var(--pill);
+      background: rgba(255,248,238,.10);
+      border: 1px solid rgba(211,230,246,.28);
+      color: rgba(211,230,246,.92);
+      font-size: 13px;
+      letter-spacing:.02em;
+    }
+
+    .chip b{
+      color: rgba(211,230,246,.98);
+      font-weight: 800;
+    }
+
+    /* Work cards */
+    .work-grid{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--gap);
+    }
+
+    .work{
+      grid-column: span 6;
+      border-radius: var(--r-xl);
+      padding: 20px;
+      background: radial-gradient(circle at top left, var(--latte1), var(--latte2) 45%, var(--latte3) 100%);
+      border: 1px solid rgba(172,134,102,.70);
+      box-shadow: 0 20px 70px rgba(0,0,0,.35);
+      position:relative;
+      overflow:hidden;
+      transform: translateZ(0);
+    }
+
+    .work::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(255,255,255,.75), transparent 55%),
+        radial-gradient(circle at 100% 120%, rgba(58,140,209,.18), transparent 55%);
+      pointer-events:none;
+      mix-blend-mode: soft-light;
+      opacity:.9;
+    }
+    .work > *{ position:relative; z-index:1; }
+
+    .work small{
+      display:block;
+      font-size: 12px;
+      letter-spacing:.10em;
+      text-transform: uppercase;
+      color: rgba(21,90,138,.85);
+      margin-bottom: 6px;
+    }
+
+    .work h3{
+      margin:0 0 10px;
+      font-family:"Playfair Display", serif;
+      font-style: italic;
+      color: rgba(21,90,138,.96);
+      font-size: 22px;
+    }
+
+    .work p{
+      margin:0 0 14px;
+      font-size: 16px;
+      color: rgba(31,22,17,.80);
+    }
+
+    .work .meta{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 10px;
+      margin: 10px 0 14px;
+    }
+
+    .meta-box{
+      border-radius: var(--r-md);
+      background: rgba(255,248,238,.70);
+      border: 1px solid rgba(157,120,88,.40);
+      padding: 10px 12px;
+      box-shadow: 0 12px 34px rgba(0,0,0,.14);
+    }
+
+    .meta-box b{
+      display:block;
+      color: rgba(21,90,138,.95);
+      font-weight: 900;
+      margin-bottom: 2px;
+    }
+    .meta-box span{ font-size: 14px; color: rgba(31,22,17,.78); }
+
+    /* Services - end to end system */
+    .services-grid{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--gap);
+    }
+
+    .module{
+      grid-column: span 4;
+      border-radius: var(--r-xl);
+      padding: 18px 18px 16px;
+      background: rgba(255, 248, 238, .84);
+      border: 1px solid rgba(157,120,88,.42);
+      box-shadow: 0 18px 55px rgba(0,0,0,.20);
+      position:relative;
+      overflow:hidden;
+      transform: translateZ(0);
+    }
+
+    .module::before{
+      content:"";
+      position:absolute; inset:0;
+      background: radial-gradient(circle at 10% 0%, rgba(255,255,255,.65), transparent 55%);
+      opacity:.95;
+      pointer-events:none;
+      mix-blend-mode: soft-light;
+    }
+    .module > *{ position:relative; z-index:1; }
+
+    .module-head{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .badge{
+      width: 36px; height: 36px;
+      border-radius: 12px;
+      display:grid;
+      place-items:center;
+      color:#fff;
+      font-weight: 900;
+      background: radial-gradient(circle at top left, var(--accent2), var(--accent));
+      box-shadow: 0 18px 40px rgba(1,24,48,.28);
+      flex: 0 0 auto;
+    }
+
+    .module-title{
+      margin: 0;
+      font-family:"Playfair Display", serif;
+      font-style: italic;
+      color: rgba(21,90,138,.96);
+      font-size: 18px;
+      line-height: 1.25;
+    }
+
+    .module p{
+      margin: 0 0 10px;
+      font-size: 15px;
+      color: rgba(31,22,17,.78);
+    }
+
+    .list{
+      margin: 0;
+      padding-left: 18px;
+      color: rgba(31,22,17,.80);
+      font-size: 15px;
+    }
+    .list li{ margin: 6px 0; }
+
+    /* Cinematic process timeline */
+    .cinema{
+      padding: 0;
+    }
+
+    .cinema-head{
+      padding: var(--section-pad);
+    }
+
+    .cinema-stage{
+      position:relative;
+      border-top: 1px solid rgba(157,120,88,.34);
+      overflow:hidden;
+      border-radius: 0 0 var(--r-xl) var(--r-xl);
+    }
+
+    .progress{
+      position:absolute;
+      left: 24px;
+      right: 24px;
+      top: 16px;
+      height: 10px;
+      border-radius: var(--pill);
+      background: rgba(31,22,17,.10);
+      border: 1px solid rgba(157,120,88,.30);
+      overflow:hidden;
+      z-index:2;
+    }
+
+    .progress > i{
+      display:block;
+      height:100%;
+      width: 0%;
+      background: linear-gradient(90deg, rgba(58,140,209,.75), rgba(21,90,138,.95), rgba(11,39,63,.95));
+      box-shadow: 0 0 18px rgba(31,105,167,.55);
+      border-radius: var(--pill);
+    }
+
+    .rail{
+      display:flex;
+      gap: 14px;
+      padding: 48px 24px 26px;
+      will-change: transform;
+    }
+
+    .scene{
+      flex: 0 0 520px;
+      border-radius: var(--r-xl);
+      background: radial-gradient(circle at top left, var(--latte1), var(--latte2) 45%, var(--latte3) 100%);
+      border: 1px solid rgba(172,134,102,.70);
+      box-shadow: 0 24px 80px rgba(0,0,0,.38);
+      padding: 18px 18px 16px;
+      position:relative;
+      overflow:hidden;
+      transform: translateZ(0);
+    }
+
+    .scene::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(circle at 0% 0%, rgba(255,255,255,.75), transparent 55%),
+        radial-gradient(circle at 100% 120%, rgba(58,140,209,.18), transparent 55%);
+      pointer-events:none;
+      mix-blend-mode: soft-light;
+      opacity:.9;
+    }
+
+    .scene > *{ position:relative; z-index:1; }
+
+    .scene-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 14px;
+      margin-bottom: 10px;
+    }
+
+    .scene-num{
+      width: 44px; height: 44px;
+      border-radius: 16px;
+      display:grid;
+      place-items:center;
+      color:#fff;
+      font-weight: 900;
+      background: radial-gradient(circle at top left, var(--accent2), var(--accent));
+      box-shadow: 0 22px 55px rgba(1,24,48,.26);
+      flex: 0 0 auto;
+    }
+
+    .scene h3{
+      margin: 0;
+      font-family:"Playfair Display", serif;
+      font-style: italic;
+      color: rgba(21,90,138,.96);
+      font-size: 22px;
+      line-height: 1.2;
+    }
+
+    .scene p{
+      margin: 0 0 10px;
+      font-size: 16px;
+      color: rgba(31,22,17,.80);
+    }
+
+    .scene ul{
+      margin: 0;
+      padding-left: 18px;
+      color: rgba(31,22,17,.82);
+      font-size: 15px;
+    }
+    .scene ul li{ margin: 6px 0; }
+
+    /* Contact */
+    .contact-box{
+      margin-top: 18px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--gap);
+      align-items: stretch;
+    }
+
+    .contact-left{
+      grid-column: span 7;
+      border-radius: var(--r-xl);
+      padding: 22px;
+      background: rgba(255, 248, 238, .84);
+      border: 1px solid rgba(157,120,88,.42);
+      box-shadow: 0 18px 55px rgba(0,0,0,.20);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .contact-right{
+      grid-column: span 5;
+      border-radius: var(--r-xl);
+      padding: 22px;
+      background: linear-gradient(135deg, rgba(14,10,7,.88), rgba(26,18,13,.88));
+      border: 1px solid rgba(211, 182, 153, .38);
+      box-shadow: 0 22px 70px rgba(0,0,0,.55);
+      color: rgba(211,230,246,.95);
+      position:relative;
+      overflow:hidden;
+    }
+
+    .contact-right::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(circle at 15% 0%, rgba(255,255,255,.14), transparent 55%),
+        radial-gradient(circle at 100% 120%, rgba(58,140,209,.25), transparent 55%);
+      pointer-events:none;
+      mix-blend-mode: soft-light;
+      opacity:.9;
+    }
+    .contact-right > *{ position:relative; z-index:1; }
+
+    .contact-lines{
       display:flex;
       flex-direction:column;
-      gap:10px;
-      min-height:210px;
-      transition:transform .18s ease, box-shadow .18s ease, border-color .18s ease;
+      gap: 10px;
+      margin-top: 12px;
+      font-size: 15px;
     }
-    .case:hover{ transform:translateY(-5px); box-shadow:0 26px 70px rgba(0,0,0,.60); border-color:rgba(203,170,141,1); }
 
-    .case small{
-      font-size:12px;
-      letter-spacing:.08em;
-      text-transform:uppercase;
-      color:var(--accent-soft);
+    .contact-lines a{
+      color: rgba(211,230,246,.95);
+      text-decoration:none;
+      border-bottom: 1px solid transparent;
     }
-    .case strong{
-      font-family:"Playfair Display", serif;
-      font-style:italic;
-      font-size:20px;
-      color:var(--accent);
-    }
-    .case p{ margin:0; font-size:16px; }
+    .contact-lines a:hover{ border-bottom-color: rgba(211,230,246,.55); }
 
-    /* SERVICES */
-    .service-grid{
-      display:grid;
-      grid-template-columns:repeat(3, minmax(0, 1fr));
-      gap:14px;
-      margin-top:18px;
+    .cta-row{
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+      margin-top: 14px;
     }
-    .service{
-      border-radius:20px;
-      padding:16px;
-      background:rgba(255,248,238,.98);
-      border:1px solid rgba(157,120,88,.55);
-      box-shadow:0 12px 34px rgba(0,0,0,.18);
-    }
-    .service p{ margin:0; font-size:16px; }
 
-    /* PROCESS */
-    .steps{
-      margin-top:18px;
-      display:grid;
-      grid-template-columns:repeat(2, minmax(0, 1fr));
-      gap:14px;
-    }
-    .step{
-      border-radius:20px;
-      padding:16px;
-      background:rgba(255,248,238,.98);
-      border:1px solid rgba(157,120,88,.55);
-      box-shadow:0 12px 34px rgba(0,0,0,.18);
-    }
-    .step p{ margin:0; font-size:16px; }
-
-    /* FOOTER */
     .footer{
-      margin-top:20px;
+      margin-top: 18px;
       text-align:center;
-      font-weight:600;
-      color:var(--ink);
-      text-shadow:0 2px 6px rgba(0,0,0,.35);
-      font-size:17px;
+      font-weight: 700;
+      color: rgba(255,248,238,.90);
+      text-shadow: 0 2px 8px rgba(0,0,0,.45);
+      opacity:.95;
+      font-size: 16px;
     }
 
-    /* RESPONSIVE */
-    @media (max-width:1100px){
-      .grid-2{ grid-template-columns:1fr; }
-      .cases{ grid-template-columns:1fr; }
-      .service-grid{ grid-template-columns:1fr; }
-      .steps{ grid-template-columns:1fr; }
-      .brand{ min-width:auto; }
-      .nav-inner{ gap:10px; }
+    /* Reduced motion support */
+    @media (prefers-reduced-motion: reduce){
+      *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
     }
-    @media (max-width:720px){
-      .nav-inner{ flex-direction:column; align-items:flex-start; }
-      h1{ font-size:32px; }
-      .card{ padding:26px 20px; }
-      .shell{ margin-top:20px; }
+
+    /* Responsive */
+    @media (max-width: 1100px){
+      .hero-grid{ grid-template-columns: 1fr; }
+      .work{ grid-column: span 12; }
+      .module{ grid-column: span 12; }
+      .contact-left{ grid-column: span 12; }
+      .contact-right{ grid-column: span 12; }
+      .brand{ min-width: auto; }
+      .scene{ flex-basis: 440px; }
+    }
+
+    @media (max-width: 720px){
+      .nav-inner{ flex-direction:column; align-items:flex-start; gap:10px; }
+      h1{ font-size: 32px; }
+      .hero{ padding: 28px 20px; }
+      .card{ padding: 26px 20px; }
+      .scene{ flex-basis: 360px; }
+      .progress{ left: 18px; right: 18px; }
     }
   </style>
 </head>
 
 <body>
+  <div class="grain"></div>
+  <div class="spotlight" id="spotlight"></div>
+
   <div class="shell">
 
     <!-- NAV -->
@@ -389,52 +868,85 @@
           <strong>Mohamed Abdelrazek</strong>
         </div>
         <nav class="nav-links">
-          <a href="#work">Work</a>
-          <a href="#services">Services</a>
-          <a href="#process">Process</a>
-          <a href="resume.html">Resume</a>
-          <a href="#contact">Contact</a>
+          <a href="#work"><span>Work</span></a>
+          <a href="#services"><span>Services</span></a>
+          <a href="#process"><span>Process</span></a>
+          <a href="resume.html"><span>Resume</span></a>
+          <a href="#contact"><span>Contact</span></a>
         </nav>
       </div>
     </div>
 
     <!-- HERO -->
-    <section class="card hero" id="top">
+    <section class="section card hero" id="top">
       <p class="kicker">Performance marketing systems</p>
-      <h1>Mohamed Abdelrazek</h1>
-      <p class="sub">
-        I build complete marketing systems that connect acquisition, tracking, and conversion so teams can test, scale, and hand over work with clarity.
+      <h1 class="split" data-splittype="chars">Mohamed Abdelrazek</h1>
+      <p class="sub split" data-splittype="words">
+        I build complete marketing systems that connect acquisition, tracking, content, and conversion so teams can scale with clarity.
       </p>
 
-      <div class="grid-2" style="margin-top:22px;">
-        <div class="left">
-          <div class="proof">
-            <div class="proof-item">
-              <strong>Flagship: TechnoMounts (UAE)</strong>
-              <small>Performance-ready stack across Shopify, GA4, Google Ads, Merchant Center, Search Console, and landing pages.</small>
+      <div class="hero-grid">
+        <div class="hero-left">
+          <p class="hero-line split" data-splittype="words">
+            The work is engineered as one connected engine. Every campaign, landing page, and report belongs to the same system.
+          </p>
+
+          <div class="hero-proof">
+            <div class="proof">
+              <strong>Flagship system: TechnoMounts (UAE)</strong>
+              <span>Shopify, GA4, Google Ads, Merchant Center, Search Console, landing pages, and documentation under one structure.</span>
             </div>
-            <div class="proof-item">
+            <div class="proof">
               <strong>SEO growth example</strong>
-              <small>Organic impressions: 8,700 → 38,500. Organic clicks: 320 → 3,250.</small>
+              <span>Organic impressions: 8,700 to 38,500. Organic clicks: 320 to 3,250.</span>
             </div>
-            <div class="proof-item">
-              <strong>Full-stack ownership</strong>
-              <small>Research, funnel design, build, tracking, reporting, and iteration under one system.</small>
+            <div class="proof">
+              <strong>End to end ownership</strong>
+              <span>Market research, positioning, content, paid media, CRO, analytics, stabilization, and continuous monitoring.</span>
             </div>
           </div>
 
           <div class="actions">
-            <a class="btn" href="#work">View case studies</a>
-            <a class="btn-outline" href="#contact">Discuss a project</a>
+            <a class="btn magnetic" href="#work" data-magnet="1">View case studies</a>
+            <a class="btn-outline magnetic" href="#contact" data-magnet="1">Discuss a project</a>
+          </div>
+
+          <div class="marquee" aria-label="Tools marquee">
+            <div class="marquee-track" id="marqueeTrack">
+              <span class="chip"><b>GA4</b> measurement</span>
+              <span class="chip"><b>GTM</b> events</span>
+              <span class="chip"><b>Google Ads</b> Search</span>
+              <span class="chip"><b>Performance Max</b> scaling</span>
+              <span class="chip"><b>Merchant Center</b> feeds</span>
+              <span class="chip"><b>Search Console</b> intent</span>
+              <span class="chip"><b>Looker Studio</b> dashboards</span>
+              <span class="chip"><b>Shopify</b> CRO</span>
+              <span class="chip"><b>Meta</b> retargeting</span>
+              <span class="chip"><b>CRM</b> lifecycle</span>
+              <span class="chip"><b>Email</b> flows</span>
+
+              <!-- duplicate for seamless loop -->
+              <span class="chip"><b>GA4</b> measurement</span>
+              <span class="chip"><b>GTM</b> events</span>
+              <span class="chip"><b>Google Ads</b> Search</span>
+              <span class="chip"><b>Performance Max</b> scaling</span>
+              <span class="chip"><b>Merchant Center</b> feeds</span>
+              <span class="chip"><b>Search Console</b> intent</span>
+              <span class="chip"><b>Looker Studio</b> dashboards</span>
+              <span class="chip"><b>Shopify</b> CRO</span>
+              <span class="chip"><b>Meta</b> retargeting</span>
+              <span class="chip"><b>CRM</b> lifecycle</span>
+              <span class="chip"><b>Email</b> flows</span>
+            </div>
           </div>
         </div>
 
-        <div class="photo-wrap">
-          <div class="photo-frame">
+        <div class="hero-right">
+          <div class="photo-frame" id="photoFrame">
             <img src="profile.jpg" alt="Portrait of Mohamed Abdelrazek" />
           </div>
           <div class="mini">
-            Alexandria, Egypt · Remote or hybrid<br />
+            Alexandria, Egypt, remote or hybrid<br />
             <a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a>
             &nbsp;•&nbsp;
             <a href="https://wa.me/201017286384" target="_blank" rel="noopener">WhatsApp</a>
@@ -446,84 +958,334 @@
     <!-- WORK -->
     <section class="section card" id="work">
       <p class="kicker">Selected work</p>
-      <h2>Case studies</h2>
-      <p class="sub">Only the most relevant projects, written in a consistent structure.</p>
+      <h2 class="split" data-splittype="words">Case studies built as systems</h2>
+      <p class="sub split" data-splittype="words">
+        Each case study is a complete engine: research, build, tracking, conversion flow, and a decision-ready reporting layer.
+      </p>
 
-      <div class="cases">
-        <div class="case">
+      <div class="work-grid">
+        <article class="work tilt" data-tilt="1">
           <small>Ecommerce hardware · UAE</small>
-          <strong>TechnoMounts</strong>
-          <p>Performance-ready system with landing pages, tracking, and search visibility built to support Search, Shopping, and Performance Max.</p>
-          <a class="btn" href="https://moeabdelrazek.github.io/TechnoMounts/" target="_blank" rel="noopener">Open case study</a>
-        </div>
+          <h3>TechnoMounts</h3>
+          <p>
+            Performance-ready foundation built for paid and organic to reinforce the same landing page map, with clean measurement and scalable structure.
+          </p>
+          <div class="meta">
+            <div class="meta-box"><b>System</b><span>Landing pages + tracking + feed + reporting</span></div>
+            <div class="meta-box"><b>Goal</b><span>Search visibility + scalable acquisition</span></div>
+          </div>
+          <a class="btn magnetic" href="https://moeabdelrazek.github.io/TechnoMounts/" target="_blank" rel="noopener" data-magnet="1">Open case study</a>
+        </article>
 
-        <div class="case">
+        <article class="work tilt" data-tilt="1">
           <small>Healthcare · Appointments</small>
-          <strong>Rafiki Pet Hospital</strong>
-          <p>Full-funnel system from awareness to booked appointments, supported by CRM, automation, and performance reporting.</p>
-          <a class="btn" href="https://moeabdelrazek.github.io/Rafiki-Campaign/" target="_blank" rel="noopener">Open case study</a>
-        </div>
+          <h3>Rafiki Pet Hospital</h3>
+          <p>
+            Full funnel system from awareness to booked appointments, supported by CRM signals, automation, and reporting that matches real outcomes.
+          </p>
+          <div class="meta">
+            <div class="meta-box"><b>System</b><span>Ads + automation + measurement + reporting</span></div>
+            <div class="meta-box"><b>Goal</b><span>Booked visits, repeat visits, referrals</span></div>
+          </div>
+          <a class="btn magnetic" href="https://moeabdelrazek.github.io/Rafiki-Campaign/" target="_blank" rel="noopener" data-magnet="1">Open case study</a>
+        </article>
 
-        <div class="case">
+        <article class="work tilt" data-tilt="1">
           <small>Hospitality · Loyalty</small>
-          <strong>Haksoss Cafe</strong>
-          <p>Launch and loyalty engine focused on repeat visits, sign-ups, and measurable unit economics beyond first purchase.</p>
-          <a class="btn" href="https://moeabdelrazek.github.io/Haksoss_Full_Campaign/" target="_blank" rel="noopener">Open case study</a>
-        </div>
+          <h3>Haksoss Cafe</h3>
+          <p>
+            Launch and loyalty engine designed around repeat behavior and unit economics, not vanity metrics, with measurable conversion structure.
+          </p>
+          <div class="meta">
+            <div class="meta-box"><b>System</b><span>Offer + creative + funnel + loyalty logic</span></div>
+            <div class="meta-box"><b>Goal</b><span>Sign-ups, repeat visits, lifetime value</span></div>
+          </div>
+          <a class="btn magnetic" href="https://moeabdelrazek.github.io/Haksoss_Full_Campaign/" target="_blank" rel="noopener" data-magnet="1">Open case study</a>
+        </article>
 
-        <div class="case">
+        <article class="work tilt" data-tilt="1">
           <small>Fitness · Membership</small>
-          <strong>Mory Gym</strong>
-          <p>Direct response system focused on membership conversion and retention, translated into financial impact.</p>
-          <a class="btn" href="https://moeabdelrazek.github.io/mory-gym-campaign/" target="_blank" rel="noopener">Open case study</a>
-        </div>
+          <h3>Mory Gym</h3>
+          <p>
+            Cinematic direct response funnel for membership conversion and retention, with a performance view that leadership understands.
+          </p>
+          <div class="meta">
+            <div class="meta-box"><b>System</b><span>Creative testing + conversion flow + reporting</span></div>
+            <div class="meta-box"><b>Goal</b><span>Membership growth and retention</span></div>
+          </div>
+          <a class="btn magnetic" href="https://moeabdelrazek.github.io/mory-gym-campaign/" target="_blank" rel="noopener" data-magnet="1">Open case study</a>
+        </article>
       </div>
     </section>
 
     <!-- SERVICES -->
     <section class="section card" id="services">
-      <p class="kicker">What I do</p>
-      <h2>Services</h2>
-      <p class="sub">Clear deliverables that connect into one performance system.</p>
+      <p class="kicker">Services</p>
+      <h2 class="split" data-splittype="words">End to end marketing system</h2>
+      <p class="sub split" data-splittype="words">
+        This is the complete sequence, built as one connected operation from market research to stabilization and continuous monitoring.
+      </p>
 
-      <div class="service-grid">
-        <div class="service">
-          <h3>Performance strategy</h3>
-          <p>Funnel map, offer logic, and channel plan tied to measurable outcomes.</p>
+      <div class="services-grid">
+        <div class="module tilt" data-tilt="1">
+          <div class="module-head">
+            <div class="badge">1</div>
+            <h3 class="module-title">Market research and demand mapping</h3>
+          </div>
+          <p>Define the market reality before building anything so decisions are evidence-driven.</p>
+          <ul class="list">
+            <li>Competitor landscape and offer audit</li>
+            <li>Intent tiers and search behavior map</li>
+            <li>Pricing signals and conversion barriers</li>
+            <li>Segment priorities and exclusions</li>
+          </ul>
         </div>
-        <div class="service">
-          <h3>Tracking and reporting</h3>
-          <p>GA4 and dashboards that make performance readable fast, with clean naming and events.</p>
+
+        <div class="module tilt" data-tilt="1">
+          <div class="module-head">
+            <div class="badge">2</div>
+            <h3 class="module-title">Positioning and offer architecture</h3>
+          </div>
+          <p>Turn research into a message and offer structure that converts.</p>
+          <ul class="list">
+            <li>ICP definition and persona layers</li>
+            <li>Value proposition and differentiators</li>
+            <li>Objection handling and proof plan</li>
+            <li>Offer stack and funnel entry points</li>
+          </ul>
         </div>
-        <div class="service">
-          <h3>Acquisition and CRO</h3>
-          <p>Search and performance builds with landing pages designed for conversion.</p>
+
+        <div class="module tilt" data-tilt="1">
+          <div class="module-head">
+            <div class="badge">3</div>
+            <h3 class="module-title">Tracking foundation and data reliability</h3>
+          </div>
+          <p>Build measurement so every decision is based on clean signals.</p>
+          <ul class="list">
+            <li>Event design, naming conventions, UTMs</li>
+            <li>GA4, GTM, conversions, deduplication</li>
+            <li>Merchant feed and product data hygiene</li>
+            <li>Dashboard layer for decision-ready reporting</li>
+          </ul>
+        </div>
+
+        <div class="module tilt" data-tilt="1">
+          <div class="module-head">
+            <div class="badge">4</div>
+            <h3 class="module-title">Landing pages and conversion design</h3>
+          </div>
+          <p>Build the conversion environment that paid and organic can share.</p>
+          <ul class="list">
+            <li>Message match from ad to page</li>
+            <li>Structure for high intent journeys</li>
+            <li>Trust, proof, FAQs, and friction removal</li>
+            <li>Speed, mobile-first, and clarity-first UX</li>
+          </ul>
+        </div>
+
+        <div class="module tilt" data-tilt="1">
+          <div class="module-head">
+            <div class="badge">5</div>
+            <h3 class="module-title">Content creation and creative production</h3>
+          </div>
+          <p>Content is treated as a performance asset, not decoration.</p>
+          <ul class="list">
+            <li>Ad copy angles, hooks, and variants</li>
+            <li>Creative briefs for static, video, UGC</li>
+            <li>Social content pillars and calendars</li>
+            <li>Landing copy, product copy, and email content</li>
+          </ul>
+        </div>
+
+        <div class="module tilt" data-tilt="1">
+          <div class="module-head">
+            <div class="badge">6</div>
+            <h3 class="module-title">Paid acquisition builds and launches</h3>
+          </div>
+          <p>Launch campaigns as engineered systems with controlled learning.</p>
+          <ul class="list">
+            <li>Search structure, negatives, match strategy</li>
+            <li>Shopping and Performance Max architecture</li>
+            <li>Retargeting and audience layering</li>
+            <li>Budget pacing and learning phase rules</li>
+          </ul>
+        </div>
+
+        <div class="module tilt" data-tilt="1">
+          <div class="module-head">
+            <div class="badge">7</div>
+            <h3 class="module-title">SEO and organic ownership</h3>
+          </div>
+          <p>Own intent with pages built to rank and convert.</p>
+          <ul class="list">
+            <li>Keyword clusters by commercial intent</li>
+            <li>Landing page map and internal linking</li>
+            <li>Technical hygiene and schema strategy</li>
+            <li>Content planning from real queries</li>
+          </ul>
+        </div>
+
+        <div class="module tilt" data-tilt="1">
+          <div class="module-head">
+            <div class="badge">8</div>
+            <h3 class="module-title">Lifecycle, CRM, and automation</h3>
+          </div>
+          <p>Turn leads into customers, and customers into repeat buyers.</p>
+          <ul class="list">
+            <li>Lead stages and pipeline definitions</li>
+            <li>Email flows: onboarding, winback, retention</li>
+            <li>Segmentation and trigger logic</li>
+            <li>Attribution-friendly reporting</li>
+          </ul>
+        </div>
+
+        <div class="module tilt" data-tilt="1">
+          <div class="module-head">
+            <div class="badge">9</div>
+            <h3 class="module-title">Stabilization, monitoring, and continuous improvement</h3>
+          </div>
+          <p>Keep performance predictable and scalable over time.</p>
+          <ul class="list">
+            <li>Weekly and monthly operating cadence</li>
+            <li>Anomaly detection and guardrails</li>
+            <li>Creative refresh system and testing pipeline</li>
+            <li>Scaling rules and performance thresholds</li>
+          </ul>
         </div>
       </div>
     </section>
 
-    <!-- PROCESS -->
-    <section class="section card" id="process">
-      <p class="kicker">How I work</p>
-      <h2>Process</h2>
-      <p class="sub">A repeatable method that keeps testing fast and handover clean.</p>
+    <!-- PROCESS (CINEMATIC) -->
+    <section class="section card cinema" id="process">
+      <div class="cinema-head">
+        <p class="kicker">Process</p>
+        <h2 class="split" data-splittype="words">A cinematic end to end build</h2>
+        <p class="sub split" data-splittype="words">
+          Scroll to move through the full production sequence. Each scene is a real operational step that exists in the system.
+        </p>
+      </div>
 
-      <div class="steps">
-        <div class="step">
-          <h3>1) Research and positioning</h3>
-          <p>Market map, competitors, and demand levels translated into segment priorities.</p>
-        </div>
-        <div class="step">
-          <h3>2) Funnel and system design</h3>
-          <p>Pages, tracking, and channel mix designed together so data is reliable.</p>
-        </div>
-        <div class="step">
-          <h3>3) Build and launch</h3>
-          <p>Campaign structure, GA4 events, feeds, and landing pages set to be performance-ready.</p>
-        </div>
-        <div class="step">
-          <h3>4) Iterate and scale</h3>
-          <p>Tests run on audiences, creatives, bids, and pages, tied back to outcomes.</p>
+      <div class="cinema-stage" id="cinemaStage">
+        <div class="progress" aria-hidden="true"><i id="progressFill"></i></div>
+        <div class="rail" id="cinemaRail">
+
+          <div class="scene">
+            <div class="scene-top">
+              <div class="scene-num">01</div>
+              <h3>Evidence capture</h3>
+            </div>
+            <p>Start with facts, not assumptions. Build an evidence ledger that controls priorities.</p>
+            <ul>
+              <li>Competitors, offers, pricing signals, objections</li>
+              <li>Demand map by intent stage and query language</li>
+              <li>Primary conversion path and secondary actions</li>
+            </ul>
+          </div>
+
+          <div class="scene">
+            <div class="scene-top">
+              <div class="scene-num">02</div>
+              <h3>Positioning blueprint</h3>
+            </div>
+            <p>Turn evidence into a message that wins in a crowded market.</p>
+            <ul>
+              <li>Value proposition and differentiator stack</li>
+              <li>Proof plan: what is shown, where, and when</li>
+              <li>Offer architecture and entry points</li>
+            </ul>
+          </div>
+
+          <div class="scene">
+            <div class="scene-top">
+              <div class="scene-num">03</div>
+              <h3>Measurement spine</h3>
+            </div>
+            <p>Build data reliability so every future decision is safe to scale.</p>
+            <ul>
+              <li>Event design, naming, UTMs, conversion goals</li>
+              <li>Attribution logic that matches the funnel</li>
+              <li>Dashboard system with decision metrics</li>
+            </ul>
+          </div>
+
+          <div class="scene">
+            <div class="scene-top">
+              <div class="scene-num">04</div>
+              <h3>Conversion environment</h3>
+            </div>
+            <p>Build landing pages and product flows that make visitors decide faster.</p>
+            <ul>
+              <li>Message match, proof placement, FAQs</li>
+              <li>Speed and mobile clarity as non-negotiables</li>
+              <li>Conversion path design for each intent tier</li>
+            </ul>
+          </div>
+
+          <div class="scene">
+            <div class="scene-top">
+              <div class="scene-num">05</div>
+              <h3>Content and creative studio</h3>
+            </div>
+            <p>Produce performance content with structured testing built in.</p>
+            <ul>
+              <li>Hooks, angles, offers, and variant library</li>
+              <li>Static, video, UGC briefs, and scripts</li>
+              <li>Social pillars and content calendar system</li>
+            </ul>
+          </div>
+
+          <div class="scene">
+            <div class="scene-top">
+              <div class="scene-num">06</div>
+              <h3>Acquisition build</h3>
+            </div>
+            <p>Campaigns are engineered, not improvised.</p>
+            <ul>
+              <li>Search structure and negative discipline</li>
+              <li>Shopping and Performance Max architecture</li>
+              <li>Retargeting layers and audience logic</li>
+            </ul>
+          </div>
+
+          <div class="scene">
+            <div class="scene-top">
+              <div class="scene-num">07</div>
+              <h3>Launch control room</h3>
+            </div>
+            <p>Learning phase is managed like a flight. Calm, controlled, measurable.</p>
+            <ul>
+              <li>Pacing and guardrails for spend</li>
+              <li>Signal validation and early anomaly checks</li>
+              <li>First optimization loop without destroying learning</li>
+            </ul>
+          </div>
+
+          <div class="scene">
+            <div class="scene-top">
+              <div class="scene-num">08</div>
+              <h3>Stabilization and scaling</h3>
+            </div>
+            <p>Shift from experimentation to predictability, then scale with rules.</p>
+            <ul>
+              <li>Winning patterns become standards</li>
+              <li>Scaling thresholds and kill rules</li>
+              <li>Creative refresh pipeline and testing cadence</li>
+            </ul>
+          </div>
+
+          <div class="scene">
+            <div class="scene-top">
+              <div class="scene-num">09</div>
+              <h3>Continuous monitoring</h3>
+            </div>
+            <p>Keep the system alive with monitoring, reporting, and iteration loops.</p>
+            <ul>
+              <li>Weekly and monthly operating rhythm</li>
+              <li>Dashboards for fast decisions</li>
+              <li>Opportunity detection from search and customer behavior</li>
+            </ul>
+          </div>
+
         </div>
       </div>
     </section>
@@ -531,20 +1293,257 @@
     <!-- CONTACT -->
     <section class="section card" id="contact">
       <p class="kicker">Contact</p>
-      <h2>Let’s talk</h2>
-      <p class="sub">Send your setup and goals. I will reply with a clear next step.</p>
+      <h2 class="split" data-splittype="words">Let’s build a performance system</h2>
+      <p class="sub split" data-splittype="words">
+        If you share your market, products, and goals, I will respond with a clear plan for the first build and the fastest path to stability.
+      </p>
 
-      <div style="display:flex; flex-wrap:wrap; gap:10px; justify-content:center; margin-top:14px;">
-        <a class="btn" href="mailto:moe-abdelrazek@outlook.com">Email</a>
-        <a class="btn" href="https://wa.me/201017286384" target="_blank" rel="noopener">WhatsApp</a>
-        <a class="btn-outline" href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank" rel="noopener">LinkedIn</a>
-        <a class="btn-outline" href="resume.html">Resume</a>
+      <div class="contact-box">
+        <div class="contact-left tilt" data-tilt="1">
+          <h3 style="text-align:left; margin:0 0 10px; font-size:20px;">What to send</h3>
+          <ul class="list" style="margin-top:10px;">
+            <li>Your market and location coverage</li>
+            <li>Your primary conversion action (purchase, lead form, WhatsApp, call)</li>
+            <li>Your most important products or services</li>
+            <li>Your monthly budget range and timeline</li>
+            <li>Your top competitors or who customers compare you to</li>
+          </ul>
+
+          <div class="cta-row">
+            <a class="btn magnetic" href="mailto:moe-abdelrazek@outlook.com" data-magnet="1">Email</a>
+            <a class="btn magnetic" href="https://wa.me/201017286384" target="_blank" rel="noopener" data-magnet="1">WhatsApp</a>
+            <a class="btn-outline magnetic" href="resume.html" data-magnet="1">Resume</a>
+          </div>
+        </div>
+
+        <div class="contact-right tilt" data-tilt="1">
+          <h3 style="text-align:left; margin:0; color:rgba(211,230,246,.98);">Direct lines</h3>
+          <div class="contact-lines">
+            <div><b>Email</b><br><a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a></div>
+            <div><b>WhatsApp</b><br><a href="https://wa.me/201017286384" target="_blank" rel="noopener">+20 101 728 6384</a></div>
+            <div><b>LinkedIn</b><br><a href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank" rel="noopener">linkedin.com/in/moe-abdelrazek</a></div>
+            <div><b>Location</b><br>Alexandria, Egypt</div>
+          </div>
+          <div class="cta-row">
+            <a class="btn magnetic" href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank" rel="noopener" data-magnet="1">Open LinkedIn</a>
+          </div>
+        </div>
       </div>
     </section>
 
     <div class="footer">
       Thank you for reviewing my portfolio.
     </div>
+
   </div>
+
+  <!-- GSAP -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+
+  <script>
+    (function () {
+      const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+      /* Spotlight */
+      const spotlight = document.getElementById("spotlight");
+      window.addEventListener("mousemove", (e) => {
+        const x = (e.clientX / window.innerWidth) * 100;
+        const y = (e.clientY / window.innerHeight) * 100;
+        document.documentElement.style.setProperty("--sx", x + "%");
+        document.documentElement.style.setProperty("--sy", y + "%");
+      });
+
+      /* Card highlight follows mouse */
+      document.querySelectorAll(".card").forEach(card => {
+        card.addEventListener("mousemove", (e) => {
+          const r = card.getBoundingClientRect();
+          const mx = ((e.clientX - r.left) / r.width) * 100;
+          const my = ((e.clientY - r.top) / r.height) * 100;
+          card.style.setProperty("--mx", mx + "%");
+          card.style.setProperty("--my", my + "%");
+        });
+      });
+
+      /* Tiny split animation helper */
+      function splitText(el, mode) {
+        const text = (el.textContent || "").trim();
+        if (!text) return;
+        el.textContent = "";
+
+        if (mode === "chars") {
+          [...text].forEach(ch => {
+            const span = document.createElement("span");
+            span.textContent = ch === " " ? "\u00A0" : ch;
+            span.style.display = "inline-block";
+            span.style.willChange = "transform, opacity";
+            el.appendChild(span);
+          });
+        } else {
+          text.split(" ").forEach((w, i) => {
+            const span = document.createElement("span");
+            span.textContent = w + (i === text.split(" ").length - 1 ? "" : " ");
+            span.style.display = "inline-block";
+            span.style.willChange = "transform, opacity";
+            el.appendChild(span);
+          });
+        }
+      }
+
+      document.querySelectorAll(".split").forEach(el => {
+        const mode = el.getAttribute("data-splittype") || "words";
+        splitText(el, mode);
+      });
+
+      /* Magnetic hover */
+      function magnetic(el) {
+        const strength = 18;
+        function move(e) {
+          const r = el.getBoundingClientRect();
+          const x = e.clientX - (r.left + r.width / 2);
+          const y = e.clientY - (r.top + r.height / 2);
+          el.style.transform = `translate(${x / strength}px, ${y / strength}px)`;
+        }
+        function reset() { el.style.transform = "translate(0px, 0px)"; }
+
+        el.addEventListener("mousemove", move);
+        el.addEventListener("mouseleave", reset);
+      }
+      document.querySelectorAll("[data-magnet='1']").forEach(magnetic);
+
+      /* Simple tilt on hover */
+      function tiltCard(card) {
+        const maxTilt = 6;
+        function onMove(e) {
+          const r = card.getBoundingClientRect();
+          const px = (e.clientX - r.left) / r.width;
+          const py = (e.clientY - r.top) / r.height;
+          const rx = (py - 0.5) * -maxTilt;
+          const ry = (px - 0.5) * maxTilt;
+          card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`;
+        }
+        function off() { card.style.transform = "rotateX(0deg) rotateY(0deg) translateZ(0)"; }
+        card.addEventListener("mousemove", onMove);
+        card.addEventListener("mouseleave", off);
+      }
+      document.querySelectorAll(".tilt").forEach(tiltCard);
+
+      /* Marquee loop */
+      const marqueeTrack = document.getElementById("marqueeTrack");
+      let marqueeX = 0;
+      function marqueeTick() {
+        marqueeX -= 0.45;
+        if (Math.abs(marqueeX) > marqueeTrack.scrollWidth / 2) marqueeX = 0;
+        marqueeTrack.style.transform = `translate3d(${marqueeX}px,0,0)`;
+        requestAnimationFrame(marqueeTick);
+      }
+      requestAnimationFrame(marqueeTick);
+
+      if (reduceMotion) return;
+
+      gsap.registerPlugin(ScrollTrigger);
+
+      /* Hero entrance cinematic */
+      const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
+      heroTl
+        .from(".nav-inner", { y: -18, opacity: 0, duration: 0.8 })
+        .from(".hero .kicker", { y: 18, opacity: 0, duration: 0.7 }, "-=0.4")
+        .from("h1.split span", { y: 40, opacity: 0, duration: 0.9, stagger: 0.02 }, "-=0.35")
+        .from(".hero .sub.split span", { y: 22, opacity: 0, duration: 0.7, stagger: 0.01 }, "-=0.55")
+        .from(".hero-line.split span", { y: 18, opacity: 0, duration: 0.6, stagger: 0.01 }, "-=0.55")
+        .from(".proof", { y: 26, opacity: 0, duration: 0.7, stagger: 0.12 }, "-=0.45")
+        .from(".actions a", { y: 18, opacity: 0, duration: 0.6, stagger: 0.10 }, "-=0.45")
+        .from("#photoFrame", { y: 22, opacity: 0, scale: 0.95, duration: 0.8 }, "-=0.55")
+        .from(".marquee", { y: 18, opacity: 0, duration: 0.7 }, "-=0.55");
+
+      /* Section reveals */
+      gsap.utils.toArray(".card").forEach((card) => {
+        gsap.from(card, {
+          y: 80,
+          opacity: 0,
+          duration: 1.0,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: card,
+            start: "top 78%",
+            toggleActions: "play none none none"
+          }
+        });
+      });
+
+      /* Work cards stagger */
+      gsap.from(".work", {
+        y: 40,
+        opacity: 0,
+        duration: 0.9,
+        stagger: 0.12,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "#work",
+          start: "top 70%",
+          toggleActions: "play none none none"
+        }
+      });
+
+      /* Service modules stagger */
+      gsap.from(".module", {
+        y: 40,
+        opacity: 0,
+        duration: 0.9,
+        stagger: 0.10,
+        ease: "power3.out",
+        scrollTrigger: {
+          trigger: "#services",
+          start: "top 70%",
+          toggleActions: "play none none none"
+        }
+      });
+
+      /* Cinematic horizontal rail (pinned) */
+      const rail = document.getElementById("cinemaRail");
+      const stage = document.getElementById("cinemaStage");
+      const fill = document.getElementById("progressFill");
+
+      function setupCinema() {
+        const totalScroll = rail.scrollWidth - stage.clientWidth;
+
+        gsap.to(rail, {
+          x: -totalScroll,
+          ease: "none",
+          scrollTrigger: {
+            trigger: stage,
+            start: "top 18%",
+            end: () => "+=" + (totalScroll + 520),
+            scrub: 1,
+            pin: true,
+            anticipatePin: 1,
+            onUpdate: (self) => {
+              const pct = Math.round(self.progress * 100);
+              fill.style.width = pct + "%";
+            }
+          }
+        });
+
+        gsap.from(".scene", {
+          opacity: 0,
+          y: 26,
+          duration: 0.8,
+          stagger: 0.10,
+          ease: "power3.out",
+          scrollTrigger: {
+            trigger: stage,
+            start: "top 35%",
+            toggleActions: "play none none none"
+          }
+        });
+      }
+
+      setupCinema();
+      window.addEventListener("resize", () => {
+        ScrollTrigger.refresh();
+      });
+
+    })();
+  </script>
 </body>
 </html>

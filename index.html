@@ -12,83 +12,102 @@
     :root{
       --bg-image: url("https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/3_Assets/Images/Cafe-background.jpg");
 
-      --ink: #1f1611;
-      --ink-soft: rgba(31,22,17,.82);
+      --tech: #3a8cd1;
+      --tech2:#155a8a;
+      --tech3:#6ee7ff;
+      --tech4:#0b273f;
 
-      --accent: #155a8a;
-      --accent2: #3a8cd1;
-      --accent3: #0b273f;
+      --ink: rgba(235,245,255,.92);
+      --muted: rgba(235,245,255,.72);
+      --dim: rgba(235,245,255,.55);
 
-      --latte1: #fff6ea;
-      --latte2: #ffe9d2;
-      --latte3: #f9dcc4;
+      --hud: rgba(8, 14, 20, .74);
+      --panel: rgba(10, 18, 26, .66);
+      --panel2: rgba(10, 18, 26, .52);
+      --stroke: rgba(110,231,255,.22);
+      --stroke2: rgba(58,140,209,.28);
 
-      --glass: rgba(255, 248, 238, 0.72);
-      --glass-strong: rgba(255, 244, 231, 0.92);
-      --stroke: rgba(160, 126, 92, 0.45);
+      --shadow: 0 24px 80px rgba(0,0,0,.55);
+      --shadow2: 0 30px 120px rgba(0,0,0,.68);
 
-      --dark: rgba(14, 10, 7, 0.86);
-      --dark2: rgba(26, 18, 13, 0.86);
-
-      --shadow: 0 18px 60px rgba(0,0,0,.35);
-      --shadow2: 0 28px 100px rgba(0,0,0,.45);
-
-      --r-xl: 34px;
-      --r-lg: 24px;
-      --r-md: 18px;
+      --r-xl: 28px;
+      --r-lg: 22px;
+      --r-md: 16px;
       --pill: 999px;
 
       --max: 1240px;
-
-      --section-pad: 34px;
-      --gap: 18px;
+      --pad: 26px;
+      --gap: 16px;
     }
 
     *{ box-sizing:border-box; }
-
     html,body{
       margin:0; padding:0;
       font-family:"Source Serif Pro", Georgia, "Times New Roman", serif;
-      font-size:18px; line-height:1.85;
-      color: var(--ink-soft);
-      background:#120c08;
+      font-size:18px; line-height:1.75;
+      color: var(--ink);
+      background:#070a0f;
       overflow-x:hidden;
       scroll-behavior:smooth;
     }
 
-    /* Background cinematic layer */
+    /* Original background image, re-graded into tech cinematic */
     body::before{
       content:"";
       position:fixed; inset:0;
       background-image: var(--bg-image);
-      background-size:cover;
-      background-position:center;
-      filter: blur(3px) saturate(1.08) contrast(1.02);
-      transform: scale(1.03);
-      z-index:-4;
+      background-size: cover;
+      background-position: center;
+      filter: blur(4px) saturate(0.85) contrast(1.05);
+      transform: scale(1.05);
+      z-index:-6;
     }
-
-    /* Dark film overlay */
+    /* Cinematic grading overlays */
     body::after{
       content:"";
       position:fixed; inset:0;
       background:
-        radial-gradient(circle at 20% 0%, rgba(255,255,255,.10), transparent 55%),
-        radial-gradient(circle at 90% 110%, rgba(58,140,209,.16), transparent 55%),
-        linear-gradient(180deg, rgba(0,0,0,.58), rgba(0,0,0,.45));
-      z-index:-3;
+        radial-gradient(900px circle at 30% 20%, rgba(110,231,255,.14), transparent 60%),
+        radial-gradient(900px circle at 85% 80%, rgba(58,140,209,.16), transparent 62%),
+        linear-gradient(180deg, rgba(3,6,10,.82), rgba(3,6,10,.70)),
+        linear-gradient(135deg, rgba(13,28,44,.52), rgba(3,6,10,.30));
+      z-index:-5;
       pointer-events:none;
     }
 
-    /* Animated grain */
+    /* Background FX canvases */
+    #bgFX{
+      position:fixed; inset:0;
+      z-index:-4;
+      pointer-events:none;
+      opacity:.95;
+    }
+
+    /* Scanlines + subtle film grain */
+    .scanlines{
+      position:fixed; inset:0;
+      z-index:-3;
+      pointer-events:none;
+      background:
+        repeating-linear-gradient(
+          to bottom,
+          rgba(255,255,255,.035),
+          rgba(255,255,255,.035) 1px,
+          transparent 1px,
+          transparent 6px
+        );
+      mix-blend-mode: overlay;
+      opacity:.16;
+    }
+
     .grain{
       position:fixed; inset:-30%;
-      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
-      opacity:.12;
-      mix-blend-mode: overlay;
-      animation: grainMove 9s steps(6) infinite;
       z-index:-2;
       pointer-events:none;
+      opacity:.09;
+      mix-blend-mode: overlay;
+      background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='240' height='240'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='240' height='240' filter='url(%23n)' opacity='.35'/%3E%3C/svg%3E");
+      animation: grainMove 9s steps(6) infinite;
     }
     @keyframes grainMove{
       0%{ transform:translate3d(0,0,0) rotate(0deg); }
@@ -98,105 +117,144 @@
       100%{ transform:translate3d(0,0,0) rotate(0deg); }
     }
 
-    /* Spotlight cursor */
-    .spotlight{
+    /* Cursor glow */
+    .cursor-glow{
       position:fixed; inset:0;
       pointer-events:none;
       z-index:2;
-      background: radial-gradient(700px circle at var(--sx, 50%) var(--sy, 30%), rgba(255,255,255,.10), transparent 60%);
-      mix-blend-mode: soft-light;
-      opacity:.7;
-      transition: opacity .3s ease;
+      background:
+        radial-gradient(600px circle at var(--cx,50%) var(--cy,30%), rgba(110,231,255,.12), transparent 60%),
+        radial-gradient(900px circle at var(--cx,50%) var(--cy,30%), rgba(58,140,209,.10), transparent 62%);
+      mix-blend-mode: screen;
+      opacity:.8;
+      transition: opacity .25s ease;
     }
 
     /* Shell */
     .shell{
       max-width: var(--max);
-      margin: 22px auto 90px;
+      margin: 18px auto 90px;
       padding: 0 18px;
       position:relative;
       z-index:3;
     }
 
-    /* NAV */
-    .nav{
+    /* Top HUD bar */
+    .top-hud{
       position:sticky;
-      top:16px;
+      top:14px;
       z-index:50;
-      margin-bottom: 18px;
+      margin-bottom: 16px;
     }
-    .nav-inner{
+    .hud-inner{
       display:flex;
       align-items:center;
       justify-content:space-between;
       gap:14px;
-      padding: 10px 18px;
+      padding: 10px 16px;
       border-radius: var(--pill);
-      background: linear-gradient(135deg, var(--dark), var(--dark2));
-      border: 1px solid rgba(211, 182, 153, .55);
-      box-shadow: 0 20px 70px rgba(0,0,0,.7);
+      background: linear-gradient(135deg, rgba(6,12,18,.82), rgba(8,14,20,.72));
+      border: 1px solid rgba(110,231,255,.22);
+      box-shadow: 0 20px 80px rgba(0,0,0,.65);
       backdrop-filter: blur(14px);
       transform: translateZ(0);
+      overflow:hidden;
+      position:relative;
+    }
+    .hud-inner::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(600px circle at 20% 0%, rgba(110,231,255,.18), transparent 55%),
+        radial-gradient(700px circle at 100% 120%, rgba(58,140,209,.18), transparent 60%);
+      opacity:.9;
+      pointer-events:none;
+      mix-blend-mode: screen;
     }
 
     .brand{
       display:flex;
       flex-direction:column;
       gap:2px;
-      min-width: 250px;
+      min-width: 290px;
+      position:relative; z-index:1;
     }
     .brand small{
       font-family:"Cormorant Garamond", serif;
-      letter-spacing:.24em;
+      letter-spacing:.28em;
       text-transform:uppercase;
       font-size:12px;
-      color: rgba(211, 230, 246, .92);
-      opacity:.92;
+      color: rgba(235,245,255,.85);
+      opacity:.95;
     }
     .brand strong{
       font-family:"Playfair Display", serif;
       font-style:italic;
       letter-spacing:.10em;
-      color:#f7fbff;
       font-size:14px;
       text-transform:uppercase;
+      color: rgba(235,245,255,.96);
     }
 
-    .nav-links{
+    .status{
+      display:flex;
+      align-items:center;
+      gap:10px;
+      position:relative; z-index:1;
+    }
+    .dot{
+      width:10px; height:10px;
+      border-radius:50%;
+      background: radial-gradient(circle at 30% 30%, var(--tech3), var(--tech));
+      box-shadow: 0 0 16px rgba(110,231,255,.55);
+      animation: pulse 2.4s ease-in-out infinite;
+    }
+    @keyframes pulse{
+      0%,100%{ transform:scale(1); opacity:.85; }
+      50%{ transform:scale(1.35); opacity:1; }
+    }
+    .status span{
+      font-size:12px;
+      letter-spacing:.22em;
+      text-transform:uppercase;
+      color: rgba(235,245,255,.78);
+      white-space:nowrap;
+    }
+
+    .nav{
       display:flex;
       flex-wrap:wrap;
-      gap:8px;
       justify-content:flex-end;
+      gap:8px;
+      position:relative; z-index:1;
     }
-
-    .nav-links a{
+    .nav a{
       text-decoration:none;
-      font-size:14px;
-      padding:6px 14px;
+      font-size:13px;
+      padding:7px 14px;
       border-radius: var(--pill);
-      color: rgba(211, 230, 246, .95);
-      border:1px solid transparent;
-      transition: transform .18s ease, background .18s ease, border-color .18s ease, box-shadow .18s ease;
-      white-space:nowrap;
+      color: rgba(235,245,255,.85);
+      border: 1px solid transparent;
       position:relative;
       overflow:hidden;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      white-space:nowrap;
+      background: rgba(255,255,255,.02);
     }
-
-    .nav-links a::after{
+    .nav a::after{
       content:"";
       position:absolute; inset:0;
-      background: radial-gradient(circle at top left, rgba(58,140,209,.25), rgba(17,63,98,.85));
+      background: radial-gradient(circle at top left, rgba(110,231,255,.16), rgba(58,140,209,.18));
       opacity:0;
-      transition:opacity .22s ease;
+      transition: opacity .22s ease;
     }
-    .nav-links a span{ position:relative; z-index:1; }
-
-    .nav-links a:hover{
-      border-color: rgba(205,224,240,.75);
+    .nav a span{ position:relative; z-index:1; }
+    .nav a:hover{
       transform: translateY(-1px);
-      box-shadow: 0 12px 28px rgba(0,0,0,.45);
+      border-color: rgba(110,231,255,.30);
+      box-shadow: 0 14px 30px rgba(0,0,0,.45);
     }
-    .nav-links a:hover::after{ opacity:1; }
+    .nav a:hover::after{ opacity:1; }
 
     /* Buttons */
     .btn, .btn-outline{
@@ -204,670 +262,745 @@
       align-items:center;
       justify-content:center;
       gap:10px;
-      padding: 12px 22px;
+      padding: 12px 18px;
       border-radius: var(--pill);
-      font-weight: 800;
-      font-size: 15px;
+      font-weight: 900;
+      font-size: 14px;
       text-decoration:none;
       border:1px solid transparent;
       cursor:pointer;
       white-space:nowrap;
       position:relative;
       overflow:hidden;
-      transform: translateZ(0);
       user-select:none;
+      transform: translateZ(0);
       will-change: transform;
+      letter-spacing:.02em;
     }
 
     .btn{
-      background: radial-gradient(circle at top left, var(--accent2), var(--accent));
-      color:#fff;
-      border-color: rgba(168,204,235,.65);
-      box-shadow: 0 18px 50px rgba(1,24,48,.55);
+      color:#06111a;
+      background: linear-gradient(135deg, rgba(110,231,255,.95), rgba(58,140,209,.92));
+      border-color: rgba(110,231,255,.35);
+      box-shadow: 0 18px 55px rgba(0,0,0,.45);
     }
-
     .btn::before{
       content:"";
       position:absolute; inset:-40%;
       background: radial-gradient(circle, rgba(255,255,255,.55), transparent 55%);
       transform: translate3d(-18%, -18%, 0);
-      opacity:.0;
+      opacity:0;
       transition: opacity .25s ease;
       mix-blend-mode: screen;
     }
-    .btn:hover::before{ opacity:.55; }
+    .btn:hover::before{ opacity:.65; }
 
     .btn-outline{
-      background: linear-gradient(135deg, rgba(19,15,12,.92), rgba(30,22,16,.92));
-      color: rgba(211, 230, 246, .95);
-      border-color: rgba(153,183,210,.75);
-      box-shadow: 0 14px 40px rgba(0,0,0,.55);
+      color: rgba(235,245,255,.90);
+      background: linear-gradient(135deg, rgba(7,13,19,.60), rgba(10,18,26,.55));
+      border-color: rgba(110,231,255,.22);
+      box-shadow: 0 18px 55px rgba(0,0,0,.45);
     }
 
-    /* Section cards */
-    .section{
-      margin-top: 18px;
-    }
+    /* Sections */
+    .section{ margin-top: 16px; }
 
-    .card{
+    .panel{
       border-radius: var(--r-xl);
-      background: linear-gradient(180deg, rgba(255, 248, 238, .74), rgba(255, 240, 225, .70));
-      border: 1px solid rgba(160,126,92,.38);
+      background: linear-gradient(180deg, rgba(10,18,26,.70), rgba(10,18,26,.52));
+      border: 1px solid rgba(110,231,255,.18);
       box-shadow: var(--shadow);
-      padding: var(--section-pad);
       backdrop-filter: blur(16px);
+      padding: var(--pad);
       position:relative;
       overflow:hidden;
       transform: translateZ(0);
     }
 
-    .card::before{
+    .panel::before{
       content:"";
       position:absolute; inset:0;
       background:
-        radial-gradient(circle at 6% 0%, rgba(255,255,255,.85), transparent 60%),
-        radial-gradient(circle at 100% 120%, rgba(58,140,209,.18), transparent 62%),
-        linear-gradient(135deg, rgba(255,255,255,.22), transparent 45%);
+        radial-gradient(700px circle at 10% 0%, rgba(110,231,255,.14), transparent 55%),
+        radial-gradient(900px circle at 100% 120%, rgba(58,140,209,.12), transparent 60%),
+        linear-gradient(135deg, rgba(255,255,255,.06), transparent 45%);
       pointer-events:none;
-      mix-blend-mode: soft-light;
+      mix-blend-mode: screen;
+      opacity:.95;
+    }
+
+    .panel::after{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(900px circle at var(--mx, 50%) var(--my, 50%), rgba(110,231,255,.10), transparent 55%);
+      pointer-events:none;
       opacity:.9;
     }
 
-    .card::after{
-      content:"";
-      position:absolute; inset:0;
-      border-radius: var(--r-xl);
-      background:
-        radial-gradient(1000px circle at var(--mx, 50%) var(--my, 50%), rgba(21,90,138,.12), transparent 55%);
-      pointer-events:none;
-      opacity:.85;
-      transition: opacity .25s ease;
-    }
-
-    .card > *{ position:relative; z-index:1; }
+    .panel > *{ position:relative; z-index:1; }
 
     .kicker{
       font-family:"Cormorant Garamond", serif;
       font-size:12px;
-      letter-spacing:.26em;
+      letter-spacing:.32em;
       text-transform:uppercase;
-      color: rgba(21,90,138,.85);
+      color: rgba(110,231,255,.80);
       margin:0 0 8px;
-      text-align:center;
     }
 
     h1,h2{
       margin:0;
-      color: var(--accent);
       font-family:"Playfair Display", serif;
       font-style: italic;
-      text-align:center;
+      color: rgba(235,245,255,.95);
     }
-
     h1{
-      font-size: 42px;
-      letter-spacing: .10em;
+      font-size: 44px;
+      letter-spacing:.10em;
       text-transform: uppercase;
-      color: rgba(21,90,138,.96);
     }
-
     h2{
       font-size: 30px;
-      margin-top: 6px;
     }
 
     .sub{
-      text-align:center;
-      max-width: 920px;
-      margin: 10px auto 0;
+      margin: 10px 0 0;
+      max-width: 980px;
+      color: var(--muted);
       font-size: 17px;
-      color: rgba(31,22,17,.78);
     }
 
-    /* HERO */
-    .hero{
-      padding: 40px 36px;
-      box-shadow: var(--shadow2);
-      background:
-        radial-gradient(circle at top left, rgba(255,251,244,.92), rgba(255,238,217,.82));
-    }
-
-    .hero-grid{
-      margin-top: 24px;
+    .grid-hero{
+      margin-top: 18px;
       display:grid;
       grid-template-columns: minmax(0, 1.35fr) minmax(0, 1fr);
-      gap: 22px;
+      gap: var(--gap);
       align-items: start;
     }
 
-    .hero-left{
-      display:flex;
-      flex-direction:column;
-      gap: 14px;
-    }
-
     .hero-line{
-      font-size: 20px;
-      color: rgba(31,22,17,.86);
       margin: 0;
+      color: rgba(235,245,255,.85);
+      font-size: 19px;
     }
 
-    .hero-proof{
+    .hero-actions{
+      margin-top: 14px;
+      display:flex;
+      flex-wrap:wrap;
+      gap: 10px;
+    }
+
+    .proof-grid{
+      margin-top: 14px;
       display:grid;
-      gap: 12px;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--gap);
     }
 
     .proof{
+      grid-column: span 6;
       border-radius: var(--r-lg);
-      padding: 14px 16px;
-      background: rgba(255, 248, 238, .86);
-      border: 1px solid rgba(157,120,88,.45);
-      box-shadow: 0 14px 40px rgba(0,0,0,.16);
+      padding: 14px 14px;
+      background: linear-gradient(180deg, rgba(10,18,26,.65), rgba(10,18,26,.48));
+      border: 1px solid rgba(110,231,255,.18);
+      box-shadow: 0 18px 55px rgba(0,0,0,.40);
       position:relative;
       overflow:hidden;
+      transform: translateZ(0);
     }
-
     .proof::before{
       content:"";
       position:absolute; inset:0;
-      background: radial-gradient(circle at 10% 0%, rgba(255,255,255,.6), transparent 55%);
-      opacity:.9;
+      background: radial-gradient(600px circle at 20% 0%, rgba(110,231,255,.14), transparent 55%);
       pointer-events:none;
-      mix-blend-mode: soft-light;
+      mix-blend-mode: screen;
+      opacity:.95;
     }
-
-    .proof strong{
+    .proof > *{ position:relative; z-index:1; }
+    .proof b{
       display:block;
-      color: rgba(21,90,138,.95);
-      font-weight: 800;
+      color: rgba(110,231,255,.92);
+      font-weight: 900;
       margin-bottom: 2px;
+      letter-spacing:.02em;
     }
-
     .proof span{
       display:block;
       font-size: 15px;
-      color: rgba(31,22,17,.78);
+      color: rgba(235,245,255,.74);
     }
 
-    .actions{
-      display:flex;
-      flex-wrap:wrap;
-      gap: 12px;
-      margin-top: 6px;
-    }
-
-    /* Magnetic elements */
-    .magnetic{
-      position:relative;
-    }
-
-    .hero-right{
-      display:flex;
-      flex-direction:column;
-      align-items:center;
-      gap: 14px;
-    }
-
-    .photo-frame{
-      width: 240px;
-      height: 240px;
-      padding: 7px;
-      border-radius: 50%;
-      background: conic-gradient(from 210deg, #c6e3ff, #1b4f7b, #f5e3c2, #c6e3ff);
-      box-shadow:
-        0 26px 70px rgba(0,0,0,.55),
-        0 0 0 6px rgba(255,255,255,.85);
-      overflow:hidden;
-      position:relative;
-      transform: translateZ(0);
-    }
-
-    .photo-frame::after{
-      content:"";
-      position:absolute; inset:0;
-      background: radial-gradient(circle at 20% 0%, rgba(255,255,255,.55), transparent 55%);
-      mix-blend-mode: soft-light;
-      pointer-events:none;
-    }
-
-    .photo-frame img{
-      width:100%; height:100%;
-      object-fit:cover;
-      object-position:center top;
-      border-radius:50%;
-      transform: translateZ(0);
-    }
-
-    .mini{
-      text-align:center;
-      font-size: 14px;
-      color: rgba(31,22,17,.80);
-    }
-
-    .mini a{
-      color: rgba(21,90,138,.95);
-      text-decoration:none;
-      border-bottom:1px solid transparent;
-    }
-    .mini a:hover{ border-bottom-color: rgba(21,90,138,.55); }
-
-    /* Marquee tools */
-    .marquee{
-      margin-top: 14px;
-      border-radius: var(--r-lg);
-      border: 1px solid rgba(157,120,88,.38);
-      overflow:hidden;
-      background: rgba(14,10,7,.55);
-      box-shadow: 0 14px 40px rgba(0,0,0,.22);
-    }
-
-    .marquee-track{
-      display:flex;
-      gap: 14px;
-      padding: 10px 12px;
-      white-space:nowrap;
-      will-change: transform;
-    }
-
-    .chip{
-      display:inline-flex;
-      align-items:center;
-      gap: 8px;
-      padding: 8px 14px;
-      border-radius: var(--pill);
-      background: rgba(255,248,238,.10);
-      border: 1px solid rgba(211,230,246,.28);
-      color: rgba(211,230,246,.92);
-      font-size: 13px;
-      letter-spacing:.02em;
-    }
-
-    .chip b{
-      color: rgba(211,230,246,.98);
-      font-weight: 800;
-    }
-
-    /* Work cards */
-    .work-grid{
-      margin-top: 18px;
-      display:grid;
-      grid-template-columns: repeat(12, 1fr);
-      gap: var(--gap);
-    }
-
-    .work{
-      grid-column: span 6;
+    /* Orb */
+    .orb-wrap{
       border-radius: var(--r-xl);
-      padding: 20px;
-      background: radial-gradient(circle at top left, var(--latte1), var(--latte2) 45%, var(--latte3) 100%);
-      border: 1px solid rgba(172,134,102,.70);
-      box-shadow: 0 20px 70px rgba(0,0,0,.35);
-      position:relative;
+      background: linear-gradient(180deg, rgba(10,18,26,.58), rgba(10,18,26,.44));
+      border: 1px solid rgba(110,231,255,.18);
+      box-shadow: var(--shadow2);
       overflow:hidden;
-      transform: translateZ(0);
+      position:relative;
+      min-height: 420px;
     }
-
-    .work::before{
+    .orb-wrap::before{
       content:"";
       position:absolute; inset:0;
       background:
-        radial-gradient(circle at 0% 0%, rgba(255,255,255,.75), transparent 55%),
-        radial-gradient(circle at 100% 120%, rgba(58,140,209,.18), transparent 55%);
+        radial-gradient(700px circle at 25% 10%, rgba(110,231,255,.18), transparent 55%),
+        radial-gradient(900px circle at 90% 90%, rgba(58,140,209,.12), transparent 60%);
       pointer-events:none;
-      mix-blend-mode: soft-light;
-      opacity:.9;
+      mix-blend-mode: screen;
+      opacity:.95;
     }
-    .work > *{ position:relative; z-index:1; }
-
-    .work small{
-      display:block;
+    .orb-top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 10px;
+      padding: 14px 14px 0;
+      position:relative;
+      z-index:1;
+    }
+    .orb-top .tag{
+      display:inline-flex;
+      align-items:center;
+      gap:8px;
+      padding: 7px 12px;
+      border-radius: var(--pill);
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(110,231,255,.18);
+      color: rgba(235,245,255,.80);
       font-size: 12px;
-      letter-spacing:.10em;
+      letter-spacing:.18em;
       text-transform: uppercase;
-      color: rgba(21,90,138,.85);
-      margin-bottom: 6px;
+      white-space:nowrap;
+    }
+    .orb-top .tag i{
+      width: 8px; height: 8px;
+      border-radius:50%;
+      background: radial-gradient(circle, var(--tech3), var(--tech));
+      box-shadow: 0 0 14px rgba(110,231,255,.55);
+      display:inline-block;
     }
 
-    .work h3{
-      margin:0 0 10px;
+    #orbCanvas{
+      width:100%;
+      height: 320px;
+      display:block;
+      position:relative;
+      z-index:1;
+    }
+
+    .profile-row{
+      display:flex;
+      gap: 12px;
+      align-items:center;
+      padding: 0 14px 14px;
+      position:relative;
+      z-index:1;
+    }
+    .pf{
+      width: 64px; height: 64px;
+      border-radius: 18px;
+      overflow:hidden;
+      border: 1px solid rgba(110,231,255,.22);
+      box-shadow: 0 18px 55px rgba(0,0,0,.45);
+      flex:0 0 auto;
+    }
+    .pf img{ width:100%; height:100%; object-fit:cover; object-position:center top; }
+    .pmeta{
+      display:flex;
+      flex-direction:column;
+      gap: 4px;
+      min-width: 0;
+    }
+    .pmeta strong{
       font-family:"Playfair Display", serif;
       font-style: italic;
-      color: rgba(21,90,138,.96);
-      font-size: 22px;
-    }
-
-    .work p{
-      margin:0 0 14px;
+      letter-spacing:.04em;
+      color: rgba(235,245,255,.95);
       font-size: 16px;
-      color: rgba(31,22,17,.80);
+      white-space:nowrap;
+      overflow:hidden;
+      text-overflow:ellipsis;
     }
-
-    .work .meta{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 10px;
-      margin: 10px 0 14px;
+    .pmeta span{
+      color: rgba(235,245,255,.72);
+      font-size: 13px;
+      letter-spacing:.06em;
+      text-transform: uppercase;
     }
-
-    .meta-box{
-      border-radius: var(--r-md);
-      background: rgba(255,248,238,.70);
-      border: 1px solid rgba(157,120,88,.40);
-      padding: 10px 12px;
-      box-shadow: 0 12px 34px rgba(0,0,0,.14);
+    .pmeta a{
+      color: rgba(110,231,255,.92);
+      text-decoration:none;
+      border-bottom: 1px solid transparent;
+      width:max-content;
+      font-size: 13px;
     }
+    .pmeta a:hover{ border-bottom-color: rgba(110,231,255,.45); }
 
-    .meta-box b{
-      display:block;
-      color: rgba(21,90,138,.95);
-      font-weight: 900;
-      margin-bottom: 2px;
-    }
-    .meta-box span{ font-size: 14px; color: rgba(31,22,17,.78); }
-
-    /* Services - end to end system */
-    .services-grid{
-      margin-top: 18px;
+    /* Work grid */
+    .work-grid{
+      margin-top: 16px;
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap: var(--gap);
     }
+    .card3d{
+      grid-column: span 6;
+      border-radius: var(--r-xl);
+      background: linear-gradient(180deg, rgba(10,18,26,.64), rgba(10,18,26,.46));
+      border: 1px solid rgba(110,231,255,.18);
+      box-shadow: var(--shadow);
+      padding: 18px;
+      position:relative;
+      overflow:hidden;
+      transform-style: preserve-3d;
+      will-change: transform;
+    }
+    .card3d::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(700px circle at 15% 0%, rgba(110,231,255,.14), transparent 55%),
+        radial-gradient(900px circle at 110% 120%, rgba(58,140,209,.12), transparent 60%);
+      opacity:.95;
+      pointer-events:none;
+      mix-blend-mode: screen;
+    }
+    .card3d > *{ position:relative; z-index:1; }
 
+    .card3d small{
+      display:block;
+      font-size: 12px;
+      letter-spacing:.22em;
+      text-transform: uppercase;
+      color: rgba(110,231,255,.82);
+      margin-bottom: 8px;
+    }
+    .card3d h3{
+      margin:0 0 10px;
+      font-family:"Playfair Display", serif;
+      font-style: italic;
+      color: rgba(235,245,255,.95);
+      font-size: 22px;
+    }
+    .card3d p{
+      margin:0 0 14px;
+      color: rgba(235,245,255,.74);
+      font-size: 16px;
+    }
+    .meta-grid{
+      display:grid;
+      grid-template-columns: repeat(2, minmax(0,1fr));
+      gap: 10px;
+      margin: 10px 0 14px;
+    }
+    .meta{
+      border-radius: var(--r-md);
+      background: rgba(255,255,255,.02);
+      border: 1px solid rgba(110,231,255,.14);
+      padding: 10px 10px;
+      color: rgba(235,245,255,.75);
+      font-size: 13px;
+    }
+    .meta b{
+      display:block;
+      color: rgba(110,231,255,.90);
+      margin-bottom: 2px;
+      letter-spacing:.03em;
+    }
+
+    /* Services */
+    .services{
+      margin-top: 16px;
+      display:grid;
+      grid-template-columns: repeat(12, 1fr);
+      gap: var(--gap);
+    }
     .module{
       grid-column: span 4;
       border-radius: var(--r-xl);
-      padding: 18px 18px 16px;
-      background: rgba(255, 248, 238, .84);
-      border: 1px solid rgba(157,120,88,.42);
-      box-shadow: 0 18px 55px rgba(0,0,0,.20);
+      padding: 16px;
+      background: linear-gradient(180deg, rgba(10,18,26,.62), rgba(10,18,26,.44));
+      border: 1px solid rgba(110,231,255,.16);
+      box-shadow: 0 22px 70px rgba(0,0,0,.45);
       position:relative;
       overflow:hidden;
       transform: translateZ(0);
     }
-
     .module::before{
       content:"";
       position:absolute; inset:0;
-      background: radial-gradient(circle at 10% 0%, rgba(255,255,255,.65), transparent 55%);
-      opacity:.95;
+      background: radial-gradient(650px circle at 18% 0%, rgba(110,231,255,.14), transparent 55%);
       pointer-events:none;
-      mix-blend-mode: soft-light;
+      mix-blend-mode: screen;
+      opacity:.95;
     }
     .module > *{ position:relative; z-index:1; }
-
-    .module-head{
+    .head{
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
       gap: 10px;
       margin-bottom: 10px;
     }
-
-    .badge{
-      width: 36px; height: 36px;
-      border-radius: 12px;
+    .num{
+      width: 38px; height: 38px;
+      border-radius: 14px;
       display:grid;
       place-items:center;
-      color:#fff;
+      color:#07131c;
       font-weight: 900;
-      background: radial-gradient(circle at top left, var(--accent2), var(--accent));
-      box-shadow: 0 18px 40px rgba(1,24,48,.28);
-      flex: 0 0 auto;
+      background: linear-gradient(135deg, rgba(110,231,255,.95), rgba(58,140,209,.92));
+      box-shadow: 0 18px 55px rgba(0,0,0,.45);
+      flex:0 0 auto;
     }
-
-    .module-title{
-      margin: 0;
+    .module h4{
+      margin:0;
       font-family:"Playfair Display", serif;
       font-style: italic;
-      color: rgba(21,90,138,.96);
+      color: rgba(235,245,255,.95);
       font-size: 18px;
       line-height: 1.25;
     }
-
     .module p{
-      margin: 0 0 10px;
-      font-size: 15px;
-      color: rgba(31,22,17,.78);
+      margin:0 0 10px;
+      color: rgba(235,245,255,.72);
+      font-size: 14px;
     }
-
-    .list{
-      margin: 0;
+    .module ul{
+      margin:0;
       padding-left: 18px;
-      color: rgba(31,22,17,.80);
-      font-size: 15px;
+      color: rgba(235,245,255,.72);
+      font-size: 14px;
     }
-    .list li{ margin: 6px 0; }
+    .module li{ margin: 6px 0; }
 
-    /* Cinematic process timeline */
+    /* Cinematic process (pinned) */
     .cinema{
       padding: 0;
     }
-
     .cinema-head{
-      padding: var(--section-pad);
+      padding: var(--pad);
+      border-bottom: 1px solid rgba(110,231,255,.14);
     }
-
     .cinema-stage{
       position:relative;
-      border-top: 1px solid rgba(157,120,88,.34);
+      padding: 18px 18px 22px;
       overflow:hidden;
-      border-radius: 0 0 var(--r-xl) var(--r-xl);
     }
 
-    .progress{
-      position:absolute;
-      left: 24px;
-      right: 24px;
-      top: 16px;
-      height: 10px;
-      border-radius: var(--pill);
-      background: rgba(31,22,17,.10);
-      border: 1px solid rgba(157,120,88,.30);
+    .cine-grid{
+      display:grid;
+      grid-template-columns: minmax(0, .95fr) minmax(0, 1.05fr);
+      gap: var(--gap);
+      align-items: start;
+    }
+
+    .timeline{
+      border-radius: var(--r-xl);
+      background: linear-gradient(180deg, rgba(10,18,26,.60), rgba(10,18,26,.44));
+      border: 1px solid rgba(110,231,255,.16);
+      box-shadow: 0 22px 70px rgba(0,0,0,.45);
+      padding: 14px;
+      position:relative;
       overflow:hidden;
-      z-index:2;
     }
 
-    .progress > i{
-      display:block;
-      height:100%;
-      width: 0%;
-      background: linear-gradient(90deg, rgba(58,140,209,.75), rgba(21,90,138,.95), rgba(11,39,63,.95));
-      box-shadow: 0 0 18px rgba(31,105,167,.55);
-      border-radius: var(--pill);
+    .timeline::before{
+      content:"";
+      position:absolute; inset:0;
+      background:
+        radial-gradient(700px circle at 10% 0%, rgba(110,231,255,.14), transparent 55%),
+        linear-gradient(135deg, rgba(255,255,255,.05), transparent 50%);
+      opacity:.95;
+      pointer-events:none;
+      mix-blend-mode: screen;
     }
+    .timeline > *{ position:relative; z-index:1; }
 
-    .rail{
+    .steps{
       display:flex;
-      gap: 14px;
-      padding: 48px 24px 26px;
-      will-change: transform;
+      flex-direction:column;
+      gap: 10px;
+    }
+    .step{
+      border-radius: 18px;
+      padding: 12px 12px;
+      background: rgba(255,255,255,.02);
+      border: 1px solid rgba(110,231,255,.12);
+      cursor:pointer;
+      transition: transform .18s ease, border-color .18s ease, box-shadow .18s ease;
+      position:relative;
+      overflow:hidden;
+    }
+    .step:hover{
+      transform: translateY(-1px);
+      border-color: rgba(110,231,255,.22);
+      box-shadow: 0 18px 55px rgba(0,0,0,.40);
+    }
+    .step.active{
+      border-color: rgba(110,231,255,.32);
+      box-shadow: 0 22px 70px rgba(0,0,0,.55);
+      background: linear-gradient(180deg, rgba(110,231,255,.10), rgba(255,255,255,.02));
+    }
+    .step .top{
+      display:flex;
+      align-items:flex-start;
+      justify-content:space-between;
+      gap: 10px;
+      margin-bottom: 6px;
+    }
+    .step b{
+      color: rgba(110,231,255,.92);
+      letter-spacing:.18em;
+      text-transform:uppercase;
+      font-size: 12px;
+    }
+    .step strong{
+      display:block;
+      font-family:"Playfair Display", serif;
+      font-style: italic;
+      color: rgba(235,245,255,.95);
+      font-size: 16px;
+      line-height: 1.25;
+      margin-top: 4px;
+    }
+    .step span{
+      display:block;
+      color: rgba(235,245,255,.72);
+      font-size: 13px;
+      margin-top: 6px;
     }
 
     .scene{
-      flex: 0 0 520px;
       border-radius: var(--r-xl);
-      background: radial-gradient(circle at top left, var(--latte1), var(--latte2) 45%, var(--latte3) 100%);
-      border: 1px solid rgba(172,134,102,.70);
-      box-shadow: 0 24px 80px rgba(0,0,0,.38);
-      padding: 18px 18px 16px;
+      background: linear-gradient(180deg, rgba(10,18,26,.60), rgba(10,18,26,.44));
+      border: 1px solid rgba(110,231,255,.16);
+      box-shadow: 0 22px 70px rgba(0,0,0,.45);
+      padding: 18px;
       position:relative;
       overflow:hidden;
-      transform: translateZ(0);
+      min-height: 420px;
     }
-
     .scene::before{
       content:"";
       position:absolute; inset:0;
       background:
-        radial-gradient(circle at 0% 0%, rgba(255,255,255,.75), transparent 55%),
-        radial-gradient(circle at 100% 120%, rgba(58,140,209,.18), transparent 55%);
+        radial-gradient(750px circle at 15% 0%, rgba(110,231,255,.14), transparent 55%),
+        radial-gradient(900px circle at 100% 120%, rgba(58,140,209,.12), transparent 60%);
       pointer-events:none;
-      mix-blend-mode: soft-light;
-      opacity:.9;
+      mix-blend-mode: screen;
+      opacity:.95;
     }
-
     .scene > *{ position:relative; z-index:1; }
 
     .scene-top{
       display:flex;
       align-items:flex-start;
       justify-content:space-between;
-      gap: 14px;
+      gap: 12px;
       margin-bottom: 10px;
     }
-
-    .scene-num{
-      width: 44px; height: 44px;
-      border-radius: 16px;
-      display:grid;
-      place-items:center;
-      color:#fff;
-      font-weight: 900;
-      background: radial-gradient(circle at top left, var(--accent2), var(--accent));
-      box-shadow: 0 22px 55px rgba(1,24,48,.26);
-      flex: 0 0 auto;
+    .scene-top .label{
+      display:flex;
+      flex-direction:column;
+      gap: 6px;
+      min-width: 0;
     }
-
-    .scene h3{
-      margin: 0;
+    .scene-top .label small{
+      color: rgba(110,231,255,.80);
+      letter-spacing:.24em;
+      text-transform: uppercase;
+      font-size: 12px;
+    }
+    .scene-top .label h3{
+      margin:0;
       font-family:"Playfair Display", serif;
       font-style: italic;
-      color: rgba(21,90,138,.96);
-      font-size: 22px;
-      line-height: 1.2;
+      color: rgba(235,245,255,.95);
+      font-size: 24px;
+      line-height:1.15;
+    }
+    .scene-top .chip{
+      padding: 8px 12px;
+      border-radius: var(--pill);
+      background: rgba(255,255,255,.02);
+      border: 1px solid rgba(110,231,255,.16);
+      color: rgba(235,245,255,.78);
+      font-size: 12px;
+      letter-spacing:.16em;
+      text-transform: uppercase;
+      white-space:nowrap;
+      flex:0 0 auto;
     }
 
     .scene p{
-      margin: 0 0 10px;
+      margin: 0 0 12px;
+      color: rgba(235,245,255,.74);
       font-size: 16px;
-      color: rgba(31,22,17,.80);
     }
-
     .scene ul{
       margin: 0;
       padding-left: 18px;
-      color: rgba(31,22,17,.82);
+      color: rgba(235,245,255,.72);
       font-size: 15px;
     }
-    .scene ul li{ margin: 6px 0; }
+    .scene li{ margin: 7px 0; }
+
+    .progressbar{
+      margin-top: 14px;
+      height: 12px;
+      border-radius: var(--pill);
+      background: rgba(255,255,255,.03);
+      border: 1px solid rgba(110,231,255,.14);
+      overflow:hidden;
+      position:relative;
+    }
+    .progressbar i{
+      display:block;
+      height:100%;
+      width: 0%;
+      border-radius: var(--pill);
+      background: linear-gradient(90deg, rgba(110,231,255,.90), rgba(58,140,209,.92), rgba(12,40,64,.92));
+      box-shadow: 0 0 18px rgba(110,231,255,.38);
+    }
 
     /* Contact */
-    .contact-box{
-      margin-top: 18px;
+    .contact-grid{
+      margin-top: 16px;
       display:grid;
       grid-template-columns: repeat(12, 1fr);
       gap: var(--gap);
       align-items: stretch;
     }
-
     .contact-left{
       grid-column: span 7;
       border-radius: var(--r-xl);
-      padding: 22px;
-      background: rgba(255, 248, 238, .84);
-      border: 1px solid rgba(157,120,88,.42);
-      box-shadow: 0 18px 55px rgba(0,0,0,.20);
+      background: linear-gradient(180deg, rgba(10,18,26,.64), rgba(10,18,26,.46));
+      border: 1px solid rgba(110,231,255,.16);
+      box-shadow: var(--shadow);
+      padding: 18px;
       position:relative;
       overflow:hidden;
     }
-
     .contact-right{
       grid-column: span 5;
       border-radius: var(--r-xl);
-      padding: 22px;
-      background: linear-gradient(135deg, rgba(14,10,7,.88), rgba(26,18,13,.88));
-      border: 1px solid rgba(211, 182, 153, .38);
-      box-shadow: 0 22px 70px rgba(0,0,0,.55);
-      color: rgba(211,230,246,.95);
+      background: linear-gradient(135deg, rgba(6,12,18,.80), rgba(10,18,26,.65));
+      border: 1px solid rgba(110,231,255,.18);
+      box-shadow: var(--shadow);
+      padding: 18px;
       position:relative;
       overflow:hidden;
     }
-
+    .contact-left::before,
     .contact-right::before{
       content:"";
       position:absolute; inset:0;
-      background:
-        radial-gradient(circle at 15% 0%, rgba(255,255,255,.14), transparent 55%),
-        radial-gradient(circle at 100% 120%, rgba(58,140,209,.25), transparent 55%);
+      background: radial-gradient(700px circle at 15% 0%, rgba(110,231,255,.14), transparent 55%);
+      opacity:.95;
       pointer-events:none;
-      mix-blend-mode: soft-light;
-      opacity:.9;
+      mix-blend-mode: screen;
     }
+    .contact-left > *,
     .contact-right > *{ position:relative; z-index:1; }
 
-    .contact-lines{
+    .contact-left h3,
+    .contact-right h3{
+      margin:0 0 10px;
+      font-family:"Playfair Display", serif;
+      font-style: italic;
+      color: rgba(235,245,255,.95);
+      font-size: 22px;
+    }
+    .contact-left ul{
+      margin:0;
+      padding-left: 18px;
+      color: rgba(235,245,255,.72);
+      font-size: 15px;
+    }
+    .contact-left li{ margin: 8px 0; }
+
+    .lines{
       display:flex;
       flex-direction:column;
       gap: 10px;
-      margin-top: 12px;
-      font-size: 15px;
+      margin-top: 10px;
+      color: rgba(235,245,255,.75);
+      font-size: 14px;
     }
-
-    .contact-lines a{
-      color: rgba(211,230,246,.95);
+    .lines a{
+      color: rgba(110,231,255,.92);
       text-decoration:none;
       border-bottom: 1px solid transparent;
+      width:max-content;
     }
-    .contact-lines a:hover{ border-bottom-color: rgba(211,230,246,.55); }
-
-    .cta-row{
-      display:flex;
-      flex-wrap:wrap;
-      gap: 10px;
-      margin-top: 14px;
-    }
+    .lines a:hover{ border-bottom-color: rgba(110,231,255,.45); }
 
     .footer{
-      margin-top: 18px;
+      margin-top: 16px;
       text-align:center;
-      font-weight: 700;
-      color: rgba(255,248,238,.90);
-      text-shadow: 0 2px 8px rgba(0,0,0,.45);
-      opacity:.95;
-      font-size: 16px;
+      color: rgba(235,245,255,.78);
+      font-weight: 800;
+      letter-spacing:.08em;
+      text-transform: uppercase;
+      font-size: 12px;
+      opacity:.9;
     }
 
-    /* Reduced motion support */
+    /* Motion safety */
     @media (prefers-reduced-motion: reduce){
       *{ animation:none !important; transition:none !important; scroll-behavior:auto !important; }
     }
 
     /* Responsive */
     @media (max-width: 1100px){
-      .hero-grid{ grid-template-columns: 1fr; }
-      .work{ grid-column: span 12; }
+      .grid-hero{ grid-template-columns: 1fr; }
+      .proof{ grid-column: span 12; }
+      .card3d{ grid-column: span 12; }
       .module{ grid-column: span 12; }
+      .cine-grid{ grid-template-columns: 1fr; }
+      .scene{ min-height: auto; }
       .contact-left{ grid-column: span 12; }
       .contact-right{ grid-column: span 12; }
-      .brand{ min-width: auto; }
-      .scene{ flex-basis: 440px; }
+      .brand{ min-width:auto; }
     }
-
     @media (max-width: 720px){
-      .nav-inner{ flex-direction:column; align-items:flex-start; gap:10px; }
       h1{ font-size: 32px; }
-      .hero{ padding: 28px 20px; }
-      .card{ padding: 26px 20px; }
-      .scene{ flex-basis: 360px; }
-      .progress{ left: 18px; right: 18px; }
+      h2{ font-size: 26px; }
+      .hud-inner{ flex-direction:column; align-items:flex-start; gap:10px; }
+      .nav{ justify-content:flex-start; }
+      .panel{ padding: 18px; }
+      .orb-wrap{ min-height: 0; }
+      #orbCanvas{ height: 260px; }
     }
   </style>
 </head>
 
 <body>
+  <canvas id="bgFX"></canvas>
+  <div class="scanlines"></div>
   <div class="grain"></div>
-  <div class="spotlight" id="spotlight"></div>
+  <div class="cursor-glow" id="cursorGlow"></div>
 
   <div class="shell">
 
-    <!-- NAV -->
-    <div class="nav">
-      <div class="nav-inner">
+    <!-- HUD NAV -->
+    <div class="top-hud">
+      <div class="hud-inner" id="hud">
         <div class="brand">
           <small>Performance marketing systems</small>
           <strong>Mohamed Abdelrazek</strong>
         </div>
-        <nav class="nav-links">
+
+        <div class="status">
+          <div class="dot"></div>
+          <span>SYSTEM ONLINE</span>
+        </div>
+
+        <nav class="nav">
           <a href="#work"><span>Work</span></a>
           <a href="#services"><span>Services</span></a>
           <a href="#process"><span>Process</span></a>
@@ -878,462 +1011,289 @@
     </div>
 
     <!-- HERO -->
-    <section class="section card hero" id="top">
-      <p class="kicker">Performance marketing systems</p>
-      <h1 class="split" data-splittype="chars">Mohamed Abdelrazek</h1>
-      <p class="sub split" data-splittype="words">
-        I build complete marketing systems that connect acquisition, tracking, content, and conversion so teams can scale with clarity.
+    <section class="section panel" id="top">
+      <div class="kicker" data-split="words">JARVIS MODE PORTFOLIO INTERFACE</div>
+      <h1 data-split="chars">Mohamed Abdelrazek</h1>
+      <p class="sub" data-split="words">
+        I build end to end marketing systems where acquisition, content, tracking, and conversion work as one coordinated engine.
       </p>
 
-      <div class="hero-grid">
-        <div class="hero-left">
-          <p class="hero-line split" data-splittype="words">
-            The work is engineered as one connected engine. Every campaign, landing page, and report belongs to the same system.
+      <div class="grid-hero">
+        <div>
+          <p class="hero-line" data-split="words">
+            Everything is structured for speed, clarity, and scale. The goal is predictable performance, not scattered tasks.
           </p>
 
-          <div class="hero-proof">
-            <div class="proof">
-              <strong>Flagship system: TechnoMounts (UAE)</strong>
-              <span>Shopify, GA4, Google Ads, Merchant Center, Search Console, landing pages, and documentation under one structure.</span>
+          <div class="hero-actions">
+            <a class="btn magnetic" data-magnet="1" href="#work">View case studies</a>
+            <a class="btn-outline magnetic" data-magnet="1" href="#process">Watch the process</a>
+            <a class="btn-outline magnetic" data-magnet="1" href="#contact">Discuss a project</a>
+          </div>
+
+          <div class="proof-grid">
+            <div class="proof tilt" data-tilt="1">
+              <b>Flagship system</b>
+              <span>TechnoMounts (UAE) built as a performance-ready stack across Shopify, GA4, Google Ads, Merchant Center, Search Console, landing pages, and documentation.</span>
             </div>
-            <div class="proof">
-              <strong>SEO growth example</strong>
+            <div class="proof tilt" data-tilt="1">
+              <b>SEO growth example</b>
               <span>Organic impressions: 8,700 to 38,500. Organic clicks: 320 to 3,250.</span>
             </div>
-            <div class="proof">
-              <strong>End to end ownership</strong>
-              <span>Market research, positioning, content, paid media, CRO, analytics, stabilization, and continuous monitoring.</span>
-            </div>
-          </div>
-
-          <div class="actions">
-            <a class="btn magnetic" href="#work" data-magnet="1">View case studies</a>
-            <a class="btn-outline magnetic" href="#contact" data-magnet="1">Discuss a project</a>
-          </div>
-
-          <div class="marquee" aria-label="Tools marquee">
-            <div class="marquee-track" id="marqueeTrack">
-              <span class="chip"><b>GA4</b> measurement</span>
-              <span class="chip"><b>GTM</b> events</span>
-              <span class="chip"><b>Google Ads</b> Search</span>
-              <span class="chip"><b>Performance Max</b> scaling</span>
-              <span class="chip"><b>Merchant Center</b> feeds</span>
-              <span class="chip"><b>Search Console</b> intent</span>
-              <span class="chip"><b>Looker Studio</b> dashboards</span>
-              <span class="chip"><b>Shopify</b> CRO</span>
-              <span class="chip"><b>Meta</b> retargeting</span>
-              <span class="chip"><b>CRM</b> lifecycle</span>
-              <span class="chip"><b>Email</b> flows</span>
-
-              <!-- duplicate for seamless loop -->
-              <span class="chip"><b>GA4</b> measurement</span>
-              <span class="chip"><b>GTM</b> events</span>
-              <span class="chip"><b>Google Ads</b> Search</span>
-              <span class="chip"><b>Performance Max</b> scaling</span>
-              <span class="chip"><b>Merchant Center</b> feeds</span>
-              <span class="chip"><b>Search Console</b> intent</span>
-              <span class="chip"><b>Looker Studio</b> dashboards</span>
-              <span class="chip"><b>Shopify</b> CRO</span>
-              <span class="chip"><b>Meta</b> retargeting</span>
-              <span class="chip"><b>CRM</b> lifecycle</span>
-              <span class="chip"><b>Email</b> flows</span>
-            </div>
           </div>
         </div>
 
-        <div class="hero-right">
-          <div class="photo-frame" id="photoFrame">
-            <img src="profile.jpg" alt="Portrait of Mohamed Abdelrazek" />
+        <aside class="orb-wrap" id="orbWrap">
+          <div class="orb-top">
+            <div class="tag"><i></i> CORE VISUALIZATION</div>
+            <div class="tag"><i></i> LIVE MOTION</div>
           </div>
-          <div class="mini">
-            Alexandria, Egypt, remote or hybrid<br />
-            <a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a>
-            &nbsp;•&nbsp;
-            <a href="https://wa.me/201017286384" target="_blank" rel="noopener">WhatsApp</a>
+
+          <canvas id="orbCanvas"></canvas>
+
+          <div class="profile-row">
+            <div class="pf">
+              <img src="profile.jpg" alt="Portrait of Mohamed Abdelrazek" />
+            </div>
+            <div class="pmeta">
+              <strong>Alexandria, Egypt</strong>
+              <span>Remote or hybrid</span>
+              <a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a>
+              <a href="https://wa.me/201017286384" target="_blank" rel="noopener">WhatsApp</a>
+            </div>
           </div>
-        </div>
+        </aside>
       </div>
     </section>
 
     <!-- WORK -->
-    <section class="section card" id="work">
-      <p class="kicker">Selected work</p>
-      <h2 class="split" data-splittype="words">Case studies built as systems</h2>
-      <p class="sub split" data-splittype="words">
-        Each case study is a complete engine: research, build, tracking, conversion flow, and a decision-ready reporting layer.
+    <section class="section panel" id="work">
+      <div class="kicker" data-split="words">SELECTED WORK</div>
+      <h2 data-split="words">Case studies built as systems</h2>
+      <p class="sub" data-split="words">
+        These are not isolated campaigns. Each one is a complete operating model: research, build, measurement, conversion flow, and decision-ready reporting.
       </p>
 
       <div class="work-grid">
-        <article class="work tilt" data-tilt="1">
-          <small>Ecommerce hardware · UAE</small>
+        <article class="card3d tilt" data-tilt="1">
+          <small>Ecommerce hardware - UAE</small>
           <h3>TechnoMounts</h3>
-          <p>
-            Performance-ready foundation built for paid and organic to reinforce the same landing page map, with clean measurement and scalable structure.
-          </p>
-          <div class="meta">
-            <div class="meta-box"><b>System</b><span>Landing pages + tracking + feed + reporting</span></div>
-            <div class="meta-box"><b>Goal</b><span>Search visibility + scalable acquisition</span></div>
+          <p>Performance-ready foundation where paid and organic reinforce the same landing map, with clean measurement and scalable structure.</p>
+          <div class="meta-grid">
+            <div class="meta"><b>System</b>Landing pages, tracking, feed, reporting</div>
+            <div class="meta"><b>Outcome</b>Search visibility and scalable acquisition</div>
           </div>
-          <a class="btn magnetic" href="https://moeabdelrazek.github.io/TechnoMounts/" target="_blank" rel="noopener" data-magnet="1">Open case study</a>
+          <a class="btn magnetic" data-magnet="1" href="https://moeabdelrazek.github.io/TechnoMounts/" target="_blank" rel="noopener">Open case study</a>
         </article>
 
-        <article class="work tilt" data-tilt="1">
-          <small>Healthcare · Appointments</small>
+        <article class="card3d tilt" data-tilt="1">
+          <small>Healthcare - appointments</small>
           <h3>Rafiki Pet Hospital</h3>
-          <p>
-            Full funnel system from awareness to booked appointments, supported by CRM signals, automation, and reporting that matches real outcomes.
-          </p>
-          <div class="meta">
-            <div class="meta-box"><b>System</b><span>Ads + automation + measurement + reporting</span></div>
-            <div class="meta-box"><b>Goal</b><span>Booked visits, repeat visits, referrals</span></div>
+          <p>Full funnel system from awareness to booked appointments, supported by CRM signals, automation, and reporting tied to real outcomes.</p>
+          <div class="meta-grid">
+            <div class="meta"><b>System</b>Ads, automation, measurement, reporting</div>
+            <div class="meta"><b>Outcome</b>Booked visits and repeat behavior</div>
           </div>
-          <a class="btn magnetic" href="https://moeabdelrazek.github.io/Rafiki-Campaign/" target="_blank" rel="noopener" data-magnet="1">Open case study</a>
+          <a class="btn magnetic" data-magnet="1" href="https://moeabdelrazek.github.io/Rafiki-Campaign/" target="_blank" rel="noopener">Open case study</a>
         </article>
 
-        <article class="work tilt" data-tilt="1">
-          <small>Hospitality · Loyalty</small>
+        <article class="card3d tilt" data-tilt="1">
+          <small>Hospitality - loyalty</small>
           <h3>Haksoss Cafe</h3>
-          <p>
-            Launch and loyalty engine designed around repeat behavior and unit economics, not vanity metrics, with measurable conversion structure.
-          </p>
-          <div class="meta">
-            <div class="meta-box"><b>System</b><span>Offer + creative + funnel + loyalty logic</span></div>
-            <div class="meta-box"><b>Goal</b><span>Sign-ups, repeat visits, lifetime value</span></div>
+          <p>Launch and loyalty engine designed around repeat behavior and measurable unit economics beyond first purchase.</p>
+          <div class="meta-grid">
+            <div class="meta"><b>System</b>Offer, creative, funnel, loyalty logic</div>
+            <div class="meta"><b>Outcome</b>Sign-ups, repeat visits, lifetime value</div>
           </div>
-          <a class="btn magnetic" href="https://moeabdelrazek.github.io/Haksoss_Full_Campaign/" target="_blank" rel="noopener" data-magnet="1">Open case study</a>
+          <a class="btn magnetic" data-magnet="1" href="https://moeabdelrazek.github.io/Haksoss_Full_Campaign/" target="_blank" rel="noopener">Open case study</a>
         </article>
 
-        <article class="work tilt" data-tilt="1">
-          <small>Fitness · Membership</small>
+        <article class="card3d tilt" data-tilt="1">
+          <small>Fitness - membership</small>
           <h3>Mory Gym</h3>
-          <p>
-            Cinematic direct response funnel for membership conversion and retention, with a performance view that leadership understands.
-          </p>
-          <div class="meta">
-            <div class="meta-box"><b>System</b><span>Creative testing + conversion flow + reporting</span></div>
-            <div class="meta-box"><b>Goal</b><span>Membership growth and retention</span></div>
+          <p>Direct response funnel for membership conversion and retention, with a performance view leadership understands.</p>
+          <div class="meta-grid">
+            <div class="meta"><b>System</b>Creative testing, conversion flow, reporting</div>
+            <div class="meta"><b>Outcome</b>Membership growth and retention</div>
           </div>
-          <a class="btn magnetic" href="https://moeabdelrazek.github.io/mory-gym-campaign/" target="_blank" rel="noopener" data-magnet="1">Open case study</a>
+          <a class="btn magnetic" data-magnet="1" href="https://moeabdelrazek.github.io/mory-gym-campaign/" target="_blank" rel="noopener">Open case study</a>
         </article>
       </div>
     </section>
 
     <!-- SERVICES -->
-    <section class="section card" id="services">
-      <p class="kicker">Services</p>
-      <h2 class="split" data-splittype="words">End to end marketing system</h2>
-      <p class="sub split" data-splittype="words">
-        This is the complete sequence, built as one connected operation from market research to stabilization and continuous monitoring.
+    <section class="section panel" id="services">
+      <div class="kicker" data-split="words">END TO END SERVICES</div>
+      <h2 data-split="words">Full marketing system from research to monitoring</h2>
+      <p class="sub" data-split="words">
+        This is the complete build sequence delivered as one cohesive operation. Content creation is included as a core performance module.
       </p>
 
-      <div class="services-grid">
+      <div class="services">
         <div class="module tilt" data-tilt="1">
-          <div class="module-head">
-            <div class="badge">1</div>
-            <h3 class="module-title">Market research and demand mapping</h3>
-          </div>
-          <p>Define the market reality before building anything so decisions are evidence-driven.</p>
-          <ul class="list">
-            <li>Competitor landscape and offer audit</li>
-            <li>Intent tiers and search behavior map</li>
-            <li>Pricing signals and conversion barriers</li>
+          <div class="head"><div class="num">1</div><h4>Market research and demand mapping</h4></div>
+          <p>Build evidence first so every decision is grounded in reality.</p>
+          <ul>
+            <li>Competitors, offers, pricing signals, objections</li>
+            <li>Intent tiers and keyword mapping</li>
             <li>Segment priorities and exclusions</li>
           </ul>
         </div>
 
         <div class="module tilt" data-tilt="1">
-          <div class="module-head">
-            <div class="badge">2</div>
-            <h3 class="module-title">Positioning and offer architecture</h3>
-          </div>
+          <div class="head"><div class="num">2</div><h4>Positioning and offer architecture</h4></div>
           <p>Turn research into a message and offer structure that converts.</p>
-          <ul class="list">
-            <li>ICP definition and persona layers</li>
-            <li>Value proposition and differentiators</li>
-            <li>Objection handling and proof plan</li>
-            <li>Offer stack and funnel entry points</li>
+          <ul>
+            <li>ICP and persona layers</li>
+            <li>Proof plan and objection handling</li>
+            <li>Offer stack and entry points</li>
           </ul>
         </div>
 
         <div class="module tilt" data-tilt="1">
-          <div class="module-head">
-            <div class="badge">3</div>
-            <h3 class="module-title">Tracking foundation and data reliability</h3>
-          </div>
-          <p>Build measurement so every decision is based on clean signals.</p>
-          <ul class="list">
-            <li>Event design, naming conventions, UTMs</li>
-            <li>GA4, GTM, conversions, deduplication</li>
-            <li>Merchant feed and product data hygiene</li>
-            <li>Dashboard layer for decision-ready reporting</li>
+          <div class="head"><div class="num">3</div><h4>Tracking foundation and data reliability</h4></div>
+          <p>Make measurement clean so scale is safe.</p>
+          <ul>
+            <li>Events, UTMs, conversion goals</li>
+            <li>GA4, GTM, deduplication</li>
+            <li>Dashboards for decision metrics</li>
           </ul>
         </div>
 
         <div class="module tilt" data-tilt="1">
-          <div class="module-head">
-            <div class="badge">4</div>
-            <h3 class="module-title">Landing pages and conversion design</h3>
-          </div>
-          <p>Build the conversion environment that paid and organic can share.</p>
-          <ul class="list">
-            <li>Message match from ad to page</li>
-            <li>Structure for high intent journeys</li>
-            <li>Trust, proof, FAQs, and friction removal</li>
-            <li>Speed, mobile-first, and clarity-first UX</li>
+          <div class="head"><div class="num">4</div><h4>Landing pages and conversion design</h4></div>
+          <p>Build the environment that makes visitors decide faster.</p>
+          <ul>
+            <li>Message match and friction removal</li>
+            <li>Proof placement and FAQ structure</li>
+            <li>Mobile speed and clarity-first UX</li>
           </ul>
         </div>
 
         <div class="module tilt" data-tilt="1">
-          <div class="module-head">
-            <div class="badge">5</div>
-            <h3 class="module-title">Content creation and creative production</h3>
-          </div>
-          <p>Content is treated as a performance asset, not decoration.</p>
-          <ul class="list">
-            <li>Ad copy angles, hooks, and variants</li>
-            <li>Creative briefs for static, video, UGC</li>
-            <li>Social content pillars and calendars</li>
-            <li>Landing copy, product copy, and email content</li>
+          <div class="head"><div class="num">5</div><h4>Content creation and creative production</h4></div>
+          <p>Content is built as a performance asset, not decoration.</p>
+          <ul>
+            <li>Hooks, angles, variants</li>
+            <li>Briefs for static, video, UGC</li>
+            <li>Social pillars and calendars</li>
           </ul>
         </div>
 
         <div class="module tilt" data-tilt="1">
-          <div class="module-head">
-            <div class="badge">6</div>
-            <h3 class="module-title">Paid acquisition builds and launches</h3>
-          </div>
-          <p>Launch campaigns as engineered systems with controlled learning.</p>
-          <ul class="list">
-            <li>Search structure, negatives, match strategy</li>
-            <li>Shopping and Performance Max architecture</li>
-            <li>Retargeting and audience layering</li>
-            <li>Budget pacing and learning phase rules</li>
+          <div class="head"><div class="num">6</div><h4>Paid acquisition builds and launches</h4></div>
+          <p>Campaigns engineered for controlled learning and scale.</p>
+          <ul>
+            <li>Search structure and negatives</li>
+            <li>Shopping and Performance Max</li>
+            <li>Retargeting and audience logic</li>
           </ul>
         </div>
 
         <div class="module tilt" data-tilt="1">
-          <div class="module-head">
-            <div class="badge">7</div>
-            <h3 class="module-title">SEO and organic ownership</h3>
-          </div>
+          <div class="head"><div class="num">7</div><h4>SEO and organic ownership</h4></div>
           <p>Own intent with pages built to rank and convert.</p>
-          <ul class="list">
-            <li>Keyword clusters by commercial intent</li>
-            <li>Landing page map and internal linking</li>
-            <li>Technical hygiene and schema strategy</li>
-            <li>Content planning from real queries</li>
+          <ul>
+            <li>Keyword clusters by intent</li>
+            <li>Landing map and internal linking</li>
+            <li>Technical hygiene and schema</li>
           </ul>
         </div>
 
         <div class="module tilt" data-tilt="1">
-          <div class="module-head">
-            <div class="badge">8</div>
-            <h3 class="module-title">Lifecycle, CRM, and automation</h3>
-          </div>
-          <p>Turn leads into customers, and customers into repeat buyers.</p>
-          <ul class="list">
-            <li>Lead stages and pipeline definitions</li>
-            <li>Email flows: onboarding, winback, retention</li>
-            <li>Segmentation and trigger logic</li>
+          <div class="head"><div class="num">8</div><h4>Lifecycle, CRM, and automation</h4></div>
+          <p>Turn leads into customers, then into repeat buyers.</p>
+          <ul>
+            <li>Stages, segmentation, triggers</li>
+            <li>Email flows: onboarding, winback</li>
             <li>Attribution-friendly reporting</li>
           </ul>
         </div>
 
         <div class="module tilt" data-tilt="1">
-          <div class="module-head">
-            <div class="badge">9</div>
-            <h3 class="module-title">Stabilization, monitoring, and continuous improvement</h3>
-          </div>
-          <p>Keep performance predictable and scalable over time.</p>
-          <ul class="list">
-            <li>Weekly and monthly operating cadence</li>
-            <li>Anomaly detection and guardrails</li>
-            <li>Creative refresh system and testing pipeline</li>
-            <li>Scaling rules and performance thresholds</li>
+          <div class="head"><div class="num">9</div><h4>Stabilization, monitoring, and continuous improvement</h4></div>
+          <p>Keep performance predictable with cadence and guardrails.</p>
+          <ul>
+            <li>Weekly and monthly operating rhythm</li>
+            <li>Anomaly detection and rules</li>
+            <li>Testing pipeline and scaling thresholds</li>
           </ul>
         </div>
       </div>
     </section>
 
-    <!-- PROCESS (CINEMATIC) -->
-    <section class="section card cinema" id="process">
+    <!-- PROCESS CINEMATIC -->
+    <section class="section panel cinema" id="process">
       <div class="cinema-head">
-        <p class="kicker">Process</p>
-        <h2 class="split" data-splittype="words">A cinematic end to end build</h2>
-        <p class="sub split" data-splittype="words">
-          Scroll to move through the full production sequence. Each scene is a real operational step that exists in the system.
+        <div class="kicker" data-split="words">CINEMATIC PROCESS</div>
+        <h2 data-split="words">From first signal to stable growth</h2>
+        <p class="sub" data-split="words">
+          This sequence is pinned and animated. Scroll controls the timeline. Each step activates the next scene like a system boot.
         </p>
       </div>
 
       <div class="cinema-stage" id="cinemaStage">
-        <div class="progress" aria-hidden="true"><i id="progressFill"></i></div>
-        <div class="rail" id="cinemaRail">
-
-          <div class="scene">
-            <div class="scene-top">
-              <div class="scene-num">01</div>
-              <h3>Evidence capture</h3>
+        <div class="cine-grid">
+          <div class="timeline" id="timelineBox">
+            <div class="steps" id="steps">
+              <!-- steps injected by JS -->
             </div>
-            <p>Start with facts, not assumptions. Build an evidence ledger that controls priorities.</p>
-            <ul>
-              <li>Competitors, offers, pricing signals, objections</li>
-              <li>Demand map by intent stage and query language</li>
-              <li>Primary conversion path and secondary actions</li>
-            </ul>
           </div>
 
-          <div class="scene">
+          <div class="scene" id="scene">
             <div class="scene-top">
-              <div class="scene-num">02</div>
-              <h3>Positioning blueprint</h3>
+              <div class="label">
+                <small id="sceneKicker">STEP 01</small>
+                <h3 id="sceneTitle">Evidence capture</h3>
+              </div>
+              <div class="chip" id="sceneChip">BOOT</div>
             </div>
-            <p>Turn evidence into a message that wins in a crowded market.</p>
-            <ul>
-              <li>Value proposition and differentiator stack</li>
-              <li>Proof plan: what is shown, where, and when</li>
-              <li>Offer architecture and entry points</li>
-            </ul>
+            <p id="sceneDesc">Start with facts, not assumptions. Build the evidence base that controls priorities.</p>
+            <ul id="sceneBullets"></ul>
+            <div class="progressbar" aria-hidden="true"><i id="sceneProgress"></i></div>
           </div>
-
-          <div class="scene">
-            <div class="scene-top">
-              <div class="scene-num">03</div>
-              <h3>Measurement spine</h3>
-            </div>
-            <p>Build data reliability so every future decision is safe to scale.</p>
-            <ul>
-              <li>Event design, naming, UTMs, conversion goals</li>
-              <li>Attribution logic that matches the funnel</li>
-              <li>Dashboard system with decision metrics</li>
-            </ul>
-          </div>
-
-          <div class="scene">
-            <div class="scene-top">
-              <div class="scene-num">04</div>
-              <h3>Conversion environment</h3>
-            </div>
-            <p>Build landing pages and product flows that make visitors decide faster.</p>
-            <ul>
-              <li>Message match, proof placement, FAQs</li>
-              <li>Speed and mobile clarity as non-negotiables</li>
-              <li>Conversion path design for each intent tier</li>
-            </ul>
-          </div>
-
-          <div class="scene">
-            <div class="scene-top">
-              <div class="scene-num">05</div>
-              <h3>Content and creative studio</h3>
-            </div>
-            <p>Produce performance content with structured testing built in.</p>
-            <ul>
-              <li>Hooks, angles, offers, and variant library</li>
-              <li>Static, video, UGC briefs, and scripts</li>
-              <li>Social pillars and content calendar system</li>
-            </ul>
-          </div>
-
-          <div class="scene">
-            <div class="scene-top">
-              <div class="scene-num">06</div>
-              <h3>Acquisition build</h3>
-            </div>
-            <p>Campaigns are engineered, not improvised.</p>
-            <ul>
-              <li>Search structure and negative discipline</li>
-              <li>Shopping and Performance Max architecture</li>
-              <li>Retargeting layers and audience logic</li>
-            </ul>
-          </div>
-
-          <div class="scene">
-            <div class="scene-top">
-              <div class="scene-num">07</div>
-              <h3>Launch control room</h3>
-            </div>
-            <p>Learning phase is managed like a flight. Calm, controlled, measurable.</p>
-            <ul>
-              <li>Pacing and guardrails for spend</li>
-              <li>Signal validation and early anomaly checks</li>
-              <li>First optimization loop without destroying learning</li>
-            </ul>
-          </div>
-
-          <div class="scene">
-            <div class="scene-top">
-              <div class="scene-num">08</div>
-              <h3>Stabilization and scaling</h3>
-            </div>
-            <p>Shift from experimentation to predictability, then scale with rules.</p>
-            <ul>
-              <li>Winning patterns become standards</li>
-              <li>Scaling thresholds and kill rules</li>
-              <li>Creative refresh pipeline and testing cadence</li>
-            </ul>
-          </div>
-
-          <div class="scene">
-            <div class="scene-top">
-              <div class="scene-num">09</div>
-              <h3>Continuous monitoring</h3>
-            </div>
-            <p>Keep the system alive with monitoring, reporting, and iteration loops.</p>
-            <ul>
-              <li>Weekly and monthly operating rhythm</li>
-              <li>Dashboards for fast decisions</li>
-              <li>Opportunity detection from search and customer behavior</li>
-            </ul>
-          </div>
-
         </div>
       </div>
     </section>
 
     <!-- CONTACT -->
-    <section class="section card" id="contact">
-      <p class="kicker">Contact</p>
-      <h2 class="split" data-splittype="words">Let’s build a performance system</h2>
-      <p class="sub split" data-splittype="words">
-        If you share your market, products, and goals, I will respond with a clear plan for the first build and the fastest path to stability.
+    <section class="section panel" id="contact">
+      <div class="kicker" data-split="words">CONTACT</div>
+      <h2 data-split="words">Build a performance system</h2>
+      <p class="sub" data-split="words">
+        Send your market, goals, and conversion path. I respond with a clear plan for the first build and the fastest path to stability.
       </p>
 
-      <div class="contact-box">
+      <div class="contact-grid">
         <div class="contact-left tilt" data-tilt="1">
-          <h3 style="text-align:left; margin:0 0 10px; font-size:20px;">What to send</h3>
-          <ul class="list" style="margin-top:10px;">
-            <li>Your market and location coverage</li>
-            <li>Your primary conversion action (purchase, lead form, WhatsApp, call)</li>
-            <li>Your most important products or services</li>
-            <li>Your monthly budget range and timeline</li>
-            <li>Your top competitors or who customers compare you to</li>
+          <h3>What to send</h3>
+          <ul>
+            <li>Market and geo coverage</li>
+            <li>Primary conversion action (purchase, lead form, WhatsApp, call)</li>
+            <li>Main products or services</li>
+            <li>Budget range and timeline</li>
+            <li>Competitors customers compare you to</li>
           </ul>
 
-          <div class="cta-row">
-            <a class="btn magnetic" href="mailto:moe-abdelrazek@outlook.com" data-magnet="1">Email</a>
-            <a class="btn magnetic" href="https://wa.me/201017286384" target="_blank" rel="noopener" data-magnet="1">WhatsApp</a>
-            <a class="btn-outline magnetic" href="resume.html" data-magnet="1">Resume</a>
+          <div class="hero-actions" style="margin-top:14px;">
+            <a class="btn magnetic" data-magnet="1" href="mailto:moe-abdelrazek@outlook.com">Email</a>
+            <a class="btn magnetic" data-magnet="1" href="https://wa.me/201017286384" target="_blank" rel="noopener">WhatsApp</a>
+            <a class="btn-outline magnetic" data-magnet="1" href="resume.html">Resume</a>
           </div>
         </div>
 
         <div class="contact-right tilt" data-tilt="1">
-          <h3 style="text-align:left; margin:0; color:rgba(211,230,246,.98);">Direct lines</h3>
-          <div class="contact-lines">
+          <h3>Direct lines</h3>
+          <div class="lines">
             <div><b>Email</b><br><a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a></div>
             <div><b>WhatsApp</b><br><a href="https://wa.me/201017286384" target="_blank" rel="noopener">+20 101 728 6384</a></div>
             <div><b>LinkedIn</b><br><a href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank" rel="noopener">linkedin.com/in/moe-abdelrazek</a></div>
             <div><b>Location</b><br>Alexandria, Egypt</div>
           </div>
-          <div class="cta-row">
-            <a class="btn magnetic" href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank" rel="noopener" data-magnet="1">Open LinkedIn</a>
-          </div>
         </div>
       </div>
-    </section>
 
-    <div class="footer">
-      Thank you for reviewing my portfolio.
-    </div>
+      <div class="footer">SYSTEM READY FOR DEPLOYMENT</div>
+    </section>
 
   </div>
 
@@ -1342,79 +1302,46 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
 
   <script>
-    (function () {
+    (function(){
       const reduceMotion = window.matchMedia && window.matchMedia("(prefers-reduced-motion: reduce)").matches;
 
-      /* Spotlight */
-      const spotlight = document.getElementById("spotlight");
+      /* Cursor glow and panel hotspots */
       window.addEventListener("mousemove", (e) => {
         const x = (e.clientX / window.innerWidth) * 100;
         const y = (e.clientY / window.innerHeight) * 100;
-        document.documentElement.style.setProperty("--sx", x + "%");
-        document.documentElement.style.setProperty("--sy", y + "%");
+        document.documentElement.style.setProperty("--cx", x + "%");
+        document.documentElement.style.setProperty("--cy", y + "%");
       });
 
-      /* Card highlight follows mouse */
-      document.querySelectorAll(".card").forEach(card => {
-        card.addEventListener("mousemove", (e) => {
-          const r = card.getBoundingClientRect();
+      document.querySelectorAll(".panel").forEach(p => {
+        p.addEventListener("mousemove", (e) => {
+          const r = p.getBoundingClientRect();
           const mx = ((e.clientX - r.left) / r.width) * 100;
           const my = ((e.clientY - r.top) / r.height) * 100;
-          card.style.setProperty("--mx", mx + "%");
-          card.style.setProperty("--my", my + "%");
+          p.style.setProperty("--mx", mx + "%");
+          p.style.setProperty("--my", my + "%");
         });
       });
 
-      /* Tiny split animation helper */
-      function splitText(el, mode) {
-        const text = (el.textContent || "").trim();
-        if (!text) return;
-        el.textContent = "";
-
-        if (mode === "chars") {
-          [...text].forEach(ch => {
-            const span = document.createElement("span");
-            span.textContent = ch === " " ? "\u00A0" : ch;
-            span.style.display = "inline-block";
-            span.style.willChange = "transform, opacity";
-            el.appendChild(span);
-          });
-        } else {
-          text.split(" ").forEach((w, i) => {
-            const span = document.createElement("span");
-            span.textContent = w + (i === text.split(" ").length - 1 ? "" : " ");
-            span.style.display = "inline-block";
-            span.style.willChange = "transform, opacity";
-            el.appendChild(span);
-          });
-        }
-      }
-
-      document.querySelectorAll(".split").forEach(el => {
-        const mode = el.getAttribute("data-splittype") || "words";
-        splitText(el, mode);
-      });
-
       /* Magnetic hover */
-      function magnetic(el) {
-        const strength = 18;
-        function move(e) {
+      function magnetic(el){
+        const strength = 16;
+        function move(e){
           const r = el.getBoundingClientRect();
-          const x = e.clientX - (r.left + r.width / 2);
-          const y = e.clientY - (r.top + r.height / 2);
-          el.style.transform = `translate(${x / strength}px, ${y / strength}px)`;
+          const x = e.clientX - (r.left + r.width/2);
+          const y = e.clientY - (r.top + r.height/2);
+          el.style.transform = `translate(${x/strength}px, ${y/strength}px)`;
         }
-        function reset() { el.style.transform = "translate(0px, 0px)"; }
-
+        function reset(){ el.style.transform = "translate(0px,0px)"; }
         el.addEventListener("mousemove", move);
         el.addEventListener("mouseleave", reset);
       }
       document.querySelectorAll("[data-magnet='1']").forEach(magnetic);
 
-      /* Simple tilt on hover */
-      function tiltCard(card) {
-        const maxTilt = 6;
-        function onMove(e) {
+      /* Tilt cards */
+      function tiltCard(card){
+        const maxTilt = 7;
+        function onMove(e){
           const r = card.getBoundingClientRect();
           const px = (e.clientX - r.left) / r.width;
           const py = (e.clientY - r.top) / r.height;
@@ -1422,125 +1349,424 @@
           const ry = (px - 0.5) * maxTilt;
           card.style.transform = `rotateX(${rx}deg) rotateY(${ry}deg) translateZ(0)`;
         }
-        function off() { card.style.transform = "rotateX(0deg) rotateY(0deg) translateZ(0)"; }
+        function off(){ card.style.transform = "rotateX(0deg) rotateY(0deg) translateZ(0)"; }
         card.addEventListener("mousemove", onMove);
         card.addEventListener("mouseleave", off);
       }
       document.querySelectorAll(".tilt").forEach(tiltCard);
 
-      /* Marquee loop */
-      const marqueeTrack = document.getElementById("marqueeTrack");
-      let marqueeX = 0;
-      function marqueeTick() {
-        marqueeX -= 0.45;
-        if (Math.abs(marqueeX) > marqueeTrack.scrollWidth / 2) marqueeX = 0;
-        marqueeTrack.style.transform = `translate3d(${marqueeX}px,0,0)`;
-        requestAnimationFrame(marqueeTick);
+      /* Split text (no external libs) */
+      function splitText(el, mode){
+        const t = (el.textContent || "").trim();
+        if(!t) return;
+        el.textContent = "";
+        if(mode === "chars"){
+          [...t].forEach(ch => {
+            const s = document.createElement("span");
+            s.textContent = ch === " " ? "\u00A0" : ch;
+            s.style.display = "inline-block";
+            s.style.willChange = "transform, opacity, filter";
+            el.appendChild(s);
+          });
+        } else {
+          const parts = t.split(" ");
+          parts.forEach((w, i) => {
+            const s = document.createElement("span");
+            s.textContent = w + (i === parts.length - 1 ? "" : " ");
+            s.style.display = "inline-block";
+            s.style.willChange = "transform, opacity, filter";
+            el.appendChild(s);
+          });
+        }
       }
-      requestAnimationFrame(marqueeTick);
+      document.querySelectorAll("[data-split]").forEach(el => {
+        splitText(el, el.getAttribute("data-split"));
+      });
 
-      if (reduceMotion) return;
+      /* Background FX: particles + links */
+      const bg = document.getElementById("bgFX");
+      const bctx = bg.getContext("2d");
+      let W=0,H=0,particles=[];
+      function resizeBG(){
+        W = bg.width = Math.floor(window.innerWidth * devicePixelRatio);
+        H = bg.height = Math.floor(window.innerHeight * devicePixelRatio);
+        bg.style.width = window.innerWidth + "px";
+        bg.style.height = window.innerHeight + "px";
+        const count = Math.max(70, Math.min(140, Math.floor((window.innerWidth * window.innerHeight) / 22000)));
+        particles = new Array(count).fill(0).map(() => ({
+          x: Math.random()*W,
+          y: Math.random()*H,
+          vx: (Math.random()-.5)*0.32*devicePixelRatio,
+          vy: (Math.random()-.5)*0.32*devicePixelRatio,
+          r: (Math.random()*1.6+0.8)*devicePixelRatio
+        }));
+      }
+      resizeBG();
+      window.addEventListener("resize", resizeBG);
+
+      function drawBG(){
+        bctx.clearRect(0,0,W,H);
+
+        bctx.globalAlpha = 0.65;
+        for(const p of particles){
+          p.x += p.vx; p.y += p.vy;
+          if(p.x<0||p.x>W) p.vx*=-1;
+          if(p.y<0||p.y>H) p.vy*=-1;
+
+          bctx.beginPath();
+          bctx.arc(p.x,p.y,p.r,0,Math.PI*2);
+          bctx.fillStyle = "rgba(110,231,255,.35)";
+          bctx.fill();
+        }
+
+        bctx.globalAlpha = 0.35;
+        for(let i=0;i<particles.length;i++){
+          for(let j=i+1;j<particles.length;j++){
+            const a = particles[i], c = particles[j];
+            const dx = a.x - c.x, dy = a.y - c.y;
+            const d2 = dx*dx + dy*dy;
+            const max = (150*devicePixelRatio);
+            if(d2 < max*max){
+              const t = 1 - (Math.sqrt(d2)/max);
+              bctx.strokeStyle = `rgba(58,140,209,${0.22*t})`;
+              bctx.lineWidth = 1*devicePixelRatio;
+              bctx.beginPath();
+              bctx.moveTo(a.x,a.y);
+              bctx.lineTo(c.x,c.y);
+              bctx.stroke();
+            }
+          }
+        }
+
+        requestAnimationFrame(drawBG);
+      }
+      requestAnimationFrame(drawBG);
+
+      /* Orb: rotating 3D-ish wire sphere */
+      const orb = document.getElementById("orbCanvas");
+      const octx = orb.getContext("2d");
+      let OW=0,OH=0,points=[];
+      function resizeOrb(){
+        const r = document.getElementById("orbWrap").getBoundingClientRect();
+        orb.width = Math.floor(r.width * devicePixelRatio);
+        orb.height = Math.floor((Math.min(360, Math.max(260, r.width * 0.62))) * devicePixelRatio);
+        OW = orb.width; OH = orb.height;
+        orb.style.width = r.width + "px";
+        orb.style.height = (orb.height / devicePixelRatio) + "px";
+
+        points = [];
+        const rings = 12;
+        const segs = 26;
+        for(let i=0;i<=rings;i++){
+          const v = (i/rings)*Math.PI;
+          for(let j=0;j<segs;j++){
+            const u = (j/segs)*Math.PI*2;
+            const x = Math.sin(v)*Math.cos(u);
+            const y = Math.cos(v);
+            const z = Math.sin(v)*Math.sin(u);
+            points.push({x,y,z});
+          }
+        }
+      }
+      resizeOrb();
+      window.addEventListener("resize", resizeOrb);
+
+      let t0 = 0;
+      function drawOrb(ts){
+        if(!t0) t0 = ts;
+        const t = (ts - t0) * 0.00035;
+
+        octx.clearRect(0,0,OW,OH);
+
+        const cx = OW*0.5;
+        const cy = OH*0.52;
+        const R = Math.min(OW,OH) * 0.34;
+
+        // HUD grid glow
+        octx.globalAlpha = 0.22;
+        octx.strokeStyle = "rgba(110,231,255,.20)";
+        octx.lineWidth = 1*devicePixelRatio;
+        const step = Math.max(26, Math.floor((Math.min(OW,OH) / 12)));
+        for(let x=0;x<OW;x+=step){
+          octx.beginPath(); octx.moveTo(x,0); octx.lineTo(x,OH); octx.stroke();
+        }
+        for(let y=0;y<OH;y+=step){
+          octx.beginPath(); octx.moveTo(0,y); octx.lineTo(OW,y); octx.stroke();
+        }
+
+        // sphere points + links
+        const proj = [];
+        for(const p of points){
+          // rotate
+          let x=p.x, y=p.y, z=p.z;
+          const ay = t*1.2;
+          const ax = t*0.9;
+
+          // rotate Y
+          let x1 = x*Math.cos(ay) - z*Math.sin(ay);
+          let z1 = x*Math.sin(ay) + z*Math.cos(ay);
+          // rotate X
+          let y2 = y*Math.cos(ax) - z1*Math.sin(ax);
+          let z2 = y*Math.sin(ax) + z1*Math.cos(ax);
+
+          const depth = 2.4;
+          const s = 1 / (depth - z2);
+          const px = cx + x1 * R * s;
+          const py = cy + y2 * R * s;
+
+          proj.push({px,py,z:z2,s});
+        }
+
+        // glow ring
+        octx.globalAlpha = 0.35;
+        octx.beginPath();
+        octx.arc(cx,cy,R*1.02,0,Math.PI*2);
+        octx.strokeStyle = "rgba(58,140,209,.28)";
+        octx.lineWidth = 2.2*devicePixelRatio;
+        octx.stroke();
+
+        // connections
+        octx.globalAlpha = 0.22;
+        for(let i=0;i<proj.length;i++){
+          for(let j=i+1;j<proj.length;j++){
+            const a=proj[i], b=proj[j];
+            const dx=a.px-b.px, dy=a.py-b.py;
+            const d2=dx*dx+dy*dy;
+            const max= (48*devicePixelRatio);
+            if(d2 < max*max){
+              const k = 1 - (Math.sqrt(d2)/max);
+              octx.strokeStyle = `rgba(110,231,255,${0.18*k})`;
+              octx.lineWidth = 1*devicePixelRatio;
+              octx.beginPath();
+              octx.moveTo(a.px,a.py);
+              octx.lineTo(b.px,b.py);
+              octx.stroke();
+            }
+          }
+        }
+
+        // points
+        proj.sort((a,b)=>a.z-b.z);
+        for(const p of proj){
+          const alpha = 0.20 + (p.s*0.25);
+          octx.globalAlpha = Math.min(0.75, alpha);
+          octx.beginPath();
+          octx.arc(p.px,p.py, (1.3 + p.s*1.8)*devicePixelRatio, 0, Math.PI*2);
+          octx.fillStyle = "rgba(110,231,255,.85)";
+          octx.fill();
+        }
+
+        requestAnimationFrame(drawOrb);
+      }
+      requestAnimationFrame(drawOrb);
+
+      /* Cinematic process data */
+      const processSteps = [
+        {
+          tag: "BOOT",
+          title: "Evidence capture",
+          desc: "Start with facts, not assumptions. Build the evidence base that controls priorities.",
+          bullets: [
+            "Competitor landscape, offers, pricing signals",
+            "Demand map by intent and search behavior",
+            "Conversion path definition and friction inventory"
+          ]
+        },
+        {
+          tag: "MAP",
+          title: "Positioning blueprint",
+          desc: "Turn evidence into a message system that wins against the market.",
+          bullets: [
+            "Value proposition and differentiator stack",
+            "Proof plan: what to show, where, and when",
+            "Offer architecture and entry points"
+          ]
+        },
+        {
+          tag: "SIGNAL",
+          title: "Measurement spine",
+          desc: "Build data reliability so every decision is safe to scale.",
+          bullets: [
+            "Event design, UTMs, conversion goals",
+            "GA4 and GTM structure and deduplication",
+            "Dashboards built for decision metrics"
+          ]
+        },
+        {
+          tag: "ENV",
+          title: "Conversion environment",
+          desc: "Build landing pages and flows that make visitors decide faster.",
+          bullets: [
+            "Message match from ad to page",
+            "Proof placement, FAQ structure, objection handling",
+            "Mobile speed, clarity-first UX"
+          ]
+        },
+        {
+          tag: "STUDIO",
+          title: "Content and creative production",
+          desc: "Produce performance content with testing baked into the system.",
+          bullets: [
+            "Hooks, angles, variants library",
+            "Briefs for static, video, UGC",
+            "Social content pillars and calendar cadence"
+          ]
+        },
+        {
+          tag: "LAUNCH",
+          title: "Acquisition build and deployment",
+          desc: "Campaigns engineered for controlled learning and scale.",
+          bullets: [
+            "Search structure, negatives, match strategy",
+            "Shopping and Performance Max architecture",
+            "Retargeting layers and audience logic"
+          ]
+        },
+        {
+          tag: "CONTROL",
+          title: "Launch control room",
+          desc: "Stabilize signals and protect learning without chaos.",
+          bullets: [
+            "Pacing, guardrails, spend discipline",
+            "Signal validation and anomaly checks",
+            "First optimization loop without breaking learning"
+          ]
+        },
+        {
+          tag: "SCALE",
+          title: "Stabilization and scaling",
+          desc: "Shift from experimentation to predictability, then scale with rules.",
+          bullets: [
+            "Scaling thresholds and kill rules",
+            "Budget strategy tied to outcomes",
+            "Creative refresh pipeline and testing cadence"
+          ]
+        },
+        {
+          tag: "MONITOR",
+          title: "Continuous monitoring",
+          desc: "Keep the system alive with monitoring, reporting, and iteration loops.",
+          bullets: [
+            "Weekly and monthly operating rhythm",
+            "Dashboards that tell what to stop and what to scale",
+            "Opportunity detection from search and customer behavior"
+          ]
+        }
+      ];
+
+      const stepsEl = document.getElementById("steps");
+      const sceneKicker = document.getElementById("sceneKicker");
+      const sceneTitle = document.getElementById("sceneTitle");
+      const sceneChip = document.getElementById("sceneChip");
+      const sceneDesc = document.getElementById("sceneDesc");
+      const sceneBullets = document.getElementById("sceneBullets");
+      const sceneProgress = document.getElementById("sceneProgress");
+
+      processSteps.forEach((s, idx) => {
+        const el = document.createElement("div");
+        el.className = "step";
+        el.innerHTML = `
+          <div class="top">
+            <div>
+              <b>STEP ${String(idx+1).padStart(2,"0")}</b>
+              <strong>${s.title}</strong>
+            </div>
+          </div>
+          <span>${s.desc}</span>
+        `;
+        el.addEventListener("click", () => setActive(idx, true));
+        stepsEl.appendChild(el);
+      });
+
+      function setScene(i){
+        const s = processSteps[i];
+        sceneKicker.textContent = `STEP ${String(i+1).padStart(2,"0")}`;
+        sceneTitle.textContent = s.title;
+        sceneChip.textContent = s.tag;
+        sceneDesc.textContent = s.desc;
+        sceneBullets.innerHTML = "";
+        s.bullets.forEach(b => {
+          const li = document.createElement("li");
+          li.textContent = b;
+          sceneBullets.appendChild(li);
+        });
+      }
+
+      function setActive(i, snap){
+        const all = Array.from(document.querySelectorAll(".step"));
+        all.forEach((x, idx) => x.classList.toggle("active", idx === i));
+        setScene(i);
+        if(!reduceMotion){
+          gsap.fromTo("#scene", { y: 16, opacity: 0.75 }, { y: 0, opacity: 1, duration: 0.45, ease: "power3.out" });
+        }
+        if(snap){
+          const sbox = document.getElementById("timelineBox");
+          const activeEl = all[i];
+          const r = activeEl.getBoundingClientRect();
+          const rb = sbox.getBoundingClientRect();
+          const offset = (r.top - rb.top) - 40;
+          sbox.scrollTo({ top: sbox.scrollTop + offset, behavior: "smooth" });
+        }
+      }
+
+      setActive(0, false);
+
+      if(reduceMotion) return;
 
       gsap.registerPlugin(ScrollTrigger);
 
-      /* Hero entrance cinematic */
+      /* Intro cinematic */
       const heroTl = gsap.timeline({ defaults: { ease: "power3.out" } });
       heroTl
-        .from(".nav-inner", { y: -18, opacity: 0, duration: 0.8 })
-        .from(".hero .kicker", { y: 18, opacity: 0, duration: 0.7 }, "-=0.4")
-        .from("h1.split span", { y: 40, opacity: 0, duration: 0.9, stagger: 0.02 }, "-=0.35")
-        .from(".hero .sub.split span", { y: 22, opacity: 0, duration: 0.7, stagger: 0.01 }, "-=0.55")
-        .from(".hero-line.split span", { y: 18, opacity: 0, duration: 0.6, stagger: 0.01 }, "-=0.55")
-        .from(".proof", { y: 26, opacity: 0, duration: 0.7, stagger: 0.12 }, "-=0.45")
-        .from(".actions a", { y: 18, opacity: 0, duration: 0.6, stagger: 0.10 }, "-=0.45")
-        .from("#photoFrame", { y: 22, opacity: 0, scale: 0.95, duration: 0.8 }, "-=0.55")
-        .from(".marquee", { y: 18, opacity: 0, duration: 0.7 }, "-=0.55");
+        .from("#hud", { y: -14, opacity: 0, duration: 0.7 })
+        .from("[data-split='words'] span", { y: 14, opacity: 0, duration: 0.55, stagger: 0.01 }, "-=0.3")
+        .from("[data-split='chars'] span", { y: 34, opacity: 0, duration: 0.8, stagger: 0.02 }, "-=0.55")
+        .from(".orb-wrap", { y: 18, opacity: 0, scale: 0.98, duration: 0.8 }, "-=0.45")
+        .from(".proof", { y: 20, opacity: 0, duration: 0.7, stagger: 0.10 }, "-=0.55");
 
-      /* Section reveals */
-      gsap.utils.toArray(".card").forEach((card) => {
-        gsap.from(card, {
-          y: 80,
+      /* Section reveals + micro-parallax */
+      gsap.utils.toArray(".panel").forEach((p) => {
+        gsap.from(p, {
+          y: 70,
           opacity: 0,
-          duration: 1.0,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: card,
-            start: "top 78%",
-            toggleActions: "play none none none"
-          }
+          duration: 0.9,
+          scrollTrigger: { trigger: p, start: "top 78%", toggleActions: "play none none none" }
         });
       });
 
       /* Work cards stagger */
-      gsap.from(".work", {
-        y: 40,
+      gsap.from(".card3d", {
+        y: 30,
         opacity: 0,
-        duration: 0.9,
-        stagger: 0.12,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: "#work",
-          start: "top 70%",
-          toggleActions: "play none none none"
-        }
-      });
-
-      /* Service modules stagger */
-      gsap.from(".module", {
-        y: 40,
-        opacity: 0,
-        duration: 0.9,
+        duration: 0.8,
         stagger: 0.10,
-        ease: "power3.out",
-        scrollTrigger: {
-          trigger: "#services",
-          start: "top 70%",
-          toggleActions: "play none none none"
-        }
+        scrollTrigger: { trigger: "#work", start: "top 70%", toggleActions: "play none none none" }
       });
 
-      /* Cinematic horizontal rail (pinned) */
-      const rail = document.getElementById("cinemaRail");
+      /* Services modules stagger */
+      gsap.from(".module", {
+        y: 30,
+        opacity: 0,
+        duration: 0.8,
+        stagger: 0.06,
+        scrollTrigger: { trigger: "#services", start: "top 70%", toggleActions: "play none none none" }
+      });
+
+      /* Pinned cinematic process */
       const stage = document.getElementById("cinemaStage");
-      const fill = document.getElementById("progressFill");
+      const total = processSteps.length;
 
-      function setupCinema() {
-        const totalScroll = rail.scrollWidth - stage.clientWidth;
-
-        gsap.to(rail, {
-          x: -totalScroll,
-          ease: "none",
-          scrollTrigger: {
-            trigger: stage,
-            start: "top 18%",
-            end: () => "+=" + (totalScroll + 520),
-            scrub: 1,
-            pin: true,
-            anticipatePin: 1,
-            onUpdate: (self) => {
-              const pct = Math.round(self.progress * 100);
-              fill.style.width = pct + "%";
-            }
-          }
-        });
-
-        gsap.from(".scene", {
-          opacity: 0,
-          y: 26,
-          duration: 0.8,
-          stagger: 0.10,
-          ease: "power3.out",
-          scrollTrigger: {
-            trigger: stage,
-            start: "top 35%",
-            toggleActions: "play none none none"
-          }
-        });
-      }
-
-      setupCinema();
-      window.addEventListener("resize", () => {
-        ScrollTrigger.refresh();
+      ScrollTrigger.create({
+        trigger: stage,
+        start: "top 18%",
+        end: "+=1400",
+        pin: true,
+        scrub: 1,
+        onUpdate: (self) => {
+          const idx = Math.min(total - 1, Math.max(0, Math.floor(self.progress * total)));
+          setActive(idx, false);
+          sceneProgress.style.width = Math.round(self.progress * 100) + "%";
+        }
       });
 
     })();

@@ -10,13 +10,13 @@
 
   <style>
     :root{
-      /* Replace this with the exact background image URL from your original code */
+      /* Replace with the exact background image URL from your original code */
       --bg-image: url("YOUR_ORIGINAL_BACKGROUND_IMAGE_URL_HERE");
 
-      /* Jarvis Gold core */
+      /* Palette (professional tech + gold accent) */
       --bg0:#05070b;
-      --bg1:rgba(7,10,16,.82);
-      --bg2:rgba(10,14,20,.55);
+      --panel1:rgba(10,14,20,.66);
+      --panel2:rgba(10,14,20,.40);
 
       --gold:#f6c85f;
       --gold2:#c9a227;
@@ -53,24 +53,23 @@
       z-index:-4;
     }
 
-    /* Cinematic overlay + mouse glow (gold-heavy) */
+    /* Cinematic overlay + mouse glow */
     body::after{
       content:"";
       position:fixed; inset:0;
       background:
-        radial-gradient(950px circle at var(--cx) var(--cy), rgba(246,200,95,.26), transparent 58%),
-        radial-gradient(1100px circle at 78% 12%, rgba(246,200,95,.14), transparent 60%),
+        radial-gradient(950px circle at var(--cx) var(--cy), rgba(246,200,95,.24), transparent 58%),
+        radial-gradient(1100px circle at 78% 12%, rgba(246,200,95,.12), transparent 60%),
         radial-gradient(900px circle at 20% 80%, rgba(98,230,255,.10), transparent 62%),
         linear-gradient(180deg, rgba(0,0,0,.60), rgba(0,0,0,.76));
       z-index:-3;
       pointer-events:none;
     }
 
-    /* Subtle HUD grid (no shadows) */
+    /* Subtle HUD grid */
     .hud{
-      position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.18;
-      background:
-        radial-gradient(circle at 1px 1px, rgba(246,200,95,.20) 1px, transparent 1px);
+      position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.16;
+      background: radial-gradient(circle at 1px 1px, rgba(246,200,95,.18) 1px, transparent 1px);
       background-size: 34px 34px;
       mix-blend-mode: screen;
     }
@@ -100,21 +99,18 @@
       background:
         radial-gradient(900px circle at 15% 0%, rgba(246,200,95,.12), transparent 60%) padding-box,
         linear-gradient(180deg, rgba(10,14,20,.72), rgba(10,14,20,.42)) padding-box,
-        linear-gradient(135deg, rgba(246,200,95,.55), rgba(98,230,255,.18), rgba(246,200,95,.40)) border-box;
+        linear-gradient(135deg, rgba(246,200,95,.52), rgba(98,230,255,.16), rgba(246,200,95,.34)) border-box;
       backdrop-filter: blur(14px);
     }
     .brand{
       font-family: Orbitron, system-ui, sans-serif;
       font-size: 12px;
-      letter-spacing:.22em;
+      letter-spacing:.18em;
       text-transform:uppercase;
       color: rgba(255,255,255,.86);
       white-space:nowrap;
     }
-    .links{
-      display:flex; flex-wrap:wrap; gap: 10px;
-      font-size: 13px;
-    }
+    .links{ display:flex; flex-wrap:wrap; gap: 10px; font-size: 13px; }
     .link{
       color: rgba(255,255,255,.82);
       text-decoration:none;
@@ -130,14 +126,14 @@
       background: rgba(246,200,95,.08);
     }
 
-    /* Cards and surfaces (0 shadows) */
+    /* Surfaces (0 shadows) */
     .surface{
       border-radius: var(--r-xl);
       border: 1px solid transparent;
       background:
         radial-gradient(900px circle at var(--mx) var(--my), rgba(246,200,95,.10), transparent 60%) padding-box,
-        linear-gradient(180deg, rgba(10,14,20,.66), rgba(10,14,20,.38)) padding-box,
-        linear-gradient(135deg, rgba(246,200,95,.55), rgba(98,230,255,.16), rgba(246,200,95,.34)) border-box;
+        linear-gradient(180deg, var(--panel1), var(--panel2)) padding-box,
+        linear-gradient(135deg, rgba(246,200,95,.52), rgba(98,230,255,.14), rgba(246,200,95,.30)) border-box;
       backdrop-filter: blur(12px);
       position:relative;
       overflow:hidden;
@@ -192,7 +188,6 @@
       gap: 18px;
       align-items:stretch;
     }
-
     .hero-title{
       font-family:"Playfair Display", serif;
       font-style: italic;
@@ -202,7 +197,6 @@
       letter-spacing: .06em;
       text-transform: uppercase;
     }
-
     .hero-line{
       margin: 0 0 14px;
       color: rgba(255,255,255,.82);
@@ -216,7 +210,6 @@
       gap: 10px;
       margin-top: 14px;
     }
-
     .mini{
       border-radius: var(--r-lg);
       border: 1px solid rgba(255,255,255,.10);
@@ -226,7 +219,7 @@
     .mini .t{
       font-family: Orbitron, system-ui, sans-serif;
       font-size: 11px;
-      letter-spacing:.20em;
+      letter-spacing:.18em;
       text-transform:uppercase;
       color: rgba(246,200,95,.92);
       margin-bottom: 8px;
@@ -239,10 +232,7 @@
     }
     .mini li{ margin: 7px 0; }
 
-    .cta-row{
-      display:flex; flex-wrap:wrap; gap: 10px;
-      margin-top: 16px;
-    }
+    .cta-row{ display:flex; flex-wrap:wrap; gap: 10px; margin-top: 16px; }
 
     .btn{
       border-radius: var(--pill);
@@ -279,16 +269,8 @@
     }
 
     /* Profile card */
-    .profile{
-      padding: 18px;
-      display:flex;
-      flex-direction:column;
-      gap: 12px;
-      justify-content:space-between;
-    }
-    .pf-top{
-      display:flex; gap: 12px; align-items:center;
-    }
+    .profile{ padding: 18px; display:flex; flex-direction:column; gap: 12px; justify-content:space-between; }
+    .pf-top{ display:flex; gap: 12px; align-items:center; }
     .avatar{
       width: 76px; height: 76px;
       border-radius: 999px;
@@ -299,11 +281,7 @@
       overflow:hidden;
       flex: 0 0 auto;
     }
-    .avatar img{
-      width:100%; height:100%;
-      object-fit:cover;
-      display:block;
-    }
+    .avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
     .pf-name{
       margin:0;
       font-family:"Playfair Display", serif;
@@ -314,14 +292,13 @@
     .pf-loc{
       font-family: Orbitron, system-ui, sans-serif;
       font-size: 11px;
-      letter-spacing:.22em;
+      letter-spacing:.18em;
       text-transform:uppercase;
       color: rgba(255,255,255,.60);
       margin-top: 4px;
     }
-    .chips{
-      display:flex; flex-wrap:wrap; gap: 8px;
-    }
+
+    .chips{ display:flex; flex-wrap:wrap; gap: 8px; }
     .chip{
       font-size: 12px;
       padding: 7px 10px;
@@ -331,6 +308,7 @@
       color: rgba(255,255,255,.78);
       white-space:nowrap;
     }
+
     .contact{
       font-size: 14px;
       color: rgba(255,255,255,.74);
@@ -343,10 +321,10 @@
     }
     .contact a:hover{ border-bottom-color: rgba(246,200,95,.55); }
 
+    /* Grids */
+    .grid{ padding: 0 18px 22px; }
+
     /* Services */
-    .grid{
-      padding: 0 18px 22px;
-    }
     .services{
       display:grid;
       grid-template-columns: repeat(3, minmax(0,1fr));
@@ -377,14 +355,14 @@
     .step{
       font-family: Orbitron, system-ui, sans-serif;
       font-size: 11px;
-      letter-spacing:.24em;
+      letter-spacing:.20em;
       text-transform:uppercase;
       color: rgba(246,200,95,.92);
     }
     .tag{
       font-family: Orbitron, system-ui, sans-serif;
       font-size: 10px;
-      letter-spacing:.20em;
+      letter-spacing:.18em;
       text-transform:uppercase;
       padding: 6px 10px;
       border-radius: var(--pill);
@@ -413,7 +391,7 @@
     }
     .tile li{ margin: 7px 0; }
 
-    /* Work cards */
+    /* Work */
     .work{
       display:grid;
       grid-template-columns: repeat(2, minmax(0,1fr));
@@ -439,7 +417,7 @@
     .wk-kicker{
       font-family: Orbitron, system-ui, sans-serif;
       font-size: 11px;
-      letter-spacing:.22em;
+      letter-spacing:.20em;
       text-transform:uppercase;
       color: rgba(98,230,255,.70);
       margin-bottom: 6px;
@@ -457,7 +435,7 @@
       margin:0 0 12px;
     }
 
-    /* Sequence: fewer agents, clear */
+    /* Process sequence (professional language) */
     .flow{
       margin-top: 12px;
       display:flex;
@@ -471,7 +449,7 @@
     .flow::-webkit-scrollbar-thumb{ background: rgba(246,200,95,.18); border-radius: 999px; }
     .flow::-webkit-scrollbar-track{ background: rgba(255,255,255,.05); border-radius: 999px; }
 
-    .agent{
+    .stage{
       scroll-snap-align:start;
       min-width: 360px;
       max-width: 360px;
@@ -482,21 +460,21 @@
       position:relative;
       overflow:hidden;
     }
-    .agent::before{
+    .stage::before{
       content:"";
       position:absolute; inset:0;
       background: radial-gradient(900px circle at var(--mx) var(--my), rgba(246,200,95,.14), transparent 58%);
       pointer-events:none;
     }
-    .agent > *{ position:relative; z-index:1; }
+    .stage > *{ position:relative; z-index:1; }
 
-    .agent-head{
+    .stage-head{
       display:flex; align-items:center; gap: 12px;
       margin-bottom: 10px;
     }
 
-    /* Golden core (no shadows, pure gradients) */
-    .core{
+    /* Accent icon (no "agent" language) */
+    .accent{
       width: 46px; height: 46px;
       border-radius: 999px;
       border: 1px solid rgba(246,200,95,.40);
@@ -507,7 +485,7 @@
       animation: pulse 2.8s ease-in-out infinite;
       position:relative;
     }
-    .core::after{
+    .accent::after{
       content:"";
       position:absolute;
       inset: 8px;
@@ -527,35 +505,35 @@
       100%{ transform: rotate(360deg); }
     }
 
-    .aid{
+    .sid{
       font-family: Orbitron, system-ui, sans-serif;
       font-size: 11px;
-      letter-spacing:.24em;
+      letter-spacing:.20em;
       text-transform:uppercase;
       color: rgba(246,200,95,.92);
       margin-bottom: 2px;
     }
-    .aname{
+    .sname{
       font-family:"Playfair Display", serif;
       font-style: italic;
       font-size: 18px;
       color: rgba(255,255,255,.95);
       margin:0;
     }
-    .agent p{
+    .stage p{
       margin:0 0 10px;
       color: rgba(255,255,255,.72);
       font-size: 14px;
     }
-    .agent ul{
+    .stage ul{
       margin:0;
       padding-left: 16px;
       color: rgba(255,255,255,.72);
       font-size: 14px;
     }
-    .agent li{ margin: 7px 0; }
+    .stage li{ margin: 7px 0; }
 
-    /* Reveal animation */
+    /* Reveal */
     .reveal{
       opacity: 0;
       transform: translateY(18px);
@@ -577,7 +555,7 @@
       .shell{ padding: 0 12px; }
       .nav-inner{ flex-direction: column; align-items:flex-start; }
       .hero{ padding: 20px; }
-      .agent{ min-width: 84vw; max-width: 84vw; }
+      .stage{ min-width: 84vw; max-width: 84vw; }
     }
   </style>
 </head>
@@ -589,11 +567,11 @@
     <!-- NAV -->
     <div class="nav">
       <div class="nav-inner surface reveal">
-        <div class="brand">JARVIS GOLD MODE</div>
+        <div class="brand">Performance Marketing Portfolio</div>
         <div class="links">
           <a class="link" href="#services">Services</a>
           <a class="link" href="#work">Work</a>
-          <a class="link" href="#sequence">Sequence</a>
+          <a class="link" href="#process">Process</a>
           <a class="link" href="#contact">Contact</a>
         </div>
       </div>
@@ -606,30 +584,30 @@
         <h1 class="hero-title">Mohamed Abdelrazek</h1>
         <p class="hero-line">
           I build one connected engine: market research, content creation, acquisition, SEO, tracking, conversion, stabilization, and monitoring.
-          Clean structure, fast decisions, and measurable outcomes.
+          Clear structure, fast decisions, and measurable outcomes.
         </p>
 
         <div class="cta-row">
           <a class="btn" href="#work">View case studies</a>
           <a class="btn-ghost" href="#services">See services</a>
-          <a class="btn-ghost" href="#sequence">Watch the sequence</a>
+          <a class="btn-ghost" href="#process">View process</a>
         </div>
 
         <div class="hero-points">
           <div class="mini">
-            <div class="t">What I ship</div>
+            <div class="t">What I deliver</div>
             <ul>
               <li>Landing page map tied to intent</li>
-              <li>Tracking spine and dashboards</li>
+              <li>Tracking plan and dashboards</li>
               <li>Acquisition architecture built for scale</li>
             </ul>
           </div>
           <div class="mini">
-            <div class="t">How I protect ROI</div>
+            <div class="t">How I protect performance</div>
             <ul>
-              <li>Conversion integrity checks</li>
+              <li>Conversion integrity validation</li>
               <li>Weekly monitoring rhythm</li>
-              <li>Scale and kill rules, documented</li>
+              <li>Documented scale and stop rules</li>
             </ul>
           </div>
         </div>
@@ -672,66 +650,66 @@
     <section class="section surface reveal" id="services">
       <div class="head">
         <div class="kicker">SERVICES</div>
-        <h2>End to end, clear, measurable</h2>
-        <div class="sub">Fewer steps, clean outputs, and a stable operating model. Content creation is a core layer.</div>
+        <h2>End to end, measurable delivery</h2>
+        <div class="sub">Clean scope, clear outputs, and a stable operating model. Content creation is a core layer.</div>
       </div>
 
       <div class="grid">
         <div class="services">
           <div class="tile">
-            <div class="tile-top"><div class="step">Step 01</div><div class="tag">Evidence</div></div>
-            <h3>Market research</h3>
-            <p>Demand, competitors, objections, and conversion friction.</p>
+            <div class="tile-top"><div class="step">01</div><div class="tag">Research</div></div>
+            <h3>Market and competitor research</h3>
+            <p>Demand, positioning signals, and conversion friction.</p>
             <ul>
-              <li>Intent map by funnel stage</li>
-              <li>Competitor offers and proof</li>
+              <li>Intent mapping</li>
+              <li>Competitor offers and objections</li>
             </ul>
           </div>
 
           <div class="tile">
-            <div class="tile-top"><div class="step">Step 02</div><div class="tag">Blueprint</div></div>
-            <h3>Funnel and pages</h3>
-            <p>Message match from query to landing page to action.</p>
+            <div class="tile-top"><div class="step">02</div><div class="tag">Strategy</div></div>
+            <h3>Funnel and landing pages</h3>
+            <p>Message match from query to page to action.</p>
             <ul>
-              <li>Landing page map</li>
-              <li>Offer structure and entry points</li>
+              <li>Offer structure</li>
+              <li>Landing page plan</li>
             </ul>
           </div>
 
           <div class="tile">
-            <div class="tile-top"><div class="step">Step 03</div><div class="tag">Tracking</div></div>
-            <h3>Measurement spine</h3>
-            <p>Events, goals, UTMs, validation, dashboards.</p>
+            <div class="tile-top"><div class="step">03</div><div class="tag">Tracking</div></div>
+            <h3>Measurement and dashboards</h3>
+            <p>Events, goals, UTMs, validation, reporting.</p>
             <ul>
-              <li>GA4 and GTM build</li>
+              <li>GA4 and GTM setup</li>
               <li>Decision dashboards</li>
             </ul>
           </div>
 
           <div class="tile">
-            <div class="tile-top"><div class="step">Step 04</div><div class="tag">Content</div></div>
+            <div class="tile-top"><div class="step">04</div><div class="tag">Content</div></div>
             <h3>Content creation system</h3>
-            <p>Creative tied to demand and objections, not guesswork.</p>
+            <p>Creative tied to demand and objections, with a refresh cadence.</p>
             <ul>
-              <li>Hook and angle library</li>
-              <li>Refresh cadence</li>
+              <li>Hooks and angles library</li>
+              <li>Creative refresh plan</li>
             </ul>
           </div>
 
           <div class="tile">
-            <div class="tile-top"><div class="step">Step 05</div><div class="tag">Acquisition</div></div>
-            <h3>Paid growth</h3>
-            <p>Search, Shopping, and scale architecture.</p>
+            <div class="tile-top"><div class="step">05</div><div class="tag">Acquisition</div></div>
+            <h3>Paid acquisition</h3>
+            <p>Search, Shopping, Performance Max structure built for control.</p>
             <ul>
-              <li>Structured campaigns</li>
-              <li>Query control and negatives</li>
+              <li>Campaign architecture</li>
+              <li>Query control rules</li>
             </ul>
           </div>
 
           <div class="tile">
-            <div class="tile-top"><div class="step">Step 06</div><div class="tag">Stability</div></div>
+            <div class="tile-top"><div class="step">06</div><div class="tag">Monitoring</div></div>
             <h3>Stabilize and monitor</h3>
-            <p>Guardrails, weekly rhythm, scale and kill rules.</p>
+            <p>Guardrails, weekly rhythm, scale and stop rules.</p>
             <ul>
               <li>Integrity checks</li>
               <li>Iteration loop</li>
@@ -754,14 +732,14 @@
           <div class="work-card">
             <div class="wk-kicker">Ecommerce hardware | UAE</div>
             <div class="wk-title">TechnoMounts</div>
-            <div class="wk-body">Full performance-ready structure: pages, tracking, SEO baseline, and acquisition prep.</div>
+            <div class="wk-body">Performance-ready structure: pages, tracking, SEO baseline, and acquisition prep.</div>
             <a class="btn" href="https://moeabdelrazek.github.io/TechnoMounts/" target="_blank" rel="noopener">Open case study</a>
           </div>
 
           <div class="work-card">
             <div class="wk-kicker">Hospitality | Loyalty economics</div>
             <div class="wk-title">Haksoss Cafe</div>
-            <div class="wk-body">Launch + repeat behavior system focused on measurable retention drivers.</div>
+            <div class="wk-body">Launch and repeat behavior system focused on measurable retention drivers.</div>
             <a class="btn" href="https://moeabdelrazek.github.io/Haksoss_Full_Campaign/" target="_blank" rel="noopener">Open case study</a>
           </div>
 
@@ -782,103 +760,103 @@
       </div>
     </section>
 
-    <!-- SEQUENCE -->
-    <section class="section surface reveal" id="sequence">
+    <!-- PROCESS -->
+    <section class="section surface reveal" id="process">
       <div class="head">
-        <div class="kicker">SEQUENCE</div>
-        <h2>Golden agents handoff</h2>
-        <div class="sub">Fewer steps, cleaner flow. Scroll horizontally.</div>
+        <div class="kicker">PROCESS</div>
+        <h2>How I build and run the system</h2>
+        <div class="sub">A clear sequence from evidence to stable performance. Scroll horizontally.</div>
       </div>
 
       <div class="grid">
-        <div class="flow" id="flow">
-          <div class="agent">
-            <div class="agent-head">
-              <div class="core"></div>
+        <div class="flow">
+          <div class="stage">
+            <div class="stage-head">
+              <div class="accent" aria-hidden="true"></div>
               <div>
-                <div class="aid">Agent 01</div>
-                <p class="aname">Evidence capture</p>
+                <div class="sid">Step 01</div>
+                <p class="sname">Evidence and baseline</p>
               </div>
             </div>
-            <p>Decide what matters before building anything.</p>
+            <p>Decide what matters before building.</p>
             <ul>
-              <li>Intent map and demand signals</li>
+              <li>Demand and intent mapping</li>
               <li>Competitor offers and objections</li>
             </ul>
           </div>
 
-          <div class="agent">
-            <div class="agent-head">
-              <div class="core"></div>
+          <div class="stage">
+            <div class="stage-head">
+              <div class="accent" aria-hidden="true"></div>
               <div>
-                <div class="aid">Agent 02</div>
-                <p class="aname">Blueprint</p>
+                <div class="sid">Step 02</div>
+                <p class="sname">Positioning and offer</p>
               </div>
             </div>
-            <p>Turn evidence into a predictable structure.</p>
+            <p>Translate evidence into a clear stance.</p>
             <ul>
-              <li>Offer and entry points</li>
-              <li>Landing page map</li>
+              <li>Primary segment and exclusions</li>
+              <li>Offer structure and proof plan</li>
             </ul>
           </div>
 
-          <div class="agent">
-            <div class="agent-head">
-              <div class="core"></div>
+          <div class="stage">
+            <div class="stage-head">
+              <div class="accent" aria-hidden="true"></div>
               <div>
-                <div class="aid">Agent 03</div>
-                <p class="aname">Tracking spine</p>
+                <div class="sid">Step 03</div>
+                <p class="sname">Tracking and reporting</p>
               </div>
             </div>
             <p>Make performance readable and trusted.</p>
             <ul>
-              <li>Events, goals, UTMs</li>
-              <li>Validation and dashboards</li>
+              <li>GA4, GTM, conversions</li>
+              <li>Dashboards for decisions</li>
             </ul>
           </div>
 
-          <div class="agent">
-            <div class="agent-head">
-              <div class="core"></div>
+          <div class="stage">
+            <div class="stage-head">
+              <div class="accent" aria-hidden="true"></div>
               <div>
-                <div class="aid">Agent 04</div>
-                <p class="aname">Content engine</p>
+                <div class="sid">Step 04</div>
+                <p class="sname">Content and creative</p>
               </div>
             </div>
-            <p>Creative tied to intent and objections.</p>
+            <p>Build a repeatable content engine.</p>
             <ul>
-              <li>Hooks and proof system</li>
+              <li>Hooks, angles, proof assets</li>
               <li>Refresh cadence</li>
             </ul>
           </div>
 
-          <div class="agent">
-            <div class="agent-head">
-              <div class="core"></div>
+          <div class="stage">
+            <div class="stage-head">
+              <div class="accent" aria-hidden="true"></div>
               <div>
-                <div class="aid">Agent 05</div>
-                <p class="aname">Acquisition</p>
+                <div class="sid">Step 05</div>
+                <p class="sname">Acquisition build and launch</p>
               </div>
             </div>
-            <p>Deploy controlled campaigns that scale.</p>
+            <p>Deploy controlled campaigns built to scale.</p>
             <ul>
               <li>Search and Shopping structure</li>
-              <li>Query control rules</li>
+              <li>Budget and query guardrails</li>
             </ul>
           </div>
 
-          <div class="agent">
-            <div class="agent-head">
-              <div class="core"></div>
+          <div class="stage">
+            <div class="stage-head">
+              <div class="accent" aria-hidden="true"></div>
               <div>
-                <div class="aid">Agent 06</div>
-                <p class="aname">Monitoring loop</p>
+                <div class="sid">Step 06</div>
+                <p class="sname">Stabilization and monitoring</p>
               </div>
             </div>
-            <p>Stabilize and keep the engine alive.</p>
+            <p>Protect performance and iterate.</p>
             <ul>
-              <li>Weekly rhythm</li>
-              <li>Scale and kill rules</li>
+              <li>Weekly monitoring rhythm</li>
+              <li>Scale and stop rules</li>
             </ul>
           </div>
         </div>
@@ -889,8 +867,8 @@
     <section class="section surface reveal" id="contact">
       <div class="head">
         <div class="kicker">CONTACT</div>
-        <h2>Ready to build the engine</h2>
-        <div class="sub">Send market, offer, and your main conversion action. I will reply with a clean build plan.</div>
+        <h2>Let’s discuss your project</h2>
+        <div class="sub">Share your market, offer, and main conversion action. I will reply with a clear build plan.</div>
 
         <div class="cta-row" style="justify-content:center; margin-top:14px;">
           <a class="btn" href="mailto:moe-abdelrazek@outlook.com">Email</a>
@@ -909,7 +887,7 @@
         document.documentElement.style.setProperty("--cy", e.clientY + "px");
       });
 
-      // Local glow on hover for surfaces and tiles
+      // Local glow on hover for surfaces and cards
       function bindGlow(sel){
         document.querySelectorAll(sel).forEach(function(el){
           el.addEventListener("mousemove", function(e){
@@ -919,9 +897,9 @@
           });
         });
       }
-      bindGlow(".surface, .tile, .work-card, .agent, .btn, .btn-ghost, .nav-inner");
+      bindGlow(".surface, .tile, .work-card, .stage, .btn, .btn-ghost, .nav-inner");
 
-      // Reveal on scroll (no external libs)
+      // Reveal on scroll
       const io = new IntersectionObserver((entries)=>{
         entries.forEach((en)=>{
           if(en.isIntersecting){ en.target.classList.add("in"); }

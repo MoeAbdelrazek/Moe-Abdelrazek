@@ -2,187 +2,261 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8" />
-<title>Mohamed Abdelrazek — Resume</title>
+<title>Mohamed Abdelrazek - Resume</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lora:wght@400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lora:wght@400;500;600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
 
 <style>
 :root{
-  /* Background: brighter + cleaner, still using your image */
-  --bg-wash-1: rgba(250, 246, 240, 0.92);
-  --bg-wash-2: rgba(246, 240, 232, 0.92);
+  /* DARK, CLEAN, PROFESSIONAL */
+  --bg0:#07090f;
+  --bg1:#0b1020;
+  --surface: rgba(14, 18, 28, 0.78);
+  --surface-2: rgba(14, 18, 28, 0.86);
 
-  /* Resume palette (simple + premium) */
-  --card: rgba(255,255,255,0.86);
-  --card-strong: rgba(255,255,255,0.92);
-  --petrol: #0b4f5c;
-  --text: #2f2622;
-  --muted: #65564f;
+  /* Accents */
+  --gold:#ffd36a;
+  --gold-2:#d7b54a;
+  --teal:#35c3d4;
 
-  /* No shadows */
+  /* Text */
+  --text: rgba(255,255,255,0.92);
+  --muted: rgba(255,255,255,0.70);
+  --muted2: rgba(255,255,255,0.58);
+
+  /* Lines, no shadows */
+  --line: rgba(255,255,255,0.10);
+  --line2: rgba(255,211,106,0.18);
+
   --radius: 22px;
+  --radius-sm: 14px;
+  --pill: 999px;
 
-  /* Hairline borders */
-  --line: rgba(11,79,92,0.18);
-  --line-soft: rgba(0,0,0,0.08);
+  --max: 1400px;
 }
 
 *{ box-sizing:border-box; }
-
 html,body{ margin:0; padding:0; }
-
 body{
-  font-family: "Lora", serif;
   color: var(--text);
-
-  /* Better background (brighter, less muddy) */
   background:
-    radial-gradient(900px circle at 20% 10%, rgba(11,79,92,0.10), transparent 55%),
-    radial-gradient(900px circle at 85% 20%, rgba(255,213,110,0.14), transparent 60%),
-    linear-gradient(var(--bg-wash-1), var(--bg-wash-2)),
-    url("Cafe-background.jpg") center / cover fixed no-repeat;
-
-  /* Adds readability without shadows */
-  background-blend-mode: screen, screen, normal, normal;
+    radial-gradient(1200px circle at 18% 8%, rgba(255,211,106,0.16), transparent 60%),
+    radial-gradient(1100px circle at 86% 12%, rgba(53,195,212,0.14), transparent 62%),
+    linear-gradient(180deg, var(--bg1), var(--bg0));
+  font-family: "Lora", serif;
+  line-height: 1.65;
+  overflow-x: hidden;
 }
 
+/* Optional: if you still want your image, keep it subtle and dark */
+body::before{
+  content:"";
+  position: fixed;
+  inset: 0;
+  background:
+    linear-gradient(180deg, rgba(7,9,15,0.78), rgba(7,9,15,0.88)),
+    url("Cafe-background.jpg") center / cover fixed no-repeat;
+  z-index: -2;
+  pointer-events:none;
+}
+
+/* Page container: 95% width */
 .page{
-  max-width: 1100px;
-  margin: 0 auto;
-  padding: 40px 22px 76px;
+  width: min(95vw, var(--max));
+  margin: 18px auto 70px;
+  padding: 18px 18px 40px;
+}
+
+/* Shared surface */
+.surface{
+  background: var(--surface);
+  border: 1px solid var(--line);
+  border-radius: var(--radius);
+  box-shadow: none;   /* no shadows */
 }
 
 /* Header */
 .header{
   display:flex;
   align-items:center;
-  gap: 22px;
-  margin-bottom: 22px;
-  padding: 22px;
-  border-radius: var(--radius);
-  background: var(--card);
-  border: 1px solid var(--line-soft);
+  gap: 18px;
+  padding: 20px;
+  background: var(--surface-2);
+  border: 1px solid var(--line2);
 }
 
-.profile-img{
-  width: 112px;
-  height: 112px;
+.avatar{
+  width: 96px;
+  height: 96px;
+  border-radius: 999px;
+  border: 2px solid rgba(255,211,106,0.55);
+  background:
+    radial-gradient(circle at 35% 35%, rgba(255,255,255,0.16), transparent 55%),
+    radial-gradient(circle at 50% 50%, rgba(255,211,106,0.10), transparent 60%);
+  overflow:hidden;
+  flex: 0 0 auto;
+}
+.avatar img{
+  width: 100%;
+  height: 100%;
   object-fit: cover;
   object-position: center;
-  border-radius: 50%;
-  border: 2px solid var(--petrol);
-  background: #fff;
-
-  /* no shadows */
-  box-shadow: none;
+  display:block;
+  filter:none;
 }
 
-.header-text h1{
+.header-main{
+  flex: 1 1 auto;
+  min-width: 0;
+}
+.name{
   font-family: "Playfair Display", serif;
   font-size: 34px;
-  color: var(--petrol);
   margin: 0 0 6px;
-  letter-spacing: 0.01em;
+  color: rgba(255,255,255,0.96);
 }
-
-.motto{
-  font-size: 16px;
+.tagline{
+  margin: 0 0 10px;
   color: var(--muted);
-  max-width: 680px;
-  margin-bottom: 10px;
+  font-size: 15.5px;
+  max-width: 900px;
 }
-
-.langs{ display:flex; flex-wrap:wrap; gap: 8px; }
-.lang{
-  display:inline-block;
+.pills{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 8px;
+}
+.pill{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  gap: 8px;
   padding: 6px 12px;
-  border-radius: 999px;
-  background: rgba(255,255,255,0.70);
-  border: 1px solid var(--line-soft);
-  font-size: 13px;
-  color: var(--text);
+  border-radius: var(--pill);
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.04);
+  font-size: 12.5px;
+  color: rgba(255,255,255,0.82);
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  white-space:nowrap;
+}
+.pill.gold{
+  border-color: rgba(255,211,106,0.30);
+  background: rgba(255,211,106,0.08);
 }
 
-/* Grid */
+/* Grid layout */
 .grid{
   display:grid;
   grid-template-columns: 34% 66%;
-  gap: 18px;
+  gap: 14px;
   margin-top: 14px;
 }
 
 /* Cards */
 .card{
-  background: var(--card);
-  border: 1px solid var(--line-soft);
+  padding: 18px;
   border-radius: var(--radius);
-  padding: 20px;
-  margin-bottom: 14px;
-
-  /* no shadows */
-  box-shadow: none;
+  border: 1px solid var(--line);
+  background: var(--surface);
+  box-shadow: none; /* no shadows */
+}
+.card.tight{ padding: 16px; }
+.card.accent{
+  border-color: rgba(255,211,106,0.18);
+  background: rgba(14,18,28,0.86);
 }
 
-.card.strong{
-  background: var(--card-strong);
-  border-color: rgba(11,79,92,0.16);
-}
-
-.card h2{
+h2{
   font-family: "Playfair Display", serif;
-  color: var(--petrol);
-  font-size: 20px;
   margin: 0 0 12px;
+  font-size: 20px;
+  color: rgba(255,255,255,0.96);
+}
+.hint{
+  margin: -6px 0 10px;
+  color: var(--muted2);
+  font-size: 13px;
 }
 
-/* Typography */
-p{ margin: 0 0 10px; }
-ul{ padding-left: 18px; margin: 0; }
-li{ margin-bottom: 7px; }
+/* Lists */
+ul{ margin: 0; padding-left: 18px; }
+li{ margin: 7px 0; color: rgba(255,255,255,0.78); }
+p{ margin: 0 0 10px; color: rgba(255,255,255,0.78); }
 
-/* Contact links */
+/* Contact block */
+.contact p{ margin: 0 0 8px; }
 .contact a{
-  color: var(--petrol);
-  text-decoration: none;
+  color: rgba(255,211,106,0.92);
+  text-decoration:none;
+  border-bottom: 1px solid transparent;
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
   font-weight: 600;
 }
-.contact a:hover{ text-decoration: underline; }
+.contact a:hover{ border-bottom-color: rgba(255,211,106,0.55); }
+.contact .label{
+  color: rgba(255,255,255,0.62);
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  font-size: 12px;
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  display:block;
+  margin-bottom: 2px;
+}
 
-/* Experience */
+/* Experience formatting */
 .role{
-  font-weight: 700;
-  color: var(--petrol);
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  font-weight: 800;
+  color: rgba(255,255,255,0.92);
   margin-top: 12px;
 }
-.date{
-  float: right;
-  font-weight: 600;
-  color: var(--muted);
+.meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap: 10px;
+  align-items:center;
+  margin: 4px 0 8px;
+  color: rgba(255,255,255,0.66);
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  font-size: 13px;
 }
-.divider{
+.meta .dot{
+  width: 4px; height: 4px; border-radius: 999px;
+  background: rgba(255,211,106,0.55);
+  display:inline-block;
+}
+.hr{
   height: 1px;
-  background: rgba(0,0,0,0.06);
-  margin: 12px 0;
+  background: rgba(255,255,255,0.08);
+  margin: 14px 0;
 }
 
-/* Small helpers */
-.small{ color: var(--muted); font-size: 14px; margin-top: -4px; }
-.badge-row{ display:flex; flex-wrap:wrap; gap:8px; margin-top:10px; }
-.badge{
-  font-size: 12px;
-  padding: 6px 10px;
-  border-radius: 999px;
-  border: 1px solid rgba(11,79,92,0.14);
-  background: rgba(255,255,255,0.70);
-  color: var(--text);
+/* Small highlight line */
+.inline-accent{
+  color: rgba(53,195,212,0.90);
+  font-weight: 700;
 }
 
 /* Responsive */
-@media (max-width: 950px){
+@media (max-width: 980px){
   .grid{ grid-template-columns: 1fr; }
-  .header{ flex-direction: column; align-items:flex-start; }
-  .date{ float:none; display:block; margin-top: 2px; }
+  .header{ flex-direction: column; align-items: flex-start; }
+  .avatar{ width: 92px; height: 92px; }
+}
+
+/* Print (optional clean white resume) */
+@media print{
+  body{ background: #ffffff !important; color: #111 !important; }
+  body::before{ display:none !important; }
+  .page{ width: 100% !important; margin: 0 !important; padding: 0 !important; }
+  .card, .header{
+    background: #ffffff !important;
+    border: 1px solid #ddd !important;
+    color: #111 !important;
+  }
+  a{ color:#111 !important; text-decoration:none !important; }
 }
 </style>
 </head>
@@ -191,34 +265,28 @@ li{ margin-bottom: 7px; }
 <div class="page">
 
   <!-- HEADER -->
-  <div class="header">
-    <img
-      src="profile.jpg"
-      alt="Mohamed Abdelrazek portrait"
-      class="profile-img"
-      width="112"
-      height="112"
-    />
+  <div class="header surface">
+    <div class="avatar">
+      <img src="profile.jpg" alt="Mohamed Abdelrazek portrait" width="96" height="96" />
+    </div>
 
-    <div class="header-text">
-      <h1>Mohamed Abdelrazek</h1>
-      <div class="motto">
+    <div class="header-main">
+      <h1 class="name">Mohamed Abdelrazek</h1>
+      <p class="tagline">
         Performance-focused digital marketer with an engineering mindset. I build end-to-end marketing systems from research to stable monitoring.
-      </div>
+      </p>
 
-      <div class="langs">
-        <span class="lang">Arabic — Native</span>
-        <span class="lang">English — Near Native</span>
-        <span class="lang">German — B2</span>
-      </div>
+      <div class="pills">
+        <span class="pill gold">Arabic - Native</span>
+        <span class="pill gold">English - Near Native</span>
+        <span class="pill gold">German - B2</span>
 
-      <div class="badge-row">
-        <span class="badge">Google Ads</span>
-        <span class="badge">GA4</span>
-        <span class="badge">GTM</span>
-        <span class="badge">Shopify</span>
-        <span class="badge">SEO</span>
-        <span class="badge">Dashboards</span>
+        <span class="pill">Google Ads</span>
+        <span class="pill">GA4</span>
+        <span class="pill">GTM</span>
+        <span class="pill">Shopify</span>
+        <span class="pill">SEO</span>
+        <span class="pill">Dashboards</span>
       </div>
     </div>
   </div>
@@ -226,16 +294,16 @@ li{ margin-bottom: 7px; }
   <!-- GRID -->
   <div class="grid">
 
-    <!-- LEFT -->
+    <!-- LEFT COLUMN -->
     <div>
 
-      <div class="card strong contact">
+      <div class="card accent contact">
         <h2>Contact</h2>
-        <p>Email: <a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a></p>
-        <p>Phone: <a href="tel:+201017286384">+20 101 728 6384</a></p>
-        <p>LinkedIn: <a href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank" rel="noopener">linkedin.com/in/moe-abdelrazek</a></p>
-        <p>Website: <a href="https://moeabdelrazek.github.io/Moe-Abdelrazek/" target="_blank" rel="noopener">Portfolio</a></p>
-        <p>Location: Alexandria, Egypt</p>
+        <p><span class="label">Email</span><a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a></p>
+        <p><span class="label">Phone</span><a href="tel:+201017286384">+20 101 728 6384</a></p>
+        <p><span class="label">LinkedIn</span><a href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank" rel="noopener">linkedin.com/in/moe-abdelrazek</a></p>
+        <p><span class="label">Website</span><a href="https://moeabdelrazek.github.io/Moe-Abdelrazek/" target="_blank" rel="noopener">Portfolio</a></p>
+        <p><span class="label">Location</span>Alexandria, Egypt</p>
       </div>
 
       <div class="card">
@@ -252,8 +320,8 @@ li{ margin-bottom: 7px; }
 
       <div class="card">
         <h2>Education</h2>
-        <p><strong>Alexandria University — Engineering Studies (Incomplete)</strong></p>
-        <p class="small">Systems thinking, mathematics, and structured problem-solving foundation.</p>
+        <p><strong>Alexandria University - Engineering Studies (Incomplete)</strong></p>
+        <p class="hint">Systems thinking, mathematics, and structured problem-solving foundation.</p>
       </div>
 
       <div class="card">
@@ -269,48 +337,61 @@ li{ margin-bottom: 7px; }
 
     </div>
 
-    <!-- RIGHT -->
+    <!-- RIGHT COLUMN -->
     <div>
 
-      <div class="card strong">
+      <div class="card accent">
         <h2>Professional Summary</h2>
         <p>
           Performance-focused digital marketer with an engineering mindset, specialising in building complete marketing systems from zero presence
           to scalable acquisition engines. Known for owning the full stack end-to-end and translating complexity into clear, resilient structures.
         </p>
+        <p class="hint">Strength: turning complex marketing stacks into a clear operating model with measurable outcomes.</p>
       </div>
 
       <div class="card">
         <h2>Professional Experience</h2>
 
-        <p class="role">Digital Marketing Specialist — Technosignage <span class="date">Oct 2025 – Present (Contract)</span></p>
+        <div class="role">Digital Marketing Specialist - Technosignage</div>
+        <div class="meta">
+          <span class="inline-accent">Oct 2025 to Present</span><span class="dot"></span><span>Contract</span>
+        </div>
         <ul>
-          <li>Owned the full acquisition and measurement stack for TechnoMounts.</li>
+          <li>Owned the acquisition and measurement stack for TechnoMounts.</li>
           <li>Implemented Google Ads, Performance Max, and Merchant Center systems.</li>
           <li>Built GA4 event strategy and conversion tracking foundations.</li>
-          <li>Scaled SEO from zero presence to consistent top keyword visibility.</li>
+          <li>Scaled SEO from zero presence to consistent keyword visibility.</li>
           <li>Integrated CRM and B2B outreach workflows.</li>
         </ul>
 
-        <div class="divider"></div>
+        <div class="hr"></div>
 
-        <p class="role">Digital Marketing Specialist — Self-Employed <span class="date">2023 – Present</span></p>
+        <div class="role">Digital Marketing Specialist - Self-Employed</div>
+        <div class="meta">
+          <span class="inline-accent">2023 to Present</span>
+        </div>
         <ul>
           <li>Designed end-to-end marketing systems across ecommerce, healthcare, hospitality, and fitness.</li>
           <li>Owned research, strategy, execution, optimisation, and reporting independently.</li>
         </ul>
 
-        <div class="divider"></div>
+        <div class="hr"></div>
 
-        <p class="role">Online English Tutor — Engoo <span class="date">2021 – Present</span></p>
+        <div class="role">Online English Tutor - Engoo</div>
+        <div class="meta">
+          <span class="inline-accent">2021 to Present</span>
+        </div>
         <ul>
           <li>Delivered structured, outcome-driven sessions to international learners.</li>
           <li>Strengthened clarity, communication, and remote delivery skills.</li>
         </ul>
 
-        <div class="divider"></div>
+        <div class="hr"></div>
 
-        <p class="role">Professional Football Athlete <span class="date">2011 – 2022</span></p>
+        <div class="role">Professional Football Athlete</div>
+        <div class="meta">
+          <span class="inline-accent">2011 to 2022</span>
+        </div>
         <ul>
           <li>Developed discipline, performance accountability, and long-term consistency.</li>
           <li>Transferred competitive mindset into analytical and operational work.</li>

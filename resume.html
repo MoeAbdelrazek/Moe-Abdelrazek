@@ -5,75 +5,71 @@
 <title>Mohamed Abdelrazek - Resume</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@600;700&family=Lora:wght@400;500;600&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
-
 <style>
 :root{
-  /* DARK, CLEAN, PROFESSIONAL */
-  --bg0:#07090f;
-  --bg1:#0b1020;
-  --surface: rgba(14, 18, 28, 0.78);
-  --surface-2: rgba(14, 18, 28, 0.86);
+  /* Balanced theme (not too dark, not too light) */
+  --ink: #111827;
+  --ink-2:#243042;
 
-  /* Accents */
-  --gold:#ffd36a;
-  --gold-2:#d7b54a;
-  --teal:#35c3d4;
+  --text: rgba(17,24,39,0.92);
+  --muted: rgba(17,24,39,0.72);
 
-  /* Text */
-  --text: rgba(255,255,255,0.92);
-  --muted: rgba(255,255,255,0.70);
-  --muted2: rgba(255,255,255,0.58);
+  --gold: #d6b24a;
+  --gold-2:#b7922f;
 
-  /* Lines, no shadows */
-  --line: rgba(255,255,255,0.10);
-  --line2: rgba(255,211,106,0.18);
+  --card: rgba(255,255,255,0.72);
+  --card-strong: rgba(255,255,255,0.82);
+
+  --line: rgba(17,24,39,0.10);
+  --line-gold: rgba(214,178,74,0.28);
 
   --radius: 22px;
-  --radius-sm: 14px;
   --pill: 999px;
 
   --max: 1400px;
 }
 
+/* Reset */
 *{ box-sizing:border-box; }
 html,body{ margin:0; padding:0; }
+
+/* Fonts */
 body{
-  color: var(--text);
-  background:
-    radial-gradient(1200px circle at 18% 8%, rgba(255,211,106,0.16), transparent 60%),
-    radial-gradient(1100px circle at 86% 12%, rgba(53,195,212,0.14), transparent 62%),
-    linear-gradient(180deg, var(--bg1), var(--bg0));
-  font-family: "Lora", serif;
+  font-family: Calibri, "Carlito", Arial, sans-serif; /* body */
+  font-size: 14px; /* Calibri 14 */
   line-height: 1.65;
+  color: var(--text);
   overflow-x: hidden;
-}
 
-/* Optional: if you still want your image, keep it subtle and dark */
-body::before{
-  content:"";
-  position: fixed;
-  inset: 0;
+  /* Background: balanced (image + soft wash + a hint of depth) */
   background:
-    linear-gradient(180deg, rgba(7,9,15,0.78), rgba(7,9,15,0.88)),
+    radial-gradient(1100px circle at 18% 12%, rgba(214,178,74,0.22), transparent 55%),
+    radial-gradient(900px circle at 86% 18%, rgba(25,64,92,0.18), transparent 60%),
+    linear-gradient(180deg, rgba(248,245,239,0.86), rgba(236,240,246,0.78)),
     url("Cafe-background.jpg") center / cover fixed no-repeat;
-  z-index: -2;
-  pointer-events:none;
+  background-blend-mode: screen, screen, normal, normal;
 }
 
-/* Page container: 95% width */
+/* Page width: 95% */
 .page{
   width: min(95vw, var(--max));
   margin: 18px auto 70px;
-  padding: 18px 18px 40px;
+  padding: 18px 18px 42px;
 }
 
-/* Shared surface */
-.surface{
-  background: var(--surface);
+/* Card base (no shadows) */
+.card{
+  background: var(--card);
   border: 1px solid var(--line);
   border-radius: var(--radius);
-  box-shadow: none;   /* no shadows */
+  padding: 18px;
+  box-shadow: none;
+  backdrop-filter: blur(10px) saturate(120%);
+  -webkit-backdrop-filter: blur(10px) saturate(120%);
+}
+.card.strong{
+  background: var(--card-strong);
+  border-color: var(--line-gold);
 }
 
 /* Header */
@@ -82,46 +78,44 @@ body::before{
   align-items:center;
   gap: 18px;
   padding: 20px;
-  background: var(--surface-2);
-  border: 1px solid var(--line2);
 }
-
 .avatar{
   width: 96px;
   height: 96px;
   border-radius: 999px;
-  border: 2px solid rgba(255,211,106,0.55);
-  background:
-    radial-gradient(circle at 35% 35%, rgba(255,255,255,0.16), transparent 55%),
-    radial-gradient(circle at 50% 50%, rgba(255,211,106,0.10), transparent 60%);
+  border: 2px solid rgba(214,178,74,0.70);
   overflow:hidden;
+  background: rgba(255,255,255,0.75);
   flex: 0 0 auto;
 }
 .avatar img{
-  width: 100%;
-  height: 100%;
+  width:100%;
+  height:100%;
   object-fit: cover;
   object-position: center;
   display:block;
-  filter:none;
+}
+.header-main{ flex: 1 1 auto; min-width: 0; }
+
+h1,h2{
+  font-family: "Times New Roman", Times, serif; /* titles + big words */
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  color: var(--ink);
 }
 
-.header-main{
-  flex: 1 1 auto;
-  min-width: 0;
-}
 .name{
-  font-family: "Playfair Display", serif;
-  font-size: 34px;
   margin: 0 0 6px;
-  color: rgba(255,255,255,0.96);
+  font-size: 36px;
 }
 .tagline{
   margin: 0 0 10px;
   color: var(--muted);
-  font-size: 15.5px;
-  max-width: 900px;
+  max-width: 980px;
+  font-size: 14px;
 }
+
+/* Pills */
 .pills{
   display:flex;
   flex-wrap:wrap;
@@ -131,22 +125,21 @@ body::before{
   display:inline-flex;
   align-items:center;
   justify-content:center;
-  gap: 8px;
   padding: 6px 12px;
   border-radius: var(--pill);
-  border: 1px solid rgba(255,255,255,0.12);
-  background: rgba(255,255,255,0.04);
+  border: 1px solid rgba(17,24,39,0.12);
+  background: rgba(255,255,255,0.35);
+  color: rgba(17,24,39,0.86);
+  white-space: nowrap;
   font-size: 12.5px;
-  color: rgba(255,255,255,0.82);
-  font-family: "Inter", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
-  white-space:nowrap;
 }
 .pill.gold{
-  border-color: rgba(255,211,106,0.30);
-  background: rgba(255,211,106,0.08);
+  border-color: rgba(214,178,74,0.50);
+  background: rgba(214,178,74,0.16);
+  color: rgba(23,30,41,0.92);
 }
 
-/* Grid layout */
+/* Layout grid */
 .grid{
   display:grid;
   grid-template-columns: 34% 66%;
@@ -154,63 +147,53 @@ body::before{
   margin-top: 14px;
 }
 
-/* Cards */
-.card{
-  padding: 18px;
-  border-radius: var(--radius);
-  border: 1px solid var(--line);
-  background: var(--surface);
-  box-shadow: none; /* no shadows */
-}
-.card.tight{ padding: 16px; }
-.card.accent{
-  border-color: rgba(255,211,106,0.18);
-  background: rgba(14,18,28,0.86);
-}
-
-h2{
-  font-family: "Playfair Display", serif;
+/* Section headings */
+.card h2{
   margin: 0 0 12px;
   font-size: 20px;
-  color: rgba(255,255,255,0.96);
 }
 .hint{
-  margin: -6px 0 10px;
-  color: var(--muted2);
+  margin: -4px 0 10px;
+  color: var(--muted);
   font-size: 13px;
 }
 
 /* Lists */
-ul{ margin: 0; padding-left: 18px; }
-li{ margin: 7px 0; color: rgba(255,255,255,0.78); }
-p{ margin: 0 0 10px; color: rgba(255,255,255,0.78); }
+ul{ margin:0; padding-left: 18px; }
+li{ margin: 7px 0; color: rgba(17,24,39,0.86); }
 
-/* Contact block */
-.contact p{ margin: 0 0 8px; }
-.contact a{
-  color: rgba(255,211,106,0.92);
-  text-decoration:none;
-  border-bottom: 1px solid transparent;
-  font-family: "Inter", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
-  font-weight: 600;
-}
-.contact a:hover{ border-bottom-color: rgba(255,211,106,0.55); }
-.contact .label{
-  color: rgba(255,255,255,0.62);
-  font-family: "Inter", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
-  font-size: 12px;
-  text-transform: uppercase;
-  letter-spacing: 0.12em;
+/* Contact */
+.contact p{ margin: 0 0 10px; }
+.label{
   display:block;
-  margin-bottom: 2px;
+  font-size: 11px;
+  letter-spacing: 0.10em;
+  text-transform: uppercase;
+  color: rgba(17,24,39,0.60);
+  margin-bottom: 3px;
+}
+.contact a{
+  color: rgba(21,64,92,0.95);
+  text-decoration: none;
+  border-bottom: 1px solid transparent;
+  font-weight: 700;
+}
+.contact a:hover{
+  border-bottom-color: rgba(21,64,92,0.35);
 }
 
-/* Experience formatting */
+/* Experience blocks */
 .role{
-  font-family: "Inter", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
-  font-weight: 800;
-  color: rgba(255,255,255,0.92);
-  margin-top: 12px;
+  font-weight: 700;
+  color: rgba(17,24,39,0.92);
+  margin-top: 10px;
+  font-size: 14px;
+}
+.role-title{
+  font-family: "Times New Roman", Times, serif; /* big words */
+  font-weight: 700;
+  font-size: 16px;
+  color: var(--ink);
 }
 .meta{
   display:flex;
@@ -218,43 +201,41 @@ p{ margin: 0 0 10px; color: rgba(255,255,255,0.78); }
   gap: 10px;
   align-items:center;
   margin: 4px 0 8px;
-  color: rgba(255,255,255,0.66);
-  font-family: "Inter", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
-  font-size: 13px;
+  color: rgba(17,24,39,0.64);
+  font-size: 12.5px;
 }
 .meta .dot{
-  width: 4px; height: 4px; border-radius: 999px;
-  background: rgba(255,211,106,0.55);
+  width: 4px;
+  height: 4px;
+  border-radius: 999px;
+  background: rgba(214,178,74,0.85);
   display:inline-block;
 }
 .hr{
   height: 1px;
-  background: rgba(255,255,255,0.08);
+  background: rgba(17,24,39,0.08);
   margin: 14px 0;
-}
-
-/* Small highlight line */
-.inline-accent{
-  color: rgba(53,195,212,0.90);
-  font-weight: 700;
 }
 
 /* Responsive */
 @media (max-width: 980px){
   .grid{ grid-template-columns: 1fr; }
-  .header{ flex-direction: column; align-items: flex-start; }
+  .header{ flex-direction: column; align-items:flex-start; }
   .avatar{ width: 92px; height: 92px; }
 }
 
-/* Print (optional clean white resume) */
+/* Print: clean white */
 @media print{
-  body{ background: #ffffff !important; color: #111 !important; }
-  body::before{ display:none !important; }
+  body{
+    background: #ffffff !important;
+    color:#111 !important;
+  }
   .page{ width: 100% !important; margin: 0 !important; padding: 0 !important; }
-  .card, .header{
+  .card{
     background: #ffffff !important;
     border: 1px solid #ddd !important;
-    color: #111 !important;
+    backdrop-filter: none !important;
+    -webkit-backdrop-filter: none !important;
   }
   a{ color:#111 !important; text-decoration:none !important; }
 }
@@ -265,7 +246,7 @@ p{ margin: 0 0 10px; color: rgba(255,255,255,0.78); }
 <div class="page">
 
   <!-- HEADER -->
-  <div class="header surface">
+  <div class="card strong header">
     <div class="avatar">
       <img src="profile.jpg" alt="Mohamed Abdelrazek portrait" width="96" height="96" />
     </div>
@@ -294,10 +275,9 @@ p{ margin: 0 0 10px; color: rgba(255,255,255,0.78); }
   <!-- GRID -->
   <div class="grid">
 
-    <!-- LEFT COLUMN -->
+    <!-- LEFT -->
     <div>
-
-      <div class="card accent contact">
+      <div class="card strong contact">
         <h2>Contact</h2>
         <p><span class="label">Email</span><a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a></p>
         <p><span class="label">Phone</span><a href="tel:+201017286384">+20 101 728 6384</a></p>
@@ -320,7 +300,7 @@ p{ margin: 0 0 10px; color: rgba(255,255,255,0.78); }
 
       <div class="card">
         <h2>Education</h2>
-        <p><strong>Alexandria University - Engineering Studies (Incomplete)</strong></p>
+        <p><span class="role-title">Alexandria University - Engineering Studies (Incomplete)</span></p>
         <p class="hint">Systems thinking, mathematics, and structured problem-solving foundation.</p>
       </div>
 
@@ -334,13 +314,11 @@ p{ margin: 0 0 10px; color: rgba(255,255,255,0.78); }
           <li>Microsoft Python Development</li>
         </ul>
       </div>
-
     </div>
 
-    <!-- RIGHT COLUMN -->
+    <!-- RIGHT -->
     <div>
-
-      <div class="card accent">
+      <div class="card strong">
         <h2>Professional Summary</h2>
         <p>
           Performance-focused digital marketer with an engineering mindset, specialising in building complete marketing systems from zero presence
@@ -352,9 +330,9 @@ p{ margin: 0 0 10px; color: rgba(255,255,255,0.78); }
       <div class="card">
         <h2>Professional Experience</h2>
 
-        <div class="role">Digital Marketing Specialist - Technosignage</div>
+        <div class="role-title">Digital Marketing Specialist - Technosignage</div>
         <div class="meta">
-          <span class="inline-accent">Oct 2025 to Present</span><span class="dot"></span><span>Contract</span>
+          <span>Oct 2025 to Present</span><span class="dot"></span><span>Contract</span>
         </div>
         <ul>
           <li>Owned the acquisition and measurement stack for TechnoMounts.</li>
@@ -366,9 +344,9 @@ p{ margin: 0 0 10px; color: rgba(255,255,255,0.78); }
 
         <div class="hr"></div>
 
-        <div class="role">Digital Marketing Specialist - Self-Employed</div>
+        <div class="role-title">Digital Marketing Specialist - Self-Employed</div>
         <div class="meta">
-          <span class="inline-accent">2023 to Present</span>
+          <span>2023 to Present</span>
         </div>
         <ul>
           <li>Designed end-to-end marketing systems across ecommerce, healthcare, hospitality, and fitness.</li>
@@ -377,9 +355,9 @@ p{ margin: 0 0 10px; color: rgba(255,255,255,0.78); }
 
         <div class="hr"></div>
 
-        <div class="role">Online English Tutor - Engoo</div>
+        <div class="role-title">Online English Tutor - Engoo</div>
         <div class="meta">
-          <span class="inline-accent">2021 to Present</span>
+          <span>2021 to Present</span>
         </div>
         <ul>
           <li>Delivered structured, outcome-driven sessions to international learners.</li>
@@ -388,9 +366,9 @@ p{ margin: 0 0 10px; color: rgba(255,255,255,0.78); }
 
         <div class="hr"></div>
 
-        <div class="role">Professional Football Athlete</div>
+        <div class="role-title">Professional Football Athlete</div>
         <div class="meta">
-          <span class="inline-accent">2011 to 2022</span>
+          <span>2011 to 2022</span>
         </div>
         <ul>
           <li>Developed discipline, performance accountability, and long-term consistency.</li>
@@ -410,10 +388,9 @@ p{ margin: 0 0 10px; color: rgba(255,255,255,0.78); }
           <li>Microsoft Office and Google Workspace</li>
         </ul>
       </div>
-
     </div>
-  </div>
 
+  </div>
 </div>
 </body>
 </html>

@@ -5,57 +5,62 @@
 <title>Mohamed Abdelrazek - Resume</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;600;700;800&display=swap" rel="stylesheet">
+
 <style>
 :root{
-  /* Balanced, professional palette */
-  --ink: #121826;              /* main text */
-  --ink-2:#273247;             /* headings */
-  --muted:#4c5a74;             /* secondary text */
+  /* Palette */
+  --ink: #0f172a;          /* slate-900 */
+  --ink-2:#1f2937;         /* gray-800 */
+  --muted:#475569;         /* slate-600 */
 
-  --gold:#c7a245;              /* warm accent */
-  --gold-2:#a7832c;
+  --navy:#0b1224;          /* deep */
+  --gold:#c8a64a;          /* premium gold */
+  --gold-2:#a8842c;
+  --teal:#0ea5a8;
 
   /* Surfaces (no shadows) */
-  --card: rgba(255,255,255,0.86);
-  --card-2: rgba(255,255,255,0.92);
-  --stroke: rgba(18,24,38,0.10);
-  --stroke-2: rgba(199,162,69,0.28);
+  --card: rgba(255,255,255,0.82);
+  --card-2: rgba(255,255,255,0.90);
+  --stroke: rgba(15,23,42,0.10);
+  --stroke-2: rgba(200,166,74,0.25);
 
-  --radius: 22px;
+  --radius: 20px;
   --pill: 999px;
 
-  --max: 1400px;
+  --max: 1320px;
 }
 
 /* Reset */
 *{ box-sizing:border-box; }
 html,body{ margin:0; padding:0; }
+a{ color: inherit; }
 
-/* Typography rules */
+/* Base typography */
 body{
-  font-family: Calibri, "Carlito", Arial, sans-serif;
-  font-size: 16px;            /* bigger and more readable */
+  font-family: "Inter", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
+  font-size: 16px;
   line-height: 1.65;
   color: var(--ink);
   overflow-x: hidden;
 
-  /* Background: image + elegant wash (mid between dark and light) */
+  /* Background: image + modern premium wash */
   background:
-    radial-gradient(1000px circle at 15% 12%, rgba(199,162,69,0.16), transparent 58%),
-    radial-gradient(900px circle at 88% 18%, rgba(39,50,71,0.12), transparent 62%),
-    linear-gradient(180deg, rgba(250,247,242,0.92), rgba(235,241,248,0.88)),
+    radial-gradient(1200px circle at 18% 10%, rgba(200,166,74,0.18), transparent 58%),
+    radial-gradient(900px circle at 86% 14%, rgba(14,165,168,0.12), transparent 60%),
+    linear-gradient(180deg, rgba(250,248,244,0.92), rgba(235,242,250,0.88)),
     url("Cafe-background.jpg") center / cover fixed no-repeat;
   background-blend-mode: screen, screen, normal, normal;
 }
 
-/* 95% width layout */
+/* 95% width */
 .page{
   width: min(95vw, var(--max));
   margin: 18px auto 70px;
-  padding: 18px 18px 44px;
+  padding: 18px 18px 46px;
 }
 
-/* Card base (NO SHADOWS) */
+/* Cards (no shadows) */
 .card{
   background: var(--card);
   border: 1px solid var(--stroke);
@@ -70,13 +75,6 @@ body{
   border-color: var(--stroke-2);
 }
 
-/* Titles in Times New Roman */
-h1,h2,h3,.role-title{
-  font-family: "Times New Roman", Times, serif;
-  color: var(--ink-2);
-  margin: 0;
-}
-
 /* Header */
 .header{
   display:flex;
@@ -87,9 +85,9 @@ h1,h2,h3,.role-title{
   width: 104px;
   height: 104px;
   border-radius: 999px;
-  border: 2px solid rgba(199,162,69,0.55);
+  border: 2px solid rgba(200,166,74,0.55);
   overflow:hidden;
-  background: rgba(255,255,255,0.9);
+  background: rgba(255,255,255,0.95);
   flex: 0 0 auto;
 }
 .avatar img{
@@ -99,18 +97,20 @@ h1,h2,h3,.role-title{
   object-position: center;
   display:block;
 }
+.header-main{ flex: 1 1 auto; min-width: 0; }
 
 .name{
-  font-size: 44px;
-  font-weight: 700;
-  letter-spacing: 0.2px;
   margin: 0 0 6px;
+  font-size: 44px;
+  font-weight: 800;
+  letter-spacing: -0.02em;
+  color: var(--ink);
 }
 .subtitle{
-  font-size: 17px;
-  color: var(--muted);
   margin: 0 0 12px;
+  color: var(--muted);
   max-width: 980px;
+  font-size: 16px;
 }
 
 /* Pills */
@@ -122,21 +122,24 @@ h1,h2,h3,.role-title{
 .pill{
   display:inline-flex;
   align-items:center;
-  gap: 8px;
   padding: 8px 12px;
   border-radius: var(--pill);
-  border: 1px solid rgba(18,24,38,0.12);
+  border: 1px solid rgba(15,23,42,0.12);
   background: rgba(255,255,255,0.45);
-  color: rgba(18,24,38,0.90);
+  color: rgba(15,23,42,0.92);
   font-size: 13.5px;
   white-space: nowrap;
 }
 .pill.gold{
-  border-color: rgba(199,162,69,0.40);
-  background: rgba(199,162,69,0.14);
+  border-color: rgba(200,166,74,0.40);
+  background: rgba(200,166,74,0.14);
+}
+.pill.teal{
+  border-color: rgba(14,165,168,0.35);
+  background: rgba(14,165,168,0.10);
 }
 
-/* Main grid */
+/* Grid */
 .grid{
   display:grid;
   grid-template-columns: 34% 66%;
@@ -145,10 +148,12 @@ h1,h2,h3,.role-title{
 }
 
 /* Section headings */
-.card h2{
-  font-size: 24px;
-  font-weight: 700;
+h2{
   margin: 0 0 12px;
+  font-size: 22px;
+  font-weight: 800;
+  letter-spacing: -0.01em;
+  color: var(--ink-2);
 }
 .hint{
   margin: -6px 0 12px;
@@ -156,36 +161,35 @@ h1,h2,h3,.role-title{
   font-size: 14px;
 }
 
-/* Contact layout */
-.contact-line{
-  margin: 0 0 12px;
-}
+/* Lists */
+ul{ margin:0; padding-left: 18px; }
+li{ margin: 8px 0; color: rgba(15,23,42,0.92); }
+
+/* Contact */
+.contact-line{ margin: 0 0 12px; }
 .label{
   display:block;
   font-size: 12px;
   letter-spacing: 0.10em;
   text-transform: uppercase;
-  color: rgba(18,24,38,0.55);
+  color: rgba(15,23,42,0.55);
   margin-bottom: 4px;
 }
 .contact a{
-  color: rgba(28,59,90,0.95);
+  color: rgba(11,18,36,0.92);
   text-decoration: none;
   font-weight: 700;
   border-bottom: 1px solid transparent;
 }
 .contact a:hover{
-  border-bottom-color: rgba(28,59,90,0.28);
+  border-bottom-color: rgba(200,166,74,0.55);
 }
-
-/* Lists */
-ul{ margin: 0; padding-left: 18px; }
-li{ margin: 8px 0; color: rgba(18,24,38,0.90); }
 
 /* Experience */
 .role-title{
-  font-size: 18px;
-  font-weight: 700;
+  font-weight: 800;
+  font-size: 17px;
+  color: var(--ink-2);
   margin-top: 6px;
 }
 .meta{
@@ -194,20 +198,30 @@ li{ margin: 8px 0; color: rgba(18,24,38,0.90); }
   gap: 10px;
   align-items:center;
   margin: 6px 0 10px;
-  color: rgba(18,24,38,0.62);
+  color: rgba(15,23,42,0.62);
   font-size: 13.5px;
 }
 .meta .dot{
   width: 4px;
   height: 4px;
   border-radius: 999px;
-  background: rgba(199,162,69,0.95);
+  background: rgba(200,166,74,0.95);
   display:inline-block;
 }
 .hr{
   height: 1px;
-  background: rgba(18,24,38,0.08);
+  background: rgba(15,23,42,0.08);
   margin: 16px 0;
+}
+
+/* Small accent callout */
+.callout{
+  border: 1px solid rgba(14,165,168,0.20);
+  background: rgba(14,165,168,0.08);
+  border-radius: 14px;
+  padding: 12px 12px;
+  color: rgba(15,23,42,0.88);
+  font-size: 14px;
 }
 
 /* Responsive */
@@ -217,31 +231,18 @@ li{ margin: 8px 0; color: rgba(18,24,38,0.90); }
   .name{ font-size: 38px; }
 }
 
-/* Print: crisp, clean */
+/* Print */
 @media print{
-  body{
-    background: #ffffff !important;
-    color:#111 !important;
-  }
-  .page{
-    width: 100% !important;
-    margin: 0 !important;
-    padding: 0 !important;
-  }
+  body{ background:#fff !important; }
+  .page{ width: 100% !important; margin:0 !important; padding:0 !important; }
   .card{
-    background: #ffffff !important;
+    background:#fff !important;
     border: 1px solid #d9d9d9 !important;
-    backdrop-filter: none !important;
-    -webkit-backdrop-filter: none !important;
+    backdrop-filter:none !important;
+    -webkit-backdrop-filter:none !important;
   }
-  .pill{
-    background: #ffffff !important;
-  }
-  a{
-    color:#111 !important;
-    text-decoration:none !important;
-    border: none !important;
-  }
+  .pill{ background:#fff !important; }
+  a{ text-decoration:none !important; border:none !important; }
 }
 </style>
 </head>
@@ -256,7 +257,7 @@ li{ margin: 8px 0; color: rgba(18,24,38,0.90); }
         <img src="profile.jpg" alt="Mohamed Abdelrazek portrait" width="104" height="104" />
       </div>
 
-      <div style="flex:1; min-width:0;">
+      <div class="header-main">
         <h1 class="name">Mohamed Abdelrazek</h1>
         <p class="subtitle">
           Performance-focused digital marketer with an engineering mindset. I build end-to-end marketing systems from research to stable monitoring.
@@ -267,12 +268,12 @@ li{ margin: 8px 0; color: rgba(18,24,38,0.90); }
           <span class="pill gold">English - Near Native</span>
           <span class="pill gold">German - B2</span>
 
-          <span class="pill">Google Ads</span>
-          <span class="pill">GA4</span>
-          <span class="pill">GTM</span>
-          <span class="pill">Shopify</span>
-          <span class="pill">SEO</span>
-          <span class="pill">Dashboards</span>
+          <span class="pill teal">Google Ads</span>
+          <span class="pill teal">GA4</span>
+          <span class="pill teal">Tag Manager</span>
+          <span class="pill teal">SEO</span>
+          <span class="pill teal">Automation</span>
+          <span class="pill teal">Dashboards</span>
         </div>
       </div>
     </div>
@@ -281,9 +282,8 @@ li{ margin: 8px 0; color: rgba(18,24,38,0.90); }
   <!-- GRID -->
   <div class="grid">
 
-    <!-- LEFT COLUMN -->
+    <!-- LEFT -->
     <div>
-
       <div class="card strong contact">
         <h2>Contact</h2>
 
@@ -316,18 +316,24 @@ li{ margin: 8px 0; color: rgba(18,24,38,0.90); }
       <div class="card">
         <h2>Core Skills</h2>
         <ul>
-          <li>End-to-end performance marketing systems (B2C and B2B influenced)</li>
-          <li>Google Ads, Performance Max, Merchant Center, feed optimisation</li>
-          <li>Measurement architecture: GA4, Tag Manager, conversion tracking</li>
-          <li>SEO systems: site architecture, landing pages, Search Console</li>
-          <li>CRM, lifecycle funnels, and pipeline-driven growth</li>
-          <li>Dashboards, reporting clarity, and decision-ready analytics</li>
+          <li>Full-funnel growth strategy</li>
+          <li>Performance marketing</li>
+          <li>Measurement and attribution</li>
+          <li>Marketing automation and lifecycle</li>
+          <li>CRM and pipeline growth</li>
+          <li>Landing pages and conversion rate optimisation</li>
+          <li>SEO and content strategy</li>
+          <li>Content creation systems</li>
+          <li>Ecommerce operations and marketplace growth</li>
+          <li>Product listings and merchandising</li>
+          <li>Feed management and catalog quality</li>
+          <li>Dashboards and decision reporting</li>
         </ul>
       </div>
 
       <div class="card">
         <h2>Education</h2>
-        <div class="role-title">Alexandria University - Engineering Studies (Incomplete)</div>
+        <div class="role-title">Alexandria University - Engineering Studies Incomplete</div>
         <p class="hint">Systems thinking, mathematics, and structured problem-solving foundation.</p>
       </div>
 
@@ -341,19 +347,19 @@ li{ margin: 8px 0; color: rgba(18,24,38,0.90); }
           <li>Microsoft Python Development</li>
         </ul>
       </div>
-
     </div>
 
-    <!-- RIGHT COLUMN -->
+    <!-- RIGHT -->
     <div>
-
       <div class="card strong">
         <h2>Professional Summary</h2>
-        <p>
-          Performance-focused digital marketer with an engineering mindset, specialising in building complete marketing systems from zero presence
-          to scalable acquisition engines. Known for owning the full stack end-to-end and translating complexity into clear, resilient structures.
+        <p style="margin:0 0 12px; color: rgba(15,23,42,0.90);">
+          Performance-focused digital marketer specialising in building complete marketing systems from zero presence to scalable acquisition engines.
+          Known for owning the full stack end-to-end and translating complexity into clear, resilient structures.
         </p>
-        <p class="hint">Strength: turning complex marketing stacks into a clear operating model with measurable outcomes.</p>
+        <div class="callout">
+          Strength: turning complex marketing stacks into a clear operating model with measurable outcomes and clean handovers.
+        </div>
       </div>
 
       <div class="card">
@@ -417,7 +423,6 @@ li{ margin: 8px 0; color: rgba(18,24,38,0.90); }
           <li>Microsoft Office and Google Workspace</li>
         </ul>
       </div>
-
     </div>
 
   </div>

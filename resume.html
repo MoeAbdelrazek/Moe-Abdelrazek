@@ -9,7 +9,6 @@
 
 <style>
 :root{
-  /* Palette */
   --ink: #0f172a;
   --ink-2:#1f2937;
   --muted:#475569;
@@ -18,7 +17,6 @@
   --gold-2:#a8842c;
   --teal:#0ea5a8;
 
-  /* Surfaces (no shadows) */
   --card: rgba(255,255,255,0.82);
   --card-2: rgba(255,255,255,0.90);
   --stroke: rgba(15,23,42,0.10);
@@ -30,12 +28,10 @@
   --max: 1320px;
 }
 
-/* Reset */
 *{ box-sizing:border-box; }
 html,body{ margin:0; padding:0; }
 a{ color: inherit; }
 
-/* Base typography */
 body{
   font-family: "Inter", system-ui, -apple-system, Segoe UI, Arial, sans-serif;
   font-size: 16px;
@@ -51,14 +47,12 @@ body{
   background-blend-mode: screen, screen, normal, normal;
 }
 
-/* 95% width */
 .page{
   width: min(95vw, var(--max));
   margin: 18px auto 70px;
   padding: 18px 18px 46px;
 }
 
-/* Cards (no shadows) */
 .card{
   background: var(--card);
   border: 1px solid var(--stroke);
@@ -73,7 +67,6 @@ body{
   border-color: var(--stroke-2);
 }
 
-/* Header */
 .header{
   display:flex;
   gap: 18px;
@@ -111,7 +104,6 @@ body{
   font-size: 16px;
 }
 
-/* Pills */
 .pills{
   display:flex;
   flex-wrap:wrap;
@@ -137,7 +129,6 @@ body{
   background: rgba(14,165,168,0.10);
 }
 
-/* Grid */
 .grid{
   display:grid;
   grid-template-columns: 34% 66%;
@@ -145,15 +136,12 @@ body{
   margin-top: 14px;
 }
 
-/* ===== HEADINGS UPGRADE (ONLY CHANGE) ===== */
 h2{
   margin: 0 0 12px;
   font-size: 22px;
   font-weight: 800;
   letter-spacing: -0.01em;
   color: var(--ink-2);
-
-  /* Elegant title treatment */
   position: relative;
   display: inline-block;
   padding-bottom: 8px;
@@ -179,7 +167,6 @@ h2::before{
   background: rgba(200,166,74,0.18);
   border: 1px solid rgba(200,166,74,0.22);
 }
-/* ======================================== */
 
 .hint{
   margin: -6px 0 12px;
@@ -187,31 +174,9 @@ h2::before{
   font-size: 14px;
 }
 
-/* Lists */
 ul{ margin:0; padding-left: 18px; }
 li{ margin: 8px 0; color: rgba(15,23,42,0.92); }
 
-/* Contact */
-.contact-line{ margin: 0 0 12px; }
-.label{
-  display:block;
-  font-size: 12px;
-  letter-spacing: 0.10em;
-  text-transform: uppercase;
-  color: rgba(15,23,42,0.55);
-  margin-bottom: 4px;
-}
-.contact a{
-  color: rgba(11,18,36,0.92);
-  text-decoration: none;
-  font-weight: 700;
-  border-bottom: 1px solid transparent;
-}
-.contact a:hover{
-  border-bottom-color: rgba(200,166,74,0.55);
-}
-
-/* Experience */
 .role-title{
   font-weight: 800;
   font-size: 17px;
@@ -240,7 +205,6 @@ li{ margin: 8px 0; color: rgba(15,23,42,0.92); }
   margin: 16px 0;
 }
 
-/* Small accent callout */
 .callout{
   border: 1px solid rgba(14,165,168,0.20);
   background: rgba(14,165,168,0.08);
@@ -250,14 +214,125 @@ li{ margin: 8px 0; color: rgba(15,23,42,0.92); }
   font-size: 14px;
 }
 
-/* Responsive */
+/* Tools icons (under Certifications) */
+.tool-icons{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 10px;
+  margin-top: 10px;
+}
+.tool-icon{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: 8px;
+  padding: 10px 10px;
+  border-radius: 16px;
+  border: 1px solid rgba(15,23,42,0.10);
+  background: rgba(255,255,255,0.55);
+}
+.tool-badge{
+  width: 42px;
+  height: 42px;
+  border-radius: 999px;
+  display:grid;
+  place-items:center;
+  border: 1px solid rgba(200,166,74,0.30);
+  background: rgba(200,166,74,0.10);
+}
+.tool-badge.teal{
+  border-color: rgba(14,165,168,0.28);
+  background: rgba(14,165,168,0.10);
+}
+.tool-badge svg{
+  width: 22px;
+  height: 22px;
+  stroke: rgba(15,23,42,0.82);
+  fill: none;
+  stroke-width: 1.8;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.tool-icon span{
+  font-size: 12.2px;
+  text-align:center;
+  color: rgba(15,23,42,0.80);
+  font-weight: 700;
+  line-height: 1.15;
+}
+
+/* Contact icons (FULL WIDTH section) */
+.contact-icons{
+  display:grid;
+  grid-template-columns: repeat(4, minmax(0,1fr));
+  gap: 10px;
+  margin-top: 6px;
+}
+.contact-icon{
+  text-decoration: none;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap: 8px;
+  padding: 12px 10px;
+  border-radius: 16px;
+  border: 1px solid rgba(15,23,42,0.10);
+  background: rgba(255,255,255,0.55);
+  transition: transform 180ms ease, border-color 180ms ease, background 180ms ease;
+}
+.contact-icon:hover{
+  transform: translateY(-1px);
+  border-color: rgba(200,166,74,0.35);
+  background: rgba(255,255,255,0.70);
+}
+.contact-badge{
+  width: 46px;
+  height: 46px;
+  border-radius: 999px;
+  display:grid;
+  place-items:center;
+  border: 1px solid rgba(200,166,74,0.30);
+  background: rgba(200,166,74,0.10);
+}
+.contact-badge.teal{
+  border-color: rgba(14,165,168,0.28);
+  background: rgba(14,165,168,0.10);
+}
+.contact-badge svg{
+  width: 24px;
+  height: 24px;
+  stroke: rgba(15,23,42,0.82);
+  fill: none;
+  stroke-width: 1.9;
+  stroke-linecap: round;
+  stroke-linejoin: round;
+}
+.contact-icon span{
+  font-size: 12.4px;
+  text-align:center;
+  color: rgba(15,23,42,0.82);
+  font-weight: 800;
+  line-height: 1.1;
+}
+.contact-icon small{
+  font-size: 11.5px;
+  color: rgba(15,23,42,0.58);
+  text-align:center;
+  line-height: 1.1;
+  margin-top: -2px;
+}
+
 @media (max-width: 980px){
   .grid{ grid-template-columns: 1fr; }
   .header{ flex-direction: column; align-items: flex-start; }
   .name{ font-size: 38px; }
+  .tool-icons{ grid-template-columns: repeat(3, minmax(0,1fr)); }
+  .contact-icons{ grid-template-columns: repeat(2, minmax(0,1fr)); }
+}
+@media (max-width: 520px){
+  .tool-icons{ grid-template-columns: repeat(2, minmax(0,1fr)); }
 }
 
-/* Print */
 @media print{
   body{ background:#fff !important; }
   .page{ width: 100% !important; margin:0 !important; padding:0 !important; }
@@ -267,7 +342,7 @@ li{ margin: 8px 0; color: rgba(15,23,42,0.92); }
     backdrop-filter:none !important;
     -webkit-backdrop-filter:none !important;
   }
-  .pill{ background:#fff !important; }
+  .pill, .tool-icon, .contact-icon{ background:#fff !important; }
   a{ text-decoration:none !important; border:none !important; }
   h2::after, h2::before{ display:none !important; }
 }
@@ -311,35 +386,6 @@ li{ margin: 8px 0; color: rgba(15,23,42,0.92); }
 
     <!-- LEFT -->
     <div>
-      <div class="card strong contact">
-        <h2>Contact</h2>
-
-        <div class="contact-line">
-          <span class="label">Email</span>
-          <a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a>
-        </div>
-
-        <div class="contact-line">
-          <span class="label">Phone</span>
-          <a href="tel:+201017286384">+20 101 728 6384</a>
-        </div>
-
-        <div class="contact-line">
-          <span class="label">LinkedIn</span>
-          <a href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank" rel="noopener">linkedin.com/in/moe-abdelrazek</a>
-        </div>
-
-        <div class="contact-line">
-          <span class="label">Website</span>
-          <a href="https://moeabdelrazek.github.io/Moe-Abdelrazek/" target="_blank" rel="noopener">Portfolio</a>
-        </div>
-
-        <div class="contact-line" style="margin-bottom:0;">
-          <span class="label">Location</span>
-          Alexandria, Egypt
-        </div>
-      </div>
-
       <div class="card">
         <h2>Core Skills</h2>
         <ul>
@@ -373,6 +419,66 @@ li{ margin: 8px 0; color: rgba(15,23,42,0.92); }
           <li>Google IT Automation with Python</li>
           <li>Microsoft Python Development</li>
         </ul>
+
+        <div class="hr"></div>
+
+        <div class="tool-icons">
+          <div class="tool-icon"><div class="tool-badge">
+            <svg viewBox="0 0 24 24"><path d="M7 17l4-10"></path><path d="M11 7l6 10"></path><circle cx="6.5" cy="17.5" r="2.2"></circle><circle cx="17.5" cy="17.5" r="2.2"></circle></svg>
+          </div><span>Google Ads</span></div>
+
+          <div class="tool-icon"><div class="tool-badge teal">
+            <svg viewBox="0 0 24 24"><path d="M5 19V9"></path><path d="M10 19V5"></path><path d="M15 19v-7"></path><path d="M20 19v-11"></path></svg>
+          </div><span>GA4</span></div>
+
+          <div class="tool-icon"><div class="tool-badge">
+            <svg viewBox="0 0 24 24"><path d="M20 13l-7 7-10-10V3h7l10 10z"></path><path d="M7 7h.01"></path></svg>
+          </div><span>Tag Manager</span></div>
+
+          <div class="tool-icon"><div class="tool-badge teal">
+            <svg viewBox="0 0 24 24"><path d="M6 8h12l-1 12H7L6 8z"></path><path d="M9 8a3 3 0 0 1 6 0"></path></svg>
+          </div><span>Merchant Center</span></div>
+
+          <div class="tool-icon"><div class="tool-badge">
+            <svg viewBox="0 0 24 24"><circle cx="11" cy="11" r="6"></circle><path d="M20 20l-3.2-3.2"></path></svg>
+          </div><span>Search Console</span></div>
+
+          <div class="tool-icon"><div class="tool-badge teal">
+            <svg viewBox="0 0 24 24"><path d="M7 7h10l-1 13H8L7 7z"></path><path d="M9 7a3 3 0 0 1 6 0"></path></svg>
+          </div><span>Shopify</span></div>
+
+          <div class="tool-icon"><div class="tool-badge">
+            <svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="2.2"></circle><path d="M12 3v5"></path><path d="M21 12h-5"></path><path d="M5 19l3.5-3.5"></path><circle cx="12" cy="3" r="1.2"></circle><circle cx="21" cy="12" r="1.2"></circle><circle cx="5" cy="19" r="1.2"></circle></svg>
+          </div><span>HubSpot CRM</span></div>
+
+          <div class="tool-icon"><div class="tool-badge teal">
+            <svg viewBox="0 0 24 24"><path d="M12 2l3 7-3 3-3-3 3-7z"></path><path d="M9 12l-2 6 5-2 5 2-2-6"></path></svg>
+          </div><span>Apollo</span></div>
+
+          <div class="tool-icon"><div class="tool-badge">
+            <svg viewBox="0 0 24 24"><path d="M7 8h10"></path><path d="M7 12h10"></path><path d="M7 16h10"></path></svg>
+          </div><span>Zoho</span></div>
+
+          <div class="tool-icon"><div class="tool-badge teal">
+            <svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"></path><path d="M4 7l8 6 8-6"></path></svg>
+          </div><span>Email Automation</span></div>
+
+          <div class="tool-icon"><div class="tool-badge">
+            <svg viewBox="0 0 24 24"><path d="M6 18V10"></path><path d="M12 18V6"></path><path d="M18 18v-8"></path></svg>
+          </div><span>Looker Studio</span></div>
+
+          <div class="tool-icon"><div class="tool-badge teal">
+            <svg viewBox="0 0 24 24"><path d="M4 20l6-2 10-10-4-4L6 14l-2 6z"></path><path d="M14 6l4 4"></path></svg>
+          </div><span>Canva</span></div>
+
+          <div class="tool-icon"><div class="tool-badge">
+            <svg viewBox="0 0 24 24"><path d="M5 6h6v6H5z"></path><path d="M13 6h6v6h-6z"></path><path d="M5 14h6v6H5z"></path><path d="M13 14h6v6h-6z"></path></svg>
+          </div><span>Microsoft Office</span></div>
+
+          <div class="tool-icon"><div class="tool-badge teal">
+            <svg viewBox="0 0 24 24"><path d="M7 7h4v4H7z"></path><path d="M13 7h4v4h-4z"></path><path d="M7 13h4v4H7z"></path><path d="M13 13h4v4h-4z"></path></svg>
+          </div><span>Google Workspace</span></div>
+        </div>
       </div>
     </div>
 
@@ -419,7 +525,7 @@ li{ margin: 8px 0; color: rgba(15,23,42,0.92); }
           <span>Oct 2025 to Present</span><span class="dot"></span><span>Contract</span>
         </div>
         <ul>
-          <li>Owned acquisition and measurement for TechnoMounts, including Google Ads/Performance Max and Merchant Center feed readiness.</li>
+          <li>Owned acquisition and measurement for TechnoMounts, including Google Ads, Performance Max, and Merchant Center feed readiness.</li>
           <li>Built tracking, SEO foundations, and CRM-connected workflows to support scalable growth and clean operational handover.</li>
         </ul>
 
@@ -456,22 +562,68 @@ li{ margin: 8px 0; color: rgba(15,23,42,0.92); }
           <li>Built resilience, coachability, and long-term execution habits that transferred directly into analytical and operational work.</li>
         </ul>
       </div>
-
-      <div class="card">
-        <h2>Tools</h2>
-        <ul>
-          <li>Google Ads, GA4, Tag Manager, Merchant Center, Search Console</li>
-          <li>Shopify, product and feed standards</li>
-          <li>HubSpot CRM, Apollo.io, Zoho CRM and Mail</li>
-          <li>Email automation and lifecycle flows</li>
-          <li>Looker Studio and reporting automation</li>
-          <li>Canva and AI-assisted workflows</li>
-          <li>Microsoft Office and Google Workspace</li>
-        </ul>
-      </div>
     </div>
 
   </div>
+
+  <!-- CONTACT (FULL WIDTH, BELOW GRID) -->
+  <div class="card strong" style="margin-top:14px;">
+    <h2>Contact</h2>
+
+    <div class="contact-icons">
+      <a class="contact-icon" href="mailto:moe-abdelrazek@outlook.com" aria-label="Email Mohamed">
+        <div class="contact-badge">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 6h16v12H4z"></path>
+            <path d="M4 7l8 6 8-6"></path>
+          </svg>
+        </div>
+        <span>Email</span>
+        <small>moe-abdelrazek@outlook.com</small>
+      </a>
+
+      <a class="contact-icon" href="tel:+201017286384" aria-label="Call Mohamed">
+        <div class="contact-badge teal">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M6 3l3 3-2 2c1.4 2.8 3.6 5 6.4 6.4l2-2 3 3-1.8 1.8c-.7.7-1.8.9-2.7.5-6-2.5-10.9-7.4-13.4-13.4-.4-.9-.2-2 .5-2.7L6 3z"></path>
+          </svg>
+        </div>
+        <span>Phone</span>
+        <small>+20 101 728 6384</small>
+      </a>
+
+      <a class="contact-icon" href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank" rel="noopener" aria-label="Open LinkedIn">
+        <div class="contact-badge">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <path d="M4 9v11"></path>
+            <path d="M4 6h.01"></path>
+            <path d="M8 20v-7"></path>
+            <path d="M8 13c0-2 1.5-3.5 3.5-3.5S15 11 15 13v7"></path>
+            <path d="M15 13c0-2 1.5-3.5 3.5-3.5S22 11 22 13v7"></path>
+          </svg>
+        </div>
+        <span>LinkedIn</span>
+        <small>linkedin.com/in/moe-abdelrazek</small>
+      </a>
+
+      <a class="contact-icon" href="https://moeabdelrazek.github.io/Moe-Abdelrazek/" target="_blank" rel="noopener" aria-label="Open Portfolio website">
+        <div class="contact-badge teal">
+          <svg viewBox="0 0 24 24" aria-hidden="true">
+            <circle cx="12" cy="12" r="9"></circle>
+            <path d="M3 12h18"></path>
+            <path d="M12 3c3 3.2 3 14.8 0 18"></path>
+            <path d="M12 3c-3 3.2-3 14.8 0 18"></path>
+          </svg>
+        </div>
+        <span>Website</span>
+        <small>Portfolio</small>
+      </a>
+    </div>
+
+    <div class="hr"></div>
+    <div class="hint" style="margin:0;">Location: Alexandria, Egypt</div>
+  </div>
+
 </div>
 </body>
 </html>

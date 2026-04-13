@@ -7,181 +7,720 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#faf8f4;--s1:#f0ece3;--s2:rgba(255,255,255,.85);--s3:rgba(255,255,255,.96);
-  --g:#c8a64a;--gl:#d4b55e;--gd:rgba(200,166,74,.12);--gb:rgba(200,166,74,.32);
-  --t:#0a1628;--m:#111111;--m2:#555555;
-  --max:1200px;--r:12px;
+  --bg:#faf8f4;
+  --s1:#f0ece3;
+  --s2:rgba(255,255,255,.88);
+  --s3:rgba(255,255,255,.97);
+  --g:#c8a64a;
+  --gl:#d4b55e;
+  --gd:rgba(200,166,74,.12);
+  --gb:rgba(200,166,74,.32);
+  --t:#000000;
+  --m:#111111;
+  --m2:#2a2a2a;
+  --max:1320px;
+  --r:16px;
 }
-*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html,body{color:var(--t);overflow-x:hidden}
+
+*,*::before,*::after{
+  box-sizing:border-box;
+  margin:0;
+  padding:0;
+}
+
+html,body{
+  color:var(--t);
+  overflow-x:hidden;
+}
+
 body{
-  font-family:'Poppins',sans-serif;font-size:13px;line-height:1.6;
+  font-family:'Poppins',sans-serif;
+  font-size:15px;
+  line-height:1.75;
+  color:var(--m);
   background:
     radial-gradient(1100px circle at 18% 10%,rgba(200,166,74,.15),transparent 55%),
-    radial-gradient(900px circle at 85% 15%,rgba(14,165,168,.1),transparent 58%),
-    linear-gradient(180deg,rgba(250,248,244,.92),rgba(237,244,252,.88)),
+    radial-gradient(900px circle at 85% 15%,rgba(14,165,168,.08),transparent 58%),
+    linear-gradient(180deg,rgba(250,248,244,.94),rgba(237,244,252,.90)),
     url('https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/3_Assets/Images/Cafe-background.jpg') center/cover fixed no-repeat;
   background-blend-mode:screen,screen,normal,normal;
 }
-::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:#e8e2d8}::-webkit-scrollbar-thumb{background:var(--g);border-radius:2px}
-a{color:inherit;text-decoration:none}
 
+::-webkit-scrollbar{
+  width:4px;
+}
+::-webkit-scrollbar-track{
+  background:#e8e2d8;
+}
+::-webkit-scrollbar-thumb{
+  background:var(--g);
+  border-radius:2px;
+}
 
-.print-btn svg{stroke:currentColor;fill:none;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+a{
+  color:inherit;
+  text-decoration:none;
+}
 
-.page{max-width:var(--max);margin:0 auto;padding:20px 32px 40px;position:relative;z-index:1}
+.print-btn svg{
+  stroke:currentColor;
+  fill:none;
+  stroke-width:2;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+
+.page{
+  max-width:var(--max);
+  margin:0 auto;
+  padding:28px 36px 48px;
+  position:relative;
+  z-index:1;
+}
 
 /* CARD */
-.card{background:var(--s2);border:1px solid rgba(15,23,42,.09);border-radius:var(--r);padding:18px;position:relative;overflow:hidden;margin-bottom:0}
-.card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(200,166,74,.3),transparent)}
-.card.accent{border-color:rgba(200,166,74,.35)}
+.card{
+  background:var(--s2);
+  border:1px solid rgba(15,23,42,.09);
+  border-radius:var(--r);
+  padding:24px;
+  position:relative;
+  overflow:hidden;
+  margin-bottom:0;
+  backdrop-filter:blur(4px);
+}
+.card::before{
+  content:"";
+  position:absolute;
+  top:0;
+  left:0;
+  right:0;
+  height:1px;
+  background:linear-gradient(90deg,transparent,rgba(200,166,74,.3),transparent);
+}
+.card.accent{
+  border-color:rgba(200,166,74,.35);
+}
 
 /* HEADER */
-.header{display:flex;gap:16px;align-items:flex-start}
-.avatar{width:70px;height:70px;border-radius:50%;border:2px solid var(--gb);overflow:hidden;flex-shrink:0;background:var(--s3)}
-.avatar img{width:100%;height:100%;object-fit:cover;display:block}
-.header-main{flex:1;min-width:0}
-.name{font-family:'Playfair Display',serif;font-size:2rem;font-weight:700;line-height:1.1;margin-bottom:8px;color:var(--t)}
-.name em{font-style:normal;color:var(--t)}
+.header{
+  display:flex;
+  gap:22px;
+  align-items:flex-start;
+}
+.avatar{
+  width:88px;
+  height:88px;
+  border-radius:50%;
+  border:2px solid var(--gb);
+  overflow:hidden;
+  flex-shrink:0;
+  background:var(--s3);
+}
+.avatar img{
+  width:100%;
+  height:100%;
+  object-fit:cover;
+  display:block;
+}
+.header-main{
+  flex:1;
+  min-width:0;
+}
+.name{
+  font-family:'Playfair Display',serif;
+  font-size:2.55rem;
+  font-weight:700;
+  line-height:1.08;
+  margin-bottom:12px;
+  color:var(--t);
+}
+.name em{
+  font-style:normal;
+  color:var(--t);
+}
 
 /* TOOL STRIP */
-.lang-pills{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px}
-.pill-lang{font-size:.55rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:16px;border:1px solid rgba(10,22,40,.15);background:rgba(10,22,40,.05);color:var(--m2)}
-.tool-strip{display:grid;grid-template-columns:repeat(10,1fr);gap:5px}
-.ts-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px 5px 4px;border-radius:7px;border:1px solid rgba(15,23,42,.1);background:var(--s3);min-width:42px;transition:border-color .2s}
-.ts-item:hover{border-color:var(--gb)}
-.ts-badge{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--gb);background:var(--gd)}
-.ts-badge.t{border-color:rgba(14,165,168,.3);background:rgba(14,165,168,.08)}
-.ts-badge svg{width:12px;height:12px;stroke:var(--g);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
-.ts-badge.t svg{stroke:rgba(14,165,168,.85)}
-.ts-label{font-size:.48rem;font-weight:600;letter-spacing:.03em;text-align:center;color:#475569;text-transform:uppercase;line-height:1.1;white-space:nowrap}
+.lang-pills{
+  display:flex;
+  gap:8px;
+  flex-wrap:wrap;
+  margin-bottom:14px;
+}
+.pill-lang{
+  font-size:.7rem;
+  font-weight:600;
+  letter-spacing:.06em;
+  text-transform:uppercase;
+  padding:5px 12px;
+  border-radius:18px;
+  border:1px solid rgba(10,22,40,.15);
+  background:rgba(10,22,40,.05);
+  color:#3b3b3b;
+}
+.tool-strip{
+  display:grid;
+  grid-template-columns:repeat(10,1fr);
+  gap:10px;
+}
+.ts-item{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:7px;
+  padding:12px 8px 10px;
+  border-radius:11px;
+  border:1px solid rgba(15,23,42,.1);
+  background:var(--s3);
+  min-width:64px;
+  min-height:82px;
+  transition:border-color .2s, transform .2s;
+}
+.ts-item:hover{
+  border-color:var(--gb);
+  transform:translateY(-1px);
+}
+.ts-badge{
+  width:44px;
+  height:44px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--gb);
+  background:var(--gd);
+}
+.ts-badge.t{
+  border-color:rgba(14,165,168,.3);
+  background:rgba(14,165,168,.08);
+}
+.ts-badge svg{
+  width:20px;
+  height:20px;
+  stroke:var(--g);
+  fill:none;
+  stroke-width:1.9;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.ts-badge.t svg{
+  stroke:rgba(14,165,168,.85);
+}
+.ts-label{
+  font-size:.62rem;
+  font-weight:600;
+  letter-spacing:.03em;
+  text-align:center;
+  color:#222;
+  text-transform:uppercase;
+  line-height:1.2;
+  white-space:normal;
+  overflow-wrap:anywhere;
+}
 
 /* GRID */
-.grid{display:grid;grid-template-columns:260px 1fr;gap:10px;margin-top:10px}
-.col{display:flex;flex-direction:column;gap:10px}
+.grid{
+  display:grid;
+  grid-template-columns:300px 1fr;
+  gap:18px;
+  margin-top:18px;
+}
+.col{
+  display:flex;
+  flex-direction:column;
+  gap:18px;
+}
 
 /* HEADINGS */
-h2{font-family:'Playfair Display',serif;font-size:1.05rem;font-weight:700;font-style:italic;color:var(--t);margin-bottom:10px;padding-bottom:7px;border-bottom:2px solid rgba(200,166,74,.28);display:flex;align-items:center;gap:8px}
-h2::before{content:"";width:16px;height:2px;background:var(--g);flex-shrink:0}
+h2{
+  font-family:'Playfair Display',serif;
+  font-size:1.3rem;
+  font-weight:700;
+  font-style:italic;
+  color:var(--t);
+  margin-bottom:16px;
+  padding-bottom:10px;
+  border-bottom:2px solid rgba(200,166,74,.28);
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  text-align:center;
+  gap:10px;
+}
+h2::before,
+h2::after{
+  content:"";
+  width:18px;
+  height:2px;
+  background:var(--g);
+  flex-shrink:0;
+}
+
+/* TEXT */
+p,
+li,
+.exp-point,
+.edu-note,
+.callout,
+.meta,
+.cert-list li,
+.skills-list li{
+  color:var(--m);
+}
 
 /* SKILLS */
-.skills-list{list-style:none;padding:0;margin:0}
-.skills-list li{font-size:.75rem;color:var(--m);padding:3px 0 3px 13px;position:relative;line-height:1.45;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
-.skills-list li::before{content:"◆";position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:.38rem;color:var(--g);line-height:1}
+.skills-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.skills-list li{
+  font-size:.98rem;
+  padding:6px 0 6px 16px;
+  position:relative;
+  line-height:1.65;
+  white-space:normal;
+  overflow:visible;
+  text-overflow:unset;
+}
+.skills-list li::before{
+  content:"◆";
+  position:absolute;
+  left:0;
+  top:13px;
+  font-size:.42rem;
+  color:var(--g);
+  line-height:1;
+}
 
 /* EXPERIENCE */
-.role-title{font-weight:600;font-size:.82rem;color:var(--t);margin-top:2px}
-.meta{display:flex;flex-wrap:wrap;gap:5px;align-items:center;margin:3px 0 5px;font-size:.65rem;color:var(--m2)}
-.meta .dot{width:3px;height:3px;border-radius:50%;background:var(--g);flex-shrink:0}
-.exp-point{font-size:.75rem;color:var(--m);padding-left:11px;position:relative;line-height:1.55}
-.exp-point::before{content:"";position:absolute;left:0;top:9px;width:4px;height:1px;background:var(--g)}
-.hr{height:1px;background:rgba(15,23,42,.07);margin:9px 0}
-.callout{border:1px solid rgba(200,166,74,.25);background:var(--gd);border-radius:8px;padding:8px 11px;font-size:.74rem;color:var(--m);line-height:1.6;margin-top:8px}
-.callout strong{color:var(--g);font-weight:600}
+.role-title{
+  font-weight:600;
+  font-size:1.02rem;
+  color:var(--t);
+  margin-top:2px;
+}
+.meta{
+  display:flex;
+  flex-wrap:wrap;
+  gap:6px;
+  align-items:center;
+  margin:6px 0 8px;
+  font-size:.84rem;
+  color:var(--m2);
+}
+.meta .dot{
+  width:4px;
+  height:4px;
+  border-radius:50%;
+  background:var(--g);
+  flex-shrink:0;
+}
+.exp-point{
+  font-size:.97rem;
+  color:var(--m);
+  padding-left:14px;
+  position:relative;
+  line-height:1.75;
+}
+.exp-point::before{
+  content:"";
+  position:absolute;
+  left:0;
+  top:12px;
+  width:5px;
+  height:1px;
+  background:var(--g);
+}
+.hr{
+  height:1px;
+  background:rgba(15,23,42,.08);
+  margin:14px 0;
+}
+.callout{
+  border:1px solid rgba(200,166,74,.25);
+  background:var(--gd);
+  border-radius:10px;
+  padding:12px 14px;
+  font-size:.95rem;
+  color:var(--m);
+  line-height:1.8;
+  margin-top:10px;
+}
+.callout strong{
+  color:#9d7a1f;
+  font-weight:600;
+}
 
 /* CONTACT */
-.contact-icons{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin-top:8px}
-.contact-icon{display:flex;flex-direction:column;align-items:center;gap:6px;padding:12px 8px;border-radius:var(--r);border:1px solid rgba(15,23,42,.09);background:var(--s3);transition:border-color .2s}
-.contact-icon:hover{border-color:var(--gb)}
-.c-badge{width:40px;height:40px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--gb);background:var(--gd)}
-.c-badge.t{border-color:rgba(14,165,168,.3);background:rgba(14,165,168,.08)}
-.c-badge svg{width:18px;height:18px;stroke:var(--g);fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
-.c-badge.t svg{stroke:rgba(14,165,168,.85)}
-.c-label{font-family:'Playfair Display',serif;font-size:.78rem;font-weight:600;color:var(--t);text-align:center}
-.contact-icon small{font-size:.58rem;color:var(--m2);text-align:center;line-height:1.2}
-.contact-footer{display:flex;gap:8px;flex-wrap:wrap;margin-top:10px;padding-top:10px;border-top:1px solid rgba(200,166,74,.1)}
-.fc{display:inline-flex;align-items:center;gap:6px;padding:4px 11px;border-radius:16px;font-size:.62rem;font-weight:500;color:var(--m);border:1px solid rgba(200,166,74,.22);background:var(--gd)}
+.contact-icons{
+  display:grid;
+  grid-template-columns:repeat(4,1fr);
+  gap:12px;
+  margin-top:10px;
+}
+.contact-icon{
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  padding:16px 10px;
+  border-radius:var(--r);
+  border:1px solid rgba(15,23,42,.09);
+  background:var(--s3);
+  transition:border-color .2s, transform .2s;
+}
+.contact-icon:hover{
+  border-color:var(--gb);
+  transform:translateY(-1px);
+}
+.c-badge{
+  width:48px;
+  height:48px;
+  border-radius:50%;
+  display:grid;
+  place-items:center;
+  border:1px solid var(--gb);
+  background:var(--gd);
+}
+.c-badge.t{
+  border-color:rgba(14,165,168,.3);
+  background:rgba(14,165,168,.08);
+}
+.c-badge svg{
+  width:21px;
+  height:21px;
+  stroke:var(--g);
+  fill:none;
+  stroke-width:1.8;
+  stroke-linecap:round;
+  stroke-linejoin:round;
+}
+.c-badge.t svg{
+  stroke:rgba(14,165,168,.85);
+}
+.c-label{
+  font-family:'Playfair Display',serif;
+  font-size:.92rem;
+  font-weight:600;
+  color:var(--t);
+  text-align:center;
+}
+.contact-icon small{
+  font-size:.72rem;
+  color:#222;
+  text-align:center;
+  line-height:1.35;
+  word-break:break-word;
+}
+.contact-footer{
+  display:flex;
+  gap:10px;
+  flex-wrap:wrap;
+  margin-top:14px;
+  padding-top:14px;
+  border-top:1px solid rgba(200,166,74,.1);
+}
+.fc{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  padding:6px 12px;
+  border-radius:18px;
+  font-size:.78rem;
+  font-weight:500;
+  color:var(--m);
+  border:1px solid rgba(200,166,74,.22);
+  background:var(--gd);
+}
 
 /* EDUCATION / CERTS */
-.edu-title{font-weight:600;font-size:.8rem;color:var(--t)}
-.edu-note{font-size:.7rem;color:var(--m2);margin-top:2px}
-.cert-list{list-style:none;padding:0;margin:0}
-.cert-list li{font-size:.73rem;color:var(--m);padding:3px 0 3px 13px;position:relative;line-height:1.45}
-.cert-list li::before{content:"◆";position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:.38rem;color:var(--g);line-height:1}
+.edu-title{
+  font-weight:600;
+  font-size:1rem;
+  color:var(--t);
+}
+.edu-note{
+  font-size:.92rem;
+  color:var(--m2);
+  margin-top:6px;
+  line-height:1.7;
+}
+.cert-list{
+  list-style:none;
+  padding:0;
+  margin:0;
+}
+.cert-list li{
+  font-size:.95rem;
+  color:var(--m);
+  padding:6px 0 6px 16px;
+  position:relative;
+  line-height:1.65;
+}
+.cert-list li::before{
+  content:"◆";
+  position:absolute;
+  left:0;
+  top:13px;
+  font-size:.42rem;
+  color:var(--g);
+  line-height:1;
+}
 
-@media(max-width:900px){.grid{grid-template-columns:1fr}.tool-strip{flex-wrap:wrap}.contact-icons{grid-template-columns:repeat(2,1fr)}.page{padding:16px 14px 32px}}
+@media(max-width:1100px){
+  .tool-strip{
+    grid-template-columns:repeat(5,1fr);
+  }
+  .grid{
+    grid-template-columns:1fr;
+  }
+}
 
-/* ============================
-   PRINT STYLES
-   ============================ */
+@media(max-width:760px){
+  .page{
+    padding:18px 14px 32px;
+  }
+  .header{
+    flex-direction:column;
+    align-items:center;
+    text-align:center;
+  }
+  .header-main{
+    width:100%;
+  }
+  .name{
+    font-size:2.1rem;
+  }
+  .lang-pills{
+    justify-content:center;
+  }
+  .tool-strip{
+    grid-template-columns:repeat(3,1fr);
+  }
+  .contact-icons{
+    grid-template-columns:repeat(2,1fr);
+  }
+}
+
+/* PRINT STYLES */
 @media print{
-  @page{size:A4 portrait;margin:8mm 10mm}
-  *{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important;transition:none!important}
+  @page{
+    size:A4 portrait;
+    margin:10mm 10mm;
+  }
 
-  /* hide screen-only */
-  .print-bar{display:none!important}
+  *{
+    -webkit-print-color-adjust:exact!important;
+    print-color-adjust:exact!important;
+    transition:none!important;
+  }
 
-  /* reset body for print */
+  .print-bar{
+    display:none!important;
+  }
+
   html,body{
     background:
-      radial-gradient(1100px circle at 18% 10%,rgba(200,166,74,.1),transparent 55%),
-      radial-gradient(900px circle at 85% 15%,rgba(14,165,168,.07),transparent 58%),
+      radial-gradient(1100px circle at 18% 10%,rgba(200,166,74,.08),transparent 55%),
+      radial-gradient(900px circle at 85% 15%,rgba(14,165,168,.05),transparent 58%),
       linear-gradient(180deg,#faf8f4,#edf4fc) !important;
     background-blend-mode:screen,screen,normal !important;
-    font-size:10.5pt !important;
-    line-height:1.45 !important;
+    font-size:11.2pt !important;
+    line-height:1.55 !important;
+    color:#000 !important;
   }
-  body::before,.amb{display:none!important}
 
-  .scale-wrap{transform:none!important}
-  .page{padding:0!important;max-width:100%!important}
+  body::before,.amb{
+    display:none!important;
+  }
 
-  /* compact cards */
-  .card{padding:10px 12px!important;margin-bottom:0!important;border-radius:6px!important;background:rgba(255,255,255,.95)!important}
-  .grid{gap:7px!important;margin-top:7px!important}
-  .col{gap:7px!important}
+  .scale-wrap{
+    transform:none!important;
+  }
 
-  /* avatar */
-  .avatar{width:58px!important;height:58px!important}
-  .name{font-size:1.6rem!important}
+  .page{
+    padding:0!important;
+    max-width:100%!important;
+  }
 
-  /* tighter tool strip */
-  .ts-item{padding:3px 4px!important;min-width:36px!important}
-  .ts-badge{width:22px!important;height:22px!important}
-  .ts-badge svg{width:10px!important;height:10px!important}
-  .ts-label{font-size:.42rem!important}
-  .tool-strip{gap:3px!important}
-  .lang-pills{margin-bottom:5px!important}
+  .card{
+    padding:14px 15px!important;
+    margin-bottom:0!important;
+    border-radius:8px!important;
+    background:rgba(255,255,255,.96)!important;
+  }
 
-  /* text sizes */
-  .skills-list li{font-size:.68rem!important;padding:2px 0 2px 11px!important}
-  .role-title{font-size:.76rem!important}
-  .meta{font-size:.6rem!important;margin:2px 0 4px!important}
-  .exp-point{font-size:.68rem!important;line-height:1.45!important}
-  .hr{margin:6px 0!important}
-  h2{font-size:.9rem!important;margin-bottom:7px!important;padding-bottom:5px!important}
-  .callout{padding:5px 8px!important;font-size:.67rem!important;margin-top:5px!important}
+  .grid{
+    gap:10px!important;
+    margin-top:10px!important;
+    grid-template-columns:280px 1fr!important;
+  }
 
-  /* contact */
-  .contact-icons{gap:5px!important}
-  .contact-icon{padding:7px 5px!important}
-  .c-badge{width:32px!important;height:32px!important}
-  .c-badge svg{width:14px!important;height:14px!important}
-  .c-label{font-size:.68rem!important}
-  .contact-icon small{font-size:.52rem!important}
+  .col{
+    gap:10px!important;
+  }
 
-  /* prevent page breaks inside key blocks */
-  .card,.col,.grid,.header{page-break-inside:avoid}
+  .avatar{
+    width:68px!important;
+    height:68px!important;
+  }
+
+  .name{
+    font-size:1.9rem!important;
+  }
+
+  .lang-pills{
+    margin-bottom:8px!important;
+  }
+
+  .pill-lang{
+    font-size:.6rem!important;
+    padding:4px 10px!important;
+  }
+
+  .tool-strip{
+    gap:5px!important;
+    grid-template-columns:repeat(10,1fr)!important;
+  }
+
+  .ts-item{
+    padding:6px 4px!important;
+    min-width:40px!important;
+    min-height:62px!important;
+  }
+
+  .ts-badge{
+    width:30px!important;
+    height:30px!important;
+  }
+
+  .ts-badge svg{
+    width:14px!important;
+    height:14px!important;
+  }
+
+  .ts-label{
+    font-size:.45rem!important;
+    line-height:1.1!important;
+  }
+
+  h2{
+    font-size:1rem!important;
+    margin-bottom:9px!important;
+    padding-bottom:6px!important;
+  }
+
+  .skills-list li,
+  .cert-list li{
+    font-size:.8rem!important;
+    padding:3px 0 3px 12px!important;
+    line-height:1.5!important;
+  }
+
+  .skills-list li::before,
+  .cert-list li::before{
+    top:10px!important;
+  }
+
+  .role-title{
+    font-size:.86rem!important;
+  }
+
+  .meta{
+    font-size:.68rem!important;
+    margin:3px 0 5px!important;
+    color:#111!important;
+  }
+
+  .exp-point{
+    font-size:.8rem!important;
+    line-height:1.55!important;
+    color:#000!important;
+  }
+
+  .exp-point::before{
+    top:10px!important;
+  }
+
+  .hr{
+    margin:8px 0!important;
+  }
+
+  .callout{
+    padding:8px 10px!important;
+    font-size:.78rem!important;
+    margin-top:7px!important;
+    color:#000!important;
+  }
+
+  .edu-title{
+    font-size:.84rem!important;
+  }
+
+  .edu-note{
+    font-size:.76rem!important;
+    color:#111!important;
+  }
+
+  .contact-icons{
+    gap:6px!important;
+  }
+
+  .contact-icon{
+    padding:8px 5px!important;
+  }
+
+  .c-badge{
+    width:34px!important;
+    height:34px!important;
+  }
+
+  .c-badge svg{
+    width:15px!important;
+    height:15px!important;
+  }
+
+  .c-label{
+    font-size:.72rem!important;
+  }
+
+  .contact-icon small{
+    font-size:.55rem!important;
+    color:#111!important;
+  }
+
+  .fc{
+    font-size:.62rem!important;
+    padding:4px 9px!important;
+  }
+
+  .card,.col,.grid,.header{
+    page-break-inside:avoid;
+  }
 }
 </style>
 </head>
 <body>
 <div class="amb"><div class="amb1"></div></div>
 
-
 <div class="page">
 
 <!-- HEADER -->
 <div class="card accent">
   <div class="header">
-    <div class="avatar"><img src="https://raw.githubusercontent.com/MoeAbdelrazek/Moe-Abdelrazek/main/profile.jpg" alt="Mohamed Abdelrazek" width="70" height="70"></div>
+    <div class="avatar">
+      <img src="https://raw.githubusercontent.com/MoeAbdelrazek/Moe-Abdelrazek/main/profile.jpg" alt="Mohamed Abdelrazek" width="88" height="88">
+    </div>
     <div class="header-main">
       <div class="name">Mohamed <em>Abdelrazek</em></div>
+
       <div class="lang-pills">
-        <span class="pill-lang">Arabic — Native</span>
-        <span class="pill-lang">English — Near Native</span>
-        <span class="pill-lang">German — B2</span>
+        <span class="pill-lang">Arabic - Native</span>
+        <span class="pill-lang">English - Near Native</span>
+        <span class="pill-lang">German - B2</span>
       </div>
+
       <div class="tool-strip">
         <div class="ts-item"><div class="ts-badge t"><svg viewBox="0 0 24 24"><circle cx="5" cy="12" r="2"/><circle cx="19" cy="5" r="2"/><circle cx="19" cy="19" r="2"/><path d="M7 12h4l3-5"/><path d="M11 12l3 5"/></svg></div><span class="ts-label">n8n</span></div>
         <div class="ts-item"><div class="ts-badge"><svg viewBox="0 0 24 24"><path d="M4 20V10l8-6 8 6v10H4z"/><path d="M9 20v-6h6v6"/></svg></div><span class="ts-label">GHL</span></div>
@@ -257,7 +796,9 @@ h2::before{content:"";width:16px;height:2px;background:var(--g);flex-shrink:0}
 
     <div class="card accent">
       <h2>Professional Summary</h2>
-      <p style="font-size:.78rem;font-weight:300;color:var(--m);line-height:1.75;margin-bottom:10px">Performance-focused digital marketer specialising in building complete marketing systems from zero presence to scalable acquisition engines. Known for owning the full stack end-to-end and translating complexity into clear, resilient structures.</p>
+      <p style="font-size:1rem;font-weight:400;color:var(--m);line-height:1.85;margin-bottom:12px">
+        Performance-focused digital marketer specialising in building complete marketing systems from zero presence to scalable acquisition engines. Known for owning the full stack end-to-end and translating complexity into clear, resilient structures.
+      </p>
       <div class="callout"><strong>Strength:</strong> turning complex marketing stacks into a clear operating model with measurable outcomes and clean handovers.</div>
     </div>
 
@@ -267,18 +808,21 @@ h2::before{content:"";width:16px;height:2px;background:var(--g);flex-shrink:0}
       <div class="role-title">Digital Marketing Manager · VP Realty</div>
       <div class="meta"><span>Jan 2026 to Present</span><span class="dot"></span><span>Project-based</span><span class="dot"></span><span>US Real Estate · Remote</span></div>
       <div class="exp-point">Owned lead generation strategy and execution across paid and organic channels, aligned to pipeline goals and local market demand.</div>
+      <div class="exp-point">Built marketing operations, content workflows, and automation support systems that improved agent execution and lead handling consistency.</div>
 
       <div class="hr"></div>
 
       <div class="role-title">Digital Marketing Consultant · Elite Consultant</div>
       <div class="meta"><span>Jan 2026 to Present</span><span class="dot"></span><span>Consultant role</span><span class="dot"></span><span>SA · Remote</span></div>
       <div class="exp-point">Designed full-funnel growth plans including channel strategy, offer positioning, and conversion-focused landing page structure.</div>
+      <div class="exp-point">Helped shape brand messaging, service clarity, and website direction to present complex offers in a stronger commercial format.</div>
 
       <div class="hr"></div>
 
       <div class="role-title">Digital Marketing Specialist · Technosignage</div>
       <div class="meta"><span>Oct 2025 to Present</span><span class="dot"></span><span>Contract</span><span class="dot"></span><span>UAE · Remote</span></div>
       <div class="exp-point">Owned acquisition and measurement for TechnoMounts, including Google Ads, Performance Max, and Merchant Center feed readiness.</div>
+      <div class="exp-point">Strengthened visibility and conversion foundations through feed optimization, landing page improvements, and performance reporting structure.</div>
 
       <div class="hr"></div>
 
@@ -303,14 +847,34 @@ h2::before{content:"";width:16px;height:2px;background:var(--g);flex-shrink:0}
 </div>
 
 <!-- CONTACT -->
-<div class="card accent" style="margin-top:10px">
+<div class="card accent" style="margin-top:18px">
   <h2>Contact</h2>
   <div class="contact-icons">
-    <a class="contact-icon" href="mailto:moe-abdelrazek@outlook.com"><div class="c-badge"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg></div><div class="c-label">Email</div><small>moe-abdelrazek@outlook.com</small></a>
-    <a class="contact-icon" href="tel:+201017286384"><div class="c-badge t"><svg viewBox="0 0 24 24"><path d="M6 3l3 3-2 2c1.4 2.8 3.6 5 6.4 6.4l2-2 3 3-1.8 1.8c-.7.7-1.8.9-2.7.5-6-2.5-10.9-7.4-13.4-13.4-.4-.9-.2-2 .5-2.7L6 3z"/></svg></div><div class="c-label">Phone</div><small>+20 101 728 6384</small></a>
-    <a class="contact-icon" href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank"><div class="c-badge"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="1"/><path d="M8 11v5"/><path d="M12 11v5"/><path d="M12 12.5c.6-.9 1.6-1.5 2.8-1.5 1.8 0 3.2 1.2 3.2 3.4V16"/></svg></div><div class="c-label">LinkedIn</div><small>linkedin.com/in/moe-abdelrazek</small></a>
-    <a class="contact-icon" href="https://moeabdelrazek.github.io/Moe-Abdelrazek/" target="_blank"><div class="c-badge t"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3.2 3 14.8 0 18"/><path d="M12 3c-3 3.2-3 14.8 0 18"/></svg></div><div class="c-label">Portfolio</div><small>moeabdelrazek.github.io</small></a>
+    <a class="contact-icon" href="mailto:moe-abdelrazek@outlook.com">
+      <div class="c-badge"><svg viewBox="0 0 24 24"><path d="M4 6h16v12H4z"/><path d="M4 7l8 6 8-6"/></svg></div>
+      <div class="c-label">Email</div>
+      <small>moe-abdelrazek@outlook.com</small>
+    </a>
+
+    <a class="contact-icon" href="tel:+201017286384">
+      <div class="c-badge t"><svg viewBox="0 0 24 24"><path d="M6 3l3 3-2 2c1.4 2.8 3.6 5 6.4 6.4l2-2 3 3-1.8 1.8c-.7.7-1.8.9-2.7.5-6-2.5-10.9-7.4-13.4-13.4-.4-.9-.2-2 .5-2.7L6 3z"/></svg></div>
+      <div class="c-label">Phone</div>
+      <small>+20 101 728 6384</small>
+    </a>
+
+    <a class="contact-icon" href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank">
+      <div class="c-badge"><svg viewBox="0 0 24 24"><circle cx="8" cy="8" r="1"/><path d="M8 11v5"/><path d="M12 11v5"/><path d="M12 12.5c.6-.9 1.6-1.5 2.8-1.5 1.8 0 3.2 1.2 3.2 3.4V16"/></svg></div>
+      <div class="c-label">LinkedIn</div>
+      <small>linkedin.com/in/moe-abdelrazek</small>
+    </a>
+
+    <a class="contact-icon" href="https://moeabdelrazek.github.io/Moe-Abdelrazek/" target="_blank">
+      <div class="c-badge t"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="9"/><path d="M3 12h18"/><path d="M12 3c3 3.2 3 14.8 0 18"/><path d="M12 3c-3 3.2-3 14.8 0 18"/></svg></div>
+      <div class="c-label">Portfolio</div>
+      <small>moeabdelrazek.github.io</small>
+    </a>
   </div>
+
   <div class="contact-footer">
     <span class="fc">📍 Alexandria, Egypt</span>
     <span class="fc">🌐 Remote</span>
@@ -318,7 +882,5 @@ h2::before{content:"";width:16px;height:2px;background:var(--g);flex-shrink:0}
 </div>
 
 </div>
-
-
 </body>
 </html>

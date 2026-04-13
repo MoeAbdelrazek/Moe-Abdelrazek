@@ -51,6 +51,7 @@ nav.scrolled{background:rgba(6,6,8,.92);backdrop-filter:blur(24px);padding:14px 
 
 /* ===================== HERO ===================== */
 .hero{min-height:100vh;display:flex;align-items:center;padding:120px 48px 80px;position:relative;overflow:hidden}
+.hero-bg-img{position:absolute;inset:0;z-index:0;background:url('https://raw.githubusercontent.com/MoeAbdelrazek/Moe-Abdelrazek/main/hero-bg.jpg') center/cover no-repeat;opacity:.08;filter:grayscale(30%)}
 .hero-inner{max-width:var(--max);margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 360px;gap:80px;align-items:center}
 .hero-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:32px}
 .hero-eyebrow-line{width:40px;height:1px;background:var(--g)}
@@ -68,7 +69,7 @@ nav.scrolled{background:rgba(6,6,8,.92);backdrop-filter:blur(24px);padding:14px 
 /* Hero card */
 .hero-card{background:var(--s2);border:1px solid rgba(201,169,97,.12);border-radius:var(--r);padding:36px;position:relative;overflow:hidden}
 .hero-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--g),transparent)}
-.hero-card-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--s3),var(--s2));border:2px solid var(--gb);display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--g);font-weight:700}
+.hero-card-avatar{width:72px;height:72px;border-radius:50%;border:2px solid var(--gb);overflow:hidden;margin-bottom:20px;flex-shrink:0}
 .hero-card-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--t);margin-bottom:4px}
 .hero-card-loc{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--m2);margin-bottom:22px}
 .hero-card-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
@@ -253,6 +254,7 @@ footer{background:var(--s1);border-top:1px solid rgba(201,169,97,.06);padding:40
 
 <!-- HERO -->
 <section class="hero">
+  <div class="hero-bg-img" aria-hidden="true"></div>
   <div class="hero-inner">
     <div>
       <div class="hero-eyebrow r">
@@ -269,7 +271,7 @@ footer{background:var(--s1);border-top:1px solid rgba(201,169,97,.06);padding:40
       </div>
     </div>
     <div class="hero-card r d2">
-      <div class="hero-card-avatar">M</div>
+      <div class="hero-card-avatar"><img src="https://raw.githubusercontent.com/MoeAbdelrazek/Moe-Abdelrazek/main/profile.jpg" alt="Mohamed Abdelrazek" style="width:100%;height:100%;object-fit:cover;border-radius:50%"></div>
       <div class="hero-card-name">Mohamed Abdelrazek</div>
       <div class="hero-card-loc">Alexandria, Egypt · Available Globally</div>
       <div class="hero-card-stat-row">

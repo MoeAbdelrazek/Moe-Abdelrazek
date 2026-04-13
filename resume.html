@@ -47,7 +47,7 @@ a{color:inherit;text-decoration:none}
 /* TOOL STRIP */
 .lang-pills{display:flex;gap:5px;flex-wrap:wrap;margin-bottom:8px}
 .pill-lang{font-size:.55rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:2px 8px;border-radius:16px;border:1px solid rgba(10,22,40,.15);background:rgba(10,22,40,.05);color:var(--m2)}
-.tool-strip{display:flex;gap:5px;flex-wrap:wrap}
+.tool-strip{display:grid;grid-template-columns:repeat(10,1fr);gap:5px}
 .ts-item{display:flex;flex-direction:column;align-items:center;gap:3px;padding:5px 5px 4px;border-radius:7px;border:1px solid rgba(15,23,42,.1);background:var(--s3);min-width:42px;transition:border-color .2s}
 .ts-item:hover{border-color:var(--gb)}
 .ts-badge{width:26px;height:26px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--gb);background:var(--gd)}

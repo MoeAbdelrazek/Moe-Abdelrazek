@@ -7,34 +7,34 @@
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400;1,600&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
 <style>
 :root{
-  --bg:#060608;--s1:#0d0d10;--s2:#13131a;--s3:#1a1a24;
-  --g:#c9a961;--gl:#e2c97e;--gd:rgba(201,169,97,.12);--gb:rgba(201,169,97,.28);
-  --t:#c9a961;--m:rgba(245,245,240,.88);--m2:rgba(245,245,240,.45);
+  --bg:#faf8f4;--s1:#f0ece3;--s2:rgba(255,255,255,.85);--s3:rgba(255,255,255,.96);
+  --g:#c8a64a;--gl:#d4b55e;--gd:rgba(200,166,74,.12);--gb:rgba(200,166,74,.32);
+  --t:#0a1628;--m:#111111;--m2:#555555;
   --max:1280px;--r:14px;
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
-html,body{background:var(--bg);color:var(--t);overflow-x:hidden}
+html,body{color:var(--t);overflow-x:hidden}
+body{
+  background:
+    radial-gradient(1100px circle at 18% 10%,rgba(200,166,74,.15),transparent 55%),
+    radial-gradient(900px circle at 85% 15%,rgba(14,165,168,.1),transparent 58%),
+    linear-gradient(180deg,rgba(250,248,244,.92),rgba(237,244,252,.88)),
+    url('https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/3_Assets/Images/Cafe-background.jpg') center/cover fixed no-repeat;
+  background-blend-mode: screen, screen, normal, normal;
+}
 body{font-family:'Poppins',sans-serif;font-size:14px;line-height:1.7}
-body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.022;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.04;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
 .amb{position:fixed;inset:0;pointer-events:none;z-index:0}
-.amb1{position:absolute;width:80vw;height:80vw;border-radius:50%;top:-20vw;left:50%;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(201,169,97,.05) 0%,transparent 65%)}
-::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--s1)}::-webkit-scrollbar-thumb{background:var(--g);border-radius:2px}
+.amb1{position:absolute;width:80vw;height:80vw;border-radius:50%;top:-20vw;left:50%;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(200,166,74,.12) 0%,transparent 65%)}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:#e8e2d8}::-webkit-scrollbar-thumb{background:var(--g);border-radius:2px}
 a{color:inherit;text-decoration:none}
 
-.page{max-width:var(--max);margin:0 auto;padding:32px 40px 72px;position:relative;z-index:1}
-
-/* NAV */
-.resume-nav{display:flex;align-items:center;justify-content:space-between;margin-bottom:28px;padding-bottom:18px;border-bottom:1px solid rgba(201,169,97,.08)}
-.nav-back{display:flex;align-items:center;gap:9px;font-size:.68rem;font-weight:500;letter-spacing:.12em;text-transform:uppercase;color:var(--m);transition:color .2s}
-.nav-back:hover{color:var(--g)}
-.nav-back:hover svg{transform:translateX(-3px)}
-.nav-back svg{transition:transform .2s}
-.nav-brand{font-family:'Playfair Display',serif;font-style:italic;font-size:1rem;color:var(--g)}
+.page{max-width:var(--max);margin:0 auto;padding:24px 40px 72px;position:relative;z-index:1}
 
 /* CARD */
-.card{background:var(--s2);border:1px solid rgba(201,169,97,.08);border-radius:var(--r);padding:26px;position:relative;overflow:hidden}
-.card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(201,169,97,.2),transparent)}
-.card.accent{border-color:rgba(201,169,97,.18)}
+.card{background:var(--s2);border:1px solid rgba(15,23,42,.09);border-radius:var(--r);padding:26px;position:relative;overflow:hidden}
+.card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,rgba(200,166,74,.3),transparent)}
+.card.accent{border-color:rgba(200,166,74,.35)}
 
 /* HEADER */
 .header{display:flex;gap:22px;align-items:flex-start}
@@ -42,17 +42,17 @@ a{color:inherit;text-decoration:none}
 .avatar img{width:100%;height:100%;object-fit:cover;display:block}
 .header-main{flex:1;min-width:0}
 .name{font-family:'Playfair Display',serif;font-size:clamp(1.9rem,3.5vw,2.7rem);font-weight:700;line-height:1.1;margin-bottom:14px;color:var(--t)}
-.name em{font-style:italic;color:var(--g)}
+.name em{font-style:normal;color:var(--t)}
 
 /* HORIZONTAL TOOL STRIP */
 .tool-strip{display:flex;gap:8px;flex-wrap:wrap}
-.ts-item{display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 8px 6px;border-radius:10px;border:1px solid rgba(201,169,97,.1);background:var(--s3);min-width:54px;transition:border-color .2s,transform .18s}
+.ts-item{display:flex;flex-direction:column;align-items:center;gap:5px;padding:8px 8px 6px;border-radius:10px;border:1px solid rgba(15,23,42,.1);background:var(--s3);min-width:54px;transition:border-color .2s,transform .18s}
 .ts-item:hover{border-color:var(--gb);transform:translateY(-2px)}
 .ts-badge{width:32px;height:32px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--gb);background:var(--gd)}
 .ts-badge.t{border-color:rgba(14,165,168,.3);background:rgba(14,165,168,.08)}
 .ts-badge svg{width:15px;height:15px;stroke:var(--g);fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
 .ts-badge.t svg{stroke:rgba(14,165,168,.85)}
-.ts-label{font-size:.58rem;font-weight:600;letter-spacing:.04em;text-align:center;color:var(--gl);text-transform:uppercase;line-height:1.2;white-space:nowrap}
+.ts-label{font-size:.58rem;font-weight:600;letter-spacing:.04em;text-align:center;color:#475569;text-transform:uppercase;line-height:1.2;white-space:nowrap}
 
 /* PILLS (langs only) */
 .lang-pills{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:12px}
@@ -63,13 +63,13 @@ a{color:inherit;text-decoration:none}
 .col{display:flex;flex-direction:column;gap:16px}
 
 /* HEADINGS */
-h2{font-family:'Playfair Display',serif;font-size:1rem;font-weight:700;font-style:italic;color:var(--t);margin-bottom:14px;padding-bottom:9px;border-bottom:1px solid rgba(201,169,97,.1);display:flex;align-items:center;gap:9px}
-h2::before{content:"";width:16px;height:1px;background:var(--g);flex-shrink:0}
+h2{font-family:'Playfair Display',serif;font-size:1.35rem;font-weight:700;font-style:italic;color:var(--t);margin-bottom:16px;padding-bottom:10px;border-bottom:2px solid rgba(200,166,74,.3);display:flex;align-items:center;gap:10px}
+h2::before{content:"";width:22px;height:2px;background:var(--g);flex-shrink:0}
 
 /* SKILLS */
 .skills-list{list-style:none;padding:0;margin:0}
-.skills-list li{font-size:.8rem;color:var(--m);padding:5px 0 5px 13px;position:relative;line-height:1.55}
-.skills-list li::before{content:"";position:absolute;left:0;top:11px;width:5px;height:1px;background:var(--g)}
+.skills-list li{font-size:.8rem;color:var(--m);padding:5px 0 5px 16px;position:relative;line-height:1.55;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.skills-list li::before{content:"◆";position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:.45rem;color:var(--g);line-height:1}
 
 /* EXPERIENCE */
 .role-title{font-weight:600;font-size:.88rem;color:var(--t);margin-top:4px}
@@ -77,13 +77,13 @@ h2::before{content:"";width:16px;height:1px;background:var(--g);flex-shrink:0}
 .meta .dot{width:3px;height:3px;border-radius:50%;background:var(--g);flex-shrink:0}
 .exp-point{font-size:.79rem;color:var(--m);padding-left:13px;position:relative;line-height:1.65}
 .exp-point::before{content:"";position:absolute;left:0;top:10px;width:5px;height:1px;background:var(--g)}
-.hr{height:1px;background:rgba(201,169,97,.07);margin:14px 0}
-.callout{border:1px solid rgba(201,169,97,.18);background:var(--gd);border-radius:10px;padding:11px 14px;font-size:.79rem;color:var(--m);line-height:1.7;margin-top:12px}
+.hr{height:1px;background:rgba(15,23,42,.08);margin:14px 0}
+.callout{border:1px solid rgba(200,166,74,.28);background:var(--gd);border-radius:10px;padding:11px 14px;font-size:.79rem;color:var(--m);line-height:1.7;margin-top:12px}
 .callout strong{color:var(--g);font-weight:600}
 
 /* CONTACT */
 .contact-icons{display:grid;grid-template-columns:repeat(4,1fr);gap:12px;margin-top:12px}
-.contact-icon{display:flex;flex-direction:column;align-items:center;gap:9px;padding:18px 12px;border-radius:var(--r);border:1px solid rgba(201,169,97,.08);background:var(--s3);transition:border-color .2s,transform .2s}
+.contact-icon{display:flex;flex-direction:column;align-items:center;gap:9px;padding:18px 12px;border-radius:var(--r);border:1px solid rgba(15,23,42,.09);background:var(--s3);transition:border-color .2s,transform .2s}
 .contact-icon:hover{border-color:var(--gb);transform:translateY(-3px)}
 .c-badge{width:50px;height:50px;border-radius:50%;display:grid;place-items:center;border:1px solid var(--gb);background:var(--gd)}
 .c-badge.t{border-color:rgba(14,165,168,.3);background:rgba(14,165,168,.08)}
@@ -92,7 +92,7 @@ h2::before{content:"";width:16px;height:1px;background:var(--g);flex-shrink:0}
 .c-label{font-family:'Playfair Display',serif;font-size:.88rem;font-weight:600;color:var(--t);text-align:center}
 .contact-icon small{font-size:.63rem;color:var(--m2);text-align:center;line-height:1.3}
 .contact-footer{display:flex;gap:10px;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px solid rgba(201,169,97,.08)}
-.fc{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:20px;font-size:.67rem;font-weight:500;color:var(--m);border:1px solid rgba(201,169,97,.14);background:var(--gd)}
+.fc{display:inline-flex;align-items:center;gap:7px;padding:6px 13px;border-radius:20px;font-size:.67rem;font-weight:500;color:var(--m);border:1px solid rgba(200,166,74,.25);background:var(--gd)}
 
 /* EDUCATION */
 .edu-title{font-weight:600;font-size:.85rem;color:var(--t)}
@@ -100,25 +100,18 @@ h2::before{content:"";width:16px;height:1px;background:var(--g);flex-shrink:0}
 
 /* CERTS */
 .cert-list{list-style:none;padding:0;margin:0}
-.cert-list li{font-size:.78rem;color:var(--m);padding:4px 0 4px 13px;position:relative}
-.cert-list li::before{content:"";position:absolute;left:0;top:10px;width:5px;height:1px;background:var(--g)}
+.cert-list li{font-size:.78rem;color:var(--m);padding:4px 0 4px 16px;position:relative;line-height:1.55}
+.cert-list li::before{content:"◆";position:absolute;left:0;top:50%;transform:translateY(-50%);font-size:.45rem;color:var(--g);line-height:1}
 
 @media(max-width:960px){.grid{grid-template-columns:1fr}.header{flex-direction:column}.tool-strip{overflow-x:auto;flex-wrap:nowrap;padding-bottom:4px}.contact-icons{grid-template-columns:repeat(2,1fr)}.page{padding:24px 20px 60px}}
-@media print{@page{size:A4 portrait;margin:10mm 12mm}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}body,html{background:#060608!important}body::before,.amb,.resume-nav{display:none}.page{padding:0!important;max-width:100%!important}}
+@media print{@page{size:A4 portrait;margin:10mm 12mm}*{-webkit-print-color-adjust:exact!important;print-color-adjust:exact!important}body,html{background:#faf8f4!important;color:#0f172a!important}body::before,.amb,.resume-nav{display:none}.page{padding:0!important;max-width:100%!important}}
 </style>
 </head>
 <body>
 <div class="amb"><div class="amb1"></div></div>
 <div class="page">
 
-<!-- NAV -->
-<nav class="resume-nav">
-  <a class="nav-back" href="index.html">
-    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
-    Back to Portfolio
-  </a>
-  <div class="nav-brand">Mohamed Abdelrazek</div>
-</nav>
+
 
 <!-- HEADER -->
 <div class="card accent">
@@ -191,9 +184,12 @@ h2::before{content:"";width:16px;height:1px;background:var(--g);flex-shrink:0}
       <ul class="cert-list">
         <li>Google Digital Marketing and E-Commerce</li>
         <li>Google Advanced Data Analytics</li>
-        <li>IBM Digital Marketing and Growth Hacking</li>
-        <li>Google IT Automation with Python</li>
-        <li>Microsoft Python Development</li>
+        <li>HubSpot Academy · Social Media Marketing Certification II</li>
+        <li>IBM Digital Advertising</li>
+        <li>IBM Social Media Marketing</li>
+        <li>IBM SEO and Content Marketing</li>
+        <li>IBM E-commerce Marketing and Email Campaigns</li>
+        <li>LinkedIn Content and Creative Design Certification</li>
       </ul>
     </div>
 

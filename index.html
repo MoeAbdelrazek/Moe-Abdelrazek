@@ -78,8 +78,10 @@ nav.scrolled{background:rgba(6,6,8,.92);backdrop-filter:blur(24px);padding:14px 
 .hero-card-stat-key{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--m2);margin-top:3px}
 .hero-card-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
 .chip{font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;background:var(--gd);border:1px solid rgba(201,169,97,.18);border-radius:20px;color:var(--g)}
-.hero-card-contact{font-size:.76rem;color:var(--m);line-height:1.9}
-.hero-card-contact a{color:var(--g);text-decoration:none}
+.hero-card-contact{display:flex;flex-direction:column;gap:6px}
+.hero-contact-link{display:flex;align-items:center;gap:8px;font-size:.74rem;color:var(--m);text-decoration:none;transition:color .2s}
+.hero-contact-link:hover{color:var(--g)}
+.hero-contact-icon{color:var(--g);display:flex;align-items:center;flex-shrink:0}
 
 /* Hero scroll */
 .hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;opacity:.35}
@@ -147,14 +149,32 @@ section{padding:100px 48px;position:relative}
 .aside-list li{font-size:.8rem;color:var(--m);padding-left:14px;position:relative;line-height:1.5}
 .aside-list li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:1px;background:var(--g)}
 
+/* ===================== MARKETS + INDUSTRIES ===================== */
+.markets-section{background:var(--s1);border-top:1px solid rgba(201,169,97,.06);border-bottom:1px solid rgba(201,169,97,.06);padding:52px 48px}
+.markets-inner{max-width:var(--max);margin:0 auto;display:flex;flex-direction:column;gap:28px}
+.markets-label{font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--g);min-width:80px}
+.markets-row{display:flex;align-items:center;gap:32px}
+.markets-flags{display:flex;align-items:center;gap:0;flex:1}
+.market-item{display:flex;align-items:center;gap:10px;padding:0 28px}
+.market-item:first-child{padding-left:0}
+.market-flag{font-size:1.6rem;line-height:1}
+.market-name{font-family:'Playfair Display',serif;font-size:1rem;color:var(--t);font-weight:600}
+.market-divider{width:1px;height:28px;background:rgba(201,169,97,.15)}
+.industries-row{display:flex;align-items:center;gap:32px}
+.industries-list{display:flex;flex-wrap:wrap;gap:10px;flex:1}
+.industry-item{display:flex;align-items:center;gap:8px;padding:8px 16px;background:var(--s2);border:1px solid rgba(201,169,97,.1);border-radius:24px;font-size:.78rem;font-weight:500;color:var(--m);transition:border-color .2s,color .2s}
+.industry-item:hover{border-color:var(--gb);color:var(--t)}
+.industry-icon{color:var(--g);display:flex;align-items:center}
+
 /* ===================== SERVICES ===================== */
 #services{background:var(--s1)}
-.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.services-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px}
 .service-card{background:var(--s2);border:1px solid rgba(201,169,97,.08);border-radius:var(--r);padding:32px;transition:border-color .3s,transform .3s;position:relative;overflow:hidden}
 .service-card::after{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gb),transparent);opacity:0;transition:opacity .3s}
 .service-card:hover{border-color:var(--gb);transform:translateY(-4px)}
 .service-card:hover::after{opacity:1}
-.service-num{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:700;color:rgba(201,169,97,.08);line-height:1;margin-bottom:16px;display:block}
+.service-icon{color:var(--g);margin-bottom:10px;display:block}
+.service-num{font-family:'Playfair Display',serif;font-size:3rem;font-weight:700;color:rgba(201,169,97,.08);line-height:1;margin-bottom:12px;display:block}
 .service-title{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:10px;color:var(--t)}
 .service-desc{font-size:.8rem;color:var(--m);line-height:1.75;margin-bottom:16px}
 .service-tools{display:flex;flex-wrap:wrap;gap:5px}
@@ -162,12 +182,13 @@ section{padding:100px 48px;position:relative}
 
 /* ===================== PROCESS ===================== */
 #process{background:var(--bg)}
-.process-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:3px}
-.process-step{background:var(--s2);border:1px solid rgba(201,169,97,.07);border-radius:10px;padding:22px 16px;position:relative;overflow:hidden;transition:border-color .3s}
+.process-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:14px}
+.process-step{background:var(--s2);border:1px solid rgba(201,169,97,.07);border-radius:10px;padding:28px 24px;position:relative;overflow:hidden;transition:border-color .3s}
 .process-step::before{content:"";position:absolute;inset-x:0;bottom:0;height:2px;background:linear-gradient(90deg,var(--g),var(--gl));transform:scaleX(0);transform-origin:left;transition:transform .4s}
 .process-step:hover{border-color:var(--gb)}
 .process-step:hover::before{transform:scaleX(1)}
-.process-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:rgba(201,169,97,.1);line-height:1;margin-bottom:10px}
+.process-icon{color:var(--g);margin-bottom:10px;display:block}
+.process-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:rgba(201,169,97,.1);line-height:1;margin-bottom:8px}
 .process-name{font-family:'Playfair Display',serif;font-size:.95rem;font-style:italic;color:var(--t);margin-bottom:8px}
 .process-desc{font-size:.72rem;color:var(--m);line-height:1.6}
 
@@ -193,8 +214,11 @@ section{padding:100px 48px;position:relative}
 .contact-title em{font-style:italic;color:var(--g)}
 .contact-sub{font-size:.9rem;color:var(--m);max-width:480px;margin:0 auto 48px;line-height:1.9}
 .contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:56px}
-.contact-info{font-size:.8rem;color:var(--m2);line-height:2}
-.contact-info a{color:var(--g);text-decoration:none}
+.contact-icon-row{display:flex;justify-content:center;gap:24px;flex-wrap:wrap;margin-top:8px}
+.contact-icon-link{display:flex;align-items:center;gap:10px;padding:14px 22px;background:var(--s2);border:1px solid rgba(201,169,97,.1);border-radius:var(--r);text-decoration:none;color:var(--m);font-size:.8rem;transition:border-color .2s,color .2s,transform .2s}
+.contact-icon-link:hover{border-color:var(--gb);color:var(--g);transform:translateY(-2px)}
+.contact-icon-wrap{color:var(--g);display:flex;align-items:center;flex-shrink:0}
+.contact-icon-text{white-space:nowrap}
 
 /* FOOTER */
 footer{background:var(--s1);border-top:1px solid rgba(201,169,97,.06);padding:40px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
@@ -209,9 +233,8 @@ footer{background:var(--s1);border-top:1px solid rgba(201,169,97,.06);padding:40
   .work-card-featured-aside{border-left:none;border-top:1px solid rgba(201,169,97,.08)}
   .work-card-featured .work-card-stats{grid-template-columns:repeat(2,1fr)}
   .work-grid{grid-template-columns:1fr 1fr}
-  .services-grid{grid-template-columns:1fr 1fr}
-  .process-grid{grid-template-columns:repeat(3,1fr)}
-  .about-grid{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:repeat(2,1fr)}
+  .process-grid{grid-template-columns:repeat(2,1fr)}
   .stats-inner{grid-template-columns:repeat(3,1fr)}
 }
 @media(max-width:720px){
@@ -219,11 +242,12 @@ footer{background:var(--s1);border-top:1px solid rgba(201,169,97,.06);padding:40
   .nav-links{display:none}
   .hero{padding:100px 20px 60px}
   section{padding:72px 20px}
-  .stats-strip{padding:40px 20px}
-  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .markets-section{padding:36px 20px}
+  .markets-row,.industries-row{flex-direction:column;align-items:flex-start;gap:16px}
+  .markets-flags{flex-wrap:wrap;gap:0}
   .work-grid{grid-template-columns:1fr}
   .services-grid{grid-template-columns:1fr}
-  .process-grid{grid-template-columns:repeat(2,1fr)}
+  .process-grid{grid-template-columns:1fr}
   .about-stats-grid{grid-template-columns:1fr}
   footer{padding:28px 20px;flex-direction:column;text-align:center}
   .cursor,.cursor-ring{display:none}body{cursor:auto}
@@ -247,7 +271,6 @@ footer{background:var(--s1);border-top:1px solid rgba(201,169,97,.06);padding:40
     <li><a href="#work">Work</a></li>
     <li><a href="#services">Services</a></li>
     <li><a href="#process">Process</a></li>
-    <li><a href="#about">About</a></li>
     <li><a href="#contact">Contact</a></li>
   </ul>
 </nav>
@@ -303,37 +326,70 @@ footer{background:var(--s1);border-top:1px solid rgba(201,169,97,.06);padding:40
         <span class="chip">n8n</span>
       </div>
       <div class="hero-card-contact">
-        <div><a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a></div>
-        <div><a href="https://wa.me/201017286384" target="_blank" rel="noopener">+20 101 728 6384</a></div>
-        <div><a href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank" rel="noopener">LinkedIn</a></div>
+        <a class="hero-contact-link" href="mailto:moe-abdelrazek@outlook.com"><span class="hero-contact-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></span>moe-abdelrazek@outlook.com</a>
+        <a class="hero-contact-link" href="https://wa.me/201017286384" target="_blank" rel="noopener"><span class="hero-contact-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></span>+20 101 728 6384</a>
+        <a class="hero-contact-link" href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank" rel="noopener"><span class="hero-contact-icon"><svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></span>linkedin.com/in/moe-abdelrazek</a>
       </div>
     </div>
   </div>
   <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
 </section>
 
-<!-- STATS STRIP -->
-<div class="stats-strip">
-  <div class="stats-inner">
-    <div class="stat-item r">
-      <span class="stat-num"><span data-count="7">0</span></span>
-      <span class="stat-label">Industries Served</span>
+<!-- MARKETS + INDUSTRIES -->
+<div class="markets-section">
+  <div class="markets-inner">
+    <div class="markets-row r">
+      <div class="markets-label">Markets</div>
+      <div class="markets-flags">
+        <div class="market-item">
+          <span class="market-flag">🇺🇸</span>
+          <span class="market-name">United States</span>
+        </div>
+        <div class="market-divider"></div>
+        <div class="market-item">
+          <span class="market-flag">🇦🇪</span>
+          <span class="market-name">UAE</span>
+        </div>
+        <div class="market-divider"></div>
+        <div class="market-item">
+          <span class="market-flag">🇸🇦</span>
+          <span class="market-name">Saudi Arabia</span>
+        </div>
+        <div class="market-divider"></div>
+        <div class="market-item">
+          <span class="market-flag">🇪🇬</span>
+          <span class="market-name">Egypt</span>
+        </div>
+      </div>
     </div>
-    <div class="stat-item r d1">
-      <span class="stat-num"><span data-count="3">0</span></span>
-      <span class="stat-label">Countries · EG · KSA · UAE</span>
-    </div>
-    <div class="stat-item r d2">
-      <span class="stat-num"><span data-count="5.2">0</span><sup>x</sup></span>
-      <span class="stat-label">Peak ROAS Achieved</span>
-    </div>
-    <div class="stat-item r d3">
-      <span class="stat-num"><span data-count="1804">0</span><sup>%</sup></span>
-      <span class="stat-label">Highest Follower Growth</span>
-    </div>
-    <div class="stat-item r d4">
-      <span class="stat-num"><span data-count="8">0</span></span>
-      <span class="stat-label">Platforms Mastered</span>
+    <div class="industries-row r d1">
+      <div class="markets-label">Industries</div>
+      <div class="industries-list">
+        <div class="industry-item">
+          <span class="industry-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 9l9-7 9 7v11a2 2 0 01-2 2H5a2 2 0 01-2-2V9z"/><path d="M9 22V12h6v10"/></svg></span>
+          <span>Real Estate</span>
+        </div>
+        <div class="industry-item">
+          <span class="industry-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M19 21V5a2 2 0 00-2-2H7a2 2 0 00-2 2v16m14 0H5m14 0h2m-2 0h-5m-9 0H3m2 0h5M9 7h1m-1 4h1m4-4h1m-1 4h1m-5 10v-5a1 1 0 011-1h2a1 1 0 011 1v5m-4 0h4"/></svg></span>
+          <span>Hospitality</span>
+        </div>
+        <div class="industry-item">
+          <span class="industry-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg></span>
+          <span>E-commerce</span>
+        </div>
+        <div class="industry-item">
+          <span class="industry-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></span>
+          <span>Marketing Agency</span>
+        </div>
+        <div class="industry-item">
+          <span class="industry-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></span>
+          <span>Fitness</span>
+        </div>
+        <div class="industry-item">
+          <span class="industry-icon"><svg width="18" height="18" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"/></svg></span>
+          <span>Medical</span>
+        </div>
+      </div>
     </div>
   </div>
 </div>
@@ -507,40 +563,81 @@ footer{background:var(--s1);border-top:1px solid rgba(201,169,97,.06);padding:40
     <div class="gold-divider r d2"></div>
     <div class="services-grid">
       <div class="service-card r d1">
+        <div class="service-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div>
         <span class="service-num">01</span>
-        <div class="service-title">Social Media Management</div>
-        <div class="service-desc">Full content creation, scheduling, and community management across Instagram, Facebook, TikTok, and LinkedIn. Every piece designed for the platform and the audience.</div>
-        <div class="service-tools"><span class="tool-tag">Instagram</span><span class="tool-tag">Facebook</span><span class="tool-tag">TikTok</span><span class="tool-tag">LinkedIn</span></div>
+        <div class="service-title">Research</div>
+        <div class="service-desc">Market demand mapping, competitor audit, intent analysis, and audience profiling. Every engagement starts with evidence — not assumptions.</div>
+        <div class="service-tools"><span class="tool-tag">Demand Mapping</span><span class="tool-tag">Competitor Intel</span><span class="tool-tag">Intent Analysis</span></div>
       </div>
       <div class="service-card r d2">
+        <div class="service-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg></div>
         <span class="service-num">02</span>
-        <div class="service-title">Google Ads &amp; Shopping</div>
-        <div class="service-desc">Search, Shopping, and Performance Max campaigns structured for control and scale. Feed quality, Smart Bidding strategy, and conversion value rules aligned to your highest-margin products.</div>
-        <div class="service-tools"><span class="tool-tag">Google Ads</span><span class="tool-tag">PMax</span><span class="tool-tag">Shopping</span><span class="tool-tag">GA4</span></div>
+        <div class="service-title">Strategy</div>
+        <div class="service-desc">Funnel architecture, offer structure, positioning, and channel mix. A full plan before a single dirham or dollar is spent.</div>
+        <div class="service-tools"><span class="tool-tag">Funnel Design</span><span class="tool-tag">Positioning</span><span class="tool-tag">Channel Mix</span></div>
       </div>
       <div class="service-card r d3">
+        <div class="service-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z"/></svg></div>
         <span class="service-num">03</span>
-        <div class="service-title">Shopify Optimization</div>
-        <div class="service-desc">Store audits, conversion rate improvement, mobile checkout redesign, product page optimization, and speed work — building the foundation before scaling ad spend.</div>
-        <div class="service-tools"><span class="tool-tag">Shopify</span><span class="tool-tag">CRO</span><span class="tool-tag">GTM</span><span class="tool-tag">GA4</span></div>
+        <div class="service-title">Social Media Management</div>
+        <div class="service-desc">Full content creation, scheduling, and community management across Instagram, Facebook, TikTok, LinkedIn, and Snapchat. Every piece is built for the platform.</div>
+        <div class="service-tools"><span class="tool-tag">Instagram</span><span class="tool-tag">Facebook</span><span class="tool-tag">TikTok</span><span class="tool-tag">LinkedIn</span><span class="tool-tag">Snapchat</span></div>
       </div>
       <div class="service-card r d4">
+        <div class="service-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3.055 11H5a2 2 0 012 2v1a2 2 0 002 2 2 2 0 012 2v2.945M8 3.935V5.5A2.5 2.5 0 0010.5 8h.5a2 2 0 012 2 2 2 0 104 0 2 2 0 012-2h1.064M15 20.488V18a2 2 0 012-2h3.064"/></svg></div>
         <span class="service-num">04</span>
-        <div class="service-title">CRM &amp; Marketing Automation</div>
-        <div class="service-desc">GoHighLevel pipelines, n8n workflows, ClickUp systems, and documented SOPs. Marketing that runs without you — with measurable handoff points and built-in accountability.</div>
-        <div class="service-tools"><span class="tool-tag">GoHighLevel</span><span class="tool-tag">n8n</span><span class="tool-tag">ClickUp</span><span class="tool-tag">Zapier</span></div>
+        <div class="service-title">Google Ads &amp; Shopping</div>
+        <div class="service-desc">Search, Shopping, and Performance Max structured for control and scale. Feed quality, Smart Bidding, and conversion value rules aligned to margin.</div>
+        <div class="service-tools"><span class="tool-tag">Search</span><span class="tool-tag">Shopping</span><span class="tool-tag">PMax</span><span class="tool-tag">Smart Bidding</span></div>
       </div>
       <div class="service-card r d5">
+        <div class="service-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M15 10l4.553-2.276A1 1 0 0121 8.618V15.38a1 1 0 01-1.447.894L15 14M3 8a2 2 0 012-2h8a2 2 0 012 2v8a2 2 0 01-2 2H5a2 2 0 01-2-2V8z"/></svg></div>
         <span class="service-num">05</span>
-        <div class="service-title">SEO &amp; Organic Growth</div>
-        <div class="service-desc">Technical SEO, intent-aligned content, structured data, and a Looker Studio dashboard that connects organic and paid performance in one view. Visibility that compounds.</div>
-        <div class="service-tools"><span class="tool-tag">GSC</span><span class="tool-tag">Looker Studio</span><span class="tool-tag">Schema</span><span class="tool-tag">On-Page</span></div>
+        <div class="service-title">Meta, TikTok &amp; Snapchat Ads</div>
+        <div class="service-desc">Paid social acquisition built around scroll-stopping creative, precise audience architecture, and direct-response funnels that convert.</div>
+        <div class="service-tools"><span class="tool-tag">Meta Ads</span><span class="tool-tag">TikTok Ads</span><span class="tool-tag">Snapchat Ads</span><span class="tool-tag">Retargeting</span></div>
       </div>
       <div class="service-card r d6">
+        <div class="service-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M16 11V7a4 4 0 00-8 0v4M5 9h14l1 12H4L5 9z"/></svg></div>
         <span class="service-num">06</span>
-        <div class="service-title">Strategy &amp; Reporting</div>
-        <div class="service-desc">Market research, competitor analysis, funnel architecture, and weekly reporting rhythms. The full picture — where you are, what's working, and what moves next.</div>
-        <div class="service-tools"><span class="tool-tag">GA4</span><span class="tool-tag">GTM</span><span class="tool-tag">Looker Studio</span><span class="tool-tag">Research</span></div>
+        <div class="service-title">Shopify Optimization</div>
+        <div class="service-desc">Full store audit, CRO, mobile checkout redesign, product page speed, and feed preparation — build the conversion foundation before scaling spend.</div>
+        <div class="service-tools"><span class="tool-tag">Shopify</span><span class="tool-tag">CRO</span><span class="tool-tag">Speed</span><span class="tool-tag">Feed Quality</span></div>
+      </div>
+      <div class="service-card r d1">
+        <div class="service-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.065 2.572c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.572 1.065c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.065-2.572c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.572-1.065z"/><circle cx="12" cy="12" r="3"/></svg></div>
+        <span class="service-num">07</span>
+        <div class="service-title">CRM &amp; Marketing Automation</div>
+        <div class="service-desc">GoHighLevel pipelines, n8n workflows, ClickUp systems, and documented SOPs. Marketing infrastructure that operates without you in the room.</div>
+        <div class="service-tools"><span class="tool-tag">GoHighLevel</span><span class="tool-tag">n8n</span><span class="tool-tag">ClickUp</span><span class="tool-tag">Zapier</span></div>
+      </div>
+      <div class="service-card r d2">
+        <div class="service-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></div>
+        <span class="service-num">08</span>
+        <div class="service-title">Content Creation &amp; Copywriting</div>
+        <div class="service-desc">Hooks, angles, scripts, captions, and ad copy built around real objections and demand signals. Creative that earns attention and drives action.</div>
+        <div class="service-tools"><span class="tool-tag">Scripts</span><span class="tool-tag">Ad Copy</span><span class="tool-tag">Captions</span><span class="tool-tag">Email</span></div>
+      </div>
+      <div class="service-card r d3">
+        <div class="service-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M13 7h8m0 0v8m0-8l-8 8-4-4-6 6"/></svg></div>
+        <span class="service-num">09</span>
+        <div class="service-title">SEO &amp; Organic Growth</div>
+        <div class="service-desc">Technical SEO, intent-aligned content, structured data, and internal linking. Visibility that doesn't stop when the budget does.</div>
+        <div class="service-tools"><span class="tool-tag">Technical SEO</span><span class="tool-tag">Schema</span><span class="tool-tag">On-Page</span><span class="tool-tag">Content</span></div>
+      </div>
+      <div class="service-card r d4">
+        <div class="service-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 19v-6a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2a2 2 0 002-2zm0 0V9a2 2 0 012-2h2a2 2 0 012 2v10m-6 0a2 2 0 002 2h2a2 2 0 002-2m0 0V5a2 2 0 012-2h2a2 2 0 012 2v14a2 2 0 01-2 2h-2a2 2 0 01-2-2z"/></svg></div>
+        <span class="service-num">10</span>
+        <div class="service-title">GSC, GA4, GTM &amp; Tracking</div>
+        <div class="service-desc">Full measurement stack setup — events, conversion goals, UTMs, and cross-channel attribution. Performance is only real when it's measurable.</div>
+        <div class="service-tools"><span class="tool-tag">GA4</span><span class="tool-tag">GTM</span><span class="tool-tag">GSC</span><span class="tool-tag">Looker Studio</span></div>
+      </div>
+      <div class="service-card r d5">
+        <div class="service-icon"><svg width="22" height="22" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
+        <span class="service-num">11</span>
+        <div class="service-title">Data Analysis &amp; Reporting</div>
+        <div class="service-desc">Weekly dashboards, monthly reviews, and clear decision frameworks. Every number tied to a business outcome — no vanity metrics, no noise.</div>
+        <div class="service-tools"><span class="tool-tag">Dashboards</span><span class="tool-tag">Weekly Reports</span><span class="tool-tag">Attribution</span></div>
       </div>
     </div>
   </div>
@@ -555,80 +652,65 @@ footer{background:var(--s1);border-top:1px solid rgba(201,169,97,.06);padding:40
       <div class="section-eyebrow-line"></div>
     </div>
     <h2 class="section-title r d1">How Every <em>Engagement Works</em></h2>
-    <p class="section-sub r d2">A clear sequence from evidence to stable, compounding performance. No black boxes.</p>
+    <p class="section-sub r d2">One connected sequence from first conversation to a compounding system. No handoffs. No black boxes. No surprises.</p>
     <div class="process-grid">
       <div class="process-step r d1">
+        <div class="process-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M21 21l-6-6m2-5a7 7 0 11-14 0 7 7 0 0114 0z"/></svg></div>
         <div class="process-num">01</div>
-        <div class="process-name">Evidence &amp; Baseline</div>
-        <div class="process-desc">Demand mapping, competitor analysis, current tracking audit. Decide what matters before building anything.</div>
+        <div class="process-name">Research &amp; Evidence</div>
+        <div class="process-desc">Market demand, competitor offers, buyer intent, and current baseline. Before a single decision is made, I know what actually works in your space.</div>
       </div>
       <div class="process-step r d2">
+        <div class="process-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 20l-5.447-2.724A1 1 0 013 16.382V5.618a1 1 0 011.447-.894L9 7m0 13l6-3m-6 3V7m6 10l4.553 2.276A1 1 0 0021 18.382V7.618a1 1 0 00-.553-.894L15 4m0 13V4m0 0L9 7"/></svg></div>
         <div class="process-num">02</div>
-        <div class="process-name">Positioning &amp; Offer</div>
-        <div class="process-desc">Clear message, defined audience, offer structure, and proof plan. The foundation everything else is built on.</div>
+        <div class="process-name">Strategy &amp; Positioning</div>
+        <div class="process-desc">Defined audience, clear offer, channel architecture, and a message that matches intent. The plan that every deliverable is built on.</div>
       </div>
       <div class="process-step r d3">
+        <div class="process-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"/></svg></div>
         <div class="process-num">03</div>
-        <div class="process-name">Tracking &amp; Reporting</div>
-        <div class="process-desc">GA4, GTM, conversion events, UTMs, and dashboards. Performance is only real if it's readable and trusted.</div>
+        <div class="process-name">Tracking &amp; Measurement</div>
+        <div class="process-desc">GA4, GTM, GSC, conversion events, UTMs. Everything connected before a campaign goes live. Data you can trust and act on.</div>
       </div>
       <div class="process-step r d4">
+        <div class="process-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M11 5H6a2 2 0 00-2 2v11a2 2 0 002 2h11a2 2 0 002-2v-5m-1.414-9.414a2 2 0 112.828 2.828L11.828 15H9v-2.828l8.586-8.586z"/></svg></div>
         <div class="process-num">04</div>
-        <div class="process-name">Content Engine</div>
-        <div class="process-desc">Hooks, angles, formats, and a refresh cadence. Creative that aligns to demand and addresses real objections.</div>
+        <div class="process-name">Content &amp; Creative</div>
+        <div class="process-desc">Hooks, scripts, copy, and visuals that address real objections and earn attention. Built with a refresh cadence — creative never stales.</div>
       </div>
       <div class="process-step r d5">
+        <div class="process-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M13 10V3L4 14h7v7l9-11h-7z"/></svg></div>
         <div class="process-num">05</div>
-        <div class="process-name">Acquisition Launch</div>
-        <div class="process-desc">Campaigns built for control before scale. Budget guardrails, query management, and bidding strategy aligned to value.</div>
+        <div class="process-name">Launch &amp; Acquire</div>
+        <div class="process-desc">Campaigns go live with guardrails — budget controls, bidding strategy, and query management. Scale happens when the data earns it, not before.</div>
       </div>
       <div class="process-step r d6">
+        <div class="process-icon"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"/></svg></div>
         <div class="process-num">06</div>
-        <div class="process-name">Monitor &amp; Iterate</div>
-        <div class="process-desc">Weekly rhythm, documented scale and stop rules, and a clear iteration loop. The system protects itself.</div>
+        <div class="process-name">Monitor, Report &amp; Iterate</div>
+        <div class="process-desc">Weekly rhythm, documented scale and stop rules, and a clear iteration loop. The system learns, adapts, and compounds — with full transparency throughout.</div>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ABOUT -->
-<section id="about">
-  <div class="container">
-    <div class="about-grid">
-      <div class="about-text r">
-        <h2>Performance Marketing<em>Built on Systems,</em> Not Luck</h2>
-        <p>I work across the full marketing stack — not because I have to, but because isolated tactics don't compound. When the content, the ads, the tracking, and the CRM all speak the same language, results multiply instead of add.</p>
-        <p>My clients range from boutique cafés in Alexandria to luxury hotels in KAFD Riyadh to e-commerce hardware brands serving the UAE. The markets are different. The discipline is the same.</p>
-        <p>Every engagement begins with evidence. It ends with a documented, scalable system that works whether I'm in the room or not.</p>
-        <div class="about-markets">
-          <span class="market-badge">🇪🇬 Egypt</span>
-          <span class="market-badge">🇸🇦 Saudi Arabia</span>
-          <span class="market-badge">🇦🇪 UAE</span>
-        </div>
-      </div>
-      <div class="about-stats-grid r d1">
-        <div class="about-stat">
-          <div class="about-stat-val">5.2x</div>
-          <div class="about-stat-label">Peak ROAS</div>
-          <div class="about-stat-desc">Google Shopping campaign for TechnoMounts UAE — from 2.8x to 5.2x through feed quality and Smart Bidding.</div>
-        </div>
-        <div class="about-stat">
-          <div class="about-stat-val">1,804%</div>
-          <div class="about-stat-label">Follower Growth</div>
-          <div class="about-stat-desc">Kimpton KAFD Riyadh — from 150 at launch to 2,856 in 11 months. Entirely organic.</div>
-        </div>
-        <div class="about-stat">
-          <div class="about-stat-val">874K</div>
-          <div class="about-stat-label">SAR Attributed Revenue</div>
-          <div class="about-stat-desc">Google Ads Performance Max for Kimpton KAFD over the campaign window.</div>
-        </div>
-        <div class="about-stat">
-          <div class="about-stat-val">$0</div>
-          <div class="about-stat-label">Wasted on Vanity</div>
-          <div class="about-stat-desc">Every metric tracked is tied to a business outcome. No follower counts without context. No reach without conversion.</div>
-        </div>
-      </div>
+
+
+<!-- CREATIVES TEASER -->
+<section id="creatives" style="background:var(--s1);text-align:center;padding:80px 48px;position:relative;overflow:hidden">
+  <div style="position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 50%,rgba(201,169,97,.05),transparent 65%);pointer-events:none"></div>
+  <div class="container" style="position:relative;z-index:1">
+    <div class="section-eyebrow r">
+      <div class="section-eyebrow-line"></div>
+      <span>Visual Work</span>
+      <div class="section-eyebrow-line"></div>
     </div>
+    <h2 class="section-title r d1" style="margin-bottom:16px">The <em>Creatives</em></h2>
+    <p style="font-size:.88rem;font-weight:300;color:var(--m);max-width:440px;margin:0 auto 40px;line-height:1.9" class="r d2">Photography, ad videos, Instagram Reels, TikToks, and AI-generated product imagery — all the visual work produced across campaigns.</p>
+    <a class="btn-primary r d3" href="creatives.html" style="display:inline-flex;align-items:center;gap:12px;font-size:.8rem">
+      View All Creatives
+      <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
+    </a>
   </div>
 </section>
 
@@ -647,10 +729,19 @@ footer{background:var(--s1);border-top:1px solid rgba(201,169,97,.06);padding:40
       <a class="btn-outline" href="https://wa.me/201017286384" target="_blank" rel="noopener">WhatsApp</a>
       <a class="btn-outline" href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank" rel="noopener">LinkedIn</a>
     </div>
-    <div class="contact-info r d4">
-      <div><a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a></div>
-      <div><a href="https://wa.me/201017286384">+20 101 728 6384</a></div>
-      <div><a href="https://www.linkedin.com/in/moe-abdelrazek/">linkedin.com/in/moe-abdelrazek</a></div>
+    <div class="contact-icon-row r d4">
+      <a class="contact-icon-link" href="mailto:moe-abdelrazek@outlook.com">
+        <span class="contact-icon-wrap"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"/></svg></span>
+        <span class="contact-icon-text">moe-abdelrazek@outlook.com</span>
+      </a>
+      <a class="contact-icon-link" href="https://wa.me/201017286384" target="_blank" rel="noopener">
+        <span class="contact-icon-wrap"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"/></svg></span>
+        <span class="contact-icon-text">+20 101 728 6384</span>
+      </a>
+      <a class="contact-icon-link" href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank" rel="noopener">
+        <span class="contact-icon-wrap"><svg width="20" height="20" fill="none" stroke="currentColor" stroke-width="1.5" viewBox="0 0 24 24"><path d="M16 8a6 6 0 016 6v7h-4v-7a2 2 0 00-2-2 2 2 0 00-2 2v7h-4v-7a6 6 0 016-6zM2 9h4v12H2z"/><circle cx="4" cy="4" r="2"/></svg></span>
+        <span class="contact-icon-text">linkedin.com/in/moe-abdelrazek</span>
+      </a>
     </div>
   </div>
 </section>
@@ -658,7 +749,7 @@ footer{background:var(--s1);border-top:1px solid rgba(201,169,97,.06);padding:40
 <!-- FOOTER -->
 <footer>
   <div class="footer-brand">Mohamed Abdelrazek</div>
-  <div class="footer-copy">Performance Marketing · Egypt · KSA · UAE</div>
+  <div class="footer-copy">Performance Marketing · Egypt · KSA · UAE · US</div>
   <div class="footer-copy">Built with precision.</div>
 </footer>
 

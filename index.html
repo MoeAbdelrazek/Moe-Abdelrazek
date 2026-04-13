@@ -1,873 +1,695 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Mohamed Abdelrazek - Performance Marketing Portfolio</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mohamed Abdelrazek — Performance Marketing</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;0,700;1,400;1,600;1,700&family=Poppins:wght@300;400;500;600&family=Cormorant+Garamond:ital,wght@0,300;0,400;1,300;1,400&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060608;
+  --s1:#0d0d10;
+  --s2:#13131a;
+  --s3:#1a1a24;
+  --g:#c9a961;--gl:#e2c97e;--gs:#a8893e;
+  --gd:rgba(201,169,97,.12);--gb:rgba(201,169,97,.28);
+  --t:#f5f5f0;--m:rgba(245,245,240,.52);--m2:rgba(245,245,240,.28);
+  --max:1200px;--r:16px;
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--t);overflow-x:hidden;line-height:1.7;cursor:none}
 
-  <!-- Fonts -->
-  <link href="https://fonts.googleapis.com/css2
-  +2?family=Orbitron:wght@400;600;700&family=Playfair+Display:ital,wght@0,600;0,700;1,600;1,700&family=Inter:wght@400;600;700&display=swap" rel="stylesheet">
+/* CURSOR */
+.cursor{position:fixed;width:8px;height:8px;background:var(--g);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s,width .2s,height .2s,opacity .2s}
+.cursor-ring{position:fixed;width:36px;height:36px;border:1px solid rgba(201,169,97,.5);border-radius:50%;pointer-events:none;z-index:9998;transform:translate(-50%,-50%);transition:transform .12s ease}
+body:has(a:hover) .cursor,.cursor.active{width:14px;height:14px;background:var(--gl)}
+body:has(a:hover) .cursor-ring{width:50px;height:50px;border-color:var(--g)}
 
-  <style>
-    :root{
-      /* Replace with the exact background image URL from your original code */
-      --bg-image: url("YOUR_ORIGINAL_BACKGROUND_IMAGE_URL_HERE");
+/* GRAIN */
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.025;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
 
-      /* Brighter professional tech + gold accent */
-      --bg0:#070b12;
-      --panel1:rgba(18,24,34,.66);
-      --panel2:rgba(18,24,34,.42);
+/* AMBIENT LIGHT */
+.ambient{position:fixed;inset:0;pointer-events:none;z-index:0}
+.ambient-1{position:absolute;width:80vw;height:80vw;border-radius:50%;top:-20vw;left:50%;transform:translateX(-50%);background:radial-gradient(ellipse,rgba(201,169,97,.06) 0%,transparent 65%)}
+.ambient-2{position:absolute;width:60vw;height:60vw;border-radius:50%;bottom:-10vw;left:-10vw;background:radial-gradient(ellipse,rgba(201,169,97,.04) 0%,transparent 65%)}
+.ambient-3{position:absolute;width:50vw;height:50vw;border-radius:50%;top:30vh;right:-15vw;background:radial-gradient(ellipse,rgba(100,120,180,.04) 0%,transparent 65%)}
 
-      --gold:#ffd36a;
-      --gold2:#d7b54a;
-      --cyan:#7ff0ff;
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--s1)}
+::-webkit-scrollbar-thumb{background:var(--g);border-radius:2px}
 
-      --text:rgba(255,255,255,.92);
-      --muted:rgba(255,255,255,.72);
-      --line:rgba(255,255,255,.12);
+/* NAV */
+nav{position:fixed;top:0;left:0;right:0;z-index:100;padding:20px 48px;display:flex;align-items:center;justify-content:space-between;transition:background .4s,padding .4s}
+nav.scrolled{background:rgba(6,6,8,.92);backdrop-filter:blur(24px);padding:14px 48px;border-bottom:1px solid rgba(201,169,97,.08)}
+.nav-logo{font-family:'Playfair Display',serif;font-size:1.05rem;font-style:italic;color:var(--g);text-decoration:none;letter-spacing:.04em}
+.nav-links{display:flex;gap:32px;list-style:none}
+.nav-links a{font-size:.7rem;font-weight:500;color:var(--m);text-decoration:none;letter-spacing:.14em;text-transform:uppercase;transition:color .2s;position:relative}
+.nav-links a::after{content:"";position:absolute;bottom:-2px;left:0;width:0;height:1px;background:var(--g);transition:width .3s}
+.nav-links a:hover{color:var(--g)}
+.nav-links a:hover::after{width:100%}
 
-      --r-xl:28px;
-      --r-lg:20px;
-      --r-md:14px;
-      --pill:999px;
+/* ===================== HERO ===================== */
+.hero{min-height:100vh;display:flex;align-items:center;padding:120px 48px 80px;position:relative;overflow:hidden}
+.hero-inner{max-width:var(--max);margin:0 auto;width:100%;display:grid;grid-template-columns:1fr 360px;gap:80px;align-items:center}
+.hero-eyebrow{display:flex;align-items:center;gap:14px;margin-bottom:32px}
+.hero-eyebrow-line{width:40px;height:1px;background:var(--g)}
+.hero-eyebrow span{font-size:.65rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--g)}
+.hero-name{font-family:'Playfair Display',serif;font-size:clamp(3.2rem,7vw,6rem);font-weight:700;line-height:1.05;margin-bottom:14px;color:var(--t)}
+.hero-name em{font-style:italic;color:var(--g);display:block}
+.hero-title-line{font-family:'Cormorant Garamond',serif;font-size:clamp(1.1rem,2.2vw,1.5rem);font-weight:300;font-style:italic;color:var(--m);margin-bottom:32px;letter-spacing:.02em}
+.hero-desc{font-size:.9rem;font-weight:300;color:var(--m);line-height:1.9;max-width:540px;margin-bottom:48px}
+.hero-cta-row{display:flex;gap:14px;flex-wrap:wrap}
+.btn-primary{display:inline-flex;align-items:center;gap:10px;padding:14px 28px;background:var(--g);color:#050507;font-size:.75rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:3px;transition:background .2s,transform .2s}
+.btn-primary:hover{background:var(--gl);transform:translateY(-2px)}
+.btn-outline{display:inline-flex;align-items:center;gap:10px;padding:13px 28px;border:1px solid var(--gb);color:var(--m);font-size:.75rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;text-decoration:none;border-radius:3px;transition:border-color .2s,color .2s,transform .2s}
+.btn-outline:hover{border-color:var(--g);color:var(--g);transform:translateY(-2px)}
 
-      --max:1500px;
+/* Hero card */
+.hero-card{background:var(--s2);border:1px solid rgba(201,169,97,.12);border-radius:var(--r);padding:36px;position:relative;overflow:hidden}
+.hero-card::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--g),transparent)}
+.hero-card-avatar{width:72px;height:72px;border-radius:50%;background:linear-gradient(135deg,var(--s3),var(--s2));border:2px solid var(--gb);display:flex;align-items:center;justify-content:center;margin-bottom:20px;font-family:'Playfair Display',serif;font-size:1.6rem;color:var(--g);font-weight:700}
+.hero-card-name{font-family:'Playfair Display',serif;font-size:1.1rem;color:var(--t);margin-bottom:4px}
+.hero-card-loc{font-size:.7rem;letter-spacing:.12em;text-transform:uppercase;color:var(--m2);margin-bottom:22px}
+.hero-card-stat-row{display:grid;grid-template-columns:1fr 1fr;gap:10px;margin-bottom:22px}
+.hero-card-stat{background:var(--s3);border-radius:8px;padding:12px 14px}
+.hero-card-stat-val{font-family:'Playfair Display',serif;font-size:1.3rem;color:var(--g);line-height:1}
+.hero-card-stat-key{font-size:.62rem;letter-spacing:.08em;text-transform:uppercase;color:var(--m2);margin-top:3px}
+.hero-card-chips{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:22px}
+.chip{font-size:.62rem;font-weight:600;letter-spacing:.08em;text-transform:uppercase;padding:4px 10px;background:var(--gd);border:1px solid rgba(201,169,97,.18);border-radius:20px;color:var(--g)}
+.hero-card-contact{font-size:.76rem;color:var(--m);line-height:1.9}
+.hero-card-contact a{color:var(--g);text-decoration:none}
 
-      --cx: 52vw;
-      --cy: 22vh;
-    }
+/* Hero scroll */
+.hero-scroll{position:absolute;bottom:40px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:10px;opacity:.35}
+.hero-scroll span{font-size:.6rem;letter-spacing:.18em;text-transform:uppercase;color:var(--m2)}
+.scroll-line{width:1px;height:40px;background:linear-gradient(to bottom,var(--g),transparent);animation:sp 2.2s ease infinite}
+@keyframes sp{0%,100%{opacity:.2;transform:scaleY(.6)}50%{opacity:.9;transform:scaleY(1)}}
 
-    *{ box-sizing:border-box; }
-    html,body{ margin:0; padding:0; background:var(--bg0); color:var(--text); scroll-behavior:smooth; overflow-x:hidden; }
-    body{ font-family:Inter, system-ui, -apple-system, Segoe UI, Arial, sans-serif; line-height:1.7; }
+/* ===================== STATS ===================== */
+.stats-strip{background:var(--s1);border-top:1px solid rgba(201,169,97,.06);border-bottom:1px solid rgba(201,169,97,.06);padding:52px 48px}
+.stats-inner{max-width:var(--max);margin:0 auto;display:grid;grid-template-columns:repeat(5,1fr);gap:2px}
+.stat-item{padding:24px 28px;text-align:center;position:relative}
+.stat-item+.stat-item::before{content:"";position:absolute;left:0;top:20%;height:60%;width:1px;background:rgba(201,169,97,.1)}
+.stat-num{font-family:'Playfair Display',serif;font-size:2.4rem;font-weight:700;color:var(--g);line-height:1;display:block;margin-bottom:6px}
+.stat-num sup{font-size:1rem;vertical-align:super}
+.stat-label{font-size:.65rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--m2)}
 
-    /* Background image */
-    body::before{
-      content:"";
-      position:fixed; inset:0;
-      background-image:var(--bg-image);
-      background-size:cover;
-      background-position:center;
-      filter: blur(2px);
-      transform: scale(1.03);
-      z-index:-4;
-    }
+/* ===================== SHARED ===================== */
+section{padding:100px 48px;position:relative}
+.container{max-width:var(--max);margin:0 auto}
+.section-eyebrow{display:flex;align-items:center;justify-content:center;gap:14px;margin-bottom:16px}
+.section-eyebrow-line{width:30px;height:1px;background:var(--g)}
+.section-eyebrow span{font-size:.65rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--g)}
+.section-title{font-family:'Playfair Display',serif;font-size:clamp(2rem,3.5vw,3.2rem);font-weight:700;line-height:1.15;text-align:center;margin-bottom:18px}
+.section-title em{font-style:italic;color:var(--g)}
+.section-sub{font-size:.88rem;font-weight:300;color:var(--m);text-align:center;max-width:540px;margin:0 auto 64px;line-height:1.9}
+.gold-divider{width:40px;height:1px;background:linear-gradient(90deg,transparent,var(--g),transparent);margin:16px auto 56px}
 
-    /* Brighter overlay + mouse glow */
-    body::after{
-      content:"";
-      position:fixed; inset:0;
-      background:
-        radial-gradient(980px circle at var(--cx) var(--cy), rgba(255,211,106,.28), transparent 58%),
-        radial-gradient(1150px circle at 78% 12%, rgba(255,211,106,.16), transparent 62%),
-        radial-gradient(980px circle at 20% 80%, rgba(127,240,255,.14), transparent 62%),
-        linear-gradient(180deg, rgba(0,0,0,.50), rgba(0,0,0,.66));
-      z-index:-3;
-      pointer-events:none;
-    }
+/* REVEAL */
+.r{opacity:0;transform:translateY(28px);transition:opacity .8s ease,transform .8s ease}
+.r.on{opacity:1;transform:none}
+.r.d1{transition-delay:.08s}.r.d2{transition-delay:.16s}.r.d3{transition-delay:.24s}
+.r.d4{transition-delay:.32s}.r.d5{transition-delay:.4s}.r.d6{transition-delay:.48s}
 
-    /* Subtle HUD grid */
-    .hud{
-      position:fixed; inset:0; z-index:-2; pointer-events:none; opacity:.18;
-      background: radial-gradient(circle at 1px 1px, rgba(255,211,106,.20) 1px, transparent 1px);
-      background-size: 34px 34px;
-      mix-blend-mode: screen;
-    }
+/* ===================== WORK ===================== */
+#work{background:var(--bg)}
+#work::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 80% 50% at 50% 0%,rgba(201,169,97,.04),transparent 60%);pointer-events:none}
+.work-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px}
 
-    /* Layout */
-    .shell{
-      width:min(95vw, var(--max));
-      margin: 18px auto 88px;
-      padding: 0 18px;
-    }
+.work-card{background:var(--s2);border:1px solid rgba(201,169,97,.08);border-radius:var(--r);overflow:hidden;transition:border-color .3s,transform .3s;display:flex;flex-direction:column;text-decoration:none;color:inherit}
+.work-card:hover{border-color:var(--gb);transform:translateY(-6px)}
+.work-card-header{height:7px;background:linear-gradient(90deg,var(--card-c1,var(--g)),var(--card-c2,var(--gl)))}
+.work-card-body{padding:28px;flex:1;display:flex;flex-direction:column}
+.work-card-kicker{font-size:.62rem;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--g);margin-bottom:10px}
+.work-card-title{font-family:'Playfair Display',serif;font-size:1.4rem;font-weight:700;margin-bottom:10px;color:var(--t);line-height:1.25}
+.work-card-desc{font-size:.8rem;color:var(--m);line-height:1.75;margin-bottom:20px;flex:1}
+.work-card-stats{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-bottom:22px}
+.work-card-stat{background:var(--s3);border-radius:8px;padding:10px 12px}
+.work-card-stat-val{font-family:'Playfair Display',serif;font-size:1.1rem;font-weight:700;color:var(--gl);line-height:1}
+.work-card-stat-key{font-size:.6rem;letter-spacing:.06em;text-transform:uppercase;color:var(--m2);margin-top:2px}
+.work-card-tag-row{display:flex;flex-wrap:wrap;gap:6px;margin-bottom:24px}
+.work-tag{font-size:.6rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:3px 9px;background:var(--gd);border:1px solid rgba(201,169,97,.15);border-radius:16px;color:var(--m)}
+.work-card-cta{display:inline-flex;align-items:center;gap:8px;font-size:.72rem;font-weight:600;letter-spacing:.1em;text-transform:uppercase;color:var(--g);margin-top:auto}
+.work-card-cta svg{transition:transform .2s}
+.work-card:hover .work-card-cta svg{transform:translateX(4px)}
 
-    /* Nav */
-    .nav{ position:sticky; top:14px; z-index:50; margin-bottom:18px; }
-    .nav-inner{
-      display:flex; align-items:center; justify-content:space-between; gap:14px;
-      padding: 10px 16px;
-      border-radius: var(--pill);
-      border: 1px solid transparent;
-      background:
-        radial-gradient(900px circle at 15% 0%, rgba(255,211,106,.16), transparent 60%) padding-box,
-        linear-gradient(180deg, rgba(18,24,34,.74), rgba(18,24,34,.44)) padding-box,
-        linear-gradient(135deg, rgba(255,211,106,.58), rgba(127,240,255,.18), rgba(255,211,106,.36)) border-box;
-      backdrop-filter: blur(14px);
-    }
-    .brand{
-      font-family: Orbitron, system-ui, sans-serif;
-      font-size: 12px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color: rgba(255,255,255,.90);
-      white-space:nowrap;
-    }
-    .links{ display:flex; flex-wrap:wrap; gap:10px; font-size:13px; }
-    .link{
-      color: rgba(255,255,255,.84);
-      text-decoration:none;
-      padding: 7px 12px;
-      border-radius: var(--pill);
-      border: 1px solid var(--line);
-      background: rgba(255,255,255,.04);
-      transition: transform .18s ease, border-color .18s ease, background .18s ease;
-    }
-    .link:hover{
-      transform: translateY(-1px);
-      border-color: rgba(255,211,106,.55);
-      background: rgba(255,211,106,.10);
-    }
+/* Featured card (VP Realty) - full width */
+.work-card-featured{grid-column:1/-1;display:grid;grid-template-columns:1fr 1fr;gap:0;min-height:280px}
+.work-card-featured .work-card-header{grid-column:1/-1;height:6px}
+.work-card-featured .work-card-body{padding:40px}
+.work-card-featured .work-card-stats{grid-template-columns:repeat(4,1fr)}
+.work-card-featured .work-card-title{font-size:1.9rem}
+.work-card-featured-aside{padding:40px;border-left:1px solid rgba(201,169,97,.08);background:var(--s3);display:flex;flex-direction:column;justify-content:center;gap:16px}
+.aside-label{font-size:.65rem;letter-spacing:.14em;text-transform:uppercase;color:var(--m2);margin-bottom:10px}
+.aside-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.aside-list li{font-size:.8rem;color:var(--m);padding-left:14px;position:relative;line-height:1.5}
+.aside-list li::before{content:"";position:absolute;left:0;top:8px;width:5px;height:1px;background:var(--g)}
 
-    /* Surfaces (0 shadows) */
-    .surface{
-      border-radius: var(--r-xl);
-      border: 1px solid transparent;
-      background:
-        radial-gradient(900px circle at var(--mx) var(--my), rgba(255,211,106,.12), transparent 60%) padding-box,
-        linear-gradient(180deg, var(--panel1), var(--panel2)) padding-box,
-        linear-gradient(135deg, rgba(255,211,106,.58), rgba(127,240,255,.16), rgba(255,211,106,.34)) border-box;
-      backdrop-filter: blur(12px);
-      position:relative;
-      overflow:hidden;
-    }
-    .surface::before{
-      content:"";
-      position:absolute; inset:0;
-      background:
-        radial-gradient(900px circle at 0 0, rgba(255,255,255,.08), transparent 60%),
-        radial-gradient(900px circle at 110% 120%, rgba(255,211,106,.12), transparent 62%);
-      mix-blend-mode: screen;
-      opacity:.9;
-      pointer-events:none;
-    }
-    .surface > *{ position:relative; z-index:1; }
+/* ===================== SERVICES ===================== */
+#services{background:var(--s1)}
+.services-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.service-card{background:var(--s2);border:1px solid rgba(201,169,97,.08);border-radius:var(--r);padding:32px;transition:border-color .3s,transform .3s;position:relative;overflow:hidden}
+.service-card::after{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gb),transparent);opacity:0;transition:opacity .3s}
+.service-card:hover{border-color:var(--gb);transform:translateY(-4px)}
+.service-card:hover::after{opacity:1}
+.service-num{font-family:'Playfair Display',serif;font-size:3.5rem;font-weight:700;color:rgba(201,169,97,.08);line-height:1;margin-bottom:16px;display:block}
+.service-title{font-family:'Playfair Display',serif;font-size:1.2rem;margin-bottom:10px;color:var(--t)}
+.service-desc{font-size:.8rem;color:var(--m);line-height:1.75;margin-bottom:16px}
+.service-tools{display:flex;flex-wrap:wrap;gap:5px}
+.tool-tag{font-size:.6rem;font-weight:500;letter-spacing:.06em;text-transform:uppercase;padding:3px 8px;border:1px solid rgba(245,245,240,.1);border-radius:12px;color:var(--m2)}
 
-    /* Section header */
-    .section{ margin-top: 18px; }
-    .section .head{ text-align:center; padding: 26px 18px 16px; }
-    .kicker{
-      font-family: Orbitron, system-ui, sans-serif;
-      font-size: 11px;
-      letter-spacing:.26em;
-      text-transform:uppercase;
-      color: rgba(255,211,106,.96);
-      margin-bottom: 8px;
-    }
-    h2{
-      font-family: "Playfair Display", serif;
-      font-style: italic;
-      font-size: 34px;
-      margin: 0 0 10px;
-      color: rgba(255,255,255,.97);
-    }
-    .sub{
-      max-width: 980px;
-      margin: 0 auto;
-      color: var(--muted);
-      font-size: 16px;
-      border-top: 1px solid rgba(255,255,255,.10);
-      padding-top: 12px;
-    }
+/* ===================== PROCESS ===================== */
+#process{background:var(--bg)}
+.process-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:3px}
+.process-step{background:var(--s2);border:1px solid rgba(201,169,97,.07);border-radius:10px;padding:22px 16px;position:relative;overflow:hidden;transition:border-color .3s}
+.process-step::before{content:"";position:absolute;inset-x:0;bottom:0;height:2px;background:linear-gradient(90deg,var(--g),var(--gl));transform:scaleX(0);transform-origin:left;transition:transform .4s}
+.process-step:hover{border-color:var(--gb)}
+.process-step:hover::before{transform:scaleX(1)}
+.process-num{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:rgba(201,169,97,.1);line-height:1;margin-bottom:10px}
+.process-name{font-family:'Playfair Display',serif;font-size:.95rem;font-style:italic;color:var(--t);margin-bottom:8px}
+.process-desc{font-size:.72rem;color:var(--m);line-height:1.6}
 
-    /* Hero */
-    .hero{
-      padding: 28px;
-      display:grid;
-      grid-template-columns: minmax(0, 1.55fr) minmax(0, 1fr);
-      gap: 18px;
-      align-items:stretch;
-    }
-    .hero-title{
-      font-family:"Playfair Display", serif;
-      font-style: italic;
-      font-size: 44px;
-      margin: 0 0 10px;
-      color: rgba(255,255,255,.98);
-      letter-spacing: .06em;
-      text-transform: uppercase;
-    }
-    .hero-line{
-      margin: 0 0 14px;
-      color: rgba(255,255,255,.84);
-      font-size: 18px;
-      max-width: 840px;
-    }
+/* ===================== ABOUT ===================== */
+#about{background:var(--s1)}
+.about-grid{display:grid;grid-template-columns:1fr 1fr;gap:64px;align-items:center}
+.about-text h2{font-family:'Playfair Display',serif;font-size:clamp(2rem,3vw,2.8rem);font-weight:700;line-height:1.15;margin-bottom:24px}
+.about-text h2 em{font-style:italic;color:var(--g)}
+.about-text p{font-size:.88rem;font-weight:300;color:var(--m);line-height:1.9;margin-bottom:16px}
+.about-markets{display:flex;gap:10px;flex-wrap:wrap;margin-top:28px}
+.market-badge{display:flex;align-items:center;gap:8px;padding:8px 16px;background:var(--gd);border:1px solid var(--gb);border-radius:24px;font-size:.72rem;font-weight:500;color:var(--g)}
+.about-stats-grid{display:grid;grid-template-columns:1fr 1fr;gap:14px}
+.about-stat{background:var(--s2);border:1px solid rgba(201,169,97,.1);border-radius:var(--r);padding:28px;position:relative;overflow:hidden}
+.about-stat::before{content:"";position:absolute;top:0;left:0;right:0;height:1px;background:linear-gradient(90deg,transparent,var(--gb),transparent)}
+.about-stat-val{font-family:'Playfair Display',serif;font-size:2.2rem;font-weight:700;color:var(--g);line-height:1;margin-bottom:6px}
+.about-stat-label{font-size:.7rem;color:var(--m2);letter-spacing:.08em;text-transform:uppercase;margin-bottom:8px}
+.about-stat-desc{font-size:.76rem;color:var(--m);line-height:1.6}
 
-    .hero-points{
-      display:grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 10px;
-      margin-top: 14px;
-    }
-    .mini{
-      border-radius: var(--r-lg);
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.045);
-      padding: 12px 12px;
-    }
-    .mini .t{
-      font-family: Orbitron, system-ui, sans-serif;
-      font-size: 11px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color: rgba(255,211,106,.96);
-      margin-bottom: 8px;
-    }
-    .mini ul{
-      margin:0;
-      padding-left: 16px;
-      color: rgba(255,255,255,.78);
-      font-size: 14px;
-    }
-    .mini li{ margin: 7px 0; }
+/* ===================== CONTACT ===================== */
+#contact{background:var(--bg);text-align:center}
+#contact::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 50% at 50% 50%,rgba(201,169,97,.05),transparent 65%);pointer-events:none}
+.contact-title{font-family:'Playfair Display',serif;font-size:clamp(2.4rem,5vw,4.2rem);font-weight:700;line-height:1.1;margin-bottom:20px}
+.contact-title em{font-style:italic;color:var(--g)}
+.contact-sub{font-size:.9rem;color:var(--m);max-width:480px;margin:0 auto 48px;line-height:1.9}
+.contact-links{display:flex;justify-content:center;gap:14px;flex-wrap:wrap;margin-bottom:56px}
+.contact-info{font-size:.8rem;color:var(--m2);line-height:2}
+.contact-info a{color:var(--g);text-decoration:none}
 
-    .cta-row{ display:flex; flex-wrap:wrap; gap: 10px; margin-top: 16px; }
+/* FOOTER */
+footer{background:var(--s1);border-top:1px solid rgba(201,169,97,.06);padding:40px 48px;display:flex;align-items:center;justify-content:space-between;flex-wrap:wrap;gap:16px}
+.footer-brand{font-family:'Playfair Display',serif;font-style:italic;color:var(--g);font-size:1rem}
+.footer-copy{font-size:.68rem;color:var(--m2)}
 
-    .btn{
-      border-radius: var(--pill);
-      padding: 10px 18px;
-      border: 1px solid transparent;
-      color: rgba(18,24,34,.92);
-      font-weight: 900;
-      text-decoration:none;
-      display:inline-flex;
-      align-items:center;
-      justify-content:center;
-      gap: 10px;
-      background:
-        radial-gradient(520px circle at var(--mx) var(--my), rgba(255,255,255,.65), transparent 60%) padding-box,
-        linear-gradient(135deg, rgba(255,211,106,.98), rgba(215,181,74,.82)) padding-box;
-      transition: transform .18s ease, filter .18s ease;
-    }
-    .btn:hover{ transform: translateY(-2px); filter: brightness(1.04); }
-
-    .btn-ghost{
-      border-radius: var(--pill);
-      padding: 10px 18px;
-      border: 1px solid rgba(255,211,106,.44);
-      color: rgba(255,255,255,.88);
-      font-weight: 900;
-      text-decoration:none;
-      background: rgba(255,255,255,.04);
-      transition: transform .18s ease, background .18s ease, border-color .18s ease;
-    }
-    .btn-ghost:hover{
-      transform: translateY(-2px);
-      background: rgba(255,211,106,.10);
-      border-color: rgba(255,211,106,.62);
-    }
-
-    /* Profile */
-    .profile{ padding: 18px; display:flex; flex-direction:column; gap: 12px; justify-content:space-between; }
-    .pf-top{ display:flex; gap: 12px; align-items:center; }
-    .avatar{
-      width: 76px; height: 76px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,211,106,.55);
-      background:
-        radial-gradient(circle at 35% 35%, rgba(255,255,255,.14), transparent 55%),
-        radial-gradient(circle at 50% 50%, rgba(255,211,106,.18), transparent 60%);
-      overflow:hidden;
-      flex: 0 0 auto;
-    }
-    .avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
-    .pf-name{
-      margin:0;
-      font-family:"Playfair Display", serif;
-      font-style: italic;
-      font-size: 20px;
-      color: rgba(255,255,255,.96);
-    }
-    .pf-loc{
-      font-family: Orbitron, system-ui, sans-serif;
-      font-size: 11px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      color: rgba(255,255,255,.64);
-      margin-top: 4px;
-    }
-
-    .chips{ display:flex; flex-wrap:wrap; gap: 8px; }
-    .chip{
-      font-size: 12px;
-      padding: 7px 10px;
-      border-radius: var(--pill);
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.04);
-      color: rgba(255,255,255,.80);
-      white-space:nowrap;
-    }
-
-    .contact{
-      font-size: 14px;
-      color: rgba(255,255,255,.78);
-      line-height:1.65;
-    }
-    .contact a{
-      color: rgba(255,211,106,.96);
-      text-decoration:none;
-      border-bottom: 1px solid transparent;
-    }
-    .contact a:hover{ border-bottom-color: rgba(255,211,106,.60); }
-
-    /* Grids */
-    .grid{ padding: 0 18px 22px; }
-
-    /* Services */
-    .services{
-      display:grid;
-      grid-template-columns: repeat(3, minmax(0,1fr));
-      gap: 12px;
-      margin-top: 12px;
-    }
-    .tile{
-      border-radius: var(--r-xl);
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.045);
-      padding: 14px 14px;
-      position:relative;
-      overflow:hidden;
-    }
-    .tile::before{
-      content:"";
-      position:absolute; inset:0;
-      background: radial-gradient(900px circle at var(--mx) var(--my), rgba(255,211,106,.16), transparent 58%);
-      opacity:.9;
-      pointer-events:none;
-    }
-    .tile > *{ position:relative; z-index:1; }
-
-    .tile-top{ display:flex; justify-content:space-between; align-items:center; gap:10px; margin-bottom: 10px; }
-    .step{
-      font-family: Orbitron, system-ui, sans-serif;
-      font-size: 11px;
-      letter-spacing:.20em;
-      text-transform:uppercase;
-      color: rgba(255,211,106,.96);
-    }
-    .tag{
-      font-family: Orbitron, system-ui, sans-serif;
-      font-size: 10px;
-      letter-spacing:.18em;
-      text-transform:uppercase;
-      padding: 6px 10px;
-      border-radius: var(--pill);
-      border: 1px solid rgba(255,211,106,.28);
-      background: rgba(255,255,255,.03);
-      color: rgba(255,255,255,.74);
-      white-space:nowrap;
-    }
-    .tile h3{
-      margin:0 0 8px;
-      font-family:"Playfair Display", serif;
-      font-style: italic;
-      font-size: 18px;
-      color: rgba(255,255,255,.96);
-    }
-    .tile p{
-      margin:0 0 10px;
-      color: rgba(255,255,255,.76);
-      font-size: 14px;
-    }
-    .tile ul{
-      margin:0;
-      padding-left: 16px;
-      color: rgba(255,255,255,.76);
-      font-size: 14px;
-    }
-    .tile li{ margin: 7px 0; }
-
-    /* Work */
-    .work{
-      display:grid;
-      grid-template-columns: repeat(2, minmax(0,1fr));
-      gap: 12px;
-      margin-top: 12px;
-    }
-    .work-card{
-      border-radius: var(--r-xl);
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.045);
-      padding: 16px;
-      position:relative;
-      overflow:hidden;
-    }
-    .work-card::before{
-      content:"";
-      position:absolute; inset:0;
-      background: radial-gradient(900px circle at var(--mx) var(--my), rgba(255,211,106,.14), transparent 58%);
-      pointer-events:none;
-    }
-    .work-card > *{ position:relative; z-index:1; }
-
-    .wk-kicker{
-      font-family: Orbitron, system-ui, sans-serif;
-      font-size: 11px;
-      letter-spacing:.20em;
-      text-transform:uppercase;
-      color: rgba(127,240,255,.76);
-      margin-bottom: 6px;
-    }
-    .wk-title{
-      font-family:"Playfair Display", serif;
-      font-style: italic;
-      font-size: 22px;
-      margin:0 0 8px;
-      color: rgba(255,255,255,.96);
-    }
-    .wk-body{
-      color: rgba(255,255,255,.76);
-      font-size: 14px;
-      margin:0 0 12px;
-    }
-
-    /* Process */
-    .flow{
-      margin-top: 12px;
-      display:flex;
-      gap: 14px;
-      padding: 10px 6px 20px;
-      overflow-x:auto;
-      scroll-snap-type: x mandatory;
-      border-top: 1px solid rgba(255,255,255,.10);
-    }
-    .flow::-webkit-scrollbar{ height: 10px; }
-    .flow::-webkit-scrollbar-thumb{ background: rgba(255,211,106,.22); border-radius: 999px; }
-    .flow::-webkit-scrollbar-track{ background: rgba(255,255,255,.06); border-radius: 999px; }
-
-    .stage{
-      scroll-snap-align:start;
-      min-width: 360px;
-      max-width: 360px;
-      border-radius: var(--r-xl);
-      border: 1px solid rgba(255,255,255,.12);
-      background: rgba(255,255,255,.045);
-      padding: 16px 16px 14px;
-      position:relative;
-      overflow:hidden;
-    }
-    .stage::before{
-      content:"";
-      position:absolute; inset:0;
-      background: radial-gradient(900px circle at var(--mx) var(--my), rgba(255,211,106,.16), transparent 58%);
-      pointer-events:none;
-    }
-    .stage > *{ position:relative; z-index:1; }
-
-    .stage-head{ display:flex; align-items:center; gap: 12px; margin-bottom: 10px; }
-
-    .accent{
-      width: 46px; height: 46px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,211,106,.46);
-      background:
-        radial-gradient(circle at 35% 35%, rgba(255,255,255,.22), transparent 45%),
-        radial-gradient(circle at 50% 50%, rgba(255,211,106,.96), rgba(215,181,74,.58) 48%, transparent 72%),
-        conic-gradient(from 220deg, rgba(127,240,255,.20), rgba(255,211,106,.78), rgba(127,240,255,.20));
-      animation: pulse 2.8s ease-in-out infinite;
-      position:relative;
-    }
-    .accent::after{
-      content:"";
-      position:absolute;
-      inset: 8px;
-      border-radius: 999px;
-      border: 1px solid rgba(255,211,106,.30);
-      background: radial-gradient(circle at 60% 40%, rgba(127,240,255,.14), transparent 60%);
-      animation: spin 6.2s linear infinite;
-      opacity:.95;
-    }
-    @keyframes pulse{ 0%{transform:scale(1)} 50%{transform:scale(1.08)} 100%{transform:scale(1)} }
-    @keyframes spin{ 0%{transform:rotate(0)} 100%{transform:rotate(360deg)} }
-
-    .sid{
-      font-family: Orbitron, system-ui, sans-serif;
-      font-size: 11px;
-      letter-spacing:.20em;
-      text-transform:uppercase;
-      color: rgba(255,211,106,.96);
-      margin-bottom: 2px;
-    }
-    .sname{
-      font-family:"Playfair Display", serif;
-      font-style: italic;
-      font-size: 18px;
-      color: rgba(255,255,255,.96);
-      margin:0;
-    }
-    .stage p{ margin:0 0 10px; color: rgba(255,255,255,.76); font-size:14px; }
-    .stage ul{ margin:0; padding-left:16px; color: rgba(255,255,255,.76); font-size:14px; }
-    .stage li{ margin:7px 0; }
-
-    /* Reveal */
-    .reveal{ opacity:0; transform: translateY(18px); transition: opacity .75s ease, transform .75s ease; }
-    .reveal.in{ opacity:1; transform: translateY(0); }
-
-    /* Responsive */
-    @media (max-width: 1100px){
-      .hero{ grid-template-columns: 1fr; }
-      .hero-points{ grid-template-columns: 1fr; }
-      .services{ grid-template-columns: 1fr; }
-      .work{ grid-template-columns: 1fr; }
-    }
-    @media (max-width: 720px){
-      .shell{ padding: 0 12px; }
-      .nav-inner{ flex-direction: column; align-items:flex-start; }
-      .hero{ padding: 20px; }
-      .stage{ min-width: 84vw; max-width: 84vw; }
-    }
-  </style>
+/* RESPONSIVE */
+@media(max-width:1100px){
+  .hero-inner{grid-template-columns:1fr;gap:40px}
+  .hero-card{max-width:420px}
+  .work-card-featured{grid-column:1/-1;grid-template-columns:1fr}
+  .work-card-featured-aside{border-left:none;border-top:1px solid rgba(201,169,97,.08)}
+  .work-card-featured .work-card-stats{grid-template-columns:repeat(2,1fr)}
+  .work-grid{grid-template-columns:1fr 1fr}
+  .services-grid{grid-template-columns:1fr 1fr}
+  .process-grid{grid-template-columns:repeat(3,1fr)}
+  .about-grid{grid-template-columns:1fr}
+  .stats-inner{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:720px){
+  nav{padding:16px 20px}nav.scrolled{padding:12px 20px}
+  .nav-links{display:none}
+  .hero{padding:100px 20px 60px}
+  section{padding:72px 20px}
+  .stats-strip{padding:40px 20px}
+  .stats-inner{grid-template-columns:repeat(2,1fr)}
+  .work-grid{grid-template-columns:1fr}
+  .services-grid{grid-template-columns:1fr}
+  .process-grid{grid-template-columns:repeat(2,1fr)}
+  .about-stats-grid{grid-template-columns:1fr}
+  footer{padding:28px 20px;flex-direction:column;text-align:center}
+  .cursor,.cursor-ring{display:none}body{cursor:auto}
+}
+</style>
 </head>
-
 <body>
-  <div class="hud" aria-hidden="true"></div>
 
-  <div class="shell">
-    <!-- NAV -->
-    <div class="nav">
-      <div class="nav-inner surface reveal">
-        <div class="brand">Performance Marketing Portfolio</div>
-        <div class="links">
-          <a class="link" href="#services">Services</a>
-          <a class="link" href="#work">Work</a>
-          <a class="link" href="#process">Process</a>
-          <a class="link" href="#contact">Contact</a>
+<div class="cursor" id="cur"></div>
+<div class="cursor-ring" id="ring"></div>
+<div class="ambient" aria-hidden="true">
+  <div class="ambient-1"></div>
+  <div class="ambient-2"></div>
+  <div class="ambient-3"></div>
+</div>
+
+<!-- NAV -->
+<nav id="nav">
+  <a class="nav-logo" href="#">Moe Abdelrazek</a>
+  <ul class="nav-links">
+    <li><a href="#work">Work</a></li>
+    <li><a href="#services">Services</a></li>
+    <li><a href="#process">Process</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-inner">
+    <div>
+      <div class="hero-eyebrow r">
+        <div class="hero-eyebrow-line"></div>
+        <span>Performance Marketing · Strategy · Content</span>
+      </div>
+      <h1 class="hero-name r d1">Mohamed<em>Abdelrazek</em></h1>
+      <p class="hero-title-line r d2">I don't just run campaigns — I build marketing systems that compound.</p>
+      <p class="hero-desc r d3">From brand-new accounts to scaled revenue engines. Across Egypt, Saudi Arabia, and the UAE — I build the full stack: content, acquisition, tracking, conversion, and monitoring. Every engagement is a system, not a sprint.</p>
+      <div class="hero-cta-row r d4">
+        <a class="btn-primary" href="#work">View Case Studies</a>
+        <a class="btn-outline" href="#contact">Work Together</a>
+        <a class="btn-outline" href="resume.html">Resume</a>
+      </div>
+    </div>
+    <div class="hero-card r d2">
+      <div class="hero-card-avatar">M</div>
+      <div class="hero-card-name">Mohamed Abdelrazek</div>
+      <div class="hero-card-loc">Alexandria, Egypt · Available Globally</div>
+      <div class="hero-card-stat-row">
+        <div class="hero-card-stat">
+          <div class="hero-card-stat-val">7+</div>
+          <div class="hero-card-stat-key">Industries</div>
+        </div>
+        <div class="hero-card-stat">
+          <div class="hero-card-stat-val">3</div>
+          <div class="hero-card-stat-key">Countries</div>
+        </div>
+        <div class="hero-card-stat">
+          <div class="hero-card-stat-val">5.2x</div>
+          <div class="hero-card-stat-key">Peak ROAS</div>
+        </div>
+        <div class="hero-card-stat">
+          <div class="hero-card-stat-val">1.8M+</div>
+          <div class="hero-card-stat-key">Reach / Campaign</div>
+        </div>
+      </div>
+      <div class="hero-card-chips">
+        <span class="chip">Google Ads</span>
+        <span class="chip">Meta</span>
+        <span class="chip">TikTok</span>
+        <span class="chip">LinkedIn</span>
+        <span class="chip">Shopify</span>
+        <span class="chip">GoHighLevel</span>
+        <span class="chip">GA4</span>
+        <span class="chip">n8n</span>
+      </div>
+      <div class="hero-card-contact">
+        <div><a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a></div>
+        <div><a href="https://wa.me/201017286384" target="_blank" rel="noopener">+20 101 728 6384</a></div>
+        <div><a href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank" rel="noopener">LinkedIn</a></div>
+      </div>
+    </div>
+  </div>
+  <div class="hero-scroll"><span>Scroll</span><div class="scroll-line"></div></div>
+</section>
+
+<!-- STATS STRIP -->
+<div class="stats-strip">
+  <div class="stats-inner">
+    <div class="stat-item r">
+      <span class="stat-num"><span data-count="7">0</span></span>
+      <span class="stat-label">Industries Served</span>
+    </div>
+    <div class="stat-item r d1">
+      <span class="stat-num"><span data-count="3">0</span></span>
+      <span class="stat-label">Countries · EG · KSA · UAE</span>
+    </div>
+    <div class="stat-item r d2">
+      <span class="stat-num"><span data-count="5.2">0</span><sup>x</sup></span>
+      <span class="stat-label">Peak ROAS Achieved</span>
+    </div>
+    <div class="stat-item r d3">
+      <span class="stat-num"><span data-count="1804">0</span><sup>%</sup></span>
+      <span class="stat-label">Highest Follower Growth</span>
+    </div>
+    <div class="stat-item r d4">
+      <span class="stat-num"><span data-count="8">0</span></span>
+      <span class="stat-label">Platforms Mastered</span>
+    </div>
+  </div>
+</div>
+
+<!-- WORK -->
+<section id="work">
+  <div class="container">
+    <div class="section-eyebrow r">
+      <div class="section-eyebrow-line"></div>
+      <span>Selected Work</span>
+      <div class="section-eyebrow-line"></div>
+    </div>
+    <h2 class="section-title r d1">Case Studies That <em>Prove the System</em></h2>
+    <p class="section-sub r d2">Every engagement built on a measurable foundation. Real markets, real platforms, real results.</p>
+
+    <div class="work-grid">
+
+      <!-- VP REALTY — FEATURED -->
+      <a class="work-card work-card-featured r" href="https://moeabdelrazek.github.io/VP/" target="_blank" rel="noopener" style="--card-c1:#c9a961;--card-c2:#4285f4">
+        <div class="work-card-header"></div>
+        <div class="work-card-body">
+          <div class="work-card-kicker">Real Estate · Riyadh, KSA</div>
+          <div class="work-card-title">VP Realty</div>
+          <div class="work-card-desc">Built a complete marketing operating system from zero — GoHighLevel CRM, five n8n automation workflows, ClickUp workspace, nine documented SOPs, a listing value book, and a full Canva content system. Not just marketing — infrastructure.</div>
+          <div class="work-card-stats">
+            <div class="work-card-stat"><div class="work-card-stat-val">131</div><div class="work-card-stat-key">Rental doors managed</div></div>
+            <div class="work-card-stat"><div class="work-card-stat-val">5</div><div class="work-card-stat-key">Live automations</div></div>
+            <div class="work-card-stat"><div class="work-card-stat-val">9</div><div class="work-card-stat-key">SOPs documented</div></div>
+            <div class="work-card-stat"><div class="work-card-stat-val">4</div><div class="work-card-stat-key">Airbnbs integrated</div></div>
+          </div>
+          <div class="work-card-tag-row">
+            <span class="work-tag">GoHighLevel</span><span class="work-tag">n8n</span><span class="work-tag">ClickUp</span><span class="work-tag">CRM</span><span class="work-tag">Automation</span>
+          </div>
+          <div class="work-card-cta">Open Case Study <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+        <div class="work-card-featured-aside">
+          <div>
+            <div class="aside-label">System Built</div>
+            <ul class="aside-list">
+              <li>Full GoHighLevel CRM with pipelines and calendar sync</li>
+              <li>AI lead classification and MLS automation via n8n</li>
+              <li>Airbnb SMS and appointment booking automations</li>
+              <li>16-folder ClickUp marketing operations workspace</li>
+              <li>Listing value book that closes sellers</li>
+            </ul>
+          </div>
+        </div>
+      </a>
+
+      <!-- HAKSOSS -->
+      <a class="work-card r d1" href="https://moeabdelrazek.github.io/Haksoss_Full_Campaign/" target="_blank" rel="noopener" style="--card-c1:#c9a961;--card-c2:#e2c97e">
+        <div class="work-card-header"></div>
+        <div class="work-card-body">
+          <div class="work-card-kicker">Specialty Café · Alexandria, Egypt</div>
+          <div class="work-card-title">Haksoss Café</div>
+          <div class="work-card-desc">A full 12-month Instagram and Facebook campaign for one of Alexandria's most distinguished specialty cafés — built on consistent storytelling and a deep understanding of the local audience.</div>
+          <div class="work-card-stats">
+            <div class="work-card-stat"><div class="work-card-stat-val">253%</div><div class="work-card-stat-key">IG growth</div></div>
+            <div class="work-card-stat"><div class="work-card-stat-val">1.6M</div><div class="work-card-stat-key">Annual reach</div></div>
+          </div>
+          <div class="work-card-tag-row">
+            <span class="work-tag">Instagram</span><span class="work-tag">Facebook</span><span class="work-tag">Content</span><span class="work-tag">Reels</span>
+          </div>
+          <div class="work-card-cta">Open Case Study <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <!-- FELUKA -->
+      <a class="work-card r d2" href="https://moeabdelrazek.github.io/Feluka_Campaign/" target="_blank" rel="noopener" style="--card-c1:#1877f2;--card-c2:#69c9d0">
+        <div class="work-card-header"></div>
+        <div class="work-card-body">
+          <div class="work-card-kicker">Seafood Restaurant · Riyadh, KSA</div>
+          <div class="work-card-title">Feluka Restaurant</div>
+          <div class="work-card-desc">9-month campaign across Instagram, Facebook, and a TikTok channel launched from zero. Premium seafood and Lebanese cuisine in Riyadh's most competitive dining district.</div>
+          <div class="work-card-stats">
+            <div class="work-card-stat"><div class="work-card-stat-val">464%</div><div class="work-card-stat-key">IG growth</div></div>
+            <div class="work-card-stat"><div class="work-card-stat-val">1.8M</div><div class="work-card-stat-key">Total reach</div></div>
+          </div>
+          <div class="work-card-tag-row">
+            <span class="work-tag">Instagram</span><span class="work-tag">Facebook</span><span class="work-tag">TikTok</span>
+          </div>
+          <div class="work-card-cta">Open Case Study <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <!-- KIMPTON -->
+      <a class="work-card r d3" href="https://moeabdelrazek.github.io/Kimpton-KAFD/" target="_blank" rel="noopener" style="--card-c1:#c9a961;--card-c2:#0077b5">
+        <div class="work-card-header"></div>
+        <div class="work-card-body">
+          <div class="work-card-kicker">Luxury Hotel · KAFD, Riyadh</div>
+          <div class="work-card-title">Kimpton KAFD</div>
+          <div class="work-card-desc">Ongoing campaign for the first Kimpton hotel in the Middle East. Managing Instagram, Google Ads Performance Max, and LinkedIn — building a brand from absolute zero in one of the Gulf's most competitive markets.</div>
+          <div class="work-card-stats">
+            <div class="work-card-stat"><div class="work-card-stat-val">4.8x</div><div class="work-card-stat-key">PMax ROAS</div></div>
+            <div class="work-card-stat"><div class="work-card-stat-val">874K</div><div class="work-card-stat-key">SAR revenue</div></div>
+          </div>
+          <div class="work-card-tag-row">
+            <span class="work-tag">Google Ads</span><span class="work-tag">Instagram</span><span class="work-tag">LinkedIn</span>
+          </div>
+          <div class="work-card-cta">Open Case Study <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <!-- MORY GYM -->
+      <a class="work-card r d4" href="https://moeabdelrazek.github.io/mory-gym-campaign/" target="_blank" rel="noopener" style="--card-c1:#ef4444;--card-c2:#c9a961">
+        <div class="work-card-header"></div>
+        <div class="work-card-body">
+          <div class="work-card-kicker">Fitness · Membership · Egypt</div>
+          <div class="work-card-title">Mory Gym</div>
+          <div class="work-card-desc">Direct-response acquisition campaign built around a clear membership offer, conversion-optimized creative, and a structured follow-up rhythm designed to close leads who don't convert on first touch.</div>
+          <div class="work-card-stats">
+            <div class="work-card-stat"><div class="work-card-stat-val">IG+FB</div><div class="work-card-stat-key">Platforms</div></div>
+            <div class="work-card-stat"><div class="work-card-stat-val">Lead Gen</div><div class="work-card-stat-key">Strategy</div></div>
+          </div>
+          <div class="work-card-tag-row">
+            <span class="work-tag">Meta Ads</span><span class="work-tag">Content</span><span class="work-tag">Lead Gen</span>
+          </div>
+          <div class="work-card-cta">Open Case Study <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <!-- RAFIKI -->
+      <a class="work-card r d5" href="https://moeabdelrazek.github.io/Rafiki-Campaign/" target="_blank" rel="noopener" style="--card-c1:#22c55e;--card-c2:#c9a961">
+        <div class="work-card-header"></div>
+        <div class="work-card-body">
+          <div class="work-card-kicker">Veterinary Hospital · New Cairo</div>
+          <div class="work-card-title">Rafiki Pet Hospital</div>
+          <div class="work-card-desc">Full-year IG and Facebook campaign for New Cairo's leading pet and exotic animal hospital. Education-first content system built to make Rafiki the first name Cairo pet owners think of.</div>
+          <div class="work-card-stats">
+            <div class="work-card-stat"><div class="work-card-stat-val">457%</div><div class="work-card-stat-key">IG growth</div></div>
+            <div class="work-card-stat"><div class="work-card-stat-val">1.2M</div><div class="work-card-stat-key">Annual reach</div></div>
+          </div>
+          <div class="work-card-tag-row">
+            <span class="work-tag">Instagram</span><span class="work-tag">Facebook</span><span class="work-tag">Education</span>
+          </div>
+          <div class="work-card-cta">Open Case Study <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+      <!-- TECHNOMOUNTS -->
+      <a class="work-card r d6" href="https://moeabdelrazek.github.io/TechnoMounts/" target="_blank" rel="noopener" style="--card-c1:#4285f4;--card-c2:#34a853" style="grid-column:1/-1">
+        <div class="work-card-header"></div>
+        <div class="work-card-body">
+          <div class="work-card-kicker">E-commerce Hardware · UAE</div>
+          <div class="work-card-title">TechnoMounts</div>
+          <div class="work-card-desc">Shopify optimization and Google Shopping campaigns. Built from conversion-ready store foundation through scaled revenue — 5.2x ROAS on Shopping, 74% YoY revenue growth, and feed-quality-driven performance improvement.</div>
+          <div class="work-card-stats">
+            <div class="work-card-stat"><div class="work-card-stat-val">5.2x</div><div class="work-card-stat-key">Shopping ROAS</div></div>
+            <div class="work-card-stat"><div class="work-card-stat-val">312K</div><div class="work-card-stat-key">AED revenue</div></div>
+          </div>
+          <div class="work-card-tag-row">
+            <span class="work-tag">Google Shopping</span><span class="work-tag">Shopify</span><span class="work-tag">PMax</span><span class="work-tag">SEO</span>
+          </div>
+          <div class="work-card-cta">Open Case Study <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M5 12h14M12 5l7 7-7 7"/></svg></div>
+        </div>
+      </a>
+
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="container">
+    <div class="section-eyebrow r">
+      <div class="section-eyebrow-line"></div>
+      <span>Services</span>
+      <div class="section-eyebrow-line"></div>
+    </div>
+    <h2 class="section-title r d1">What I <em>Build</em> For You</h2>
+    <div class="gold-divider r d2"></div>
+    <div class="services-grid">
+      <div class="service-card r d1">
+        <span class="service-num">01</span>
+        <div class="service-title">Social Media Management</div>
+        <div class="service-desc">Full content creation, scheduling, and community management across Instagram, Facebook, TikTok, and LinkedIn. Every piece designed for the platform and the audience.</div>
+        <div class="service-tools"><span class="tool-tag">Instagram</span><span class="tool-tag">Facebook</span><span class="tool-tag">TikTok</span><span class="tool-tag">LinkedIn</span></div>
+      </div>
+      <div class="service-card r d2">
+        <span class="service-num">02</span>
+        <div class="service-title">Google Ads &amp; Shopping</div>
+        <div class="service-desc">Search, Shopping, and Performance Max campaigns structured for control and scale. Feed quality, Smart Bidding strategy, and conversion value rules aligned to your highest-margin products.</div>
+        <div class="service-tools"><span class="tool-tag">Google Ads</span><span class="tool-tag">PMax</span><span class="tool-tag">Shopping</span><span class="tool-tag">GA4</span></div>
+      </div>
+      <div class="service-card r d3">
+        <span class="service-num">03</span>
+        <div class="service-title">Shopify Optimization</div>
+        <div class="service-desc">Store audits, conversion rate improvement, mobile checkout redesign, product page optimization, and speed work — building the foundation before scaling ad spend.</div>
+        <div class="service-tools"><span class="tool-tag">Shopify</span><span class="tool-tag">CRO</span><span class="tool-tag">GTM</span><span class="tool-tag">GA4</span></div>
+      </div>
+      <div class="service-card r d4">
+        <span class="service-num">04</span>
+        <div class="service-title">CRM &amp; Marketing Automation</div>
+        <div class="service-desc">GoHighLevel pipelines, n8n workflows, ClickUp systems, and documented SOPs. Marketing that runs without you — with measurable handoff points and built-in accountability.</div>
+        <div class="service-tools"><span class="tool-tag">GoHighLevel</span><span class="tool-tag">n8n</span><span class="tool-tag">ClickUp</span><span class="tool-tag">Zapier</span></div>
+      </div>
+      <div class="service-card r d5">
+        <span class="service-num">05</span>
+        <div class="service-title">SEO &amp; Organic Growth</div>
+        <div class="service-desc">Technical SEO, intent-aligned content, structured data, and a Looker Studio dashboard that connects organic and paid performance in one view. Visibility that compounds.</div>
+        <div class="service-tools"><span class="tool-tag">GSC</span><span class="tool-tag">Looker Studio</span><span class="tool-tag">Schema</span><span class="tool-tag">On-Page</span></div>
+      </div>
+      <div class="service-card r d6">
+        <span class="service-num">06</span>
+        <div class="service-title">Strategy &amp; Reporting</div>
+        <div class="service-desc">Market research, competitor analysis, funnel architecture, and weekly reporting rhythms. The full picture — where you are, what's working, and what moves next.</div>
+        <div class="service-tools"><span class="tool-tag">GA4</span><span class="tool-tag">GTM</span><span class="tool-tag">Looker Studio</span><span class="tool-tag">Research</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- PROCESS -->
+<section id="process">
+  <div class="container">
+    <div class="section-eyebrow r">
+      <div class="section-eyebrow-line"></div>
+      <span>Process</span>
+      <div class="section-eyebrow-line"></div>
+    </div>
+    <h2 class="section-title r d1">How Every <em>Engagement Works</em></h2>
+    <p class="section-sub r d2">A clear sequence from evidence to stable, compounding performance. No black boxes.</p>
+    <div class="process-grid">
+      <div class="process-step r d1">
+        <div class="process-num">01</div>
+        <div class="process-name">Evidence &amp; Baseline</div>
+        <div class="process-desc">Demand mapping, competitor analysis, current tracking audit. Decide what matters before building anything.</div>
+      </div>
+      <div class="process-step r d2">
+        <div class="process-num">02</div>
+        <div class="process-name">Positioning &amp; Offer</div>
+        <div class="process-desc">Clear message, defined audience, offer structure, and proof plan. The foundation everything else is built on.</div>
+      </div>
+      <div class="process-step r d3">
+        <div class="process-num">03</div>
+        <div class="process-name">Tracking &amp; Reporting</div>
+        <div class="process-desc">GA4, GTM, conversion events, UTMs, and dashboards. Performance is only real if it's readable and trusted.</div>
+      </div>
+      <div class="process-step r d4">
+        <div class="process-num">04</div>
+        <div class="process-name">Content Engine</div>
+        <div class="process-desc">Hooks, angles, formats, and a refresh cadence. Creative that aligns to demand and addresses real objections.</div>
+      </div>
+      <div class="process-step r d5">
+        <div class="process-num">05</div>
+        <div class="process-name">Acquisition Launch</div>
+        <div class="process-desc">Campaigns built for control before scale. Budget guardrails, query management, and bidding strategy aligned to value.</div>
+      </div>
+      <div class="process-step r d6">
+        <div class="process-num">06</div>
+        <div class="process-name">Monitor &amp; Iterate</div>
+        <div class="process-desc">Weekly rhythm, documented scale and stop rules, and a clear iteration loop. The system protects itself.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="container">
+    <div class="about-grid">
+      <div class="about-text r">
+        <h2>Performance Marketing<em>Built on Systems,</em> Not Luck</h2>
+        <p>I work across the full marketing stack — not because I have to, but because isolated tactics don't compound. When the content, the ads, the tracking, and the CRM all speak the same language, results multiply instead of add.</p>
+        <p>My clients range from boutique cafés in Alexandria to luxury hotels in KAFD Riyadh to e-commerce hardware brands serving the UAE. The markets are different. The discipline is the same.</p>
+        <p>Every engagement begins with evidence. It ends with a documented, scalable system that works whether I'm in the room or not.</p>
+        <div class="about-markets">
+          <span class="market-badge">🇪🇬 Egypt</span>
+          <span class="market-badge">🇸🇦 Saudi Arabia</span>
+          <span class="market-badge">🇦🇪 UAE</span>
+        </div>
+      </div>
+      <div class="about-stats-grid r d1">
+        <div class="about-stat">
+          <div class="about-stat-val">5.2x</div>
+          <div class="about-stat-label">Peak ROAS</div>
+          <div class="about-stat-desc">Google Shopping campaign for TechnoMounts UAE — from 2.8x to 5.2x through feed quality and Smart Bidding.</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-val">1,804%</div>
+          <div class="about-stat-label">Follower Growth</div>
+          <div class="about-stat-desc">Kimpton KAFD Riyadh — from 150 at launch to 2,856 in 11 months. Entirely organic.</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-val">874K</div>
+          <div class="about-stat-label">SAR Attributed Revenue</div>
+          <div class="about-stat-desc">Google Ads Performance Max for Kimpton KAFD over the campaign window.</div>
+        </div>
+        <div class="about-stat">
+          <div class="about-stat-val">$0</div>
+          <div class="about-stat-label">Wasted on Vanity</div>
+          <div class="about-stat-desc">Every metric tracked is tied to a business outcome. No follower counts without context. No reach without conversion.</div>
         </div>
       </div>
     </div>
-
-    <!-- HERO -->
-    <section class="surface hero reveal" id="top">
-      <div>
-        <div class="kicker">END TO END MARKETING SYSTEMS</div>
-        <h1 class="hero-title">Mohamed Abdelrazek</h1>
-        <p class="hero-line">
-          I build one connected engine: market research, content creation, acquisition, SEO, tracking, conversion, stabilization, and monitoring.
-          Clear structure, fast decisions, and measurable outcomes.
-        </p>
-
-        <div class="cta-row">
-          <a class="btn" href="#work">View case studies</a>
-          <a class="btn-ghost" href="#services">See services</a>
-          <a class="btn-ghost" href="#process">View process</a>
-        </div>
-
-        <div class="hero-points">
-          <div class="mini">
-            <div class="t">What I deliver</div>
-            <ul>
-              <li>Landing page map tied to intent</li>
-              <li>Tracking plan and dashboards</li>
-              <li>Acquisition architecture built for scale</li>
-            </ul>
-          </div>
-          <div class="mini">
-            <div class="t">How I protect performance</div>
-            <ul>
-              <li>Conversion integrity validation</li>
-              <li>Weekly monitoring rhythm</li>
-              <li>Documented scale and stop rules</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-
-      <aside class="surface profile">
-        <div class="pf-top">
-          <div class="avatar">
-            <img src="profile.jpg" alt="Portrait of Mohamed Abdelrazek">
-          </div>
-          <div>
-            <p class="pf-name">Mohamed Abdelrazek</p>
-            <div class="pf-loc">Alexandria, Egypt</div>
-          </div>
-        </div>
-
-        <div class="chips">
-          <span class="chip">Google Ads</span>
-          <span class="chip">GA4</span>
-          <span class="chip">GTM</span>
-          <span class="chip">Shopify</span>
-          <span class="chip">SEO</span>
-          <span class="chip">Dashboards</span>
-        </div>
-
-        <div class="contact">
-          <div><strong>Email</strong>: <a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a></div>
-          <div><strong>WhatsApp</strong>: <a href="https://wa.me/201017286384" target="_blank" rel="noopener">+20 101 728 6384</a></div>
-          <div><strong>LinkedIn</strong>: <a href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank" rel="noopener">linkedin.com/in/moe-abdelrazek</a></div>
-        </div>
-
-        <div class="cta-row">
-          <a class="btn" href="#contact">Discuss a project</a>
-          <a class="btn-ghost" href="resume.html">Open resume</a>
-        </div>
-      </aside>
-    </section>
-
-    <!-- SERVICES -->
-    <section class="section surface reveal" id="services">
-      <div class="head">
-        <div class="kicker">SERVICES</div>
-        <h2>End to end, measurable delivery</h2>
-        <div class="sub">Clean scope, clear outputs, and a stable operating model. Content creation is a core layer.</div>
-      </div>
-
-      <div class="grid">
-        <div class="services">
-          <div class="tile">
-            <div class="tile-top"><div class="step">01</div><div class="tag">Research</div></div>
-            <h3>Market and competitor research</h3>
-            <p>Demand, positioning signals, and conversion friction.</p>
-            <ul>
-              <li>Intent mapping</li>
-              <li>Competitor offers and objections</li>
-            </ul>
-          </div>
-
-          <div class="tile">
-            <div class="tile-top"><div class="step">02</div><div class="tag">Strategy</div></div>
-            <h3>Funnel and landing pages</h3>
-            <p>Message match from query to page to action.</p>
-            <ul>
-              <li>Offer structure</li>
-              <li>Landing page plan</li>
-            </ul>
-          </div>
-
-          <div class="tile">
-            <div class="tile-top"><div class="step">03</div><div class="tag">Tracking</div></div>
-            <h3>Measurement and dashboards</h3>
-            <p>Events, goals, UTMs, validation, reporting.</p>
-            <ul>
-              <li>GA4 and GTM setup</li>
-              <li>Decision dashboards</li>
-            </ul>
-          </div>
-
-          <div class="tile">
-            <div class="tile-top"><div class="step">04</div><div class="tag">Content</div></div>
-            <h3>Content creation system</h3>
-            <p>Creative tied to demand and objections, with a refresh cadence.</p>
-            <ul>
-              <li>Hooks and angles library</li>
-              <li>Creative refresh plan</li>
-            </ul>
-          </div>
-
-          <div class="tile">
-            <div class="tile-top"><div class="step">05</div><div class="tag">Acquisition</div></div>
-            <h3>Paid acquisition</h3>
-            <p>Search, Shopping, Performance Max structure built for control.</p>
-            <ul>
-              <li>Campaign architecture</li>
-              <li>Query control rules</li>
-            </ul>
-          </div>
-
-          <div class="tile">
-            <div class="tile-top"><div class="step">06</div><div class="tag">Monitoring</div></div>
-            <h3>Stabilize and monitor</h3>
-            <p>Guardrails, weekly rhythm, scale and stop rules.</p>
-            <ul>
-              <li>Integrity checks</li>
-              <li>Iteration loop</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- WORK -->
-    <section class="section surface reveal" id="work">
-      <div class="head">
-        <div class="kicker">SELECTED WORK</div>
-        <h2>Case studies</h2>
-        <div class="sub">Short, practical, and built as systems. Click to open.</div>
-      </div>
-
-      <div class="grid">
-        <div class="work">
-          <div class="work-card">
-            <div class="wk-kicker">Ecommerce hardware | UAE</div>
-            <div class="wk-title">TechnoMounts</div>
-            <div class="wk-body">Performance-ready structure: pages, tracking, SEO baseline, and acquisition prep.</div>
-            <a class="btn" href="https://moeabdelrazek.github.io/TechnoMounts/" target="_blank" rel="noopener">Open case study</a>
-          </div>
-
-          <div class="work-card">
-            <div class="wk-kicker">Hospitality | Loyalty economics</div>
-            <div class="wk-title">Haksoss Cafe</div>
-            <div class="wk-body">Launch and repeat behavior system focused on measurable retention drivers.</div>
-            <a class="btn" href="https://moeabdelrazek.github.io/Haksoss_Full_Campaign/" target="_blank" rel="noopener">Open case study</a>
-          </div>
-
-          <div class="work-card">
-            <div class="wk-kicker">Healthcare | Appointments</div>
-            <div class="wk-title">Rafiki Pet Hospital</div>
-            <div class="wk-body">Conversion path designed around booked outcomes and operational follow-through.</div>
-            <a class="btn" href="https://moeabdelrazek.github.io/Rafiki-Campaign/" target="_blank" rel="noopener">Open case study</a>
-          </div>
-
-          <div class="work-card">
-            <div class="wk-kicker">Fitness | Membership</div>
-            <div class="wk-title">Mory Gym</div>
-            <div class="wk-body">Direct-response acquisition with clear offer structure and follow-up rhythm.</div>
-            <a class="btn" href="https://moeabdelrazek.github.io/mory-gym-campaign/" target="_blank" rel="noopener">Open case study</a>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- PROCESS -->
-    <section class="section surface reveal" id="process">
-      <div class="head">
-        <div class="kicker">PROCESS</div>
-        <h2>How I build and run the system</h2>
-        <div class="sub">A clear sequence from evidence to stable performance. Scroll horizontally.</div>
-      </div>
-
-      <div class="grid">
-        <div class="flow">
-          <div class="stage">
-            <div class="stage-head">
-              <div class="accent" aria-hidden="true"></div>
-              <div>
-                <div class="sid">Step 01</div>
-                <p class="sname">Evidence and baseline</p>
-              </div>
-            </div>
-            <p>Decide what matters before building.</p>
-            <ul>
-              <li>Demand and intent mapping</li>
-              <li>Competitor offers and objections</li>
-            </ul>
-          </div>
-
-          <div class="stage">
-            <div class="stage-head">
-              <div class="accent" aria-hidden="true"></div>
-              <div>
-                <div class="sid">Step 02</div>
-                <p class="sname">Positioning and offer</p>
-              </div>
-            </div>
-            <p>Translate evidence into a clear stance.</p>
-            <ul>
-              <li>Primary segment and exclusions</li>
-              <li>Offer structure and proof plan</li>
-            </ul>
-          </div>
-
-          <div class="stage">
-            <div class="stage-head">
-              <div class="accent" aria-hidden="true"></div>
-              <div>
-                <div class="sid">Step 03</div>
-                <p class="sname">Tracking and reporting</p>
-              </div>
-            </div>
-            <p>Make performance readable and trusted.</p>
-            <ul>
-              <li>GA4, GTM, conversions</li>
-              <li>Dashboards for decisions</li>
-            </ul>
-          </div>
-
-          <div class="stage">
-            <div class="stage-head">
-              <div class="accent" aria-hidden="true"></div>
-              <div>
-                <div class="sid">Step 04</div>
-                <p class="sname">Content and creative</p>
-              </div>
-            </div>
-            <p>Build a repeatable content engine.</p>
-            <ul>
-              <li>Hooks, angles, proof assets</li>
-              <li>Refresh cadence</li>
-            </ul>
-          </div>
-
-          <div class="stage">
-            <div class="stage-head">
-              <div class="accent" aria-hidden="true"></div>
-              <div>
-                <div class="sid">Step 05</div>
-                <p class="sname">Acquisition build and launch</p>
-              </div>
-            </div>
-            <p>Deploy controlled campaigns built to scale.</p>
-            <ul>
-              <li>Search and Shopping structure</li>
-              <li>Budget and query guardrails</li>
-            </ul>
-          </div>
-
-          <div class="stage">
-            <div class="stage-head">
-              <div class="accent" aria-hidden="true"></div>
-              <div>
-                <div class="sid">Step 06</div>
-                <p class="sname">Stabilization and monitoring</p>
-              </div>
-            </div>
-            <p>Protect performance and iterate.</p>
-            <ul>
-              <li>Weekly monitoring rhythm</li>
-              <li>Scale and stop rules</li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CONTACT -->
-    <section class="section surface reveal" id="contact">
-      <div class="head">
-        <div class="kicker">CONTACT</div>
-        <h2>Let’s discuss your project</h2>
-        <div class="sub">Share your market, offer, and main conversion action. I will reply with a clear build plan.</div>
-
-        <div class="cta-row" style="justify-content:center; margin-top:14px;">
-          <a class="btn" href="mailto:moe-abdelrazek@outlook.com">Email</a>
-          <a class="btn-ghost" href="https://wa.me/201017286384" target="_blank" rel="noopener">WhatsApp</a>
-          <a class="btn-ghost" href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank" rel="noopener">LinkedIn</a>
-        </div>
-      </div>
-    </section>
   </div>
+</section>
 
-  <script>
-    (function(){
-      // Mouse glow
-      document.addEventListener("mousemove", function(e){
-        document.documentElement.style.setProperty("--cx", e.clientX + "px");
-        document.documentElement.style.setProperty("--cy", e.clientY + "px");
-      });
+<!-- CONTACT -->
+<section id="contact">
+  <div class="container">
+    <div class="section-eyebrow r">
+      <div class="section-eyebrow-line"></div>
+      <span>Contact</span>
+      <div class="section-eyebrow-line"></div>
+    </div>
+    <h2 class="contact-title r d1">Let's Build<em>Something Real</em></h2>
+    <p class="contact-sub r d2">Tell me your market, your offer, and your main conversion action. I'll reply with a clear scope and a build plan — no fluff, no proposals that take three weeks.</p>
+    <div class="contact-links r d3">
+      <a class="btn-primary" href="mailto:moe-abdelrazek@outlook.com">Send Email</a>
+      <a class="btn-outline" href="https://wa.me/201017286384" target="_blank" rel="noopener">WhatsApp</a>
+      <a class="btn-outline" href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank" rel="noopener">LinkedIn</a>
+    </div>
+    <div class="contact-info r d4">
+      <div><a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a></div>
+      <div><a href="https://wa.me/201017286384">+20 101 728 6384</a></div>
+      <div><a href="https://www.linkedin.com/in/moe-abdelrazek/">linkedin.com/in/moe-abdelrazek</a></div>
+    </div>
+  </div>
+</section>
 
-      // Local glow on hover for surfaces and cards
-      function bindGlow(sel){
-        document.querySelectorAll(sel).forEach(function(el){
-          el.addEventListener("mousemove", function(e){
-            const r = el.getBoundingClientRect();
-            el.style.setProperty("--mx", (e.clientX - r.left) + "px");
-            el.style.setProperty("--my", (e.clientY - r.top) + "px");
-          });
-        });
-      }
-      bindGlow(".surface, .tile, .work-card, .stage, .btn, .btn-ghost, .nav-inner");
+<!-- FOOTER -->
+<footer>
+  <div class="footer-brand">Mohamed Abdelrazek</div>
+  <div class="footer-copy">Performance Marketing · Egypt · KSA · UAE</div>
+  <div class="footer-copy">Built with precision.</div>
+</footer>
 
-      // Reveal on scroll
-      const io = new IntersectionObserver((entries)=>{
-        entries.forEach((en)=>{
-          if(en.isIntersecting){ en.target.classList.add("in"); }
-        });
-      }, { threshold: 0.12 });
+<script>
+/* CURSOR */
+const cur=document.getElementById('cur'),ring=document.getElementById('ring')
+let mx=0,my=0,rx=0,ry=0
+document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'})
+;(function lerp(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(lerp)})()
+document.addEventListener('mousedown',()=>cur.classList.add('active'))
+document.addEventListener('mouseup',()=>cur.classList.remove('active'))
 
-      document.querySelectorAll(".reveal").forEach(el => io.observe(el));
-    })();
-  </script>
+/* NAV */
+window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',scrollY>60)},{passive:true})
+
+/* REVEAL */
+const io=new IntersectionObserver(e=>e.forEach(v=>{if(v.isIntersecting)v.target.classList.add('on')}),{threshold:.07})
+document.querySelectorAll('.r').forEach(el=>io.observe(el))
+
+/* COUNTERS */
+function animateCount(el){
+  const raw=el.dataset.count,target=+raw
+  const isDecimal=String(target).includes('.')
+  const dur=1600,start=performance.now()
+  const step=now=>{
+    const p=Math.min((now-start)/dur,1),ease=1-Math.pow(1-p,4),val=ease*target
+    el.textContent=isDecimal?val.toFixed(1):Math.round(val).toLocaleString()
+    if(p<1)requestAnimationFrame(step)
+  }
+  requestAnimationFrame(step)
+}
+const cio=new IntersectionObserver(e=>e.forEach(v=>{if(v.isIntersecting){v.target.querySelectorAll('[data-count]').forEach(animateCount);cio.unobserve(v.target)}}),{threshold:.4})
+document.querySelectorAll('.stat-item').forEach(el=>cio.observe(el))
+</script>
 </body>
 </html>

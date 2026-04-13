@@ -1,0 +1,352 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Creatives — Mohamed Abdelrazek</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Poppins:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#060608;--s1:#0d0d10;--s2:#13131a;--s3:#1a1a24;
+  --g:#c9a961;--gl:#e2c97e;--gd:rgba(201,169,97,.12);--gb:rgba(201,169,97,.28);
+  --t:#f5f5f0;--m:rgba(245,245,240,.52);--m2:rgba(245,245,240,.28);
+}
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--t);overflow-x:hidden}
+body::before{content:"";position:fixed;inset:0;z-index:0;pointer-events:none;opacity:.02;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='300' height='300'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='300' height='300' filter='url(%23n)'/%3E%3C/svg%3E")}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-track{background:var(--s1)}
+::-webkit-scrollbar-thumb{background:var(--g);border-radius:2px}
+
+/* NAV */
+nav{position:sticky;top:0;z-index:100;background:rgba(6,6,8,.92);backdrop-filter:blur(20px);border-bottom:1px solid rgba(201,169,97,.08);padding:16px 40px;display:flex;align-items:center;justify-content:space-between}
+.nav-back{display:flex;align-items:center;gap:10px;font-size:.72rem;font-weight:500;letter-spacing:.1em;text-transform:uppercase;color:var(--m);text-decoration:none;transition:color .2s}
+.nav-back:hover{color:var(--g)}
+.nav-back svg{transition:transform .2s}
+.nav-back:hover svg{transform:translateX(-3px)}
+.nav-title{font-family:'Playfair Display',serif;font-style:italic;font-size:1.05rem;color:var(--g)}
+.nav-count{font-size:.68rem;color:var(--m2);letter-spacing:.1em;text-transform:uppercase}
+
+/* HERO */
+.page-hero{padding:64px 40px 48px;text-align:center;position:relative;overflow:hidden}
+.page-hero::before{content:"";position:absolute;inset:0;background:radial-gradient(ellipse 70% 60% at 50% 0%,rgba(201,169,97,.05),transparent 65%)}
+.page-hero-label{font-size:.66rem;font-weight:600;letter-spacing:.22em;text-transform:uppercase;color:var(--g);margin-bottom:14px}
+.page-hero h1{font-family:'Playfair Display',serif;font-size:clamp(2.8rem,6vw,5rem);font-weight:700;line-height:1.05;margin-bottom:14px}
+.page-hero h1 em{font-style:italic;color:var(--g)}
+.page-hero-sub{font-size:.88rem;color:var(--m);max-width:440px;margin:0 auto}
+.gold-line{width:40px;height:1px;background:linear-gradient(90deg,transparent,var(--g),transparent);margin:20px auto}
+
+/* SECTION HEADS */
+.section-head{padding:40px 40px 20px;display:flex;align-items:center;gap:16px}
+.section-head-line{flex:1;height:1px;background:rgba(201,169,97,.1)}
+.section-head-label{font-size:.62rem;font-weight:600;letter-spacing:.2em;text-transform:uppercase;color:var(--g);white-space:nowrap}
+
+/* MASONRY GRID */
+.media-grid{
+  columns:4 280px;
+  column-gap:10px;
+  padding:0 40px 40px;
+}
+.media-card{
+  break-inside:avoid;
+  margin-bottom:10px;
+  background:var(--s2);
+  border:1px solid rgba(201,169,97,.08);
+  border-radius:12px;
+  overflow:hidden;
+  transition:border-color .3s,transform .3s;
+  display:block;
+}
+.media-card:hover{border-color:rgba(201,169,97,.25);transform:translateY(-3px)}
+
+/* Photo cards */
+.media-card img{width:100%;height:auto;display:block;vertical-align:bottom}
+
+/* Embed clip cards */
+.embed-clip{overflow:hidden;position:relative}
+.embed-clip iframe{transform:translateY(-82px)!important;margin-bottom:-82px!important;display:block}
+.embed-clip blockquote{margin:0!important;max-width:100%!important;min-width:0!important;width:100%!important;border:none!important;box-shadow:none!important;border-radius:0!important}
+.clip-ig{max-height:370px}
+.clip-tt{max-height:520px}
+.clip-fb iframe{transform:none!important;margin-bottom:0!important;width:100%!important;border:none;display:block}
+
+/* 2-col video grid */
+.video-grid{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:10px;
+  padding:0 40px 40px;
+}
+.video-card{
+  background:var(--s2);
+  border:1px solid rgba(201,169,97,.08);
+  border-radius:12px;
+  overflow:hidden;
+  transition:border-color .3s,transform .3s;
+}
+.video-card:hover{border-color:rgba(201,169,97,.25);transform:translateY(-3px)}
+.video-card .embed-clip{width:100%}
+
+/* FOOTER */
+footer{background:var(--s1);border-top:1px solid rgba(201,169,97,.06);padding:32px 40px;text-align:center;font-size:.7rem;color:var(--m2)}
+footer a{color:var(--g);text-decoration:none}
+
+@media(max-width:900px){
+  .media-grid{columns:2 200px;padding:0 16px 32px}
+  .video-grid{grid-template-columns:1fr;padding:0 16px 32px}
+  nav,.section-head{padding:14px 16px}
+  .page-hero{padding:48px 16px 36px}
+}
+</style>
+</head>
+<body>
+
+<nav>
+  <a class="nav-back" href="index.html">
+    <svg width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" viewBox="0 0 24 24"><path d="M19 12H5M12 5l-7 7 7 7"/></svg>
+    Back to Portfolio
+  </a>
+  <div class="nav-title">Creatives</div>
+  <div class="nav-count">All Assets</div>
+</nav>
+
+<div class="page-hero">
+  <div class="page-hero-label">Visual Portfolio</div>
+  <h1>The <em>Work</em></h1>
+  <div class="gold-line"></div>
+  <p class="page-hero-sub">Photography, video content, and ad creatives produced across all campaigns.</p>
+</div>
+
+<!-- ══════════════════════════════
+     HAKSOSS — PHOTOGRAPHY
+══════════════════════════════ -->
+<div class="section-head">
+  <div class="section-head-line"></div>
+  <div class="section-head-label">Haksoss Café · Alexandria</div>
+  <div class="section-head-line"></div>
+</div>
+
+<div class="media-grid">
+  <div class="media-card"><img src="https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/484935779_669430162281226_4092488908058817454_n.jpg" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/485166230_668576055699970_7801348965434568736_n.jpg" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/565197177_831811526043088_3513346270435530223_n.jpg" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/567048326_834113415812899_3948651642903480028_n.jpg" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/577036878_875927611631479_6154563682810737192_n.jpg" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/577063636_855262793697961_8036039003256918182_n.jpg" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/580836546_852009757356598_1831697960485552901_n.jpg" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/587323144_865196782704562_7929104282036074161_n.jpg" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/591911133_870612895496284_3799076164702562648_n.jpg" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/595259565_875931331631107_698700857952058153_n.jpg" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/598659567_875922484965325_3846652032191404121_n.jpg" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/612418517_897263556164551_3417453819125625625_n.jpg" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://raw.githubusercontent.com/MoeAbdelrazek/Haksoss_Full_Campaign/main/616391049_904110582146515_2763500585257543804_n.jpg" alt="" loading="lazy"></div>
+</div>
+
+<!-- Haksoss Facebook Videos -->
+<div class="video-grid">
+  <div class="video-card">
+    <div class="embed-clip clip-fb">
+      <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F864956606041600%2F&show_text=false&width=400&t=0" width="100%" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+    </div>
+  </div>
+  <div class="video-card">
+    <div class="embed-clip clip-fb">
+      <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2Freel%2F1320456749354268%2F&show_text=false&width=400&t=0" width="100%" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+    </div>
+  </div>
+  <div class="video-card">
+    <div class="embed-clip clip-fb">
+      <iframe src="https://www.facebook.com/plugins/video.php?height=476&href=https%3A%2F%2Fwww.facebook.com%2FHaksoss.eg%2Fvideos%2F788769076979109%2F&show_text=false&width=400&t=0" width="100%" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen="true" allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     FELUKA — INSTAGRAM + TIKTOK
+══════════════════════════════ -->
+<div class="section-head">
+  <div class="section-head-line"></div>
+  <div class="section-head-label">Feluka Restaurant · Riyadh</div>
+  <div class="section-head-line"></div>
+</div>
+
+<div class="video-grid">
+  <div class="video-card">
+    <div class="embed-clip clip-ig">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DHInLu9PY7q/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:0;margin:1px;max-width:100%;min-width:0;padding:0;width:100%"><div style="padding:16px"><a href="https://www.instagram.com/reel/DHInLu9PY7q/?utm_source=ig_embed" target="_blank">View</a></div></blockquote>
+    </div>
+  </div>
+  <div class="video-card">
+    <div class="embed-clip clip-ig">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DGk_10sID-Y/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:0;margin:1px;max-width:100%;min-width:0;padding:0;width:100%"><div style="padding:16px"><a href="https://www.instagram.com/p/DGk_10sID-Y/?utm_source=ig_embed" target="_blank">View</a></div></blockquote>
+    </div>
+  </div>
+  <div class="video-card">
+    <div class="embed-clip clip-ig">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DGK3iA6PTQC/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:0;margin:1px;max-width:100%;min-width:0;padding:0;width:100%"><div style="padding:16px"><a href="https://www.instagram.com/reel/DGK3iA6PTQC/?utm_source=ig_embed" target="_blank">View</a></div></blockquote>
+    </div>
+  </div>
+  <div class="video-card">
+    <div class="embed-clip clip-ig">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DF422NogLiO/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:0;margin:1px;max-width:100%;min-width:0;padding:0;width:100%"><div style="padding:16px"><a href="https://www.instagram.com/p/DF422NogLiO/?utm_source=ig_embed" target="_blank">View</a></div></blockquote>
+    </div>
+  </div>
+  <div class="video-card">
+    <div class="embed-clip clip-ig">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DFuw8zsA1Ls/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:0;margin:1px;max-width:100%;min-width:0;padding:0;width:100%"><div style="padding:16px"><a href="https://www.instagram.com/p/DFuw8zsA1Ls/?utm_source=ig_embed" target="_blank">View</a></div></blockquote>
+    </div>
+  </div>
+  <div class="video-card">
+    <div class="embed-clip clip-ig">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DGqhF-EsiS9/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:0;margin:1px;max-width:100%;min-width:0;padding:0;width:100%"><div style="padding:16px"><a href="https://www.instagram.com/p/DGqhF-EsiS9/?utm_source=ig_embed" target="_blank">View</a></div></blockquote>
+    </div>
+  </div>
+  <div class="video-card">
+    <div class="embed-clip clip-ig">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DHWE9G9v2P8/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:0;margin:1px;max-width:100%;min-width:0;padding:0;width:100%"><div style="padding:16px"><a href="https://www.instagram.com/p/DHWE9G9v2P8/?utm_source=ig_embed" target="_blank">View</a></div></blockquote>
+    </div>
+  </div>
+  <!-- TikTok -->
+  <div class="video-card">
+    <div class="embed-clip clip-tt">
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@feluka_sa/video/7475237340278033682" data-video-id="7475237340278033682" style="max-width:100%;min-width:0;border:none;box-shadow:none;margin:0;background:#000"><section><a target="_blank" title="@feluka_sa" href="https://www.tiktok.com/@feluka_sa">@feluka_sa</a></section></blockquote>
+    </div>
+  </div>
+  <div class="video-card">
+    <div class="embed-clip clip-tt">
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@feluka_sa/video/7443385162835987719" data-video-id="7443385162835987719" style="max-width:100%;min-width:0;border:none;box-shadow:none;margin:0;background:#000"><section><a target="_blank" title="@feluka_sa" href="https://www.tiktok.com/@feluka_sa">@feluka_sa</a></section></blockquote>
+    </div>
+  </div>
+  <div class="video-card">
+    <div class="embed-clip clip-tt">
+      <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@feluka_sa/video/7445940480979995912" data-video-id="7445940480979995912" style="max-width:100%;min-width:0;border:none;box-shadow:none;margin:0;background:#000"><section><a target="_blank" title="@feluka_sa" href="https://www.tiktok.com/@feluka_sa">@feluka_sa</a></section></blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     KIMPTON KAFD — INSTAGRAM
+══════════════════════════════ -->
+<div class="section-head">
+  <div class="section-head-line"></div>
+  <div class="section-head-label">Kimpton KAFD · Riyadh</div>
+  <div class="section-head-line"></div>
+</div>
+
+<div class="video-grid">
+  <div class="video-card">
+    <div class="embed-clip clip-ig">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DVa3aTDDPOQ/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:0;margin:1px;max-width:100%;min-width:0;padding:0;width:100%"><div style="padding:16px"><a href="https://www.instagram.com/reel/DVa3aTDDPOQ/?utm_source=ig_embed" target="_blank">View</a></div></blockquote>
+    </div>
+  </div>
+  <div class="video-card">
+    <div class="embed-clip clip-ig">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DV0pbPsjK0X/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:0;margin:1px;max-width:100%;min-width:0;padding:0;width:100%"><div style="padding:16px"><a href="https://www.instagram.com/p/DV0pbPsjK0X/?utm_source=ig_embed" target="_blank">View</a></div></blockquote>
+    </div>
+  </div>
+  <div class="video-card">
+    <div class="embed-clip clip-ig">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DU3ToMbDCrv/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:0;margin:1px;max-width:100%;min-width:0;padding:0;width:100%"><div style="padding:16px"><a href="https://www.instagram.com/reel/DU3ToMbDCrv/?utm_source=ig_embed" target="_blank">View</a></div></blockquote>
+    </div>
+  </div>
+  <div class="video-card">
+    <div class="embed-clip clip-ig">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/p/DUz7KG2iSsf/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:0;margin:1px;max-width:100%;min-width:0;padding:0;width:100%"><div style="padding:16px"><a href="https://www.instagram.com/p/DUz7KG2iSsf/?utm_source=ig_embed" target="_blank">View</a></div></blockquote>
+    </div>
+  </div>
+  <div class="video-card">
+    <div class="embed-clip clip-ig">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DUDjtSdjFXE/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:0;margin:1px;max-width:100%;min-width:0;padding:0;width:100%"><div style="padding:16px"><a href="https://www.instagram.com/reel/DUDjtSdjFXE/?utm_source=ig_embed" target="_blank">View</a></div></blockquote>
+    </div>
+  </div>
+  <div class="video-card">
+    <div class="embed-clip clip-ig">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DSrcpRtjAyz/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:0;margin:1px;max-width:100%;min-width:0;padding:0;width:100%"><div style="padding:16px"><a href="https://www.instagram.com/reel/DSrcpRtjAyz/?utm_source=ig_embed" target="_blank">View</a></div></blockquote>
+    </div>
+  </div>
+  <div class="video-card">
+    <div class="embed-clip clip-ig">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DRzVgfnjDQ6/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:0;margin:1px;max-width:100%;min-width:0;padding:0;width:100%"><div style="padding:16px"><a href="https://www.instagram.com/reel/DRzVgfnjDQ6/?utm_source=ig_embed" target="_blank">View</a></div></blockquote>
+    </div>
+  </div>
+  <div class="video-card">
+    <div class="embed-clip clip-ig">
+      <blockquote class="instagram-media" data-instgrm-permalink="https://www.instagram.com/reel/DRZxpbxjCej/?utm_source=ig_embed&utm_campaign=loading" data-instgrm-version="14" style="background:#FFF;border:0;border-radius:0;margin:1px;max-width:100%;min-width:0;padding:0;width:100%"><div style="padding:16px"><a href="https://www.instagram.com/reel/DRZxpbxjCej/?utm_source=ig_embed" target="_blank">View</a></div></blockquote>
+    </div>
+  </div>
+</div>
+
+<!-- ══════════════════════════════
+     TECHNOMOUNTS — AI CREATIVES
+══════════════════════════════ -->
+<div class="section-head">
+  <div class="section-head-line"></div>
+  <div class="section-head-label">TechnoMounts · UAE · AI Creatives</div>
+  <div class="section-head-line"></div>
+</div>
+
+<div class="media-grid" id="tm-grid">
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/01_luxury.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/02_modern.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/03_office.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/04_hotel.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/05_retail.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/06_showroom.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/07_business.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/08_elegant.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/09_minimal.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/10_tablet.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/11_display.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/12_floor.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/13_stand.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/14_mount.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/15_desktop.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/16_wall.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/17_black.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/18_white.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/19_angle.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/20_rotation.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/21_feature.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/22_adjustable.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/23_secure.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/24_anti.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/25_theft.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/26_install.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/27_adhesive.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/28_screws.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/29_tilt.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/30_height.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/31_gallery.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/32_scene.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/33_usage.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/34_customer.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/35_staff.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/36_counter.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/37_hospital.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/38_clinic.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/39_event.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/40_exhibition.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/41_profile.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/42_closeup.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/43_shine.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/44_glossy.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/45_detail.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/46_motion.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/47_focus.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/48_light.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/49_clean.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/50_space.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/51_form.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/52_style.png" alt="" loading="lazy"></div>
+  <div class="media-card"><img src="https://moeabdelrazek.github.io/TechnoMounts/Assets/53_visual.png" alt="" loading="lazy"></div>
+</div>
+
+<footer>
+  <a href="index.html">← Back to Portfolio</a> &nbsp;·&nbsp; Mohamed Abdelrazek · Creatives
+</footer>
+
+<script async src="//www.instagram.com/embed.js"></script>
+<script async src="https://www.tiktok.com/embed.js"></script>
+</body>
+</html>

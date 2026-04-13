@@ -500,7 +500,7 @@ li,
 @media print{
   @page{
     size:A4 portrait;
-    margin:8mm 9mm;
+    margin:10mm;
   }
 
   *{
@@ -512,17 +512,15 @@ li,
   }
 
   html,body{
-    width:210mm;
-    min-height:297mm;
     background:#ffffff !important;
     color:#000000 !important;
-    font-size:10pt !important;
-    line-height:1.35 !important;
     overflow:visible !important;
   }
 
   body{
     background:#ffffff !important;
+    font-size:15px !important;
+    line-height:1.75 !important;
   }
 
   a,
@@ -532,19 +530,16 @@ li,
   }
 
   .page{
+    max-width:var(--max) !important;
     width:100% !important;
-    max-width:none !important;
-    margin:0 !important;
+    margin:0 auto !important;
     padding:0 !important;
   }
 
   .card{
     background:#ffffff !important;
-    border:1px solid rgba(0,0,0,.12) !important;
-    border-radius:6px !important;
-    padding:10px 12px !important;
     backdrop-filter:none !important;
-    overflow:visible !important;
+    box-shadow:none !important;
     break-inside:avoid !important;
     page-break-inside:avoid !important;
   }
@@ -553,200 +548,6 @@ li,
     display:none !important;
   }
 
-  .header{
-    gap:12px !important;
-    align-items:flex-start !important;
-    break-inside:avoid !important;
-    page-break-inside:avoid !important;
-  }
-
-  .avatar{
-    width:58px !important;
-    height:58px !important;
-  }
-
-  .name{
-    font-size:22pt !important;
-    margin-bottom:6px !important;
-    line-height:1.05 !important;
-  }
-
-  .lang-pills{
-    gap:4px !important;
-    margin-bottom:6px !important;
-  }
-
-  .pill-lang{
-    font-size:6.4pt !important;
-    padding:2px 7px !important;
-    border-radius:12px !important;
-  }
-
-  .tool-strip{
-    grid-template-columns:repeat(10,1fr) !important;
-    gap:3px !important;
-  }
-
-  .ts-item{
-    min-width:0 !important;
-    min-height:48px !important;
-    padding:4px 2px !important;
-    gap:3px !important;
-    border-radius:6px !important;
-  }
-
-  .ts-badge{
-    width:24px !important;
-    height:24px !important;
-  }
-
-  .ts-badge svg{
-    width:12px !important;
-    height:12px !important;
-    stroke-width:1.7 !important;
-  }
-
-  .ts-label{
-    font-size:4.7pt !important;
-    line-height:1.05 !important;
-    color:#111 !important;
-  }
-
-  .grid{
-    grid-template-columns:250px 1fr !important;
-    gap:8px !important;
-    margin-top:8px !important;
-  }
-
-  .col{
-    gap:8px !important;
-  }
-
-  h2{
-    font-size:11.5pt !important;
-    margin-bottom:8px !important;
-    padding-bottom:5px !important;
-    line-height:1.15 !important;
-  }
-
-  h2::before,
-  h2::after{
-    width:14px !important;
-    height:1px !important;
-  }
-
-  .skills-list li,
-  .cert-list li{
-    font-size:7.8pt !important;
-    padding:2px 0 2px 10px !important;
-    line-height:1.35 !important;
-  }
-
-  .skills-list li::before,
-  .cert-list li::before{
-    top:8px !important;
-    font-size:.34rem !important;
-  }
-
-  .edu-title{
-    font-size:8.5pt !important;
-  }
-
-  .edu-note{
-    font-size:7.5pt !important;
-    line-height:1.35 !important;
-    margin-top:3px !important;
-    color:#111 !important;
-  }
-
-  .role-title{
-    font-size:8.8pt !important;
-    line-height:1.2 !important;
-  }
-
-  .meta{
-    font-size:6.8pt !important;
-    gap:4px !important;
-    margin:2px 0 4px !important;
-    color:#111 !important;
-  }
-
-  .meta .dot{
-    width:3px !important;
-    height:3px !important;
-  }
-
-  .exp-point{
-    font-size:7.8pt !important;
-    line-height:1.38 !important;
-    padding-left:10px !important;
-    color:#000 !important;
-  }
-
-  .exp-point::before{
-    top:8px !important;
-    width:4px !important;
-  }
-
-  .hr{
-    margin:6px 0 !important;
-  }
-
-  .callout{
-    font-size:7.6pt !important;
-    line-height:1.45 !important;
-    padding:6px 8px !important;
-    margin-top:6px !important;
-    color:#000 !important;
-  }
-
-  .contact-icons{
-    grid-template-columns:repeat(4,1fr) !important;
-    gap:6px !important;
-    margin-top:6px !important;
-  }
-
-  .contact-icon{
-    padding:6px 4px !important;
-    gap:4px !important;
-    border-radius:6px !important;
-  }
-
-  .c-badge{
-    width:28px !important;
-    height:28px !important;
-  }
-
-  .c-badge svg{
-    width:13px !important;
-    height:13px !important;
-    stroke-width:1.7 !important;
-  }
-
-  .c-label{
-    font-size:7.2pt !important;
-    line-height:1.1 !important;
-  }
-
-  .contact-icon small{
-    font-size:5.7pt !important;
-    line-height:1.15 !important;
-    color:#111 !important;
-  }
-
-  .contact-footer{
-    gap:6px !important;
-    margin-top:8px !important;
-    padding-top:8px !important;
-  }
-
-  .fc{
-    font-size:6pt !important;
-    padding:3px 7px !important;
-    border-radius:10px !important;
-  }
-
-  .card,
   .header,
   .grid,
   .col,
@@ -754,6 +555,16 @@ li,
   .contact-icon{
     break-inside:avoid !important;
     page-break-inside:avoid !important;
+  }
+
+  .avatar img{
+    print-color-adjust:exact !important;
+    -webkit-print-color-adjust:exact !important;
+  }
+
+  .tool-strip,
+  .contact-icons{
+    overflow:visible !important;
   }
 }
 </style>
@@ -803,7 +614,6 @@ li,
     </div>
   </div>
 
-  <!-- GRID -->
   <div class="grid">
     <div class="col">
 
@@ -900,7 +710,6 @@ li,
     </div>
   </div>
 
-  <!-- CONTACT -->
   <div class="card accent" style="margin-top:18px">
     <h2>Contact</h2>
     <div class="contact-icons">

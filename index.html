@@ -18,7 +18,7 @@
 }
 *,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
 html{scroll-behavior:smooth}
-body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--t);overflow-x:hidden;line-height:1.7;cursor:none}
+body{font-family:'Poppins',sans-serif;background:var(--bg);color:var(--t);overflow-x:hidden;line-height:1.7}
 
 /* CURSOR */
 .cursor{position:fixed;width:8px;height:8px;background:var(--g);border-radius:50%;pointer-events:none;z-index:9999;transform:translate(-50%,-50%);transition:transform .1s,width .2s,height .2s,opacity .2s}
@@ -250,14 +250,11 @@ footer{background:var(--s1);border-top:1px solid rgba(201,169,97,.06);padding:40
   .process-grid{grid-template-columns:1fr}
   .about-stats-grid{grid-template-columns:1fr}
   footer{padding:28px 20px;flex-direction:column;text-align:center}
-  .cursor,.cursor-ring{display:none}body{cursor:auto}
 }
 </style>
 </head>
 <body>
 
-<div class="cursor" id="cur"></div>
-<div class="cursor-ring" id="ring"></div>
 <div class="ambient" aria-hidden="true">
   <div class="ambient-1"></div>
   <div class="ambient-2"></div>
@@ -288,7 +285,7 @@ footer{background:var(--s1);border-top:1px solid rgba(201,169,97,.06);padding:40
       <p class="hero-title-line r d2">I don't just run campaigns. I build marketing systems that compound.</p>
       <p class="hero-desc r d3">From brand-new accounts to scaled revenue engines. Across Egypt, Saudi Arabia, the UAE, and the US. I build the full stack: content, acquisition, tracking, conversion, and monitoring. Every engagement is a system, not a sprint.</p>
       <div class="hero-cta-row r d4">
-        <a class="btn-primary r d4" href="https://moeabdelrazek.github.io/Moe-Abdelrazek/resume" target="_blank" rel="noopener" style="box-shadow:0 4px 24px rgba(201,169,97,.35),0 1px 0 rgba(255,255,255,.15) inset">Resume</a>
+        <a class="btn-primary" href="https://moeabdelrazek.github.io/Moe-Abdelrazek/resume" target="_blank" rel="noopener" style="box-shadow:0 4px 24px rgba(201,169,97,.35),0 1px 0 rgba(255,255,255,.15) inset">Resume</a>
       </div>
     </div>
     <div class="hero-card r d2">
@@ -752,13 +749,6 @@ footer{background:var(--s1);border-top:1px solid rgba(201,169,97,.06);padding:40
 </footer>
 
 <script>
-/* CURSOR */
-const cur=document.getElementById('cur'),ring=document.getElementById('ring')
-let mx=0,my=0,rx=0,ry=0
-document.addEventListener('mousemove',e=>{mx=e.clientX;my=e.clientY;cur.style.left=mx+'px';cur.style.top=my+'px'})
-;(function lerp(){rx+=(mx-rx)*.13;ry+=(my-ry)*.13;ring.style.left=rx+'px';ring.style.top=ry+'px';requestAnimationFrame(lerp)})()
-document.addEventListener('mousedown',()=>cur.classList.add('active'))
-document.addEventListener('mouseup',()=>cur.classList.remove('active'))
 
 /* NAV */
 window.addEventListener('scroll',()=>{document.getElementById('nav').classList.toggle('scrolled',scrollY>60)},{passive:true})

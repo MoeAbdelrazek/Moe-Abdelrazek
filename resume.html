@@ -52,6 +52,27 @@ a{color:inherit;text-decoration:none}
 .lang-pills{display:flex;gap:8px;flex-wrap:wrap}
 .pill-lang{font-size:.7rem;font-weight:600;letter-spacing:.06em;text-transform:uppercase;padding:5px 12px;border-radius:18px;border:1px solid rgba(10,22,40,.15);background:rgba(10,22,40,.05);color:#3b3b3b}
 
+.header-summary{
+  margin-top:14px;
+  padding:12px 14px;
+  border-radius:14px;
+  border:1px solid rgba(15,23,42,.09);
+  background:var(--s3);
+}
+.header-summary-title{
+  font-family:'Playfair Display',serif;
+  font-size:1rem;
+  font-weight:700;
+  font-style:italic;
+  color:var(--t);
+  margin-bottom:6px;
+}
+.header-summary-text{
+  font-size:.84rem;
+  line-height:1.65;
+  color:var(--m2);
+}
+
 h2,.skills-strip-title{
   font-family:'Playfair Display',serif;font-size:1.3rem;font-weight:700;font-style:italic;
   color:var(--t);margin-bottom:16px;padding-bottom:10px;
@@ -125,6 +146,19 @@ h2::before,h2::after,.skills-strip-title::before,.skills-strip-title::after{cont
   .hc-badge svg{width:10px!important;height:10px!important}
   .lang-pills{gap:5px!important;margin-bottom:8px!important}
   .pill-lang{font-size:7px!important;padding:3px 8px!important}
+  .header-summary{
+    margin-top:8px!important;
+    padding:8px 10px!important;
+    border-radius:8px!important;
+  }
+  .header-summary-title{
+    font-size:10pt!important;
+    margin-bottom:4px!important;
+  }
+  .header-summary-text{
+    font-size:8.5px!important;
+    line-height:1.45!important;
+  }
   h2,.skills-strip-title{font-size:13pt!important;margin-bottom:8px!important;padding-bottom:5px!important}
   h2::before,h2::after,.skills-strip-title::before,.skills-strip-title::after{width:12px!important}
   .tool-strip{grid-template-columns:repeat(8,1fr)!important;gap:5px!important;break-inside:avoid!important}
@@ -178,6 +212,14 @@ h2::before,h2::after,.skills-strip-title::before,.skills-strip-title::after{cont
           <span class="pill-lang">Arabic - Native</span>
           <span class="pill-lang">English - Near Native</span>
           <span class="pill-lang">German - B2</span>
+        </div>
+        <div class="header-summary">
+          <div class="header-summary-title">Professional Summary</div>
+          <div class="header-summary-text">
+            I lead marketing teams and cross-functional execution with a strong focus on ownership, speed, and measurable growth.<br>
+            I manage the full funnel from positioning and traffic acquisition to CRM workflows, lead nurturing, conversion, and reporting.<br>
+            My work combines strategy, paid media, SEO, automation, analytics, and operational systems that turn marketing into revenue.
+          </div>
         </div>
       </div>
     </div>

@@ -1,754 +1,328 @@
 <!doctype html>
 <html lang="en">
 <head>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width,initial-scale=1">
-  <meta name="theme-color" content="#07080d">
-  <meta name="description" content="Mohamed Abdelrazek — performance marketing, paid media, growth systems, SEO, CRM automation and marketing operations.">
-  <title>Mohamed Abdelrazek — Performance Marketing & Growth</title>
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
-  <style>
-    :root{
-      --bg:#07080d;
-      --bg-2:#0b0d14;
-      --surface:rgba(17,20,31,.72);
-      --surface-2:rgba(23,27,40,.82);
-      --text:#f7f8fb;
-      --muted:#9da6b8;
-      --muted-2:#727c91;
-      --line:rgba(255,255,255,.10);
-      --cyan:#57e5ff;
-      --blue:#6b7cff;
-      --violet:#a86cff;
-      --pink:#ff5db1;
-      --orange:#ff9c58;
-      --lime:#94f59e;
-      --max:1240px;
-      --radius:26px;
-      --shadow:0 30px 100px rgba(0,0,0,.42);
-    }
-    *{box-sizing:border-box}
-    html{scroll-behavior:smooth}
-    body{
-      margin:0;
-      font-family:'Manrope',sans-serif;
-      color:var(--text);
-      background:
-        radial-gradient(circle at 20% 0%,rgba(74,85,255,.12),transparent 28%),
-        radial-gradient(circle at 85% 15%,rgba(255,93,177,.09),transparent 24%),
-        radial-gradient(circle at 55% 85%,rgba(87,229,255,.08),transparent 27%),
-        var(--bg);
-      overflow-x:hidden;
-      line-height:1.6;
-    }
-    body::before{
-      content:"";
-      position:fixed;
-      inset:0;
-      z-index:-4;
-      pointer-events:none;
-      opacity:.035;
-      background-image:url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='.85' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.6'/%3E%3C/svg%3E");
-    }
-    a{color:inherit}
-    ::selection{background:rgba(168,108,255,.35)}
-    ::-webkit-scrollbar{width:8px}
-    ::-webkit-scrollbar-track{background:#08090e}
-    ::-webkit-scrollbar-thumb{background:linear-gradient(var(--violet),var(--cyan));border-radius:20px}
-    .progress{
-      position:fixed;left:0;top:0;height:3px;width:0;z-index:9999;
-      background:linear-gradient(90deg,var(--cyan),var(--violet),var(--pink),var(--orange));
-      box-shadow:0 0 22px rgba(168,108,255,.65);
-    }
-    .aurora{
-      position:fixed;inset:-20%;z-index:-3;pointer-events:none;filter:blur(90px);opacity:.52;
-    }
-    .aurora span{position:absolute;border-radius:999px;mix-blend-mode:screen;animation:float 18s ease-in-out infinite alternate}
-    .aurora .a{width:42vw;height:42vw;background:rgba(97,77,255,.20);left:2%;top:2%}
-    .aurora .b{width:36vw;height:36vw;background:rgba(255,70,170,.14);right:7%;top:13%;animation-delay:-6s}
-    .aurora .c{width:38vw;height:38vw;background:rgba(62,225,255,.13);left:32%;bottom:0;animation-delay:-11s}
-    @keyframes float{to{transform:translate3d(5vw,7vh,0) scale(1.18)}}
-    #glow{
-      position:fixed;width:420px;height:420px;border-radius:50%;
-      background:radial-gradient(circle,rgba(106,124,255,.13),rgba(168,108,255,.07) 35%,transparent 70%);
-      transform:translate(-50%,-50%);pointer-events:none;z-index:-2;transition:opacity .2s;
-    }
-    #cinemaParticles{position:fixed;inset:0;width:100%;height:100%;z-index:-1;pointer-events:none;opacity:.46}
-    .cinema-intro{
-      position:fixed;inset:0;z-index:5000;background:#030409;display:grid;place-items:center;overflow:hidden;
-      animation:introExit 2.9s cubic-bezier(.8,0,.2,1) forwards
-    }
-    .intro-light{
-      position:absolute;width:72vw;height:72vw;border-radius:50%;
-      background:radial-gradient(circle,rgba(87,229,255,.14),rgba(168,108,255,.08) 27%,rgba(255,93,177,.05) 44%,transparent 68%);
-      filter:blur(20px);animation:introPulse 2.3s ease both
-    }
-    .intro-copy{position:relative;z-index:2;text-align:center;letter-spacing:.2em}
-    .intro-mark{
-      width:16px;height:16px;border-radius:50%;margin:0 auto 22px;
-      background:linear-gradient(135deg,var(--cyan),var(--violet),var(--pink));
-      box-shadow:0 0 35px rgba(168,108,255,.85);animation:introMark 1.4s ease both
-    }
-    .intro-name{font-size:clamp(.95rem,1.7vw,1.35rem);font-weight:800;letter-spacing:.28em;opacity:0;animation:introText .8s .32s ease forwards}
-    .intro-role{margin-top:10px;color:#737f95;font-size:clamp(.55rem,.75vw,.68rem);font-weight:800;letter-spacing:.26em;opacity:0;animation:introText .8s .55s ease forwards}
-    .letterbox{position:absolute;left:0;right:0;height:11vh;background:#000;z-index:4}
-    .letterbox.top{top:0;animation:letterTop 2.8s cubic-bezier(.8,0,.2,1) forwards}
-    .letterbox.bottom{bottom:0;animation:letterBottom 2.8s cubic-bezier(.8,0,.2,1) forwards}
-    @keyframes introMark{0%{transform:scale(.1);opacity:0}55%{transform:scale(1.5);opacity:1}100%{transform:scale(1)}}
-    @keyframes introText{from{opacity:0;transform:translateY(12px);filter:blur(8px)}to{opacity:1;transform:none;filter:blur(0)}}
-    @keyframes introPulse{0%{opacity:0;transform:scale(.3)}55%{opacity:1;transform:scale(1)}100%{opacity:.55;transform:scale(1.08)}}
-    @keyframes letterTop{0%,54%{transform:translateY(0)}100%{transform:translateY(-100%)}}
-    @keyframes letterBottom{0%,54%{transform:translateY(0)}100%{transform:translateY(100%)}}
-    @keyframes introExit{0%,76%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden;pointer-events:none}}
-    .cinema-lines{position:fixed;inset:0;z-index:-2;pointer-events:none;overflow:hidden}
-    .cinema-lines i{
-      position:absolute;width:52vw;height:1px;left:-58vw;
-      background:linear-gradient(90deg,transparent,rgba(87,229,255,.0),rgba(87,229,255,.35),rgba(168,108,255,.18),transparent);
-      filter:drop-shadow(0 0 10px rgba(87,229,255,.28));transform:rotate(-8deg);animation:lightSweep 11s linear infinite
-    }
-    .cinema-lines i:nth-child(1){top:24%;animation-delay:-2s}
-    .cinema-lines i:nth-child(2){top:58%;animation-delay:-7s;background:linear-gradient(90deg,transparent,rgba(255,93,177,.0),rgba(255,93,177,.26),rgba(168,108,255,.16),transparent)}
-    .cinema-lines i:nth-child(3){top:83%;animation-delay:-4s;opacity:.55}
-    @keyframes lightSweep{to{left:115vw}}
-    .hero::before{
-      content:"";position:absolute;inset:0;pointer-events:none;
-      background:
-        linear-gradient(115deg,transparent 0 36%,rgba(87,229,255,.045) 48%,transparent 59%),
-        radial-gradient(circle at 68% 38%,rgba(168,108,255,.10),transparent 20%);
-      background-size:220% 100%,100% 100%;animation:heroLight 9s ease-in-out infinite alternate
-    }
-    @keyframes heroLight{to{background-position:100% 0,0 0}}
-    .shell{width:min(var(--max),calc(100% - 48px));margin:auto}
-    .nav{
-      position:fixed;z-index:1000;top:18px;left:50%;transform:translateX(-50%);
-      width:min(1180px,calc(100% - 36px));
-      display:flex;align-items:center;justify-content:space-between;gap:20px;
-      padding:10px 12px 10px 18px;border:1px solid rgba(255,255,255,.09);
-      border-radius:999px;background:rgba(8,10,16,.60);backdrop-filter:blur(18px) saturate(145%);
-      box-shadow:0 18px 60px rgba(0,0,0,.22);
-    }
-    .brand{display:flex;align-items:center;gap:11px;text-decoration:none;font-weight:800;letter-spacing:-.03em}
-    .brand-dot{width:11px;height:11px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--violet),var(--pink));box-shadow:0 0 22px var(--violet)}
-    .navlinks{display:flex;gap:6px;align-items:center}
-    .navlinks a{
-      text-decoration:none;color:var(--muted);font-size:.78rem;font-weight:700;padding:9px 12px;border-radius:999px;transition:.25s ease
-    }
-    .navlinks a:hover,.navlinks a.active{color:white;background:rgba(255,255,255,.07)}
-    .nav-cta{
-      text-decoration:none;font-size:.76rem;font-weight:800;padding:10px 15px;border-radius:999px;
-      background:linear-gradient(120deg,var(--cyan),var(--blue) 45%,var(--violet));color:#05060a;
-      box-shadow:0 8px 30px rgba(97,116,255,.25);transition:transform .2s ease
-    }
-    .nav-cta:hover{transform:translateY(-2px)}
-    .menu{display:none;background:none;border:0;color:white;font-size:1.3rem;cursor:pointer}
-    .hero{
-      min-height:100svh;display:grid;align-items:center;position:relative;padding:140px 0 82px;overflow:hidden
-    }
-    .hero-grid{display:grid;grid-template-columns:minmax(0,1.55fr) minmax(240px,.45fr);gap:42px;align-items:center}
-    .eyebrow{
-      display:inline-flex;align-items:center;gap:10px;padding:8px 12px;border-radius:999px;border:1px solid rgba(255,255,255,.10);
-      background:rgba(255,255,255,.04);color:#d7dcef;font-size:.72rem;font-weight:800;letter-spacing:.05em;text-transform:uppercase
-    }
-    .eyebrow i{width:7px;height:7px;border-radius:50%;background:var(--lime);box-shadow:0 0 16px var(--lime)}
-    h1{
-      font-size:clamp(2.25rem,4.15vw,3.85rem);line-height:.98;letter-spacing:-.052em;margin:20px 0 20px;font-weight:800;max-width:690px
-    }
-    h1 .serif{font-family:'Instrument Serif',serif;font-weight:400;font-style:italic;letter-spacing:-.045em}
-    .gradient-text{
-      background:linear-gradient(100deg,#fff 5%,#b8c1ff 30%,#7be8ff 52%,#d686ff 75%,#ff79b9);
-      -webkit-background-clip:text;background-clip:text;color:transparent;background-size:220% auto;animation:shine 9s linear infinite
-    }
-    @keyframes shine{to{background-position:220% center}}
-    .lead{max-width:650px;color:#aeb8ca;font-size:clamp(.92rem,1.05vw,1.03rem);line-height:1.78;margin:0 0 30px}
-    .hero-actions{display:flex;gap:12px;flex-wrap:wrap}
-    .btn{
-      display:inline-flex;align-items:center;gap:10px;padding:14px 18px;border-radius:15px;text-decoration:none;font-size:.84rem;font-weight:800;
-      transition:transform .25s ease,border-color .25s ease,background .25s ease
-    }
-    .btn:hover{transform:translateY(-3px)}
-    .btn-primary{color:#05060a;background:linear-gradient(115deg,var(--cyan),#a7f5ff 28%,var(--violet) 78%,var(--pink));box-shadow:0 16px 45px rgba(106,124,255,.24)}
-    .btn-ghost{border:1px solid rgba(255,255,255,.12);background:rgba(255,255,255,.04);color:#ecf0f9}
-    .hero-card{
-      position:relative;min-height:350px;max-width:286px;width:100%;justify-self:end;border-radius:28px;padding:13px;overflow:visible;
-      background:linear-gradient(155deg,rgba(255,255,255,.10),rgba(255,255,255,.02));
-      border:1px solid rgba(255,255,255,.12);box-shadow:0 35px 100px rgba(0,0,0,.48);transform-style:preserve-3d
-    }
-    .hero-card::after{
-      content:"";position:absolute;inset:-42px;border-radius:50%;z-index:-2;
-      background:conic-gradient(from 0deg,rgba(87,229,255,.0),rgba(87,229,255,.18),rgba(168,108,255,.26),rgba(255,93,177,.15),rgba(87,229,255,.0));
-      filter:blur(30px);animation:orbitGlow 8s linear infinite
-    }
-    @keyframes orbitGlow{to{transform:rotate(360deg)}}
-    .hero-card::before{
-      content:"";position:absolute;inset:-1px;border-radius:inherit;padding:1px;
-      background:linear-gradient(140deg,rgba(87,229,255,.9),transparent 28%,rgba(168,108,255,.65) 62%,rgba(255,93,177,.8));
-      -webkit-mask:linear-gradient(#000 0 0) content-box,linear-gradient(#000 0 0);-webkit-mask-composite:xor;mask-composite:exclude;pointer-events:none
-    }
-    .portrait{
-      height:100%;min-height:324px;border-radius:20px;overflow:hidden;position:relative;
-      background:
-        linear-gradient(to top,rgba(7,8,13,.96) 0%,rgba(7,8,13,.22) 46%,rgba(7,8,13,.02) 76%),
-        url('profile.jpg') center 16%/cover no-repeat;
-    }
-    .portrait::after{content:"";position:absolute;inset:0;background:linear-gradient(130deg,rgba(87,229,255,.10),transparent 35%,rgba(255,93,177,.08));mix-blend-mode:screen}
-    .portrait-copy{position:absolute;z-index:2;left:24px;right:24px;bottom:23px}
-    .portrait-copy small{color:#c8d0df;font-weight:700}
-    .portrait-copy strong{display:block;font-family:'Instrument Serif',serif;font-size:1.55rem;font-weight:400;line-height:1.05;margin-top:4px}
-    .float-pill{
-      position:absolute;z-index:4;padding:9px 12px;border-radius:14px;border:1px solid rgba(255,255,255,.12);
-      background:rgba(8,10,16,.76);backdrop-filter:blur(16px);font-size:.64rem;font-weight:800;box-shadow:0 12px 38px rgba(0,0,0,.32)
-    }
-    .float-pill.one{right:-12px;top:52px;animation:bob 5s ease-in-out infinite}
-    .float-pill.two{left:-16px;top:226px;animation:bob 6.5s ease-in-out infinite -2s}
-    .float-pill span{display:block;font-size:.98rem;background:linear-gradient(90deg,var(--cyan),var(--pink));color:transparent;background-clip:text;-webkit-background-clip:text}
-    @keyframes bob{50%{transform:translateY(-12px) rotate(1deg)}}
-    .mini-strip{
-      padding:20px 0 6px;overflow:hidden;border-top:1px solid rgba(255,255,255,.07);border-bottom:1px solid rgba(255,255,255,.07);
-      background:rgba(255,255,255,.018)
-    }
-    .marquee{display:flex;width:max-content;animation:marquee 28s linear infinite}
-    .marquee span{padding:0 28px 20px;color:#929cb0;font-size:.78rem;font-weight:800;letter-spacing:.04em;text-transform:uppercase;white-space:nowrap}
-    .marquee b{color:white}
-    .marquee i{color:var(--violet);font-style:normal;margin:0 15px}
-    @keyframes marquee{to{transform:translateX(-50%)}}
-    section{padding:112px 0;position:relative}
-    .section-head{display:grid;grid-template-columns:.78fr 1.22fr;gap:42px;align-items:end;margin-bottom:48px}
-    .section-kicker{font-size:.72rem;text-transform:uppercase;letter-spacing:.14em;font-weight:800;color:#9aa6ba}
-    .section-title{font-size:clamp(1.75rem,3vw,2.9rem);line-height:1.02;letter-spacing:-.045em;margin:0;font-weight:800}
-    .section-title em{font-family:'Instrument Serif',serif;font-weight:400}
-    .section-copy{color:var(--muted);max-width:620px;font-size:.98rem;line-height:1.85;margin:12px 0 0}
-    .hero-case{
-      position:relative;overflow:hidden;border:1px solid rgba(255,255,255,.10);border-radius:32px;
-      background:
-        radial-gradient(circle at 15% 0%,rgba(87,229,255,.12),transparent 28%),
-        radial-gradient(circle at 90% 10%,rgba(255,93,177,.10),transparent 30%),
-        linear-gradient(150deg,rgba(21,24,37,.95),rgba(11,13,20,.95));
-      box-shadow:var(--shadow);padding:clamp(26px,5vw,56px)
-    }
-    .case-top{display:flex;align-items:center;justify-content:space-between;gap:18px;margin-bottom:60px}
-    .case-tag{font-size:.72rem;text-transform:uppercase;letter-spacing:.12em;color:#c4cbda;font-weight:800}
-    .case-badge{padding:8px 11px;border:1px solid rgba(87,229,255,.22);border-radius:999px;color:#a9effb;background:rgba(87,229,255,.07);font-size:.68rem;font-weight:800}
-    .case-title{font-size:clamp(1.7rem,3.1vw,3rem);line-height:1.02;letter-spacing:-.045em;margin:0 0 20px;max-width:830px}
-    .case-title em{font-family:'Instrument Serif',serif;font-weight:400}
-    .case-desc{max-width:700px;color:#aab4c6;line-height:1.8;margin:0 0 46px}
-    .metric-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
-    .metric{
-      padding:22px;border-radius:20px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);
-      position:relative;overflow:hidden;transition:transform .25s ease,border-color .25s ease
-    }
-    .metric:hover{transform:translateY(-5px);border-color:rgba(118,165,255,.35)}
-    .metric::after{content:"";position:absolute;width:100px;height:100px;border-radius:50%;right:-45px;top:-45px;background:var(--glow,rgba(87,229,255,.15));filter:blur(12px)}
-    .metric strong{position:relative;z-index:1;display:block;font-size:clamp(1.45rem,2.25vw,2.25rem);line-height:1;letter-spacing:-.05em}
-    .metric span{position:relative;z-index:1;display:block;color:#8f99aa;font-size:.7rem;text-transform:uppercase;letter-spacing:.08em;font-weight:800;margin-top:10px}
-    .case-foot{display:flex;justify-content:space-between;gap:20px;align-items:flex-end;margin-top:34px;padding-top:26px;border-top:1px solid rgba(255,255,255,.08)}
-    .stack{display:flex;gap:8px;flex-wrap:wrap}
-    .chip{font-size:.68rem;font-weight:800;color:#c7cfdd;border:1px solid rgba(255,255,255,.09);background:rgba(255,255,255,.035);padding:7px 10px;border-radius:999px}
-    .privacy{color:#7f899c;font-size:.72rem;max-width:420px;text-align:right}
-    .account-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-top:18px}
-    .proof-shot{margin-top:28px;border:1px solid rgba(255,255,255,.11);border-radius:22px;overflow:hidden;background:#0a0c12;box-shadow:0 28px 80px rgba(0,0,0,.34)}
-    .proof-shot img{display:block;width:100%;height:auto;object-fit:contain;background:#fff}
-    .proof-caption{display:flex;justify-content:space-between;gap:16px;align-items:center;padding:12px 15px;color:#9da7b9;font-size:.66rem;font-weight:700;letter-spacing:.02em}
-    .proof-caption b{color:#e9edf6;font-size:.7rem}
-    .system-proof{padding:12px;border-radius:24px;border:1px solid rgba(255,255,255,.09);background:linear-gradient(150deg,rgba(20,23,34,.85),rgba(10,12,18,.82));overflow:hidden}
-    .system-proof img{display:block;width:100%;height:auto;max-height:520px;object-fit:contain;border-radius:16px;background:#fff}
-    .account-card{
-      position:relative;padding:25px;border-radius:24px;border:1px solid rgba(255,255,255,.09);
-      background:linear-gradient(150deg,rgba(20,23,34,.88),rgba(11,13,20,.82));min-height:300px;overflow:hidden;
-      transition:transform .32s cubic-bezier(.2,.8,.2,1),border-color .32s ease
-    }
-    .account-card:hover{transform:translateY(-8px);border-color:rgba(168,108,255,.35)}
-    .account-card .orb{position:absolute;width:180px;height:180px;border-radius:50%;right:-90px;top:-80px;background:var(--orb);filter:blur(6px);opacity:.23}
-    .account-card .label{font-size:.68rem;text-transform:uppercase;letter-spacing:.12em;color:#8994a8;font-weight:800}
-    .account-card h3{font-size:1.34rem;letter-spacing:-.03em;margin:10px 0 20px}
-    .account-card .big{font-size:2.5rem;font-weight:800;letter-spacing:-.065em;line-height:1;background:var(--grad);-webkit-background-clip:text;background-clip:text;color:transparent}
-    .account-card .big-label{color:#8892a4;font-size:.7rem;text-transform:uppercase;font-weight:800;letter-spacing:.08em;margin-top:7px}
-    .mini-metrics{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:26px}
-    .mini-metrics div{padding:12px;background:rgba(255,255,255,.035);border-radius:14px}
-    .mini-metrics strong{display:block;font-size:1rem}
-    .mini-metrics span{font-size:.64rem;text-transform:uppercase;color:#7d879a;font-weight:800}
-    .systems{display:grid;grid-template-columns:.86fr 1.14fr;gap:18px}
-    .systems-copy,.system-board{
-      border:1px solid rgba(255,255,255,.09);border-radius:28px;background:linear-gradient(150deg,rgba(20,23,34,.85),rgba(10,12,18,.82))
-    }
-    .systems-copy{padding:36px}
-    .systems-copy h3{font-size:1.65rem;letter-spacing:-.04em;margin:0 0 18px}
-    .systems-copy p{color:var(--muted);line-height:1.85}
-    .bullet-list{display:grid;gap:12px;margin-top:28px}
-    .bullet{display:grid;grid-template-columns:34px 1fr;gap:12px;align-items:start;color:#c5ccda;font-size:.86rem}
-    .bullet i{width:28px;height:28px;border-radius:9px;background:linear-gradient(135deg,rgba(87,229,255,.20),rgba(168,108,255,.16));border:1px solid rgba(255,255,255,.08);display:grid;place-items:center;font-style:normal;color:#c6f7ff}
-    .system-board{padding:26px;position:relative;overflow:hidden}
-    .system-board::before{content:"";position:absolute;inset:0;background-image:linear-gradient(rgba(255,255,255,.035) 1px,transparent 1px),linear-gradient(90deg,rgba(255,255,255,.035) 1px,transparent 1px);background-size:28px 28px;mask-image:linear-gradient(to bottom,#000,transparent 90%)}
-    .flow{position:relative;z-index:1;display:grid;gap:16px}
-    .flow-row{display:grid;grid-template-columns:1fr 44px 1fr 44px 1fr;gap:8px;align-items:center}
-    .node{padding:16px;border-radius:17px;background:rgba(12,14,21,.92);border:1px solid rgba(255,255,255,.10);min-height:86px;display:flex;flex-direction:column;justify-content:center}
-    .node small{color:#7e899c;font-size:.62rem;text-transform:uppercase;font-weight:800;letter-spacing:.08em}
-    .node strong{font-size:.85rem;margin-top:5px}
-    .arrow{color:#7b86a0;text-align:center;font-weight:800}
-    .flow-note{padding:16px 18px;border-radius:17px;background:linear-gradient(90deg,rgba(87,229,255,.07),rgba(168,108,255,.08));border:1px solid rgba(119,161,255,.13);color:#b7c0d0;font-size:.78rem;line-height:1.7}
-    .seo-grid{display:grid;grid-template-columns:1.1fr .9fr;gap:18px}
-    .search-card,.rank-card{border:1px solid rgba(255,255,255,.09);border-radius:28px;background:linear-gradient(150deg,rgba(20,23,34,.87),rgba(11,13,20,.84));padding:30px}
-    .search-ui{margin-top:26px;padding:17px;background:white;color:#202124;border-radius:20px;box-shadow:0 18px 50px rgba(0,0,0,.22)}
-    .searchbar{border:1px solid #e1e4ea;border-radius:999px;padding:13px 18px;color:#4f5664;font-size:.8rem;display:flex;justify-content:space-between;gap:20px}
-    .result{padding:18px 4px 7px}
-    .result small{color:#4f5664}.result h4{margin:4px 0;color:#1a0dab;font-weight:500}.result p{font-size:.74rem;margin:0;color:#4d5156}
-    .ai-box{margin-top:14px;border-radius:14px;padding:15px;background:#f4f8ff;border:1px solid #dfe8ff;font-size:.73rem;color:#34405b}
-    .rank-card{display:flex;flex-direction:column;justify-content:space-between}
-    .rank-card h3,.search-card h3{font-size:1.35rem;letter-spacing:-.035em;margin:0}
-    .rank-card p,.search-card>p{color:var(--muted);line-height:1.75}
-    .rank-list{display:grid;gap:10px;margin-top:24px}
-    .rank-item{display:flex;align-items:center;justify-content:space-between;gap:15px;padding:15px;border:1px solid rgba(255,255,255,.07);background:rgba(255,255,255,.035);border-radius:16px}
-    .rank-item span{color:#aeb7c7;font-size:.79rem}.rank-item b{font-size:.76rem;color:#baf8ca}
-    .capabilities{display:grid;grid-template-columns:repeat(2,1fr);gap:16px}
-    .cap-card{padding:30px;border-radius:26px;border:1px solid rgba(255,255,255,.09);background:rgba(17,20,31,.76)}
-    .cap-num{font-family:'Instrument Serif',serif;font-size:2.3rem;color:#8b95aa}
-    .cap-card h3{font-size:1.3rem;margin:8px 0 10px}.cap-card p{color:var(--muted);font-size:.86rem;line-height:1.75}
-    .tools{display:flex;gap:8px;flex-wrap:wrap;margin-top:18px}
-    .tool{font-size:.67rem;font-weight:800;padding:6px 9px;border-radius:9px;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);color:#b8c1d1}
-    .markets{
-      padding:38px;border-radius:30px;border:1px solid rgba(255,255,255,.09);
-      background:linear-gradient(120deg,rgba(87,229,255,.06),rgba(168,108,255,.07),rgba(255,93,177,.05))
-    }
-    .markets-grid{display:grid;grid-template-columns:repeat(6,1fr);gap:10px;margin-top:24px}
-    .market{padding:16px 10px;border-radius:16px;text-align:center;background:rgba(255,255,255,.04);border:1px solid rgba(255,255,255,.07);font-size:.74rem;font-weight:800;color:#cad1dd}
-    .contact{
-      text-align:center;padding:96px 24px;border-radius:34px;border:1px solid rgba(255,255,255,.10);
-      background:
-        radial-gradient(circle at 20% 10%,rgba(87,229,255,.15),transparent 34%),
-        radial-gradient(circle at 83% 23%,rgba(255,93,177,.13),transparent 31%),
-        radial-gradient(circle at 54% 90%,rgba(168,108,255,.15),transparent 35%),
-        rgba(17,20,31,.70);
-      overflow:hidden;position:relative
-    }
-    .contact h2{font-size:clamp(2rem,3.4vw,3.25rem);line-height:.98;letter-spacing:-.05em;margin:0 0 23px}
-    .contact h2 em{font-family:'Instrument Serif',serif;font-weight:400}
-    .contact p{max-width:640px;margin:0 auto 30px;color:#aab4c6;line-height:1.8}
-    footer{padding:42px 0 60px;color:#707b8f;font-size:.72rem}
-    .footer-row{display:flex;justify-content:space-between;gap:20px;align-items:center;border-top:1px solid rgba(255,255,255,.07);padding-top:26px}
-    .reveal{opacity:0;transform:translateY(26px);transition:opacity .8s ease,transform .8s cubic-bezier(.2,.8,.2,1)}
-    .reveal.in{opacity:1;transform:none}
-    .tilt{transform-style:preserve-3d;will-change:transform}
-    @media(max-width:980px){
-      .navlinks{display:none}.menu{display:block}.nav.open .navlinks{display:flex;position:absolute;top:60px;left:0;right:0;flex-direction:column;background:rgba(8,10,16,.96);border:1px solid rgba(255,255,255,.09);border-radius:22px;padding:12px}
-      .hero-grid,.section-head,.systems,.seo-grid{grid-template-columns:1fr}
-      .hero-grid{gap:44px}.hero-card{max-width:620px}.metric-grid{grid-template-columns:repeat(2,1fr)}
-      .account-grid{grid-template-columns:1fr}.capabilities{grid-template-columns:1fr}.markets-grid{grid-template-columns:repeat(3,1fr)}
-      .section-head{gap:18px}.privacy{text-align:left}.case-foot{align-items:flex-start;flex-direction:column}
-    }
-    @media(max-width:620px){
-      .shell{width:min(var(--max),calc(100% - 28px))}
-      .nav{top:10px;width:calc(100% - 20px)}.nav-cta{display:none}
-      .hero{padding-top:112px}.hero-grid{grid-template-columns:1fr}.hero-card{min-height:330px;max-width:270px;justify-self:center}.portrait{min-height:304px}
-      .float-pill{display:none}h1{font-size:clamp(2.35rem,11.8vw,3.45rem)}
-      section{padding:82px 0}.metric-grid{grid-template-columns:1fr}.flow-row{grid-template-columns:1fr}.arrow{transform:rotate(90deg)}
-      .markets-grid{grid-template-columns:repeat(2,1fr)}
-      .footer-row{flex-direction:column;align-items:flex-start}
-    }
-    @media(prefers-reduced-motion:reduce){
-      *,*::before,*::after{scroll-behavior:auto!important;animation-duration:.001ms!important;animation-iteration-count:1!important;transition-duration:.001ms!important}
-      #glow{display:none}
-    }
-  </style>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#070910">
+<meta name="description" content="Mohamed Abdelrazek — performance marketing, paid media, SEO, analytics, CRM automation and growth operations.">
+<title>Mohamed Abdelrazek — Performance Marketing & Growth</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=Manrope:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<style>
+:root{
+  --bg:#070910;--panel:#10131d;--panel2:#151927;--text:#f7f8fc;--muted:#9ca7ba;
+  --line:rgba(255,255,255,.10);--cyan:#69e8ff;--blue:#7187ff;--violet:#ae75ff;
+  --pink:#ff6ab8;--lime:#9df7a7;--max:1180px;--shadow:0 26px 80px rgba(0,0,0,.42)
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{
+  margin:0;color:var(--text);font-family:Manrope,system-ui,sans-serif;background:
+  radial-gradient(circle at 15% 8%,rgba(72,90,255,.14),transparent 30%),
+  radial-gradient(circle at 85% 18%,rgba(255,76,171,.10),transparent 25%),
+  radial-gradient(circle at 58% 78%,rgba(74,224,255,.08),transparent 25%),var(--bg);
+  overflow-x:hidden
+}
+body:before{
+  content:"";position:fixed;inset:0;pointer-events:none;z-index:-2;opacity:.035;
+  background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='150' height='150'%3E%3Cfilter id='n'%3E%3CfeTurbulence baseFrequency='.8' numOctaves='3' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='.45'/%3E%3C/svg%3E")
+}
+a{color:inherit}
+img{max-width:100%}
+.wrap{width:min(var(--max),calc(100% - 40px));margin:auto}
+.progress{position:fixed;left:0;top:0;width:0;height:3px;z-index:999;background:linear-gradient(90deg,var(--cyan),var(--violet),var(--pink))}
+.glow{
+  position:fixed;width:420px;height:420px;border-radius:50%;pointer-events:none;z-index:-1;
+  background:radial-gradient(circle,rgba(108,132,255,.12),rgba(173,117,255,.06) 38%,transparent 70%);
+  transform:translate(-50%,-50%)
+}
+.intro{
+  position:fixed;inset:0;z-index:5000;background:#05060a;display:grid;place-items:center;
+  animation:introOut 2.15s cubic-bezier(.75,0,.2,1) forwards
+}
+.intro:before,.intro:after{content:"";position:absolute;left:0;right:0;height:10vh;background:#000;z-index:2}
+.intro:before{top:0}.intro:after{bottom:0}
+.intro-copy{text-align:center;position:relative;z-index:3}
+.intro-dot{width:13px;height:13px;border-radius:50%;margin:0 auto 18px;background:linear-gradient(135deg,var(--cyan),var(--violet),var(--pink));box-shadow:0 0 28px rgba(173,117,255,.8)}
+.intro strong{font-size:.95rem;letter-spacing:.24em}
+.intro small{display:block;margin-top:8px;font-size:.58rem;color:#7b879b;letter-spacing:.2em}
+@keyframes introOut{0%,67%{opacity:1;visibility:visible}100%{opacity:0;visibility:hidden;pointer-events:none}}
+.nav{
+  position:fixed;z-index:1000;top:14px;left:50%;transform:translateX(-50%);
+  width:min(1120px,calc(100% - 28px));height:58px;padding:0 14px 0 17px;
+  border:1px solid var(--line);border-radius:999px;background:rgba(8,10,16,.72);
+  backdrop-filter:blur(18px) saturate(150%);display:flex;align-items:center;justify-content:space-between;gap:16px;
+  box-shadow:0 16px 50px rgba(0,0,0,.22)
+}
+.brand{display:flex;align-items:center;gap:10px;text-decoration:none;font-weight:800;font-size:.84rem}
+.brand i{width:9px;height:9px;border-radius:50%;background:linear-gradient(135deg,var(--cyan),var(--violet),var(--pink));box-shadow:0 0 18px var(--violet)}
+.links{display:flex;gap:4px}
+.links a{text-decoration:none;color:#98a2b4;font-size:.72rem;font-weight:700;padding:8px 10px;border-radius:999px;transition:.25s}
+.links a:hover,.links a.active{color:#fff;background:rgba(255,255,255,.07)}
+.navcta{font-size:.7rem;font-weight:800;text-decoration:none;color:#080910;background:linear-gradient(115deg,var(--cyan),#aef5ff 28%,var(--violet),var(--pink));padding:9px 13px;border-radius:999px}
+.menu{display:none;background:none;border:0;color:white;font-size:1.15rem}
+.hero{padding:118px 0 66px;min-height:720px;display:grid;align-items:center;position:relative}
+.hero:after{
+  content:"";position:absolute;inset:0;pointer-events:none;z-index:-1;
+  background:linear-gradient(112deg,transparent 20%,rgba(110,230,255,.03) 50%,transparent 70%);
+  background-size:220% 100%;animation:sweep 9s ease-in-out infinite
+}
+@keyframes sweep{50%{background-position:100% 0}}
+.hero-grid{display:grid;grid-template-columns:minmax(0,1.45fr) minmax(240px,.55fr);gap:56px;align-items:center}
+.eyebrow{display:inline-flex;gap:8px;align-items:center;color:#c3cada;font-size:.65rem;font-weight:800;letter-spacing:.075em;text-transform:uppercase;border:1px solid var(--line);background:rgba(255,255,255,.035);padding:7px 10px;border-radius:999px}
+.eyebrow b{width:6px;height:6px;border-radius:50%;background:var(--lime);box-shadow:0 0 14px var(--lime)}
+h1{font-size:clamp(2.45rem,4.5vw,4.25rem);line-height:.98;letter-spacing:-.055em;margin:21px 0 17px;max-width:700px}
+.grad{background:linear-gradient(100deg,#fff 5%,#b9c4ff 28%,#78e9ff 53%,#ce8aff 78%,#ff83bd);background-size:200% auto;-webkit-background-clip:text;background-clip:text;color:transparent;animation:grad 8s linear infinite}
+@keyframes grad{to{background-position:200% center}}
+.lead{max-width:630px;color:#a9b3c4;font-size:.93rem;line-height:1.75;margin:0 0 25px}
+.actions{display:flex;flex-wrap:wrap;gap:10px}
+.btn{display:inline-flex;align-items:center;gap:8px;text-decoration:none;font-size:.74rem;font-weight:800;padding:11px 14px;border-radius:13px;transition:.25s}
+.btn:hover{transform:translateY(-2px)}
+.primary{color:#06070a;background:linear-gradient(115deg,var(--cyan),#baf8ff 28%,var(--violet) 76%,var(--pink));box-shadow:0 13px 36px rgba(100,120,255,.2)}
+.ghost{border:1px solid var(--line);background:rgba(255,255,255,.035);color:#eef2fa}
+.portrait-card{justify-self:end;width:272px;border:1px solid rgba(255,255,255,.13);border-radius:27px;padding:11px;background:linear-gradient(150deg,rgba(255,255,255,.09),rgba(255,255,255,.02));box-shadow:var(--shadow);position:relative;overflow:hidden}
+.portrait-card:before{content:"";position:absolute;width:210px;height:210px;border-radius:50%;right:-80px;top:-75px;background:linear-gradient(135deg,rgba(105,232,255,.28),rgba(174,117,255,.28),rgba(255,106,184,.22));filter:blur(26px)}
+.portrait{height:328px;border-radius:18px;overflow:hidden;position:relative;background:linear-gradient(to top,rgba(7,9,16,.93),rgba(7,9,16,.12) 58%),url('profile.jpg') center 15%/cover no-repeat}
+.portrait-copy{position:absolute;left:18px;right:18px;bottom:18px}
+.portrait-copy small{font-size:.64rem;color:#c7ceda;font-weight:700}.portrait-copy strong{display:block;font-family:"Instrument Serif",serif;font-size:1.35rem;line-height:1.05;margin-top:4px;font-weight:400}
+.ticker{border-top:1px solid rgba(255,255,255,.06);border-bottom:1px solid rgba(255,255,255,.06);overflow:hidden;background:rgba(255,255,255,.015)}
+.track{display:flex;width:max-content;animation:marquee 30s linear infinite}
+.track span{padding:15px 24px;color:#8994a7;font-size:.65rem;font-weight:800;letter-spacing:.06em;text-transform:uppercase;white-space:nowrap}
+.track b{color:#fff}.track i{color:var(--violet);font-style:normal;margin:0 13px}
+@keyframes marquee{to{transform:translateX(-50%)}}
+section{padding:82px 0}
+.head{display:grid;grid-template-columns:170px 1fr;gap:32px;align-items:start;margin-bottom:32px}
+.kicker{font-size:.64rem;color:#8f9aae;font-weight:800;letter-spacing:.12em;text-transform:uppercase;padding-top:7px}
+.title{font-size:clamp(1.85rem,3vw,2.8rem);line-height:1.03;letter-spacing:-.045em;margin:0;max-width:700px}
+.title em{font-family:"Instrument Serif",serif;font-weight:400}
+.sub{font-size:.84rem;line-height:1.75;color:#97a3b6;max-width:680px;margin:12px 0 0}
+.card{border:1px solid var(--line);background:linear-gradient(150deg,rgba(18,21,32,.92),rgba(10,12,18,.90));border-radius:28px;box-shadow:0 20px 65px rgba(0,0,0,.24)}
+.performance{padding:30px}
+.case-row{display:grid;grid-template-columns:1.1fr .9fr;gap:26px;align-items:end}
+.case-label{font-size:.62rem;text-transform:uppercase;letter-spacing:.11em;color:#9ca8bb;font-weight:800}
+.case-copy h3{font-size:clamp(1.6rem,2.7vw,2.5rem);line-height:1.03;letter-spacing:-.045em;margin:10px 0 10px}
+.case-copy h3 em{font-family:"Instrument Serif",serif;font-weight:400}
+.case-copy p{font-size:.8rem;line-height:1.7;color:#97a3b5;margin:0}
+.metrics{display:grid;grid-template-columns:repeat(2,1fr);gap:9px}
+.metric{background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.065);border-radius:16px;padding:14px}
+.metric strong{display:block;font-size:1.48rem;letter-spacing:-.045em}.metric span{display:block;color:#7f8a9d;font-size:.58rem;text-transform:uppercase;letter-spacing:.08em;font-weight:800;margin-top:5px}
+.proof{margin-top:24px;border-radius:19px;overflow:hidden;border:1px solid rgba(255,255,255,.10);background:#fff;position:relative;cursor:zoom-in}
+.proof img{display:block;width:100%;height:auto;object-fit:contain}
+.proofbar{background:#0d1018;color:#99a5b7;display:flex;justify-content:space-between;gap:12px;padding:10px 13px;font-size:.61rem;font-weight:700}
+.proofbar b{color:#edf1f8}
+.result-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:12px;margin-top:12px}
+.result{padding:20px;min-height:166px;position:relative;overflow:hidden}
+.result:after{content:"";position:absolute;width:130px;height:130px;border-radius:50%;right:-60px;top:-60px;background:var(--orb);filter:blur(18px);opacity:.26}
+.result small{color:#8490a4;font-size:.58rem;text-transform:uppercase;letter-spacing:.09em;font-weight:800}
+.result h4{font-size:1rem;margin:8px 0 19px}
+.result strong{font-size:1.7rem;letter-spacing:-.05em;background:var(--g);-webkit-background-clip:text;background-clip:text;color:transparent}.result p{font-size:.68rem;color:#8893a6;margin:4px 0 0}
+.automation{display:grid;grid-template-columns:1.35fr .65fr;gap:18px;padding:18px}
+.automation .proof{margin:0}
+.autocopy{padding:12px 8px 12px 8px;display:flex;flex-direction:column;justify-content:center}
+.autocopy h3{font-size:1.5rem;letter-spacing:-.04em;line-height:1.08;margin:0 0 12px}.autocopy p{font-size:.78rem;line-height:1.7;color:#96a2b4;margin:0}
+.flowlist{display:grid;gap:8px;margin-top:18px}.flowitem{display:grid;grid-template-columns:27px 1fr;gap:9px;align-items:start;font-size:.72rem;color:#c6cedb}.flowitem i{width:24px;height:24px;border-radius:8px;display:grid;place-items:center;background:linear-gradient(135deg,rgba(105,232,255,.15),rgba(174,117,255,.15));border:1px solid rgba(255,255,255,.08);font-style:normal;color:#bff5ff;font-size:.6rem}
+.seo-grid{display:grid;grid-template-columns:repeat(2,1fr);gap:14px}
+.seocard{padding:24px;min-height:270px}
+.seocard h3{font-size:1.2rem;letter-spacing:-.035em;margin:0 0 8px}.seocard p{font-size:.76rem;color:#95a1b4;line-height:1.7}
+.searchbox{margin-top:18px;background:white;color:#202124;border-radius:16px;padding:13px}
+.searchbar{border:1px solid #e4e8ef;border-radius:999px;padding:10px 13px;font-size:.7rem;color:#505866}.ai{margin-top:10px;padding:11px;border-radius:11px;background:#f4f7ff;border:1px solid #e0e7ff;font-size:.65rem;color:#394760}
+.ranklist{display:grid;gap:8px;margin-top:16px}.rank{display:flex;justify-content:space-between;gap:12px;padding:11px 12px;border-radius:12px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);font-size:.68rem}.rank span{color:#aab4c4}.rank b{color:#a9f2b4}
+.capgrid{display:grid;grid-template-columns:repeat(4,1fr);gap:12px}
+.cap{padding:20px;min-height:180px}.cap b{font-family:"Instrument Serif",serif;font-weight:400;color:#768398;font-size:1.55rem}.cap h3{font-size:.92rem;margin:7px 0 7px}.cap p{font-size:.69rem;line-height:1.65;color:#8d99ac}
+.tags{display:flex;flex-wrap:wrap;gap:6px;margin-top:12px}.tag{font-size:.56rem;font-weight:800;color:#b8c1d1;padding:5px 7px;border-radius:8px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06)}
+.markets{margin-top:12px;padding:22px;background:linear-gradient(115deg,rgba(105,232,255,.05),rgba(174,117,255,.06),rgba(255,106,184,.04))}
+.marketrow{display:grid;grid-template-columns:repeat(6,1fr);gap:8px;margin-top:14px}.market{text-align:center;padding:11px 6px;border-radius:11px;background:rgba(255,255,255,.035);border:1px solid rgba(255,255,255,.06);font-size:.63rem;font-weight:800;color:#c1cad8}
+.contact{padding:62px 26px;text-align:center;position:relative;overflow:hidden;background:radial-gradient(circle at 18% 15%,rgba(105,232,255,.11),transparent 28%),radial-gradient(circle at 82% 18%,rgba(255,106,184,.10),transparent 26%),radial-gradient(circle at 55% 100%,rgba(174,117,255,.10),transparent 28%),#10131d}
+.contact h2{font-size:clamp(2rem,3.4vw,3.2rem);line-height:1;letter-spacing:-.05em;margin:8px 0 12px}.contact h2 em{font-family:"Instrument Serif",serif;font-weight:400}.contact p{max-width:580px;margin:0 auto 22px;font-size:.78rem;line-height:1.7;color:#9ba7b9}
+footer{padding:30px 0 45px;color:#6f7a8d;font-size:.62rem}.foot{display:flex;justify-content:space-between;gap:14px;border-top:1px solid rgba(255,255,255,.07);padding-top:20px}
+.reveal{opacity:0;transform:translateY(20px);transition:.7s cubic-bezier(.2,.8,.2,1)}.reveal.in{opacity:1;transform:none}
+.lightbox{position:fixed;inset:0;background:rgba(3,4,7,.92);backdrop-filter:blur(10px);z-index:4000;display:none;align-items:center;justify-content:center;padding:28px}.lightbox.open{display:flex}.lightbox img{max-width:min(1400px,94vw);max-height:90vh;border-radius:14px;box-shadow:0 35px 120px rgba(0,0,0,.65)}.close{position:absolute;right:24px;top:20px;background:rgba(255,255,255,.1);border:1px solid rgba(255,255,255,.12);color:white;width:38px;height:38px;border-radius:50%;font-size:1.1rem;cursor:pointer}
+@media(max-width:930px){
+  .links{display:none}.menu{display:block}.nav.open .links{display:flex;position:absolute;top:64px;left:0;right:0;flex-direction:column;background:#0a0d14;border:1px solid var(--line);border-radius:18px;padding:10px}
+  .hero-grid,.case-row,.automation,.head{grid-template-columns:1fr}.hero-grid{gap:35px}.portrait-card{justify-self:start}
+  .result-grid{grid-template-columns:1fr}.capgrid{grid-template-columns:repeat(2,1fr)}.marketrow{grid-template-columns:repeat(3,1fr)}
+}
+@media(max-width:620px){
+  .wrap{width:min(var(--max),calc(100% - 26px))}.navcta{display:none}.hero{padding-top:95px;min-height:auto}
+  h1{font-size:2.45rem}.portrait-card{width:245px}.portrait{height:300px}.head{gap:10px}.title{font-size:1.9rem}
+  section{padding:66px 0}.performance{padding:18px}.metrics,.seo-grid,.capgrid{grid-template-columns:1fr}.marketrow{grid-template-columns:repeat(2,1fr)}
+  .proofbar{flex-direction:column}.foot{flex-direction:column}.contact{padding:50px 18px}
+}
+@media(prefers-reduced-motion:reduce){*{scroll-behavior:auto!important;animation:none!important;transition:none!important}.intro{display:none}.glow{display:none}.reveal{opacity:1;transform:none}}
+</style>
 </head>
 <body>
-  <div class="progress" id="progress"></div>
-  <canvas id="cinemaParticles" aria-hidden="true"></canvas>
-  <div class="cinema-intro" id="cinemaIntro" aria-hidden="true">
-    <div class="letterbox top"></div>
-    <div class="letterbox bottom"></div>
-    <div class="intro-light"></div>
-    <div class="intro-copy">
-      <div class="intro-mark"></div>
-      <div class="intro-name">MOHAMED ABDELRAZEK</div>
-      <div class="intro-role">PERFORMANCE MARKETING · GROWTH SYSTEMS</div>
+<div class="progress" id="progress"></div>
+<div class="glow" id="glow"></div>
+<div class="intro"><div class="intro-copy"><div class="intro-dot"></div><strong>MOHAMED ABDELRAZEK</strong><small>PERFORMANCE MARKETING · GROWTH SYSTEMS</small></div></div>
+
+<nav class="nav" id="nav">
+  <a href="#top" class="brand"><i></i>Mohamed Abdelrazek</a>
+  <div class="links">
+    <a href="#performance">Performance</a><a href="#automation">Automation</a><a href="#seo">SEO</a><a href="#capabilities">Capabilities</a><a href="#contact">Contact</a>
+  </div>
+  <a class="navcta" href="#contact">Work with me ↗</a>
+  <button class="menu" id="menu">☰</button>
+</nav>
+
+<main id="top">
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div>
+      <div class="eyebrow reveal"><b></b>Performance marketing · analytics · automation</div>
+      <h1 class="reveal">Growth systems<br><span class="grad">built to perform.</span></h1>
+      <p class="lead reveal">Paid media first, supported by measurement, SEO and automation so acquisition works as one connected system.</p>
+      <div class="actions reveal">
+        <a class="btn primary" href="#performance">See the results ↓</a>
+        <a class="btn ghost" href="mailto:moe-abdelrazek@outlook.com">Email me ↗</a>
+      </div>
+    </div>
+    <div class="portrait-card reveal">
+      <div class="portrait">
+        <div class="portrait-copy"><small>Performance Marketing & Growth</small><strong>Strategy. Systems. Scale.</strong></div>
+      </div>
     </div>
   </div>
-  <div class="aurora" aria-hidden="true"><span class="a"></span><span class="b"></span><span class="c"></span></div>
-  <div class="cinema-lines" aria-hidden="true"><i></i><i></i><i></i></div>
-  <div id="glow" aria-hidden="true"></div>
+</section>
 
-  <nav class="nav" id="nav">
-    <a class="brand" href="#top"><span class="brand-dot"></span>Mohamed Abdelrazek</a>
-    <div class="navlinks">
-      <a href="#performance">Performance</a>
-      <a href="#automation">Automation</a>
-      <a href="#seo">SEO</a>
-      <a href="#capabilities">Capabilities</a>
-      <a href="#contact">Contact</a>
-    </div>
-    <a class="nav-cta" href="#contact">Work with me ↗</a>
-    <button class="menu" id="menu" aria-label="Open navigation">☰</button>
-  </nav>
+<div class="ticker"><div class="track">
+  <span><b>Google Ads</b><i>✦</i>Meta Ads<i>✦</i>Performance Max<i>✦</i>GA4<i>✦</i>GTM<i>✦</i>Firebase<i>✦</i>AppsFlyer<i>✦</i>SEO<i>✦</i>n8n<i>✦</i>GoHighLevel<i>✦</i>HubSpot<i>✦</i>ClickUp<i>✦</i></span>
+  <span><b>Google Ads</b><i>✦</i>Meta Ads<i>✦</i>Performance Max<i>✦</i>GA4<i>✦</i>GTM<i>✦</i>Firebase<i>✦</i>AppsFlyer<i>✦</i>SEO<i>✦</i>n8n<i>✦</i>GoHighLevel<i>✦</i>HubSpot<i>✦</i>ClickUp<i>✦</i></span>
+</div></div>
 
-  <main id="top">
-    <section class="hero">
-      <div class="shell hero-grid">
-        <div>
-          <div class="eyebrow reveal"><i></i> Performance marketing · growth systems · automation</div>
-          <h1 class="reveal">
-            Growth,<br>
-            <span class="gradient-text">built to perform.</span>
-          </h1>
-          <p class="lead reveal">
-            Paid media, SEO, analytics and automation — connected into one measurable growth system.
-          </p>
-          <div class="hero-actions reveal">
-            <a class="btn btn-primary" href="#performance">See the results <span>↓</span></a>
-            <a class="btn btn-ghost" href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com ↗</a>
-          </div>
-        </div>
-
-        <div class="hero-card tilt reveal">
-          <div class="portrait">
-            <div class="portrait-copy">
-              <small>Performance Marketing & Growth</small>
-              <strong>Strategy. Systems. Scale.</strong>
-            </div>
-          </div>
-          <div class="float-pill one"><span>$1M+</span>managed Google Ads scale</div>
-          <div class="float-pill two"><span>13K+</span>tracked conversions</div>
-        </div>
-      </div>
-    </section>
-
-    <div class="mini-strip">
-      <div class="marquee">
-        <span><b>Google Ads</b><i>✦</i>Meta Ads<i>✦</i>Performance Max<i>✦</i>Search<i>✦</i>GA4<i>✦</i>GTM<i>✦</i>Firebase<i>✦</i>AppsFlyer<i>✦</i>SEO<i>✦</i>n8n<i>✦</i>GoHighLevel<i>✦</i>HubSpot<i>✦</i>ClickUp<i>✦</i>Shopify<i>✦</i></span>
-        <span><b>Google Ads</b><i>✦</i>Meta Ads<i>✦</i>Performance Max<i>✦</i>Search<i>✦</i>GA4<i>✦</i>GTM<i>✦</i>Firebase<i>✦</i>AppsFlyer<i>✦</i>SEO<i>✦</i>n8n<i>✦</i>GoHighLevel<i>✦</i>HubSpot<i>✦</i>ClickUp<i>✦</i>Shopify<i>✦</i></span>
-      </div>
+<section id="performance">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="kicker">01 / Performance</div>
+      <div><h2 class="title">Paid media at <em>serious scale.</em></h2><p class="sub">Anonymized proof from accounts I managed. The client identities are withheld; the performance evidence remains visible.</p></div>
     </div>
 
-    <section id="performance">
-      <div class="shell">
-        <div class="section-head reveal">
-          <div>
-            <div class="section-kicker">01 / Performance marketing</div>
-          </div>
-          <div>
-            <h2 class="section-title">Big accounts.<br><em>Real conversion volume.</em></h2>
-            <p class="section-copy">
-              The portfolio leads with performance because that is where the strongest proof is. Client identities are intentionally anonymized; the numbers and campaign scale are not.
-            </p>
-          </div>
+    <article class="card performance reveal">
+      <div class="case-row">
+        <div class="case-copy">
+          <div class="case-label">Hero account · Global B2B SaaS / 3D visualization software</div>
+          <h3>$1M+ Google Ads account with <em>13K+ tracked conversions.</em></h3>
+          <p>Search and Performance Max across a large, multi-market account with substantial conversion volume and long-term spend.</p>
         </div>
-
-        <article class="hero-case reveal">
-          <div class="case-top">
-            <div class="case-tag">Hero account · Global B2B SaaS / 3D visualization software</div>
-            <div class="case-badge">Google Ads · Search + Performance Max</div>
-          </div>
-          <h3 class="case-title">Managed a Google Ads account at <em>seven-figure scale.</em></h3>
-          <p class="case-desc">
-            Large-scale acquisition across multiple campaigns and markets, balancing volume, efficiency and conversion quality inside an established B2B SaaS account.
-          </p>
-
-          <div class="metric-grid">
-            <div class="metric" style="--glow:rgba(87,229,255,.24)"><strong data-count="1.05" data-prefix="$" data-suffix="M+">$1.05M+</strong><span>Google Ads spend</span></div>
-            <div class="metric" style="--glow:rgba(168,108,255,.24)"><strong data-count="13" data-suffix="K+">13K+</strong><span>Tracked conversions</span></div>
-            <div class="metric" style="--glow:rgba(255,93,177,.24)"><strong data-count="35.7" data-suffix="M+">35.7M+</strong><span>Impressions</span></div>
-            <div class="metric" style="--glow:rgba(255,156,88,.24)"><strong data-count="626" data-suffix="K+">626K+</strong><span>Clicks</span></div>
-          </div>
-
-          <div class="proof-shot reveal">
-            <img src="assets/paid-scale.jpg" alt="Anonymized Google Ads account performance screenshot showing large-scale spend, impressions, clicks and conversions">
-            <div class="proof-caption"><b>Actual Google Ads account view</b><span>Client identity withheld · performance proof preserved</span></div>
-          </div>
-
-          <div class="case-foot">
-            <div class="stack">
-              <span class="chip">Search</span><span class="chip">Performance Max</span><span class="chip">B2B SaaS</span><span class="chip">Multi-market</span><span class="chip">Conversion optimization</span>
-            </div>
-            <div class="privacy">Client name and proprietary campaign structure are withheld. Portfolio evidence is shown in anonymized form.</div>
-          </div>
-        </article>
-
-        <div class="account-grid">
-          <article class="account-card tilt reveal" style="--orb:linear-gradient(135deg,#57e5ff,#6b7cff);--grad:linear-gradient(90deg,#6cecff,#8491ff)">
-            <div class="orb"></div>
-            <div class="label">High-volume conversion campaign</div>
-            <h3>Google Performance Max</h3>
-            <div class="big">10.9K+</div>
-            <div class="big-label">tracked conversions</div>
-            <div class="mini-metrics">
-              <div><strong>$17.2K</strong><span>Spend</span></div>
-              <div><strong>$1.58</strong><span>Cost / conv.</span></div>
-              <div><strong>13.71%</strong><span>Conv. rate</span></div>
-              <div><strong>961K+</strong><span>Impressions</span></div>
-            </div>
-          </article>
-
-          <article class="account-card tilt reveal" style="--orb:linear-gradient(135deg,#a86cff,#ff5db1);--grad:linear-gradient(90deg,#c081ff,#ff72bc)">
-            <div class="orb"></div>
-            <div class="label">US professional services</div>
-            <h3>Lead generation at scale</h3>
-            <div class="big">3.8K+</div>
-            <div class="big-label">conversions</div>
-            <div class="mini-metrics">
-              <div><strong>$81K+</strong><span>Spend</span></div>
-              <div><strong>$21.34</strong><span>Cost / conv.</span></div>
-              <div><strong>6.46%</strong><span>Conv. rate</span></div>
-              <div><strong>Google</strong><span>Search + PMax</span></div>
-            </div>
-          </article>
-
-          <article class="account-card tilt reveal" style="--orb:linear-gradient(135deg,#ff9c58,#ff5db1);--grad:linear-gradient(90deg,#ffb068,#ff6eb7)">
-            <div class="orb"></div>
-            <div class="label">Multi-account paid media</div>
-            <h3>Agency-side account management</h3>
-            <div class="big">Multi-industry</div>
-            <div class="big-label">portfolio coverage</div>
-            <div class="mini-metrics">
-              <div><strong>Google</strong><span>Search / PMax</span></div>
-              <div><strong>Meta</strong><span>Paid social</span></div>
-              <div><strong>Lead Gen</strong><span>Primary focus</span></div>
-              <div><strong>US</strong><span>Core market</span></div>
-            </div>
-          </article>
+        <div class="metrics">
+          <div class="metric"><strong>$1.05M+</strong><span>Google Ads spend</span></div>
+          <div class="metric"><strong>13K+</strong><span>Conversions</span></div>
+          <div class="metric"><strong>35.7M+</strong><span>Impressions</span></div>
+          <div class="metric"><strong>626K+</strong><span>Clicks</span></div>
         </div>
       </div>
-    </section>
-
-    <section id="automation">
-      <div class="shell">
-        <div class="section-head reveal">
-          <div><div class="section-kicker">02 / CRM & automation</div></div>
-          <div>
-            <h2 class="section-title">Campaigns are only half the job.<br><em>I build what happens after the lead.</em></h2>
-            <p class="section-copy">Lead intake, AI classification, CRM enrichment, routing, follow-up and operational workflows built around n8n, GoHighLevel, Quo, Google Sheets, ClickUp and Slack.</p>
-          </div>
-        </div>
-
-        <div class="systems">
-          <div class="systems-copy reveal">
-            <h3>From incoming lead to usable CRM data — automatically.</h3>
-            <p>Instead of letting leads disappear into inboxes, spreadsheets or disconnected tools, I build workflows that normalize, classify, enrich and route them into the right place.</p>
-            <div class="bullet-list">
-              <div class="bullet"><i>01</i><span>Normalize incoming lead data from email, calls and forms.</span></div>
-              <div class="bullet"><i>02</i><span>Use AI extraction and classification to identify lead type, timeline and intent.</span></div>
-              <div class="bullet"><i>03</i><span>Sync contact records and notes into CRM, Sheets and task-management systems.</span></div>
-              <div class="bullet"><i>04</i><span>Trigger internal alerts, follow-up tasks and operational handoffs automatically.</span></div>
-            </div>
-          </div>
-
-          <div class="system-proof reveal">
-            <img src="assets/automation-lead-intake.jpg" alt="Actual n8n automation workflow for lead intake, classification and CRM routing">
-            <div class="proof-caption"><b>Actual automation workflow</b><span>Lead intake · AI classification · CRM sync</span></div>
-          </div>
-        </div>
+      <div class="proof zoomable">
+        <img src="assets/paid-scale.jpg?v=3" alt="Actual anonymized Google Ads account screenshot showing large scale paid media performance">
+        <div class="proofbar"><b>Actual Google Ads account view</b><span>Client identity removed · click to enlarge</span></div>
       </div>
-    </section>
+    </article>
 
-    <section id="seo">
-      <div class="shell">
-        <div class="section-head reveal">
-          <div><div class="section-kicker">03 / SEO & organic visibility</div></div>
-          <div>
-            <h2 class="section-title">Ranking is good.<br><em>Owning the search surface is better.</em></h2>
-            <p class="section-copy">SEO work across local real estate and niche B2B automotive queries, including organic results, local visibility and presence inside Google AI Overview.</p>
-          </div>
-        </div>
-
-        <div class="seo-grid">
-          <div class="search-card reveal">
-            <h3>Local SEO + AI Overview visibility</h3>
-            <p>Built search visibility around high-intent local real-estate queries rather than generic vanity traffic.</p>
-            <div class="search-ui">
-              <div class="searchbar"><span>best real estate brokerage near me</span><span>⌕</span></div>
-              <div class="ai-box"><b>AI Overview</b><br>Strong local entities, structured content and topical relevance increase the chance of appearing across multiple Google surfaces.</div>
-              <div class="result"><small>example-realestate.com › local-market</small><h4>Local real estate expertise for buyers and sellers</h4><p>Organic result positioned around actual local search intent.</p></div>
-            </div>
-          </div>
-          <div class="rank-card reveal">
-            <div>
-              <h3>Niche B2B search visibility</h3>
-              <p>Technical and content SEO around specialized automotive technology terminology in the UAE market.</p>
-              <div class="rank-list">
-                <div class="rank-item"><span>Digital Vehicle Health</span><b>Organic + AI visibility</b></div>
-                <div class="rank-item"><span>EVHC Dubai</span><b>Niche commercial intent</b></div>
-                <div class="rank-item"><span>Vehicle Retention Tracker UAE</span><b>Category visibility</b></div>
-                <div class="rank-item"><span>Local real estate searches</span><b>Maps + organic</b></div>
-              </div>
-            </div>
-            <div class="stack" style="margin-top:26px"><span class="chip">Technical SEO</span><span class="chip">On-page</span><span class="chip">Local SEO</span><span class="chip">Schema</span><span class="chip">Search intent</span></div>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="capabilities">
-      <div class="shell">
-        <div class="section-head reveal">
-          <div><div class="section-kicker">04 / Capabilities</div></div>
-          <div>
-            <h2 class="section-title">Not a channel operator.<br><em>A connected growth stack.</em></h2>
-            <p class="section-copy">Paid media leads the portfolio, but the surrounding skills matter because acquisition does not exist in isolation.</p>
-          </div>
-        </div>
-
-        <div class="capabilities">
-          <div class="cap-card reveal">
-            <div class="cap-num">01</div><h3>Paid acquisition</h3>
-            <p>Campaign architecture, search intent, Performance Max, retargeting, budget allocation, creative testing and conversion optimization.</p>
-            <div class="tools"><span class="tool">Google Ads</span><span class="tool">Meta Ads</span><span class="tool">TikTok Ads</span><span class="tool">Snapchat Ads</span></div>
-          </div>
-          <div class="cap-card reveal">
-            <div class="cap-num">02</div><h3>Measurement & attribution</h3>
-            <p>Event design, conversion architecture, analytics QA, app tracking, debugging and reliable reporting infrastructure.</p>
-            <div class="tools"><span class="tool">GA4</span><span class="tool">GTM</span><span class="tool">Firebase</span><span class="tool">AppsFlyer</span><span class="tool">Search Console</span></div>
-          </div>
-          <div class="cap-card reveal">
-            <div class="cap-num">03</div><h3>CRM & marketing operations</h3>
-            <p>Lead routing, workflow automation, CRM enrichment, alerts, pipeline logic, operational handoffs and documented processes.</p>
-            <div class="tools"><span class="tool">n8n</span><span class="tool">GoHighLevel</span><span class="tool">HubSpot</span><span class="tool">Quo</span><span class="tool">ClickUp</span><span class="tool">Slack</span></div>
-          </div>
-          <div class="cap-card reveal">
-            <div class="cap-num">04</div><h3>SEO & growth strategy</h3>
-            <p>Technical SEO, local SEO, intent mapping, competitive research, funnel design, CRO and full-funnel growth planning.</p>
-            <div class="tools"><span class="tool">SEO</span><span class="tool">CRO</span><span class="tool">Shopify</span><span class="tool">Market research</span><span class="tool">Full-funnel strategy</span></div>
-          </div>
-        </div>
-
-        <div class="markets reveal" style="margin-top:18px">
-          <div class="section-kicker">Markets & sectors</div>
-          <h3 style="font-size:2rem;letter-spacing:-.045em;margin:10px 0 0">Work spanning multiple markets and business models.</h3>
-          <div class="markets-grid">
-            <div class="market">United States</div><div class="market">UAE</div><div class="market">Saudi Arabia</div>
-            <div class="market">Germany</div><div class="market">Canada</div><div class="market">Egypt</div>
-          </div>
-          <div class="tools" style="margin-top:18px">
-            <span class="tool">B2B</span><span class="tool">SaaS</span><span class="tool">Real Estate</span><span class="tool">Fintech</span><span class="tool">E-commerce</span><span class="tool">Automotive</span><span class="tool">Financial Services</span><span class="tool">Professional Services</span>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <section id="contact">
-      <div class="shell">
-        <div class="contact reveal">
-          <div class="section-kicker">Available for remote roles & selected consulting work</div>
-          <h2>Need growth that<br><em>actually compounds?</em></h2>
-          <p>I work best where paid acquisition, measurement and marketing operations need to function as one system — not three disconnected jobs.</p>
-          <div class="hero-actions" style="justify-content:center">
-            <a class="btn btn-primary" href="mailto:moe-abdelrazek@outlook.com">Start a conversation ↗</a>
-            <a class="btn btn-ghost" href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank" rel="noopener">LinkedIn ↗</a>
-          </div>
-        </div>
-      </div>
-    </section>
-  </main>
-
-  <footer>
-    <div class="shell footer-row">
-      <div>© 2026 Mohamed Abdelrazek</div>
-      <div>Performance Marketing · Paid Media · SEO · Automation · Growth Operations</div>
+    <div class="result-grid">
+      <div class="card result reveal" style="--orb:linear-gradient(135deg,#69e8ff,#7187ff);--g:linear-gradient(90deg,#6eeaff,#8998ff)"><small>High-volume campaign</small><h4>Performance Max</h4><strong>10.9K+</strong><p>tracked conversions · $1.58 cost / conversion</p></div>
+      <div class="card result reveal" style="--orb:linear-gradient(135deg,#ae75ff,#ff6ab8);--g:linear-gradient(90deg,#c68cff,#ff79bd)"><small>US professional services</small><h4>Lead generation</h4><strong>3.8K+</strong><p>conversions · $81K+ spend · $21.34 CPA</p></div>
+      <div class="card result reveal" style="--orb:linear-gradient(135deg,#ff9d66,#ff6ab8);--g:linear-gradient(90deg,#ffb177,#ff78b9)"><small>Agency-side management</small><h4>Multi-account portfolio</h4><strong>Multi-industry</strong><p>Google Search · PMax · Meta · lead generation</p></div>
     </div>
-  </footer>
+  </div>
+</section>
 
-  <script>
-    const reduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-    const glow = document.getElementById('glow');
-    if(!reduced && window.matchMedia('(pointer:fine)').matches){
-      window.addEventListener('pointermove', function(e){
-        glow.style.left = e.clientX + 'px';
-        glow.style.top = e.clientY + 'px';
-      }, {passive:true});
-    } else { glow.style.display='none'; }
+<section id="automation">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="kicker">02 / CRM & automation</div>
+      <div><h2 class="title">What happens after the click <em>matters.</em></h2><p class="sub">Lead intake, AI classification, CRM enrichment, routing, internal alerts and operations workflows.</p></div>
+    </div>
+    <div class="card automation reveal">
+      <div class="proof zoomable">
+        <img src="assets/automation-lead-intake.jpg?v=3" alt="Actual anonymized n8n automation workflows for lead intake, AI classification and CRM sync">
+        <div class="proofbar"><b>Actual automation workflows</b><span>n8n · AI classification · CRM sync · click to enlarge</span></div>
+      </div>
+      <div class="autocopy">
+        <h3>Lead data moves automatically.</h3>
+        <p>These workflows collect and normalize inbound data, classify it with AI, check duplicates and push structured records into the next system.</p>
+        <div class="flowlist">
+          <div class="flowitem"><i>01</i><span>Email, call and webhook intake</span></div>
+          <div class="flowitem"><i>02</i><span>AI extraction and lead classification</span></div>
+          <div class="flowitem"><i>03</i><span>CRM notes, contacts and task sync</span></div>
+          <div class="flowitem"><i>04</i><span>Duplicate checks and error handling</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    const progress = document.getElementById('progress');
-    function onScroll(){
-      const max = document.documentElement.scrollHeight - innerHeight;
-      progress.style.width = (max > 0 ? (scrollY/max)*100 : 0) + '%';
-    }
-    addEventListener('scroll', onScroll, {passive:true}); onScroll();
+<section id="seo">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="kicker">03 / SEO</div>
+      <div><h2 class="title">Search visibility beyond <em>basic rankings.</em></h2><p class="sub">Local SEO and niche B2B search visibility, including organic results, local surfaces and Google AI Overview.</p></div>
+    </div>
+    <div class="seo-grid">
+      <div class="card seocard reveal">
+        <h3>Local real estate SEO</h3>
+        <p>Built visibility around high-intent local searches for buyers, sellers and brokerage discovery.</p>
+        <div class="searchbox">
+          <div class="searchbar">best real estate brokerage in Garrettsville Ohio</div>
+          <div class="ai"><b>Google AI Overview + local visibility</b><br>Strong local entity signals, reviews, on-page relevance and structured content.</div>
+        </div>
+      </div>
+      <div class="card seocard reveal">
+        <h3>Niche B2B automotive SEO</h3>
+        <p>Organic visibility for technical automotive queries in the UAE market.</p>
+        <div class="ranklist">
+          <div class="rank"><span>Digital Vehicle Health Dubai</span><b>Organic + AI</b></div>
+          <div class="rank"><span>EVHC Dubai</span><b>Commercial intent</b></div>
+          <div class="rank"><span>Vehicle Retention Tracker UAE</span><b>Category visibility</b></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
 
-    const observer = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          entry.target.classList.add('in');
-          observer.unobserve(entry.target);
-        }
-      });
-    }, {threshold:.10});
-    document.querySelectorAll('.reveal').forEach(function(el){observer.observe(el)});
+<section id="capabilities">
+  <div class="wrap">
+    <div class="head reveal">
+      <div class="kicker">04 / Capabilities</div>
+      <div><h2 class="title">One connected <em>growth stack.</em></h2><p class="sub">Paid acquisition is the lead discipline. Everything else supports better measurement, follow-up and scale.</p></div>
+    </div>
+    <div class="capgrid">
+      <div class="card cap reveal"><b>01</b><h3>Paid acquisition</h3><p>Search, Performance Max, paid social, retargeting, budgeting and conversion optimization.</p><div class="tags"><span class="tag">Google Ads</span><span class="tag">Meta Ads</span><span class="tag">TikTok</span><span class="tag">Snapchat</span></div></div>
+      <div class="card cap reveal"><b>02</b><h3>Measurement</h3><p>Tracking architecture, events, attribution QA, app analytics and debugging.</p><div class="tags"><span class="tag">GA4</span><span class="tag">GTM</span><span class="tag">Firebase</span><span class="tag">AppsFlyer</span></div></div>
+      <div class="card cap reveal"><b>03</b><h3>CRM & operations</h3><p>Lead routing, automations, CRM enrichment, alerts and operational handoffs.</p><div class="tags"><span class="tag">n8n</span><span class="tag">GHL</span><span class="tag">HubSpot</span><span class="tag">ClickUp</span><span class="tag">Slack</span></div></div>
+      <div class="card cap reveal"><b>04</b><h3>SEO & growth strategy</h3><p>Technical SEO, local SEO, intent mapping, competitive research and CRO.</p><div class="tags"><span class="tag">SEO</span><span class="tag">CRO</span><span class="tag">Shopify</span><span class="tag">Research</span></div></div>
+    </div>
+    <div class="card markets reveal">
+      <div class="kicker">Markets</div>
+      <div class="marketrow"><div class="market">United States</div><div class="market">UAE</div><div class="market">Saudi Arabia</div><div class="market">Germany</div><div class="market">Canada</div><div class="market">Egypt</div></div>
+    </div>
+  </div>
+</section>
 
-    const sectionObserver = new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          document.querySelectorAll('.navlinks a').forEach(function(a){a.classList.remove('active')});
-          const active=document.querySelector('.navlinks a[href="#'+entry.target.id+'"]');
-          if(active) active.classList.add('active');
-        }
-      });
-    }, {rootMargin:'-35% 0px -55% 0px'});
-    document.querySelectorAll('section[id]').forEach(function(s){sectionObserver.observe(s)});
+<section id="contact">
+  <div class="wrap">
+    <div class="card contact reveal">
+      <div class="kicker">Remote roles · selected consulting</div>
+      <h2>Need growth that <em>connects?</em></h2>
+      <p>I work best where paid acquisition, tracking and marketing operations need to function as one system.</p>
+      <div class="actions" style="justify-content:center"><a class="btn primary" href="mailto:moe-abdelrazek@outlook.com">Start a conversation ↗</a><a class="btn ghost" href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank" rel="noopener">LinkedIn ↗</a></div>
+    </div>
+  </div>
+</section>
+</main>
 
-    const menu=document.getElementById('menu'), nav=document.getElementById('nav');
-    menu.addEventListener('click',function(){nav.classList.toggle('open')});
-    document.querySelectorAll('.navlinks a').forEach(function(a){a.addEventListener('click',function(){nav.classList.remove('open')})});
+<footer><div class="wrap foot"><span>© 2026 Mohamed Abdelrazek</span><span>Performance Marketing · SEO · Automation · Growth Operations</span></div></footer>
 
-    function countUp(el){
-      const target=parseFloat(el.dataset.count), prefix=el.dataset.prefix||'', suffix=el.dataset.suffix||'';
-      const decimals=String(target).includes('.')?2:0, start=performance.now(), duration=1500;
-      function tick(now){
-        const p=Math.min((now-start)/duration,1), eased=1-Math.pow(1-p,4), val=target*eased;
-        el.textContent=prefix+val.toFixed(decimals).replace(/\.00$/,'')+suffix;
-        if(p<1) requestAnimationFrame(tick);
-      }
-      requestAnimationFrame(tick);
-    }
-    const counterObserver=new IntersectionObserver(function(entries){
-      entries.forEach(function(entry){
-        if(entry.isIntersecting){
-          entry.target.querySelectorAll('[data-count]').forEach(countUp);
-          counterObserver.unobserve(entry.target);
-        }
-      });
-    },{threshold:.35});
-    document.querySelectorAll('.metric-grid').forEach(function(g){counterObserver.observe(g)});
+<div class="lightbox" id="lightbox"><button class="close" id="close">×</button><img id="lightboxImg" alt=""></div>
 
-    if(!reduced && window.matchMedia('(pointer:fine)').matches){
-      document.querySelectorAll('.tilt').forEach(function(card){
-        card.addEventListener('pointermove',function(e){
-          const r=card.getBoundingClientRect(), x=(e.clientX-r.left)/r.width-.5, y=(e.clientY-r.top)/r.height-.5;
-          card.style.transform='perspective(900px) rotateX('+(-y*4)+'deg) rotateY('+(x*5)+'deg) translateY(-3px)';
-        });
-        card.addEventListener('pointerleave',function(){card.style.transform=''});
-      });
-    }
-
-    // Cinematic particle field: quiet, atmospheric, and intentionally lightweight.
-    (function(){
-      const canvas=document.getElementById('cinemaParticles');
-      if(!canvas || reduced) return;
-      const ctx=canvas.getContext('2d');
-      let dpr=Math.min(devicePixelRatio||1,2), w=0,h=0,pts=[];
-      function resize(){
-        w=innerWidth;h=innerHeight;
-        canvas.width=Math.floor(w*dpr);canvas.height=Math.floor(h*dpr);
-        canvas.style.width=w+'px';canvas.style.height=h+'px';
-        ctx.setTransform(dpr,0,0,dpr,0,0);
-        const count=Math.max(34,Math.min(82,Math.round(w/24)));
-        pts=Array.from({length:count},function(){
-          return {x:Math.random()*w,y:Math.random()*h,r:.45+Math.random()*1.25,v:.08+Math.random()*.22,a:.10+Math.random()*.34};
-        });
-      }
-      function draw(){
-        ctx.clearRect(0,0,w,h);
-        for(let i=0;i<pts.length;i++){
-          const p=pts[i];p.y-=p.v;if(p.y<-5){p.y=h+5;p.x=Math.random()*w}
-          ctx.beginPath();ctx.arc(p.x,p.y,p.r,0,Math.PI*2);
-          ctx.fillStyle='rgba(180,205,255,'+p.a+')';ctx.fill();
-          if(i%7===0){
-            const g=ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,12);
-            g.addColorStop(0,'rgba(120,190,255,.10)');g.addColorStop(1,'rgba(120,190,255,0)');
-            ctx.fillStyle=g;ctx.fillRect(p.x-12,p.y-12,24,24);
-          }
-        }
-        requestAnimationFrame(draw);
-      }
-      addEventListener('resize',resize,{passive:true});resize();draw();
-    })();
-  </script>
+<script>
+const reduced=matchMedia('(prefers-reduced-motion:reduce)').matches;
+const progress=document.getElementById('progress');
+function scrollProgress(){const m=document.documentElement.scrollHeight-innerHeight;progress.style.width=(m?scrollY/m*100:0)+'%'}addEventListener('scroll',scrollProgress,{passive:true});scrollProgress();
+const glow=document.getElementById('glow');if(!reduced&&matchMedia('(pointer:fine)').matches){addEventListener('pointermove',e=>{glow.style.left=e.clientX+'px';glow.style.top=e.clientY+'px'},{passive:true})}else glow.style.display='none';
+const obs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){e.target.classList.add('in');obs.unobserve(e.target)}}),{threshold:.1});document.querySelectorAll('.reveal').forEach(x=>obs.observe(x));
+const nav=document.getElementById('nav'),menu=document.getElementById('menu');menu.onclick=()=>nav.classList.toggle('open');document.querySelectorAll('.links a').forEach(a=>a.onclick=()=>nav.classList.remove('open'));
+const secObs=new IntersectionObserver(es=>es.forEach(e=>{if(e.isIntersecting){document.querySelectorAll('.links a').forEach(a=>a.classList.remove('active'));const a=document.querySelector('.links a[href="#'+e.target.id+'"]');if(a)a.classList.add('active')}}),{rootMargin:'-38% 0px -55% 0px'});document.querySelectorAll('section[id]').forEach(s=>secObs.observe(s));
+const box=document.getElementById('lightbox'),boxImg=document.getElementById('lightboxImg');document.querySelectorAll('.zoomable img').forEach(img=>img.addEventListener('click',()=>{boxImg.src=img.src;box.classList.add('open')}));document.getElementById('close').onclick=()=>box.classList.remove('open');box.addEventListener('click',e=>{if(e.target===box)box.classList.remove('open')});addEventListener('keydown',e=>{if(e.key==='Escape')box.classList.remove('open')});
+</script>
 </body>
 </html>

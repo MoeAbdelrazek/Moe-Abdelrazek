@@ -1,759 +1,764 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<meta name="theme-color" content="#171716">
+<meta name="description" content="Mohamed Abdelrazek — Digital Marketing, Performance Marketing, SEO, Analytics, CRM Automation and Marketing Operations.">
+<title>Mohamed Abdelrazek — Resume</title>
 
-  <title>Mohamed Abdelrazek | CV</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="portfolio.css">
 
-  <style>
-    :root {
-      --paper: #fffdfa;
-      --screen-bg: #e9e5dc;
-      --text: #211f1b;
-      --muted: #514b42;
-      --gold: #8d6b22;
-      --gold-light: #d4b35c;
-      --rule: #d8cfb8;
-      --dark: #241f17;
+<style>
+  .resume-page{
+    padding-top:110px;
+  }
+
+  .resume-hero{
+    padding:70px 0 54px;
+  }
+
+  .resume-hero-grid{
+    display:grid;
+    grid-template-columns:minmax(0,1.4fr) minmax(280px,.6fr);
+    gap:54px;
+    align-items:end;
+  }
+
+  .resume-title{
+    margin:18px 0 18px;
+    max-width:880px;
+    font-size:clamp(3.2rem,6vw,6.1rem);
+    line-height:.96;
+    letter-spacing:-.065em;
+  }
+
+  .resume-title span{
+    color:var(--gold2);
+  }
+
+  .resume-intro{
+    max-width:790px;
+    margin:0;
+    color:var(--muted);
+    font-size:1.05rem;
+    line-height:1.78;
+  }
+
+  .resume-contact-card{
+    border:1px solid var(--line);
+    border-radius:24px;
+    padding:24px;
+    background:linear-gradient(145deg,#23231f,#1c1c1a);
+    box-shadow:var(--shadow);
+  }
+
+  .resume-contact-card h2{
+    margin:0 0 15px;
+    font-size:1rem;
+    color:var(--gold2);
+  }
+
+  .resume-contact-list{
+    display:grid;
+    gap:10px;
+  }
+
+  .resume-contact-item{
+    padding:11px 12px;
+    border-radius:11px;
+    border:1px solid var(--line2);
+    background:rgba(255,255,255,.025);
+  }
+
+  .resume-contact-item span{
+    display:block;
+    color:#97938a;
+    font-size:.67rem;
+    font-weight:700;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+  }
+
+  .resume-contact-item a,
+  .resume-contact-item strong{
+    display:block;
+    margin-top:2px;
+    color:#f1ede5;
+    font-size:.86rem;
+    font-weight:700;
+    text-decoration:none;
+  }
+
+  .resume-actions{
+    display:flex;
+    flex-wrap:wrap;
+    gap:10px;
+    margin-top:26px;
+  }
+
+  .resume-strip{
+    border-top:1px solid var(--line2);
+    border-bottom:1px solid var(--line2);
+    background:#1a1a18;
+  }
+
+  .resume-strip-inner{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+  }
+
+  .resume-strip-item{
+    padding:22px 24px;
+    border-right:1px solid var(--line2);
+  }
+
+  .resume-strip-item:last-child{
+    border-right:0;
+  }
+
+  .resume-strip-item b{
+    display:block;
+    color:var(--gold2);
+    font-size:1.05rem;
+  }
+
+  .resume-strip-item span{
+    display:block;
+    margin-top:2px;
+    color:#918d85;
+    font-size:.68rem;
+    text-transform:uppercase;
+    letter-spacing:.08em;
+    font-weight:700;
+  }
+
+  .resume-section{
+    padding:88px 0;
+  }
+
+  .resume-section + .resume-section{
+    border-top:1px solid var(--line2);
+  }
+
+  .resume-section-head{
+    display:grid;
+    grid-template-columns:180px 1fr;
+    gap:34px;
+    margin-bottom:34px;
+  }
+
+  .resume-section-head h2{
+    margin:0;
+    max-width:820px;
+    font-size:clamp(2.2rem,3.8vw,3.8rem);
+    line-height:1.03;
+    letter-spacing:-.05em;
+  }
+
+  .resume-section-head p{
+    max-width:780px;
+    margin:13px 0 0;
+    color:var(--muted);
+    font-size:.98rem;
+    line-height:1.75;
+  }
+
+  .experience-list{
+    display:grid;
+    gap:14px;
+  }
+
+  .experience-card{
+    display:grid;
+    grid-template-columns:220px 1fr;
+    gap:30px;
+    padding:30px;
+    border:1px solid var(--line2);
+    border-radius:24px;
+    background:linear-gradient(145deg,#22221f,#1d1d1b);
+  }
+
+  .experience-date{
+    color:var(--gold2);
+    font-size:.88rem;
+    font-weight:800;
+    line-height:1.35;
+  }
+
+  .experience-meta{
+    margin-top:7px;
+    color:#99958d;
+    font-size:.74rem;
+    line-height:1.55;
+  }
+
+  .experience-content h3{
+    margin:0 0 7px;
+    font-size:1.32rem;
+    line-height:1.2;
+    letter-spacing:-.025em;
+  }
+
+  .experience-content ul{
+    margin:14px 0 0;
+    padding-left:20px;
+  }
+
+  .experience-content li{
+    margin:8px 0;
+    color:#c7c3ba;
+    font-size:.91rem;
+    line-height:1.67;
+  }
+
+  .role-badge{
+    display:inline-flex;
+    margin-top:2px;
+    padding:5px 8px;
+    border:1px solid var(--line);
+    border-radius:999px;
+    color:#d9d2c1;
+    font-size:.62rem;
+    font-weight:700;
+  }
+
+  .skills-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:14px;
+  }
+
+  .skill-card{
+    padding:28px;
+    border:1px solid var(--line2);
+    border-radius:22px;
+    background:#1f1f1c;
+  }
+
+  .skill-card h3{
+    margin:0 0 12px;
+    color:var(--gold2);
+    font-size:1.12rem;
+  }
+
+  .skill-card p{
+    margin:0;
+    color:#c3bfb6;
+    font-size:.86rem;
+    line-height:1.68;
+  }
+
+  .education-grid{
+    display:grid;
+    grid-template-columns:1.08fr .92fr;
+    gap:16px;
+  }
+
+  .resume-panel{
+    padding:30px;
+    border:1px solid var(--line2);
+    border-radius:24px;
+    background:#1f1f1c;
+  }
+
+  .resume-panel h3{
+    margin:0 0 18px;
+    color:var(--gold2);
+    font-size:1.16rem;
+  }
+
+  .credential-list{
+    display:grid;
+    gap:14px;
+  }
+
+  .credential-item{
+    padding:14px 0;
+    border-bottom:1px solid var(--line2);
+  }
+
+  .credential-item:last-child{
+    border-bottom:0;
+  }
+
+  .credential-item b{
+    display:block;
+    margin-bottom:4px;
+    font-size:.88rem;
+  }
+
+  .credential-item span{
+    color:#b9b5ac;
+    font-size:.83rem;
+    line-height:1.6;
+  }
+
+  .language-list{
+    display:grid;
+    gap:10px;
+  }
+
+  .language{
+    display:flex;
+    justify-content:space-between;
+    gap:16px;
+    padding:13px 0;
+    border-bottom:1px solid var(--line2);
+  }
+
+  .language:last-child{
+    border-bottom:0;
+  }
+
+  .language b{
+    font-size:.9rem;
+  }
+
+  .language span{
+    color:#b9b5ac;
+    font-size:.82rem;
+  }
+
+  .resume-bottom{
+    padding:0 0 88px;
+  }
+
+  .resume-bottom-card{
+    padding:42px;
+    border:1px solid var(--line);
+    border-radius:28px;
+    background:linear-gradient(135deg,#24231e,#181817);
+    text-align:center;
+  }
+
+  .resume-bottom-card h2{
+    margin:0 0 12px;
+    font-size:clamp(2rem,3.6vw,3.7rem);
+    line-height:1.02;
+    letter-spacing:-.05em;
+  }
+
+  .resume-bottom-card p{
+    max-width:650px;
+    margin:0 auto 22px;
+    color:var(--muted);
+    font-size:.93rem;
+  }
+
+  @media(max-width:980px){
+    .resume-hero-grid,
+    .resume-section-head,
+    .education-grid{
+      grid-template-columns:1fr;
     }
 
-    * {
-      box-sizing: border-box;
+    .resume-strip-inner{
+      grid-template-columns:repeat(2,1fr);
     }
 
-    html {
-      scroll-behavior: smooth;
+    .resume-strip-item:nth-child(2){
+      border-right:0;
     }
 
-    body {
-      margin: 0;
-      background: var(--screen-bg);
-      color: var(--text);
-      font-family: "Times New Roman", Times, serif;
+    .resume-strip-item:nth-child(-n+2){
+      border-bottom:1px solid var(--line2);
     }
 
-    a {
-      color: inherit;
-      text-decoration: none;
+    .experience-card{
+      grid-template-columns:1fr;
+      gap:14px;
     }
 
-    /* TOP SCREEN TOOLBAR */
-    .resume-toolbar {
-      position: sticky;
-      top: 0;
-      z-index: 100;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      gap: 10px;
-      padding: 12px;
-      background: rgba(26, 25, 22, 0.96);
-      border-bottom: 1px solid rgba(255,255,255,.08);
-      backdrop-filter: blur(12px);
+    .skills-grid{
+      grid-template-columns:1fr 1fr;
+    }
+  }
+
+  @media(max-width:700px){
+    .resume-page{padding-top:90px}
+    .resume-hero{padding:46px 0}
+    .resume-title{font-size:3rem}
+    .resume-strip-inner,
+    .skills-grid{
+      grid-template-columns:1fr;
     }
 
-    .resume-toolbar a,
-    .resume-toolbar button {
-      border: 1px solid rgba(255,255,255,.16);
-      border-radius: 8px;
-      background: #2d2b27;
-      color: #fff7e4;
-      padding: 9px 14px;
-      font-family: Arial, sans-serif;
-      font-size: 13px;
-      font-weight: 700;
-      cursor: pointer;
+    .resume-strip-item{
+      border-right:0;
+      border-bottom:1px solid var(--line2);
     }
 
-    .resume-toolbar a:hover,
-    .resume-toolbar button:hover {
-      border-color: var(--gold-light);
-      color: #f2d894;
+    .resume-strip-item:last-child{
+      border-bottom:0;
     }
 
-    /* DOCUMENT WRAPPER */
-    .resume-pages {
-      display: flex;
-      flex-direction: column;
-      gap: 24px;
-      width: 100%;
-      margin: 24px auto 40px;
+    .resume-section{
+      padding:66px 0;
     }
 
-    /* A4 PAGE */
-    .page {
-      position: relative;
-      width: 210mm;
-      height: 297mm;
-      margin: 0 auto;
-      padding: 10.5mm 11mm 13mm;
-      overflow: hidden;
-
-      background: var(--paper);
-      box-shadow: 0 18px 55px rgba(0,0,0,.18);
+    .experience-card,
+    .skill-card,
+    .resume-panel{
+      padding:22px;
     }
 
-    /* GOLD / DARK TOP RULE */
-    .page::before {
-      content: "";
-      position: absolute;
-      top: 0;
-      left: 0;
-      right: 0;
-      height: 4mm;
-      background:
-        linear-gradient(
-          90deg,
-          #261e12 0%,
-          #715315 35%,
-          #c99b27 68%,
-          #f1dfa8 100%
-        );
+    .resume-bottom-card{
+      padding:34px 20px;
     }
-
-    /* HEADER */
-    .name {
-      margin: 1.8mm 0 1.5mm;
-      text-align: center;
-      font-size: 24pt;
-      line-height: 1;
-      font-weight: 700;
-      letter-spacing: -.2px;
-    }
-
-    .contact {
-      display: flex;
-      justify-content: center;
-      flex-wrap: wrap;
-      gap: 2mm 8mm;
-
-      padding-top: 2.1mm;
-      border-top: 1px solid var(--rule);
-
-      font-size: 10.2pt;
-      line-height: 1.15;
-      font-weight: 700;
-    }
-
-    .contact b {
-      font-weight: 700;
-    }
-
-    /* SECTION HEADINGS */
-    .section-title {
-      margin: 4mm 0 1.4mm;
-      padding-bottom: 1mm;
-
-      color: var(--gold);
-      border-bottom: 1px solid var(--rule);
-
-      font-size: 15pt;
-      line-height: 1;
-      font-weight: 700;
-      text-transform: uppercase;
-    }
-
-    /* SUMMARY */
-    .summary {
-      margin: 0;
-      font-size: 10.45pt;
-      line-height: 1.2;
-      font-weight: 700;
-    }
-
-    /* EXPERIENCE */
-    .job {
-      position: relative;
-      padding: 1.5mm 0 2mm;
-      border-bottom: 1px solid #ddd6c8;
-    }
-
-    .job:last-of-type {
-      border-bottom: none;
-    }
-
-    .job.indented {
-      margin-left: 1.5mm;
-      padding-left: 3.2mm;
-      border-left: 2px solid #c8a444;
-    }
-
-    .job-header {
-      display: grid;
-      grid-template-columns: minmax(0, 1fr) auto;
-      gap: 8mm;
-      align-items: baseline;
-    }
-
-    .job-title {
-      margin: 0;
-      font-size: 11.4pt;
-      line-height: 1.1;
-      font-weight: 700;
-    }
-
-    .date {
-      color: var(--gold);
-      font-size: 10.8pt;
-      line-height: 1;
-      font-weight: 700;
-      white-space: nowrap;
-    }
-
-    .job-meta {
-      margin-top: .25mm;
-      font-size: 9.45pt;
-      line-height: 1.1;
-      font-weight: 700;
-    }
-
-    .job ul {
-      margin: 1.15mm 0 0 6.3mm;
-      padding: 0;
-    }
-
-    .job li {
-      margin: .65mm 0;
-      padding-left: .8mm;
-
-      font-size: 9.8pt;
-      line-height: 1.17;
-    }
-
-    /* PAGE 2 */
-    .page-2 {
-      padding-top: 11.5mm;
-    }
-
-    .page-2 .section-title:first-child {
-      margin-top: 2.5mm;
-    }
-
-    /* CORE COMPETENCIES */
-    .competencies {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0 7mm;
-      margin-top: 1.7mm;
-    }
-
-    .competency {
-      margin-bottom: 2.1mm;
-      padding-left: 2.8mm;
-      border-left: 2px solid #c8a444;
-
-      font-size: 9.9pt;
-      line-height: 1.18;
-    }
-
-    .competency strong {
-      font-weight: 700;
-    }
-
-    /* EDUCATION */
-    .education-list {
-      display: flex;
-      flex-direction: column;
-      gap: 1.35mm;
-
-      margin-top: 1.7mm;
-    }
-
-    .education-item {
-      padding-left: 2.8mm;
-      border-left: 2px solid #c8a444;
-
-      font-size: 9.8pt;
-      line-height: 1.18;
-    }
-
-    .education-item strong {
-      font-weight: 700;
-    }
-
-    /* FOOTER */
-    .footer {
-      position: absolute;
-      left: 11mm;
-      right: 11mm;
-      bottom: 5.8mm;
-
-      display: flex;
-      justify-content: space-between;
-      align-items: center;
-      gap: 8mm;
-
-      padding-top: 2mm;
-      border-top: 1px solid var(--rule);
-
-      color: #514a3d;
-      font-size: 8.3pt;
-      line-height: 1;
-      font-weight: 700;
-    }
-
-    /* SCREEN RESPONSIVE */
-    @media (max-width: 900px) {
-      .resume-pages {
-        gap: 14px;
-        margin: 10px auto 25px;
-      }
-
-      .page {
-        width: calc(100vw - 20px);
-        height: auto;
-        min-height: calc((100vw - 20px) * 1.414);
-        padding:
-          calc((100vw - 20px) * 0.05)
-          calc((100vw - 20px) * 0.052)
-          calc((100vw - 20px) * 0.065);
-      }
-
-      .name {
-        font-size: 5vw;
-      }
-
-      .contact {
-        font-size: 2vw;
-      }
-
-      .section-title {
-        font-size: 3vw;
-      }
-
-      .summary {
-        font-size: 2.05vw;
-      }
-
-      .job-title {
-        font-size: 2.22vw;
-      }
-
-      .date {
-        font-size: 2.08vw;
-      }
-
-      .job-meta {
-        font-size: 1.88vw;
-      }
-
-      .job li,
-      .competency,
-      .education-item {
-        font-size: 1.94vw;
-      }
-
-      .footer {
-        left: 5.2vw;
-        right: 5.2vw;
-        bottom: 3vw;
-        font-size: 1.6vw;
-      }
-    }
-
-    /* PRINT */
-    @media print {
-      @page {
-        size: A4 portrait;
-        margin: 0;
-      }
-
-      html,
-      body {
-        background: white;
-      }
-
-      .resume-toolbar {
-        display: none !important;
-      }
-
-      .resume-pages {
-        display: block;
-        width: auto;
-        margin: 0;
-      }
-
-      .page {
-        width: 210mm;
-        height: 297mm;
-        min-height: 297mm;
-        margin: 0;
-        box-shadow: none;
-        page-break-after: always;
-        break-after: page;
-      }
-
-      .page:last-child {
-        page-break-after: auto;
-        break-after: auto;
-      }
-    }
-  </style>
+  }
+</style>
 </head>
 
-<body>
+<body class="fade">
+<div class="progress" id="progress"></div>
 
-  <!-- SCREEN CONTROLS -->
-  <div class="resume-toolbar">
-    <a href="index.html">← Back to Portfolio</a>
-    <button onclick="window.print()">Print / Save PDF</button>
+<nav class="nav" id="nav">
+  <a class="brand" href="index.html"><span class="brand-dot"></span>Mohamed Abdelrazek</a>
+  <div class="navlinks">
+    <a href="index.html">Portfolio</a>
+    <a href="#experience">Experience</a>
+    <a href="#skills">Skills</a>
+    <a href="#education">Education</a>
   </div>
+  <a class="navcta" href="mailto:moe-abdelrazek@outlook.com">Contact ↗</a>
+  <button class="menu" id="menu" aria-label="Open navigation">☰</button>
+</nav>
 
-  <main class="resume-pages">
+<main class="resume-page">
 
-    <!-- ========================================================= -->
-    <!-- PAGE 1 -->
-    <!-- ========================================================= -->
-    <section class="page">
-
-      <h1 class="name">Mohamed Abdelrazek</h1>
-
-      <div class="contact">
-        <span><b>Location:</b> Alexandria, Egypt | Remote</span>
-        <span>
-          <b>Email:</b>
-          <a href="mailto:moe-abdelrazek@outlook.com">
-            moe-abdelrazek@outlook.com
-          </a>
-        </span>
-        <span>
-          <b>Phone:</b>
-          <a href="tel:+201017286384">
-            +20 101 728 6384
-          </a>
-        </span>
-      </div>
-
-      <!-- PROFESSIONAL SUMMARY -->
-      <h2 class="section-title">Professional Summary</h2>
-
-      <p class="summary">
-        Digital marketing and performance marketing professional with broad expertise in
-        full-funnel strategy, paid media, media planning and buying, SEO, CRO, analytics,
-        attribution, CRM automation, reporting, and marketing operations. Experienced across
-        real estate, B2B, SaaS, consulting, e-commerce, technology, automotive, fintech,
-        financial services, and service businesses in the US, Canada, Germany, UAE, Saudi
-        Arabia, and Egypt, connecting acquisition, conversion, measurement, follow-up, and
-        optimization into integrated, data-driven growth systems.
+<section class="resume-hero">
+  <div class="wrap resume-hero-grid">
+    <div>
+      <div class="eyebrow">Resume · Digital Marketing & Growth</div>
+      <h1 class="resume-title">Mohamed <span>Abdelrazek</span></h1>
+      <p class="resume-intro">
+        Digital marketing and performance marketing professional with broad expertise in full-funnel strategy, paid media, media planning and buying, SEO, CRO, analytics, attribution, CRM automation, reporting, and marketing operations. Experienced across real estate, B2B, SaaS, consulting, e-commerce, technology, automotive, fintech, financial services, and service businesses in the US, Canada, Germany, UAE, Saudi Arabia, and Egypt, connecting acquisition, conversion, measurement, follow-up, and optimization into integrated, data-driven growth systems.
       </p>
 
-      <!-- PROFESSIONAL EXPERIENCE -->
-      <h2 class="section-title">Professional Experience</h2>
-
-      <!-- WSI -->
-      <article class="job">
-        <div class="job-header">
-          <h3 class="job-title">
-            Senior Media Buyer | WSI ALM
-          </h3>
-
-          <div class="date">
-            Jan 2025 to Present
-          </div>
-        </div>
-
-        <div class="job-meta">
-          Contract | Toronto, Ontario, Canada | Remote
-        </div>
-
-        <ul>
-          <li>
-            Manage and optimize client accounts across finance, e-commerce, fintech, SaaS,
-            and automotive using Google Ads, Meta Ads, Microsoft Advertising, LinkedIn Ads,
-            Amazon Ads, TikTok Ads, and Snapchat Ads.
-          </li>
-
-          <li>
-            Build campaign structures, keyword and audience frameworks, bidding, budgets,
-            ads, product campaigns, and conversion-focused account setups.
-          </li>
-
-          <li>
-            Build Looker Studio reports and monthly performance reports (MPRs), and audit
-            tracking and performance to uncover wasted spend, attribution gaps, lead-quality
-            issues, and opportunities to improve CPL, ROAS, and efficiency.
-          </li>
-        </ul>
-      </article>
-
-      <!-- TECHNO SIGNAGE -->
-      <article class="job">
-        <div class="job-header">
-          <h3 class="job-title">
-            Digital Marketing &amp; SEO Lead | TechnoSignage
-          </h3>
-
-          <div class="date">
-            Jan 2022 to Jan 2025
-          </div>
-        </div>
-
-        <div class="job-meta">
-          Contract | UAE | Remote
-        </div>
-
-        <ul>
-          <li>
-            Led SEO, Google Ads, content operations, and website optimization for a UAE
-            digital signage and business intelligence provider.
-          </li>
-
-          <li>
-            Implemented schema, metadata, internal linking, FAQs, and service-page content
-            improvements while supporting growth content across digital signage, AI, BI,
-            web development, and digital transformation.
-          </li>
-        </ul>
-      </article>
-
-      <!-- VP REALTY -->
-      <article class="job indented">
-        <h3 class="job-title">
-          Digital Marketing Manager | VP Realty
-        </h3>
-
-        <div class="job-meta">
-          Independent Contractor | US Real Estate | Remote
-        </div>
-
-        <ul>
-          <li>
-            Manage digital marketing operations across CRM, website, content, listings,
-            agent marketing, tracking, and campaign coordination for a Northeast Ohio
-            real estate brokerage.
-          </li>
-
-          <li>
-            Built and maintain GoHighLevel and n8n workflows for lead capture, transcript
-            processing, classification, follow-up routing, CRM notes, operational QA,
-            and task accountability.
-          </li>
-        </ul>
-      </article>
-
-      <!-- ELITE CONSULTANT -->
-      <article class="job indented">
-        <h3 class="job-title">
-          Digital Marketing Consultant | Elite Consultant
-        </h3>
-
-        <div class="job-meta">
-          Independent Contractor | Saudi Arabia | Remote
-        </div>
-
-        <ul>
-          <li>
-            Provide digital strategy, campaign planning, CRM structure, reporting,
-            brand positioning, and sales-enablement consultancy.
-          </li>
-
-          <li>
-            Advise on service pages, lead-generation logic, website messaging,
-            acquisition workflows, and executive marketing presentations.
-          </li>
-        </ul>
-      </article>
-
-      <div class="footer">
-        <span>
-          Mohamed Abdelrazek | Digital Marketing, SEO, PPC, Automation &amp; Reporting
-        </span>
-
-        <span>
-          Page 1 of 2
-        </span>
+      <div class="resume-actions">
+        <a class="btn btn-gold" href="index.html">← Back to portfolio</a>
+        <a class="btn btn-outline" href="Mohamed%20Abdelrazek%20-%20CV.pdf" target="_blank" rel="noopener">Download PDF ↗</a>
       </div>
+    </div>
 
-    </section>
-
-    <!-- ========================================================= -->
-    <!-- PAGE 2 -->
-    <!-- ========================================================= -->
-    <section class="page page-2">
-
-      <h2 class="section-title">
-        Professional Experience Continued
-      </h2>
-
-      <!-- OFELA KALALA -->
-      <article class="job indented">
-        <h3 class="job-title">
-          Digital Marketing &amp; E-Commerce Consultant | Ofela Kalala Stores
-        </h3>
-
-        <div class="job-meta">
-          Independent Contractor | Germany | Remote
+    <aside class="resume-contact-card">
+      <h2>Contact</h2>
+      <div class="resume-contact-list">
+        <div class="resume-contact-item">
+          <span>Location</span>
+          <strong>Alexandria, Egypt · Remote</strong>
         </div>
 
-        <ul>
-          <li>
-            Supported digital marketing and e-commerce activity across Shopify and Amazon.
-          </li>
-
-          <li>
-            Worked on store and product optimization, SEO, content, merchandising,
-            and performance improvements across both platforms.
-          </li>
-        </ul>
-      </article>
-
-      <!-- ENGOO -->
-      <article class="job">
-        <div class="job-header">
-          <h3 class="job-title">
-            Online English Tutor | Engoo
-          </h3>
-
-          <div class="date">
-            2021 to 2024
-          </div>
+        <div class="resume-contact-item">
+          <span>Email</span>
+          <a href="mailto:moe-abdelrazek@outlook.com">moe-abdelrazek@outlook.com</a>
         </div>
 
-        <div class="job-meta">
-          Online Education | Remote
+        <div class="resume-contact-item">
+          <span>Phone</span>
+          <a href="tel:+201017286384">+20 101 728 6384</a>
         </div>
 
-        <ul>
-          <li>
-            Conducted one-on-one English sessions for international learners,
-            strengthening cross-cultural communication, client handling, lesson pacing,
-            and structured explanation skills.
-          </li>
-        </ul>
-      </article>
-
-      <!-- FOOTBALL -->
-      <article class="job">
-        <div class="job-header">
-          <h3 class="job-title">
-            Professional Football Athlete
-          </h3>
-
-          <div class="date">
-            2011 to 2021
-          </div>
+        <div class="resume-contact-item">
+          <span>LinkedIn</span>
+          <a href="https://www.linkedin.com/in/moe-abdelrazek/" target="_blank" rel="noopener">linkedin.com/in/moe-abdelrazek ↗</a>
         </div>
+      </div>
+    </aside>
+  </div>
+</section>
 
-        <div class="job-meta">
-          Professional Athlete | Egypt
-        </div>
+<div class="resume-strip">
+  <div class="wrap resume-strip-inner">
+    <div class="resume-strip-item">
+      <b>Paid Media</b>
+      <span>Search · Social · Shopping</span>
+    </div>
 
-        <ul>
-          <li>
-            Competed professionally in Egyptian football leagues, developing discipline,
-            resilience, teamwork, leadership under pressure, and performance consistency.
-          </li>
-        </ul>
-      </article>
+    <div class="resume-strip-item">
+      <b>SEO & CRO</b>
+      <span>Technical · Local · Conversion</span>
+    </div>
 
-      <!-- CORE COMPETENCIES -->
-      <h2 class="section-title">
-        Core Competencies
-      </h2>
+    <div class="resume-strip-item">
+      <b>Analytics</b>
+      <span>GA4 · GTM · Reporting</span>
+    </div>
 
-      <div class="competencies">
+    <div class="resume-strip-item">
+      <b>Automation</b>
+      <span>n8n · CRM · Workflows</span>
+    </div>
+  </div>
+</div>
 
+<section class="resume-section" id="experience">
+  <div class="wrap">
+    <div class="resume-section-head">
+      <div class="kicker">01 / Experience</div>
+      <div>
+        <h2>Professional experience</h2>
+        <p>Agency, consulting, in-house and independent work across paid media, SEO, analytics, automation and marketing operations.</p>
+      </div>
+    </div>
+
+    <div class="experience-list">
+
+      <article class="experience-card">
         <div>
-          <div class="competency">
-            <strong>Paid Media:</strong>
-            PPC, paid search, paid social, Google Ads, Meta Ads, Microsoft Advertising,
-            LinkedIn Ads, Amazon Ads, TikTok Ads, Snapchat Ads, Merchant Center,
-            campaign testing, bidding, and budget optimization.
-          </div>
-
-          <div class="competency">
-            <strong>Analytics:</strong>
-            GA4, Google Tag Manager, attribution analysis, Looker Studio, Tableau,
-            KPI dashboards, conversion tracking, and performance reporting.
-          </div>
-
-          <div class="competency">
-            <strong>Web &amp; CRO:</strong>
-            Shopify, landing pages, conversion optimization, form flows, CTA testing,
-            website structure, and product-page recommendations.
-          </div>
+          <div class="experience-date">Jan 2025 to Present</div>
+          <div class="experience-meta">Toronto, Ontario, Canada · Remote</div>
+          <span class="role-badge">Contract</span>
         </div>
+        <div class="experience-content">
+          <h3>Senior Media Buyer | WSI ALM</h3>
+          <ul>
+            <li>Manage and optimize client accounts across finance, e-commerce, fintech, SaaS, and automotive using Google Ads, Meta Ads, Microsoft Advertising, LinkedIn Ads, Amazon Ads, TikTok Ads, and Snapchat Ads.</li>
+            <li>Build campaign structures, keyword and audience frameworks, bidding, budgets, ads, product campaigns, and conversion-focused account setups.</li>
+            <li>Build Looker Studio reports and monthly performance reports (MPRs), and audit tracking and performance to uncover wasted spend, attribution gaps, lead-quality issues, and opportunities to improve CPL, ROAS, and efficiency.</li>
+          </ul>
+        </div>
+      </article>
 
+      <article class="experience-card">
         <div>
-          <div class="competency">
-            <strong>SEO:</strong>
-            technical SEO, on-page SEO, local SEO, Search Console, schema,
-            content optimization, internal linking, metadata, and FAQ strategy.
+          <div class="experience-date">Jan 2022 to Jan 2025</div>
+          <div class="experience-meta">UAE · Remote</div>
+          <span class="role-badge">Contract</span>
+        </div>
+        <div class="experience-content">
+          <h3>Digital Marketing & SEO Lead | TechnoSignage</h3>
+          <ul>
+            <li>Led SEO, Google Ads, content operations, and website optimization for a UAE digital signage and business intelligence provider.</li>
+            <li>Implemented schema, metadata, internal linking, FAQs, and service-page content improvements while supporting growth content across digital signage, AI, BI, web development, and digital transformation.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="experience-card">
+        <div>
+          <div class="experience-date">Independent Contractor</div>
+          <div class="experience-meta">US Real Estate · Remote</div>
+        </div>
+        <div class="experience-content">
+          <h3>Digital Marketing Manager | VP Realty</h3>
+          <ul>
+            <li>Manage digital marketing operations across CRM, website, content, listings, agent marketing, tracking, and campaign coordination for a Northeast Ohio real estate brokerage.</li>
+            <li>Built and maintain GoHighLevel and n8n workflows for lead capture, transcript processing, classification, follow-up routing, CRM notes, operational QA, and task accountability.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="experience-card">
+        <div>
+          <div class="experience-date">Independent Contractor</div>
+          <div class="experience-meta">Saudi Arabia · Remote</div>
+        </div>
+        <div class="experience-content">
+          <h3>Digital Marketing Consultant | Elite Consultant</h3>
+          <ul>
+            <li>Provide digital strategy, campaign planning, CRM structure, reporting, brand positioning, and sales-enablement consultancy.</li>
+            <li>Advise on service pages, lead-generation logic, website messaging, acquisition workflows, and executive marketing presentations.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="experience-card">
+        <div>
+          <div class="experience-date">Independent Contractor</div>
+          <div class="experience-meta">Germany · Remote</div>
+        </div>
+        <div class="experience-content">
+          <h3>Digital Marketing & E-Commerce Consultant | Ofela Kalala Stores</h3>
+          <ul>
+            <li>Supported digital marketing and e-commerce activity across Shopify and Amazon.</li>
+            <li>Worked on store and product optimization, SEO, content, merchandising, and performance improvements across both platforms.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="experience-card">
+        <div>
+          <div class="experience-date">2021 to 2024</div>
+          <div class="experience-meta">Online Education · Remote</div>
+        </div>
+        <div class="experience-content">
+          <h3>Online English Tutor | Engoo</h3>
+          <ul>
+            <li>Conducted one-on-one English sessions for international learners, strengthening cross-cultural communication, client handling, lesson pacing, and structured explanation skills.</li>
+          </ul>
+        </div>
+      </article>
+
+      <article class="experience-card">
+        <div>
+          <div class="experience-date">2011 to 2021</div>
+          <div class="experience-meta">Professional Athlete · Egypt</div>
+        </div>
+        <div class="experience-content">
+          <h3>Professional Football Athlete</h3>
+          <ul>
+            <li>Competed professionally in Egyptian football leagues, developing discipline, resilience, teamwork, leadership under pressure, and performance consistency.</li>
+          </ul>
+        </div>
+      </article>
+
+    </div>
+  </div>
+</section>
+
+<section class="resume-section" id="skills">
+  <div class="wrap">
+    <div class="resume-section-head">
+      <div class="kicker">02 / Skills</div>
+      <div>
+        <h2>Core competencies</h2>
+        <p>The main platforms, channels and systems covered in my current CV.</p>
+      </div>
+    </div>
+
+    <div class="skills-grid">
+      <article class="skill-card">
+        <h3>Paid Media</h3>
+        <p>PPC, paid search, paid social, Google Ads, Meta Ads, Microsoft Advertising, LinkedIn Ads, Amazon Ads, TikTok Ads, Snapchat Ads, Merchant Center, campaign testing, bidding, and budget optimization.</p>
+      </article>
+
+      <article class="skill-card">
+        <h3>SEO</h3>
+        <p>Technical SEO, on-page SEO, local SEO, Search Console, schema, content optimization, internal linking, metadata, and FAQ strategy.</p>
+      </article>
+
+      <article class="skill-card">
+        <h3>Analytics</h3>
+        <p>GA4, Google Tag Manager, attribution analysis, Looker Studio, Tableau, KPI dashboards, conversion tracking, and performance reporting.</p>
+      </article>
+
+      <article class="skill-card">
+        <h3>Automation & CRM</h3>
+        <p>n8n, Zapier, GoHighLevel, HubSpot CRM, Zoho, Apollo, lead routing, follow-up workflows, and CRM pipelines.</p>
+      </article>
+
+      <article class="skill-card">
+        <h3>Web & CRO</h3>
+        <p>Shopify, landing pages, conversion optimization, form flows, CTA testing, website structure, and product-page recommendations.</p>
+      </article>
+
+      <article class="skill-card">
+        <h3>Operations</h3>
+        <p>ClickUp, Slack, Google Workspace, MS Office, SOPs, content calendars, workflow management, creative coordination, and Canva.</p>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="resume-section" id="education">
+  <div class="wrap">
+    <div class="resume-section-head">
+      <div class="kicker">03 / Education</div>
+      <div>
+        <h2>Education, certifications & languages</h2>
+        <p>Formal education, professional certifications and language proficiency from my current CV.</p>
+      </div>
+    </div>
+
+    <div class="education-grid">
+
+      <div class="resume-panel">
+        <h3>Education & Certifications</h3>
+        <div class="credential-list">
+
+          <div class="credential-item">
+            <b>Alexandria University</b>
+            <span>Faculty of Engineering, incomplete degree.</span>
           </div>
 
-          <div class="competency">
-            <strong>Automation &amp; CRM:</strong>
-            n8n, Zapier, GoHighLevel, HubSpot CRM, Zoho, Apollo, lead routing,
-            follow-up workflows, and CRM pipelines.
+          <div class="credential-item">
+            <b>Google</b>
+            <span>Digital Marketing & E-Commerce, Data Analytics, Advanced Data Analytics.</span>
           </div>
 
-          <div class="competency">
-            <strong>Operations:</strong>
-            ClickUp, Slack, Google Workspace, MS Office, SOPs, content calendars,
-            workflow management, creative coordination, and Canva.
+          <div class="credential-item">
+            <b>IBM</b>
+            <span>Digital Advertising, Social Media Marketing, SEO & Content Marketing, E-commerce & Email Campaigns.</span>
+          </div>
+
+          <div class="credential-item">
+            <b>HubSpot</b>
+            <span>Social Media Marketing II.</span>
+          </div>
+
+          <div class="credential-item">
+            <b>LinkedIn</b>
+            <span>Marketing Measurement, Content & Creative Design, Marketing Strategy, Advertising Fundamentals.</span>
+          </div>
+
+        </div>
+      </div>
+
+      <div class="resume-panel">
+        <h3>Languages</h3>
+        <div class="language-list">
+          <div class="language">
+            <b>Arabic</b>
+            <span>Native</span>
+          </div>
+
+          <div class="language">
+            <b>English</b>
+            <span>Near-native</span>
+          </div>
+
+          <div class="language">
+            <b>German</b>
+            <span>B2</span>
           </div>
         </div>
-
       </div>
 
-      <!-- EDUCATION -->
-      <h2 class="section-title">
-        Education, Certifications &amp; Languages
-      </h2>
+    </div>
+  </div>
+</section>
 
-      <div class="education-list">
-
-        <div class="education-item">
-          <strong>Education:</strong>
-          Alexandria University, Faculty of Engineering, incomplete degree.
-        </div>
-
-        <div class="education-item">
-          <strong>Google:</strong>
-          Digital Marketing &amp; E-Commerce, Data Analytics, Advanced Data Analytics.
-        </div>
-
-        <div class="education-item">
-          <strong>IBM:</strong>
-          Digital Advertising, Social Media Marketing, SEO &amp; Content Marketing,
-          E-commerce &amp; Email Campaigns.
-        </div>
-
-        <div class="education-item">
-          <strong>HubSpot:</strong>
-          Social Media Marketing II.
-          <strong>LinkedIn:</strong>
-          Marketing Measurement, Content &amp; Creative Design,
-          Marketing Strategy, Advertising Fundamentals.
-        </div>
-
-        <div class="education-item">
-          <strong>Languages:</strong>
-          Arabic, native | English, near-native | German, B2.
-        </div>
-
+<section class="resume-bottom">
+  <div class="wrap">
+    <div class="resume-bottom-card">
+      <h2>Want to see the work behind the resume?</h2>
+      <p>The portfolio includes paid media results, analytics dashboards, SEO visibility and automation workflows.</p>
+      <div class="actions" style="justify-content:center">
+        <a class="btn btn-gold" href="index.html">Open portfolio →</a>
+        <a class="btn btn-outline" href="mailto:moe-abdelrazek@outlook.com">Contact me ↗</a>
       </div>
+    </div>
+  </div>
+</section>
 
-      <div class="footer">
-        <span>
-          <a href="mailto:moe-abdelrazek@outlook.com">
-            moe-abdelrazek@outlook.com
-          </a>
-          |
-          <a href="tel:+201017286384">
-            +20 101 728 6384
-          </a>
-        </span>
+</main>
 
-        <span>
-          Page 2 of 2
-        </span>
-      </div>
+<footer>
+  <div class="wrap foot">
+    <span>© 2026 Mohamed Abdelrazek</span>
+    <span>Digital Marketing · Paid Media · Analytics · SEO · Automation · Marketing Operations</span>
+  </div>
+</footer>
 
-    </section>
+<script>
+const p=document.getElementById('progress');
+const n=document.getElementById('nav');
+const m=document.getElementById('menu');
 
-  </main>
+function prog(){
+  const x=document.documentElement.scrollHeight-innerHeight;
+  p.style.width=(x?scrollY/x*100:0)+'%';
+}
+addEventListener('scroll',prog,{passive:true});
+prog();
 
+m.addEventListener('click',()=>n.classList.toggle('open'));
+document.querySelectorAll('.navlinks a').forEach(a=>a.addEventListener('click',()=>n.classList.remove('open')));
+</script>
 </body>
 </html>

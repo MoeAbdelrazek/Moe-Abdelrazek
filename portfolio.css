@@ -252,3 +252,55 @@ footer{padding:36px 0 48px;color:#928e86;font-size:.72rem}
 .evidence-text-card h3{font-size:1.72rem!important}
 .evidence-text-card p{font-size:1rem!important}
 @media(max-width:900px){.evidence-home-four{grid-template-columns:1fr!important}}
+
+
+/* Homepage footer contact details */
+.footer-contact{
+  align-items:flex-start;
+  gap:28px;
+}
+.footer-left{
+  display:flex;
+  flex-direction:column;
+  gap:4px;
+}
+.footer-left strong{
+  color:var(--white);
+  font-size:.86rem;
+}
+.footer-left span{
+  color:#918d85;
+  font-size:.68rem;
+}
+.footer-links{
+  display:flex;
+  flex-wrap:wrap;
+  justify-content:flex-end;
+  gap:9px 16px;
+  margin-left:auto;
+}
+.footer-links a{
+  color:#d8d2c7;
+  text-decoration:none;
+  font-size:.72rem;
+  font-weight:700;
+}
+.footer-links a:hover{
+  color:var(--gold2);
+}
+.footer-copy{
+  padding-top:12px;
+  color:#77736c;
+  font-size:.64rem;
+}
+@media(max-width:760px){
+  .footer-contact{
+    flex-direction:column;
+  }
+  .footer-links{
+    margin-left:0;
+    justify-content:flex-start;
+    flex-direction:column;
+    gap:8px;
+  }
+}

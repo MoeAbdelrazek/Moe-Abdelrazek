@@ -183,3 +183,24 @@ footer{padding:36px 0 48px;color:#928e86;font-size:.72rem}
   .contact{padding:48px 22px}
 }
 @media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important;scroll-behavior:auto!important}}
+
+
+/* Homepage overview and linked capability updates */
+.overview-section{padding:34px 0 42px;background:#1a1a18;border-top:1px solid var(--line2);border-bottom:1px solid var(--line2)}
+.overview-grid{display:grid;grid-template-columns:.9fr 1.25fr 1.85fr;gap:18px}
+.overview-block{padding:22px;border:1px solid var(--line2);border-radius:18px;background:#1d1d1a}
+.overview-block .kicker{padding-top:0;margin-bottom:12px}
+.overview-list{display:flex;flex-wrap:wrap;gap:8px}
+.overview-list span{padding:7px 10px;border:1px solid var(--line);border-radius:999px;color:#d9d3c6;font-size:.71rem;font-weight:700;line-height:1.2}
+.tools-list span{border-color:var(--line2);color:#ece8de}
+.cap-grid-six{grid-template-columns:repeat(2,1fr)}
+.cap-linked{display:flex;flex-direction:column;min-height:330px}
+.cap-linked .card-link{margin-top:auto;padding-top:22px;color:var(--gold2);text-decoration:none;font-size:.78rem;font-weight:800}
+.cap-linked .card-link:hover{text-decoration:underline}
+.text-evidence .evidence-card{border-top:2px solid var(--gold);min-height:310px}
+.evidence-text-card .evidence-body{padding:34px}
+.evidence-text-card .evidence-body h3{font-size:1.65rem}
+.evidence-text-card .evidence-body p{font-size:.95rem}
+.evidence-text-card .btn{margin-top:auto}
+@media(max-width:1000px){.overview-grid{grid-template-columns:1fr}.cap-grid-six{grid-template-columns:1fr 1fr}}
+@media(max-width:760px){.cap-grid-six{grid-template-columns:1fr}.overview-section{padding:26px 0}.overview-block{padding:18px}.cap-linked{min-height:auto}}

@@ -204,3 +204,33 @@ footer{padding:36px 0 48px;color:#928e86;font-size:.72rem}
 .evidence-text-card .btn{margin-top:auto}
 @media(max-width:1000px){.overview-grid{grid-template-columns:1fr}.cap-grid-six{grid-template-columns:1fr 1fr}}
 @media(max-width:760px){.cap-grid-six{grid-template-columns:1fr}.overview-section{padding:26px 0}.overview-block{padding:18px}.cap-linked{min-height:auto}}
+
+/* Final homepage content layout */
+.overview-grid-four{grid-template-columns:1fr 1.35fr}
+.overview-grid-four .overview-wide{grid-column:1 / -1}
+.overview-grid-four .overview-block{min-height:0}
+.cap-linked .card-link{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  align-self:flex-start;
+  margin-top:auto;
+  padding:10px 13px;
+  border:1px solid var(--line);
+  border-radius:10px;
+  color:var(--gold2);
+  background:rgba(215,181,109,.035);
+  text-decoration:none;
+  font-size:.75rem;
+  font-weight:800;
+}
+.cap-linked .card-link:hover{
+  color:#171716;
+  background:var(--gold2);
+  border-color:var(--gold2);
+  text-decoration:none;
+}
+@media(max-width:1000px){
+  .overview-grid-four{grid-template-columns:1fr}
+  .overview-grid-four .overview-wide{grid-column:auto}
+}
